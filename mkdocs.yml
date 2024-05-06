@@ -9,6 +9,7 @@ nav:
   - madflight: index.md
   - Controller Boards: Controller-Boards.md
   - Sensor Boards: Sensor-Boards.md
+  - AHRS: AHRS.md
   - GPS Configuration: GPS-Configuration.md
   - GPS Messages: GPS-Messages.md
   - Digital Low-pass Filter: Digital-Low-pass-Filter.md
