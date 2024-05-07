@@ -10,6 +10,7 @@ Mahony Filter
  - separate mag heading, acc, cog error updates 
  - mag weight increases with mag heading error
  - acc update only if acc in range 0.9g - 1.1g
+ - Kp = 0.25 when armed, 2.5 first 20 sec, 25 after crash disarm
  - optional integration term
 
 ### INAV
