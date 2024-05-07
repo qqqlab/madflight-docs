@@ -6,6 +6,7 @@ Overview of AHRS used in Flight Controllers:
 ### Betaflight
 
 Mahony Filter
+
  - separate mag, acc, cog error updates 
  - mag weight increases with mag heading error
  - acc update only if acc in range 0.9g - 1.1g
@@ -14,22 +15,23 @@ Mahony Filter
 ### INAV
 
 Mahony Filter
+
  - separate mag, acc, cog error updates 
  - centrifugal force compensation
  - gyro bias estimate
  - optional integration term
- 
- ### PX4-Autopilot
+
+### PX4-Autopilot
 
 EKF (Extended Kalman Filter) and/or
 
 Mahony Filter
+
  - separate mag, acc, Vision heading, and Mocap heading error updates 
  - mag weight increases up to 10x with spinRate
  - acc update only if acc in range 0.9g - 1.1g
  - gyro bias estimated when spinRate < 0.175 (10dps)
  - no integration term
-
 
 ### ArduPilot
 
