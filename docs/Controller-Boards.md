@@ -48,11 +48,12 @@ Waveshare RP2040-Zero | RP2040 | 2MB flash, RESET+BOOT button, RGB LED | 20 io +
 WeMos LOLIN32-Lite | ESP32 | 4MB flash, 0MB PSRAM, RESET button, lipo charger, LED | 23 io | 50 * 25 mm | 4.7 gr | $3
 WeMos LOLIN S3 Mini | ESP32-S3 | 4MB flash, 2MB PSRAM, RESET+BOOT button, LED | 27 io | 34 * 25 mm | 3 gr | $5
 WeAct STM32F405 Core Board | STM32F405RGT6 | 1MB flash, 192kB RAM, 168MHz, 6 UART, RESET+BOOT+USER button, LED, SDCARD | 45 io | 42 * 25 mm | | $8
-WeAct STM32H743 Core Board | STM32H743VIT6 | 2MB flash, 1MB RAM, 480MHz, 8 UART, RESET+BOOT+USER button, LED, SDCARD, 8MB SPI Flash, LCD, DVP | 77 io | 67 * 41 mm | | $16
+WeAct STM32H743 Core Board | STM32H743VIT6 | 2MB flash, 1MB RAM, 480MHz, 8 UART, RESET+BOOT+USER button, LED, SDCARD, 8MB SPI Flash, LCD, DVP | 77 io | 67 * 41 mm | 13.7 gr | $16
+Raspberry Pi Zero 2 W | Arm Cortex-A53 | SDCARD, 512MB RAM, 4*1GHz, WLAN | 26 io | 65 * 30 mm | 11.4 gr | $15 + SDCARD
 
 ## STM32 Flight Controllers
 
-A list of microcontrollers used in flight controllers, in order of power, from least to most:
+A list of STM32 microcontrollers used in flight controllers, in order of power, from least to most:
 
 | MCU | Clock | Flash | RAM | Flight Controller Firmware | Breakout Board Price |
 |-|-|-|-|-|-|
