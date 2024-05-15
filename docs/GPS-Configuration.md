@@ -14,9 +14,10 @@ Folow these instructions to enable 10Hz messages on u-blox M8 receivers.
 
 Press send after each changed setting.
 
-PRT: 
+**PRT**: Set baud rate
  
-MSG: Set GGA, RMC, PUBX00 10Hz, others 1Hz
+**MSG**: Set GGA, RMC, PUBX00 10Hz, others 1Hz
+
  - F0-00 NMEA GxGGA: (keep ON 1)
  - F0-01 NMEA GxGGL: ON 10 (was ON 1)
  - F0-02 NMEA GxGSA: ON 10 (was ON 1)
@@ -25,16 +26,16 @@ MSG: Set GGA, RMC, PUBX00 10Hz, others 1Hz
  - F0-05 NMEA GxVTG: ON 10 (was ON 1)
  - F1-00 PUBX00: ON 1 (was OFF)
 
-RATE: 
- - Measurement Period: 100 ms
+**RATE**: Set Measurement Period: 100 ms
 
-CFG:
+**CFG**:
+
  - select option: save current configuration
  - devices: select all (BBR, FLASH, I2C-EEPROM, SPI-FLASH) but probably only gets saved to BBR (Battery Backed RAM) which will loose the settings eventually.
 
 Disconnect, reconnect, wait up to 30 seconds and receiver output should be according new settings.
 
-If it didn't work, try a factory reset: in CFG set "Revert to default configuration" and press send.
+If it didn't work, try a factory reset: in **CFG** set "Revert to default configuration" and press send.
 
 
 ## Locosys MC-1513
@@ -62,7 +63,9 @@ The settings appear to be saved to battery backed RAM, as the settings survived 
 
 ### Set baud rate
 
-`$PCAS01,<CMD>*<Checksum>`
+```
+$PCAS01,<CMD>*<Checksum>
+```
 
 <CMD>The following baud rates are supported:  
 0 = 4800  
@@ -71,7 +74,6 @@ The settings appear to be saved to battery backed RAM, as the settings survived 
 3 = 38400  
 4 = 57600  
 5 = 115200  
-
 
 ```
 $PCAS01,0*1C //baud rate 4800
@@ -101,7 +103,9 @@ $PCAS03,1,0,0,0,1,0,0,0,0,0,,,0,0*02 //Enable GGA, RMC
 
 ### Set Mode
 
-`$PCAS04,<Mode>*<Checksum>`
+```
+$PCAS04,<Mode>*<Checksum>
+```
 
 <Mode>GNSS configuration:  
 1 = GPS  
@@ -120,7 +124,9 @@ $PCAS04,7*1E //7 = GPS + BeiDou + GLONASS
 
 ### Restart Module
 
-`$PCAS10,<Flag>*<Checksum>`
+```
+$PCAS10,<Flag>*<Checksum>
+```
 
 <Flag>Restart mode:  
 0 = warm start  
@@ -128,4 +134,6 @@ $PCAS04,7*1E //7 = GPS + BeiDou + GLONASS
 2 = cold start  
 3 = Cold boot and factory reset  
 
-`$PCAS10,0*1C //warm start`
+```
+$PCAS10,0*1C //warm start
+```
