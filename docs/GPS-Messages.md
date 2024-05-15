@@ -11,17 +11,17 @@ GLL    | S-TL------
 GSA    | S------NP-
 VTG    | S----HS---
 
-Data Types
- - S: Status
- - D: Date
- - T: Time
- - L: Lat/lon
- - A: Altitude
- - S: Speed
- - H: Heading
- - N: Number of sats
- - P: DOP
- - V: Vertical velocity
+**Data Types**  
+S: Status  
+D: Date  
+T: Time
+L: Lat/lon  
+A: Altitude  
+S: Speed  
+H: Heading  
+N: Number of sats  
+P: DOP  
+V: Vertical velocity  
 
 ## PUBX00 u-blox Proprietary Message
  
@@ -53,7 +53,7 @@ Data Types
 21 | *5F | hexadecimal | Checksum
 22 | - | character <CR><LF> | Carriage Return and Line Feed
 
-*Navigation Status*  
+**Navigation Status**  
 NF No Fix  
 DR Dead reckoning only solution  
 G2 Stand alone 2D solution  
@@ -89,7 +89,7 @@ Send: `$PUBX,00*33<CR><LF>` to poll PUBX00 message
 15 | *5B | hexadecimal | Checksum
 16 | - | character <CR><LF> | Carriage Return and Line Feed
 
-*Fix Status*  
+**Fix Status**  
 0 No Fix / Invalid  
 1 Standard GPS (2D/3D)  
 2 Differential GPS  
