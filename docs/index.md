@@ -111,7 +111,7 @@ I2C sensor:
      GND <---> GND
 ```
 
-## Pinout ESP32 DevKitC
+## Pinout ESP32
 
 Default pinout for ESP32, using the Espressiv ESP32 DevKitC (38 pin) board. This pinout is defined in madflight_board_default_ESP32.h, but can be modified with `#define HW_PIN_XXX` in your program.
 
@@ -143,7 +143,7 @@ Note: During boot the input voltage levels (pull up/pull down) on strap pins hav
 
 <img src="img/ESP32-DEV-KIT-DevKitC-v4-pinout-mischianti.png" width="60%" />
 
-## Pinout ESP32-S3 DevKitC
+## Pinout ESP32-S3
 
 Default pinout for ESP32-S3, using the Espressiv ESP32-S3 DevKitC-1 (44 pin) board. This pinout is defined in madflight_board_default_ESP32-S3.h, but can be modified with `#define HW_PIN_XXX` in your program.
 
@@ -176,7 +176,7 @@ GND | G | USB connector | G | GND
 
 <img src="img/esp32-S3-DevKitC-1-original-pinout-high.png" width="60%" />
 
-## Pinout RP2040 Raspberry Pi Pico
+## Pinout RP2040
 
 Default pinout for RP2040, using the Raspberry Pi Pico (40 pin) board. This pinout is defined in madflight_board_default_RP2040.h, but can be modified with `#define HW_PIN_XXX` in your program.
 
@@ -209,7 +209,7 @@ Consecutive even/odd PWM pins (e.g. pins 2,3 or 10,11) share the same timer and 
 
 <img src="img/Raspberry-Pi-Pico-rp2040-pinout-mischianti.png" width="45%" /> <img src="img/Raspberry-Pi-Pico-W-rp2040-WiFi-pinout-mischianti.png" width="46.8%" />
 
-## Pinou STM32 Black Pill
+## Pinout STM32
 
 Default pinout for STM32, using the WeAct STM32F411 Black Pill (40 pin) board. This pinout is defined in madflight_board_default_STM32.h, but can be modified with `#define HW_PIN_XXX` in your program.
 
@@ -217,11 +217,11 @@ Default pinout for STM32, using the WeAct STM32F411 Black Pill (40 pin) board. T
 | --: | :-- | :--: |--: | :-- |
 |           nc | VB  |   SWD pins    | 3V3 | 3V3 out
 |          LED | C13 |               | G   | GND
-|         FREE | C14 |               | 5V  | 5V input (*)
-|         FREE | C15 |               | B9  | PWM10(t4)
+|            - | C14 |               | 5V  | 5V input (*)
+|            - | C15 |               | B9  | PWM10(t4)
 |           nc | R   |               | B8  | PWM9(t4)
-|         FREE | A0  |               | B7  | I2C_SCL
-|         FREE | A1  |               | B6  | I2C_SDA
+|            - | A0  |               | B7  | I2C_SCL
+|            - | A1  |               | B6  | I2C_SDA
 |       GPS_TX | A2  |               | B5  | PWM8(t3)
 |       GPS_RX | A3  |               | B4  | PWM7(t3)
 |       IMU_CS | A4  |               | B3  | RCIN_RX
@@ -230,13 +230,13 @@ Default pinout for STM32, using the WeAct STM32F411 Black Pill (40 pin) board. T
 |     SPI_MOSI | A7  |               | A11 | USB_DN
 |        BAT_I | B0  |               | A10 | PWM6(t1)
 |        BAT_V | B1  |               | A9  | PWM5(t1)
-|         FREE | B2  |               | A8  | PWM4(t1)
+|            - | B2  |               | A8  | PWM4(t1)
 |     IMU_EXTI | B10 |               | B15 | PWM3(t1)
 |      3V3 out | 3V3 |               | B14 | PWM2(t1)
 |          GND | G   |               | B13 | PWM1(t1)
-|  5V input (*) | 5V  | USB connector | B12 | -
+| 5V input (*) | 5V  | USB connector | B12 | -
 
-Board: LED: C13, key button: A0
+Internally connected: C13 - LED, A0 - key button
 
 PWM1-6 are connected to timer1, PWM7-8 to timer3 and PWM9-10 to timer4. PWM pins connected to the same timer operate at the same frequency.
 
@@ -244,7 +244,7 @@ PWM1-6 are connected to timer1, PWM7-8 to timer3 and PWM9-10 to timer4. PWM pins
 
 <img src="img/STM32-STM32F4-STM32F411-STM32F411CEU6-pinout-high-resolution.png" width="45%" />
 
-## Pinout for Of-the-shelf Flight Controllers
+## Pinout STM32 Of-the-shelf Flight Controllers
 
 In the `src` directory you'll find header files for 400+ commercial flight controllers. These are converted Betaflight configuration files. Include the header file of your board, and in your program set '#define HW_USE_XXX' to match your board. 
 
