@@ -1,10 +1,12 @@
 # GPS Messages
 
-What information is send with each NMEA/PUBX message?
+What information is sent with each NMEA/PUBX/UBX message?
 
 |Message|Data Types|
 |-|-|
+UBX-PVT| SDTLAHSNPV
 PUBX00 | S-TLAHSNPV
+RMC + GGA | SDTLAHSNP-
 RMC    | SDTL-HS---
 GGA    | S-TLA--NP-
 GLL    | S-TL------
@@ -14,7 +16,7 @@ VTG    | S----HS---
 **Data Types**  
 S: Status  
 D: Date  
-T: Time
+T: Time  
 L: Lat/lon  
 A: Altitude  
 S: Speed  
