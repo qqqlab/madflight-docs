@@ -1,0 +1,95 @@
+#pip install mkdocs
+#pip install mkdocs-glightbox
+#pip install pymdown-extensions
+#pip install mkdocs-pymdownx-material-extras
+#mkdocs build
+#mkdocs serve
+
+nav:
+  - madflight: index.md
+  - Controller Boards: Controller-Boards.md
+  - Sensor Boards: Sensor-Boards.md
+  - AHRS: AHRS.md
+  - GPS Configuration: GPS-Configuration.md
+  - GPS Messages: GPS-Messages.md
+  - Digital Low-pass Filter: Digital-Low-pass-Filter.md
+  - Examples:
+    - PID Tuning: Example-PID-Tuning.md
+
+site_name: madflight
+site_url: https://madflight.com/
+site_description: madflight DIY Flight Controller
+site_author: qqqlab
+
+#repo_url: https://github.com/qqqlab/madflight-wiki/
+#edit_uri: edit/main/docs/
+
+copyright: Copyright &copy; 2024 qqqlab
+
+use_directory_urls: true
+
+theme: readthedocs
+
+markdown_extensions:
+  - tables
+
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: 
+
+  # Python Markdown Extensions
+#  - pymdownx.arithmatex:
+#      generic: true
+#  - pymdownx.betterem:
+#      smart_enable: all
+#  - pymdownx.caret
+#  - pymdownx.details
+#  - pymdownx.emoji:
+#      emoji_index: !!python/name:material.extensions.emoji.twemoji
+#      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+#  - pymdownx.highlight
+#  - pymdownx.inlinehilite
+#  - pymdownx.keys
+  - pymdownx.mark
+#  - pymdownx.smartsymbols
+#  - pymdownx.superfences
+#  - pymdownx.tabbed:
+#      alternate_style: true
+#  - pymdownx.tasklist:
+#      custom_checkbox: true
+#  - pymdownx.tilde
+
+plugins:
+  - search:
+      min_search_length: 3
+      indexing: 'full'
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: true
+      skip_classes:
+        - custom-skip-class-name
+      auto_caption: false
+      caption_position: bottom
+      background: white
+      shadow: true
+
+use_directory_urls: true
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  - js/mathjaxhelper.js
+
+extra_css:
+  - css/extra.css
