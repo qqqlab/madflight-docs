@@ -15,7 +15,7 @@ madflight offers the standard filter implementation AHRS_USE_MAHONY plus a Betaf
 
 ### Madgwick
 
-This filter is controllerd by a single parameter: beta, the algorithm gain.
+This filter is controlled by a single parameter: beta, the algorithm gain.
 
 `#define AHRS_USE AHRS_USE_MADGWICK`
 
