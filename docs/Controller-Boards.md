@@ -30,7 +30,7 @@ MCU GPIO | 34 | 45 | 30 | 30 | 32
 Processor | 2 core LX6 240MHz | 2 core LX7 240MHz | 2 core M0+ 133MHz (overclock 266MHz) | 2 core M33 150MHz (overclock 300MHz) | 1 core M4 100MHz
 Coremark (single core) | 351 | | 228 | | 172
 FPU | 1 core FPU | 1 core FPU | no FPU | 2 core FPU | 1 core FPU
-MFLOPS (*) | 63 | 61 | 2.0 | ?? | 48
+MFLOPS (*) | 63 | 61 | 2.0 | 78 (156 overclock) | 48
 RAM | 320K data<br>132K instruction<br>64K cache | 320K data<br>128K instruction<br>64K cache | 264K data/instr.<br>16K XIP cache | 520K | 128K
 Flash | 2-16M QuadSPI | 2-16M OctalSPI | 2M QuadSPI | 4M QuadSPI | 512K internal (CE)<br>256K internal (CC)
 PSRAM | 0-8M | 0-8M | 0 | 0 | 0
