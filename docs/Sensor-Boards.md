@@ -49,12 +49,12 @@ LIS2MDL | | I2C | 100 Hz, 0.015µT/LSB, 16-bit
 
 ## Barometer
 
-| Part    | Breakout Board? | Interface | Relative Precision | Resolution | Measurement Rate | RMS Noise | Notes |
+| Part    | Breakout Board? | Interface | Relative Precision | Resolution | Max Measurement Rate | RMS Noise | Notes |
 |-|-|-|-|-|-|-|-|
-DPS310    | $3 | SPI, I2C | 6Pa 50cm| 0.06Pa||| Used in current commercial FC
+DPS310    | $3 | SPI, I2C | 6Pa 50cm| 0.06Pa | 128Hz | 0.5Pa @128Hz | Used in current commercial FC
 BMP180    | $2
-BMP280    | $2 | | 12Pa 100cm| 0.18Pa| 157Hz | 1.3Pa| Used in current commercial FC
-BMP388    | $8 | SPI, I2C 
+BMP280    | $2 | SPI, I2C | 12Pa 100cm | 1.3Pa @125Hz | 157Hz | 2.5Pa 20cm @125Hz | Used in current commercial FC
+BMP390    | $3 | SPI, I2C | 3Pa 25cm | 1.3Pa @100Hz | 200Hz | 0.9Pa @25Hz, 5Pa 36cm @100Hz
 MS5611    | $4 | SPI 20MHz, I2C ||1.2Pa 10cm|120Hz
 SPL06-001 | no
 LPS22HB   | $6 | SPI, I2C |10Pa 80cm|0.025Pa|75Hz|0.75Pa
