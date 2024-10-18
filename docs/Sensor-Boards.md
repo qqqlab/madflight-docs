@@ -28,7 +28,7 @@ ICM-42688-P| no | 32k gyro | 2.8 | 70 | Used in current high performance FC
 ## 9-axis IMU
 
 | Part    | Breakout Board? | Interface | Notes |
-|-|-|-|-|
+|-|:-:|-|-|
 MPU-9150  | $7 | I2C | 8k gyro, MPU6050 + AK8975, EOL
 MPU-9250  | $7 | SPI 20MHz, I2C | 8k gyro, 4k acc, 100Hz mag, MPU6500 + AK8963, Released 2014 (EOL) Note: many fake or relabelled MPU-6500 chips sold as MPU-9250 on the market...
 MPU-9255  | $9 | SPI 20MHz, I2C | 8k gyro, MPU-6000 + AK8963, EOL
@@ -39,22 +39,22 @@ LSM9DSO  | no
 
 Earth's magnetic field strength at its surface ranges from 25 to 65 μT (0.25 to 0.65 G).
 
-| Part    | Breakout Board? | Notes |
-|-|-|-|
-HMC5883L | $2 | 160 Hz, 0.2µT/LSB, 12-bit ADC, FS chip marking "L883"
-QMC5883L | $2 | 200 Hz, 0.008µT/LSB @ ±200µT, 16-bit ADC, FS ±200 or ±800µT, chip marking "5883"
-HMC5983 | $2 | 220 Hz, 0.07µT/LSB @ ±100µT, 12-bit ADC, FS ±100 to ±800µT
-MMC5983MA | | 1000 Hz, 0.006µT/LSB @ ±800µT, 18-bit ADC, FS ±800µT
-AK8963 | | 100 Hz, 0.15µT/LSB, 16-bit, integraded in MPU9250
-AK8975 | | 100 Hz, 0.3µT/LSB, 13-bit, integraded in MPU9150
-AK09916 | | 100 Hz, 0.15µT/LSB, 16-bit, integraded in ICM-20948
-IST8310 | | 200 Hz, 0.3µT/LSB, 14-bit
-LIS2MDL | | 100 Hz, 0.015µT/LSB, 16-bit
+| Part    | Breakout Board? | Sampling Rate | Resolution| ADC | Full Scale | Notes |
+|-|:-:|-|-|-|-|-|
+QMC5883L  | $2 | 200 Hz | 0.008µT/LSB @ ±200µT | 16-bit | ±200 or ±800µT | chip marking "5883"
+HMC5883L  | $2 | 160 Hz|0.07µT/LSB @ ±100µT |12-bit | ±100 to ±800µT | chip marking "L883"
+HMC5983   | $2 | 220 Hz| 0.07µT/LSB @ ±100µT | 12-bit | ±100 to ±800µT
+MMC5983MA |    | 1000 Hz| 0.006µT/LSB @ ±800µT | 18-bit | ±800µT
+AK8963    |    | 100 Hz|0.15µT/LSB| 16-bit | | integraded in MPU9250
+AK8975    |    | 100 Hz| 0.3µT/LSB| 13-bit | | integraded in MPU9150
+AK09916   |    | 100 Hz| 0.15µT/LSB|16-bit | | integraded in ICM-20948
+IST8310   |    | 200 Hz| 0.3µT/LSB | 14-bit
+LIS2MDL   |    | 100 Hz| 0.015µT/LSB | 16-bit
 
 ## Barometer
 
 | Part    | Breakout Board? | Interface | Relative Precision | Resolution | Max Measurement Rate | RMS Noise | Notes |
-|-|-|-|-|-|-|-|-|
+|-|:-:|-|-|-|-|-|-|
 DPS310    | $3 | SPI, I2C | 6Pa 50cm| 0.06Pa | 128Hz | 0.5Pa @128Hz | Used in current commercial FC
 BMP180    | $2
 BMP280    | $2 | SPI, I2C | 12Pa 100cm | 1.3Pa @125Hz | 157Hz | 2.5Pa 20cm @125Hz | Used in current commercial FC
@@ -68,8 +68,8 @@ ILPS22QS  | $14 | SPI, I2C |1.5Pa 12cm|0.025Pa|200Hz|0.34Pa
 ## Multi Sensor Modules
 
 | Module | Price | DOF | Sensors |
-|-|-|-|-|
-GY-85 | | 9DOF | ITG3205 + ADXL345 + HMC5883L
+|-|:-:|-|-|
+GY-85 | | 9DOF | ITG3205 ADXL345 HMC5883L
 GY-86 | | 10DOF | MPU6050 HMC5883L MS5611
 GY-87 | $4 | 10DOF | MPU6050 HMC5883L BMP180
 GY-91 | $8 | 10DOF | MPU9250 BMP280
