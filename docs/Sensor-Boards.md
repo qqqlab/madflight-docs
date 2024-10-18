@@ -40,7 +40,7 @@ LSM9DSO  | no
 Earth's magnetic field strength at its surface ranges from 25 to 65 μT (0.25 to 0.65 G).
 
 | Part    | Breakout Board? | Notes |
-|-|-|-|-|
+|-|-|-|
 HMC5883L | $2 | 160 Hz, 0.2µT/LSB, 12-bit ADC, FS chip marking "L883"
 QMC5883L | $2 | 200 Hz, 0.008µT/LSB @ ±200µT, 16-bit ADC, FS ±200 or ±800µT, chip marking "5883"
 HMC5983 | $2 | 220 Hz, 0.07µT/LSB @ ±100µT, 12-bit ADC, FS ±100 to ±800µT
