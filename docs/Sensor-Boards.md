@@ -37,15 +37,19 @@ LSM9DSO  | no
 
 ## Magnetometer
 
+Earth's magnetic field strength at its surface ranges from 25 to 65 μT (0.25 to 0.65 G).
+
 | Part    | Breakout Board? | Interface | Notes |
 |-|-|-|-|
-HMC5883L | $2 | I2C | 160 Hz, 0.2µT/LSB, 12-bit ADC, chip marking "L883"
-QMC5883L | $2 | I2C | 200 Hz, 0.008µT/LSB, 16-bit ADC, chip marking "5883"
-AK8963 | | I2C | 100 Hz, 0.15µT/LSB, 16-bit, integraded in MPU9250
-AK8975 | | I2C | 100 Hz, 0.3µT/LSB, 13-bit, integraded in MPU9150
-AK09916 | | I2C | 100 Hz, 0.15µT/LSB, 16-bit, integraded in ICM-20948
-IST8310 | | I2C | 200 Hz, 0.3µT/LSB, 14-bit
-LIS2MDL | | I2C | 100 Hz, 0.015µT/LSB, 16-bit
+HMC5883L | $2 | 160 Hz, 0.2µT/LSB, 12-bit ADC, FS chip marking "L883"
+QMC5883L | $2 | 200 Hz, 0.008µT/LSB @ ±200µT, 16-bit ADC, FS ±200 or ±800µT, chip marking "5883"
+HMC5983 | $2 | 220 Hz, 0.07µT/LSB @ ±100µT, 12-bit ADC, FS ±100 to ±800µT
+MMC5983MA | | 1000 Hz, 0.006µT/LSB @ ±800µT, 18-bit ADC, FS ±800µT
+AK8963 | | 100 Hz, 0.15µT/LSB, 16-bit, integraded in MPU9250
+AK8975 | | 100 Hz, 0.3µT/LSB, 13-bit, integraded in MPU9150
+AK09916 | | 100 Hz, 0.15µT/LSB, 16-bit, integraded in ICM-20948
+IST8310 | | 200 Hz, 0.3µT/LSB, 14-bit
+LIS2MDL | | 100 Hz, 0.015µT/LSB, 16-bit
 
 ## Barometer
 
