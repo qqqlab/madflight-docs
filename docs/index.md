@@ -17,9 +17,9 @@ I enjoy hacking with electronics and I'm attempting to write some decent code fo
 ## Required Hardware
 
 - [Development board](Controller-Boards/): 
-    - RP2350 / RP2040 (e.g. Raspberry Pi Pico)
-    - ESP32-S3 / ESP32 (e.g. Espressiv DevKitC)
-    - or STM32 (e.g. Black Pill or a commercial flight controller)
+    - RP2350 / RP2040 (e.g. Raspberry Pi Pico2)
+    - ESP32-S3 / ESP32 (e.g. Espressiv ESP32-S3 DevKitC)
+    - STM32 (e.g. Black Pill or a commercial flight controller)
 - [SPI IMU sensor](Sensor-Boards/) (BMI270, MPU9250, MPU6500, or MPU6000), if not available then use an I2C IMU sensor (MPU6050 or MPU9150) 
 - RC Receiver: ELRS, CRSF, SBUS, DMSX, or PPM
 - BEC or DC-DC converter to power your board from a battery
