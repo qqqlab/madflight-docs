@@ -2,30 +2,31 @@
 #pip install mkdocs-glightbox
 #pip install pymdown-extensions
 #pip install mkdocs-pymdownx-material-extras
-#mkdocs build
-#mkdocs serve
+#mkdocs build ; mkdocs serve
 
 nav:
-  - madflight: index.md
-  - ESP32-S3 / ESP32: ESP32-S3.md
-  - RP2350 / RP2040: RP2350.md
-  - STM32: STM32.md
-  - Controller Boards: Controller-Boards.md
-  - Sensor Boards: Sensor-Boards.md
-  - AHRS: AHRS.md
-  - GPS Configuration: GPS-Configuration.md
-  - GPS Messages: GPS-Messages.md
-  - Digital Low-pass Filter: Digital-Low-pass-Filter.md
+  - Getting Started: index.md
+  - ESP32-S3 / ESP32: Board-ESP32.md
+  - RP2350 / RP2040: Board-RP2040.md
+  - STM32: Board-STM32.md
   - Examples:
-    - PID Tuning: Example-PID-Tuning.md
+      - Quadcopter: Example-Quadcopter.md
+      - Quadcopter Advanced: Example-Quadcopter-Advanced.md
+      - Plane: Example-Plane.md
+      - PID-Tuning: Example-PID-Tuning.md
+  - Reference:
+      - Controller Boards: Controller-Boards.md
+      - Sensor Boards: Sensor-Boards.md
+      - AHRS: AHRS.md
+      - GPS Configuration: GPS-Configuration.md
+      - GPS Messages: GPS-Messages.md
+      - Digital Low-pass Filter: Digital-Low-pass-Filter.md
+
 
 site_name: madflight
 site_url: https://madflight.com/
 site_description: madflight DIY Flight Controller
 site_author: qqqlab
-
-#repo_url: https://github.com/qqqlab/madflight-wiki/
-#edit_uri: edit/main/docs/
 
 copyright: Copyright &copy; 2024 qqqlab
 

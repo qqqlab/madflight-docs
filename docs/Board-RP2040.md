@@ -1,30 +1,8 @@
-# RP2350 and RP2040
+# RP2350 / RP2040 Boards
 
-madflight works with [arduino-pico v4.x.x](https://github.com/earlephilhower/arduino-pico)
+madflight for RP2350/RP2040 requires [arduino-pico v4.x.x](https://github.com/earlephilhower/arduino-pico)
 
-## RP2350 and RP2040 Hardware
-
-RP2350 (Raspberry Pi Pico2) is newer and a lot more powerful than RP2040 (Raspberry Pi Pico).
-
-#### Dual Core / FPU
-
-RP2350 has dual core, dual single precision FPU.
-
-RP2040 has dual core, no FPU.
-
-madflight uses float and is much happier with RP2350 than with RP2040 !
-
-#### FreeRTOS
-
-madflight on RP2040 uses FreeRTOS and executes the 1000Hz IMU loop on the second core, which is 80% loaded at default 133MHz CPU speed. You can overclock the CPU to get some more headroom.
-
-#### PWM
-
-Consecutive even/odd PWM pins (e.g. pins 2,3 or 10,11) share the same timer and have the same frequency.
-
-#### Serial
-
-madflight uses a custom high performance SerialIRQ library.
+Start the Arduino IDE and select menu Tools->Board Manager to install this software.
 
 ## Pinout Raspberry Pi Pico2 / Raspberry Pi Pico 
 
@@ -55,7 +33,8 @@ This is the default pinout for RP2350 and RP2040. It is optimized for Raspberry 
 
 (*) 5V input via diode from BEC. Without a diode take care not connect USB and the battery at the same time!
 
-<img src="img/Raspberry-Pi-Pico-rp2040-pinout-mischianti.png" width="45%" /> <img src="img/Raspberry-Pi-Pico-W-rp2040-WiFi-pinout-mischianti.png" width="46.8%" />
+![](img/Raspberry-Pi-Pico-rp2040-pinout-mischianti.png)
+![](img/Raspberry-Pi-Pico-W-rp2040-WiFi-pinout-mischianti.png)
 
 ## Pinout RP2040-Zero
 
@@ -81,4 +60,34 @@ This pinout is optimized for the RP2040-Zero (21 pin) board. This pinout is defi
 
 (*) 5V input via diode from BEC. Without a diode take care not connect USB and the battery at the same time!
 
-<img src="img/RP2040-Zero.jpg" width="45%" />
+![](img/RP2040-Zero.jpg)
+
+## RP2350/RP2040 Hardware
+
+RP2350 (Raspberry Pi Pico2) is newer and a lot more powerful than RP2040 (Raspberry Pi Pico).
+
+#### Dual Core / FPU
+
+RP2350 has dual core, dual single precision FPU.
+
+RP2040 has dual core, no FPU.
+
+madflight uses float and is much happier with RP2350 than with RP2040 !
+
+#### FreeRTOS
+
+FreeRTOS is optional.
+
+#### PWM
+
+Consecutive even/odd PWM pins (e.g. pins 2,3 or 10,11) share the same timer and have the same frequency.
+
+#### Serial
+
+madflight uses a custom high performance SerialIRQ library.
+
+#### madflight for RP2040
+
+madflight for RP2040 uses FreeRTOS and executes the 1000Hz IMU loop on the second core, which is 80% loaded at default 133MHz CPU speed. You can overclock the CPU to get some more headroom.
+
+#### madflight for RP2350

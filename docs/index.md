@@ -17,9 +17,9 @@ I enjoy hacking with electronics and I'm attempting to write some decent code fo
 ## Required Hardware
 
 - [Development board](Controller-Boards.md): 
-    - RP2350 / RP2040 (e.g. Raspberry Pi Pico2)
-    - ESP32-S3 / ESP32 (e.g. Espressiv ESP32-S3 DevKitC)
-    - STM32 (e.g. Black Pill or a commercial flight controller)
+    - [RP2350/RP2040](Board-RP2040.md) (e.g. Raspberry Pi Pico2)
+    - [ESP32-S3/ESP32](Board-ESP32.md) (e.g. Espressiv ESP32-S3 DevKitC)
+    - [STM32](Board-STM32.md) (e.g. Black Pill or a commercial flight controller)
 - [SPI IMU sensor](Sensor-Boards.md) (BMI270, MPU9250, MPU6500, or MPU6000), if not available then use an I2C IMU sensor (MPU6050 or MPU9150) 
 - RC Receiver: ELRS, CRSF, SBUS, DMSX, or PPM
 - BEC or DC-DC converter to power your board from a battery
@@ -35,21 +35,21 @@ I enjoy hacking with electronics and I'm attempting to write some decent code fo
 
 ## Getting Started
 
-1. Setup Arduino IDE for your dev-board, and connect the required hardware: 
-   - See [RP2350 / RP2040](RP2350.md) -or- [ESP32-S3 / ESP32](ESP32-S3.md) -or- [STM32](STM32.md)
-   - Connect your IMU (gyro/acceleration) sensor as shown [below](#connecting-the-imu-sensor).
-2. Search for "madflight" in the Arduino Library Manager and install the madflight library.
-3. Open example Quadcopter.ino in the Arduino IDE.
-4. Setup the USER-SPECIFIED DEFINES section
-5. If you're not using a default pinout then setup your board pinout in the BOARD section.
-6. Compile and upload Quadcopter.ino to your board. Connect the Serial Monitor at 115200 baud and check the messages. Type `help` to see the available CLI commands.
-7. Use CLI print commands like `pimu`, `pgyro`, `proll` to Check that IMU sensor and AHRS are working correctly. 
-8. IMPORTANT: Use CLI `calimu` and `calmag` to calibate the sensors.
-9. Connect radio receiver to your development board according to the configured pins.
-10. Edit the RC RECEIVER CONFIG section. Either match you RC equipment to the settings, or change the settings to match your RC equipment. 
-11. Check your radio setup: Use CLI `ppwm` and `pradio` to show pwm and scaled radio values.
-12. Connect motors (no props) and battery and check that motor outputs are working correctly. For debugging, use CLI `pmot` to show motor output.
-13. Mount props, go to an wide open space, and FLY!FLY!
+1. Connect the required hardware to your controller board: 
+    - See [RP2350/RP2040](Board-RP2040.md) -or- [ESP32-S3/ESP32](Board-ESP32.md) -or- [STM32](Board-STM32.md)
+    - Connect your IMU (gyro/acceleration) sensor as shown [below](#connecting-the-imu-sensor).
+ - Install the madflight library in Arduino IDE. (Menu Tools->Manage Libraries, then search for "madflight")
+ - Open example Quadcopter.ino in the Arduino IDE.
+ - Setup the USER-SPECIFIED DEFINES section
+ - If you're not using a default pinout then setup your board pinout in the BOARD section.
+ - Compile and upload Quadcopter.ino to your board. Connect the Serial Monitor at 115200 baud and check the messages. Type `help` to see the available CLI commands.
+ - Use CLI print commands like `pimu`, `pgyro`, `proll` to Check that IMU sensor and AHRS are working correctly. 
+ - IMPORTANT: Use CLI `calimu` and `calmag` to calibate the sensors.
+ - Connect radio receiver to your development board according to the configured pins.
+ - Edit the RC RECEIVER CONFIG section. Either match you RC equipment to the settings, or change the settings to match your RC equipment. 
+ - Check your radio setup: Use CLI `ppwm` and `pradio` to show pwm and scaled radio values.
+ - Connect motors (no props) and battery and check that motor outputs are working correctly. For debugging, use CLI `pmot` to show motor output.
+ - Mount props, go to an wide open space, and FLY!FLY!
 
 ## Safety First!!!
 

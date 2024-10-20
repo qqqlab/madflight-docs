@@ -1,39 +1,17 @@
 
-# ESP32-S3 and ESP32
+# ESP32-S3 / ESP32 Boards
 
-madflight works with [Arduino-ESP32 v3.x.x](https://github.com/espressif/arduino-esp32)
+madflight for ESP32-S3/ESP32 requires [Arduino-ESP32 v3.x.x](https://github.com/espressif/arduino-esp32)
 
-madflight v1.1.2 and earlier works with Arduino-ESP32 v2.x.x
+madflight v1.1.2 and earlier requires Arduino-ESP32 v2.x.x
 
-## ESP32-S3 and ESP32 Hardware
-
-ESP32-S3 and ESP32 are very similar chips. The ESP32-S3 is more recent: it has more pins, USB-OTG (3 UARTs plus 1 USB-OTG CDC UART), improved single block RAM structure. The ESP32 is better if you need a lot of PWM channels, it has 16 PWM (LEDC) outputs, versus 8 on ESP32-S3.
-
-#### Dual Core / FPU
-
-ESP32 and ESP32-S3 both have dual core CPU, but single core FPU. ESP-IDF implementation limits [float usage](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/freertos_idf.html#floating-point-usage) to a single core, and float can not be used in interrupts. FreeRTOS is always enabled and a watchdog limits interrupt execution time.
-
-madflight uses float and is therefor limited to single core operation. The IMU loop runs as a high priorty task, triggered by the IMU interrupt.
-
-#### FreeRTOS
-
-Arduino-ESP32 uses FreeRTOS.
-
-#### I2C
-
-Arduino-ESP32 v2.0.17 has an [I2C bug](https://github.com/espressif/esp-idf/issues/4999) which causes the bus to hang for 1 second after a failed read, which can happen a couple times per minute. This makes Wire I2C for IMU not a real option...
-
-A workaround is to use #define USE_ESP32_SOFTWIRE which enables software I2C, but this does not work well with all sensors.
-  
-(!) So, until a better I2C solution is available: use an SPI IMU sensor on ESP32.
-
-NOTE: as of June 2024 this bug is apparently fixed, but not yet confirmed with madflight.
+Start the Arduino IDE and select menu Tools->Board Manager to install this software.
 
 ## Pinout ESP32-S3-DevKitC-1
 
 This is the default pinout for ESP32-S3. It is optimized for the Espressif ESP32-S3-DevKitC-1 (44 pin) board. This pinout is defined in madflight_board_default_ESP32-S3.h, but can be modified with `#define HW_PIN_XXX` in your program.
 
-Many clones of this board exist, which might have different ESP32-S3 modules and/or different on-board hardware (LED, RGB LED, SDCARD, etc.) Set Arduino IDE Board settings and HW_PIN_XXX defines accordingly.
+NOTE: Many clones of this board exist, which use various ESP32-S3-VROOM modules and/or have different on-board hardware (LED, RGB LED, SDCARD, etc.) Set Arduino IDE Board settings and HW_PIN_XXX defines accordingly.
 
 Note: Pin numbers refer to the GPIO numbers, not to the physical pin number on a board.
 
@@ -63,9 +41,9 @@ GND | G | USB connector | G | GND
 
 (*) 5V input via diode from BEC. Without a diode take care not connect USB and the battery at the same time!
 
-<img src="img/ESP32-S3_DevKitC-1_pinlayout_v1.1.jpg" width="60%" />
+![](img/ESP32-S3_DevKitC-1_pinlayout_v1.1.jpg)
 
-## ESP32-S3 Arduino IDE Setup
+## Setup ESP32-S3 in the Arduino IDE 
 
 In the Aduino IDE select board: "ESP32S3 Dev Module" and set the following options in the Tools menu:
 
@@ -85,26 +63,27 @@ for other uses.
 ESP32-S3-WROOM-2-NxR8V  | OPI 80MHz | OPI PSRAM | 120MHz SPI, 1.8V SPI, pins IO35, IO36, and IO37 are connected to the Octal SPI PSRAM and are not available
 for other uses.
 
-#### Serial port setup
+#### Setup Serial Port
 
-Regular setup with 3 Serial ports (Serial, Serial1 and Serial2), Serial connected to "USB-UART", Serial0 not connected (error 'Serial0' was not declared).
-- USB CDC On Boot: Disabled 
+Settings for 3 serial ports (Serial, Serial1 and Serial2), Serial connected to "USB-UART", Serial0 not connected (gives error 'Serial0' was not declared).
 
-Add USB as 4th serial port (Serial, Serial0, Serial1 and Serial2), Serial connected to "USB-OTG", Serial0 connected to "USB-UART"
-- USB CDC On Boot: Enabled
-- USB DFU On Boot: Disabled
-- USB Mode: USB-OTG (TinyUSB)
+ - USB CDC On Boot: Disabled 
 
-#### Programming setup
+Settings for 4 serial ports (Serial, Serial0, Serial1 and Serial2), Serial connected to "USB-OTG", Serial0 connected to "USB-UART"
 
-Settings for programming via "UART" micro usb port (programming works without pressing boot/reset buttons)
+ - USB CDC On Boot: Enabled
+ - USB DFU On Boot: Disabled
+ - USB Mode: USB-OTG (TinyUSB)
+
+#### Setup Programming Interface
+
+Settings for programming via "USB-UART" usb port (programming works without pressing boot/reset buttons)
+
 - Upload Mode: UART0 / Hardware CDC
 
-Settings for programming via "USB" micro usb port (need to press boot/reset buttons for programming)
+Settings for programming via "USB-OTG" usb port (For programming: press boot, press+release reset, release boot, then upload; For serial monitor: press+release reset, then open serial monitor)
+
 - Upload Mode: USB-OTG CDC (TinyUSB)
-- Programming/debugging: 
-  - press boot, press+release reset, release boot, then upload
-  - press+release reset, then open serial monitor
 
 ## Pinout ESP32 DevKitC
 
@@ -138,4 +117,28 @@ Note: During boot the input voltage levels (pull up/pull down) on strap pins hav
 
 (*) 5V input via diode from BEC. Without a diode take care not connect USB and the battery at the same time!
 
-<img src="img/ESP32-DEV-KIT-DevKitC-v4-pinout-mischianti.png" width="60%" />
+![](img/ESP32-DEV-KIT-DevKitC-v4-pinout-mischianti.png)
+
+## ESP32-S3/ESP32 Hardware
+
+ESP32-S3 and ESP32 are very similar chips. The ESP32-S3 is more recent: it has more pins, USB-OTG (3 UARTs plus 1 USB-OTG CDC UART), improved single block RAM structure. The ESP32 is better if you need a lot of PWM channels, it has 16 PWM (LEDC) outputs, versus 8 on ESP32-S3.
+
+#### Dual Core / FPU
+
+ESP32 and ESP32-S3 both have dual core CPU, but single core FPU. ESP-IDF implementation limits [float usage](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/freertos_idf.html#floating-point-usage) to a single core, and float can not be used in interrupts. FreeRTOS is always enabled and a watchdog limits interrupt execution time.
+
+madflight uses float and is therefor limited to single core operation. The IMU loop runs as a high priorty task, triggered by the IMU interrupt.
+
+#### FreeRTOS
+
+FreeRTOS is enabled by default.
+
+#### I2C
+
+Arduino-ESP32 v2.0.17 has an [I2C bug](https://github.com/espressif/esp-idf/issues/4999) which causes the bus to hang for 1 second after a failed read, which can happen a couple times per minute. This makes Wire I2C for IMU not a real option...
+
+A workaround is to use #define USE_ESP32_SOFTWIRE which enables software I2C, but this does not work well with all sensors.
+  
+(!) So, until a better I2C solution is available: use an SPI IMU sensor on ESP32.
+
+NOTE: as of June 2024 this bug is apparently fixed, but not yet confirmed with madflight.

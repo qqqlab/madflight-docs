@@ -1,5 +1,7 @@
 # PID Tuning 
 
+This example program allows the quadcopter PID settings to be changed with the radio controller.
+
 ## Channel 7 Setup
 
 This channel mixes 4 toggle switches SA-SD to create the following PWM output. Instead of 4 toggle switches, other combinations of switches/toggles/trims can be used to send the PID Tuning PWM commands.

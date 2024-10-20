@@ -1,32 +1,12 @@
-# STM32
+# STM32 Boards
 
-madflight works with [stm32duino Arduino Core for STM32 v2.x.x](https://github.com/stm32duino/Arduino_Core_STM32)
+madflight for STM32 requires [stm32duino Arduino Core for STM32 v2.x.x](https://github.com/stm32duino/Arduino_Core_STM32)
 
-
-
-## STM32 Hardware
-
-The STM32 MCU family is a huge collection of chips. Madflight will run on most stm32duino supported F4, F7, H7 and similar chips, preferred are STM32H743 and STM32F405.
-
-#### Dual Core / FPU
-
-Most supported STM32 targets have a single core MCU with FPU. 
-
-#### FreeRTOS
-
-FreeRTOS optional.
-
-#### STM32 madflight
-
-madflight runs the IMU loop in interrupt context.
-
-
+Start the Arduino IDE and select menu Tools->Board Manager to install this software.
 
 ## Pinout STM32 Of-the-shelf Flight Controllers
 
 In the `src` directory you'll find 400+ Betaflight configuration files for commercial flight controllers. Include the madflight_board_betaflight_XXX.h header file of your board, and in your program set '#define HW_USE_XXX' to match your board. 
-
-
 
 ## Pinout STM32F411 Black Pill
 
@@ -61,4 +41,20 @@ PWM1-6 are connected to timer1, PWM7-8 to timer3 and PWM9-10 to timer4. PWM pins
 
 (*) 5V input via diode from BEC. Without a diode take care not connect USB and the battery at the same time!
 
-<img src="img/STM32-STM32F4-STM32F411-STM32F411CEU6-pinout-high-resolution.png" width="45%" />
+![](img/STM32-STM32F4-STM32F411-STM32F411CEU6-pinout-high-resolution.png)
+
+## STM32 Hardware
+
+The STM32 MCU family is a huge collection of chips. Madflight will run on most stm32duino supported F4, F7, H7 and similar chips, preferred are STM32H743 and STM32F405.
+
+#### Dual Core / FPU
+
+Most supported STM32 targets have a single core MCU with FPU. 
+
+#### FreeRTOS
+
+FreeRTOS is optional.
+
+#### madflight for STM32
+
+madflight for STM32 runs the IMU loop in interrupt context.
