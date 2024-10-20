@@ -61,6 +61,8 @@ IMU_EXTI | 14 | | 19 | USB_D- (serial debug alternate)
 5V in (*) | 5V | | G | GND
 GND | G | USB connector | G | GND
 
+(*) 5V input via diode from BEC. Without a diode take care not connect USB and the battery at the same time!
+
 <img src="img/ESP32-S3_DevKitC-1_pinlayout_v1.1.jpg" width="60%" />
 
 ## ESP32-S3 Arduino IDE Setup
