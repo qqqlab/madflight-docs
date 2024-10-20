@@ -2,7 +2,7 @@
 
 **M**anless **A**erial **D**evice
 
-This is an Arduino library to build flight controllers with ESP32-S3 / ESP32 / RP2350 / RP2040 / STM32 microcontrollers. A functional DIY flight controller can be build for under $10 from readily available [development boards](Controller-Boards/) and [sensor boards](Sensor-Boards/). Ideal if you want to try out new flight control concepts, without first having to setup a build environment and without having to read through thousands lines of code to find the spot where you want to change something.
+This is an Arduino library to build flight controllers with ESP32-S3 / ESP32 / RP2350 / RP2040 / STM32 microcontrollers. A functional DIY flight controller can be build for under $10 from readily available [development boards](Controller-Boards.md) and [sensor boards](Sensor-Boards.md). Ideal if you want to try out new flight control concepts, without first having to setup a build environment and without having to read through thousands lines of code to find the spot where you want to change something.
 
 **Installation**: search for 'madflight' in the Arduino Library Manager, or [download madflight](https://github.com/qqqlab/madflight/releases/latest) from Github.
 
@@ -16,11 +16,11 @@ I enjoy hacking with electronics and I'm attempting to write some decent code fo
 
 ## Required Hardware
 
-- [Development board](Controller-Boards/): 
+- [Development board](Controller-Boards.md): 
     - RP2350 / RP2040 (e.g. Raspberry Pi Pico2)
     - ESP32-S3 / ESP32 (e.g. Espressiv ESP32-S3 DevKitC)
     - STM32 (e.g. Black Pill or a commercial flight controller)
-- [SPI IMU sensor](Sensor-Boards/) (BMI270, MPU9250, MPU6500, or MPU6000), if not available then use an I2C IMU sensor (MPU6050 or MPU9150) 
+- [SPI IMU sensor](Sensor-Boards.md) (BMI270, MPU9250, MPU6500, or MPU6000), if not available then use an I2C IMU sensor (MPU6050 or MPU9150) 
 - RC Receiver: ELRS, CRSF, SBUS, DMSX, or PPM
 - BEC or DC-DC converter to power your board from a battery
 - ESC (OneShot125 or 50-490Hz PWM) and/or servos (50-490Hz PWM)
@@ -36,7 +36,7 @@ I enjoy hacking with electronics and I'm attempting to write some decent code fo
 ## Getting Started
 
 1. Setup Arduino IDE for your dev-board, and connect the required hardware: 
-   - See [RP2350 / RP2040](RP2350/) -or- [ESP32-S3 / ESP32](ESP32-S3/) -or- [STM32](STM32/)
+   - See [RP2350 / RP2040](RP2350.md) -or- [ESP32-S3 / ESP32](ESP32-S3.md) -or- [STM32](STM32.md)
    - Connect your IMU (gyro/acceleration) sensor as shown [below](#connecting-the-imu-sensor).
 2. Search for "madflight" in the Arduino Library Manager and install the madflight library.
 3. Open example Quadcopter.ino in the Arduino IDE.
