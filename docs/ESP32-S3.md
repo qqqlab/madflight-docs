@@ -29,9 +29,9 @@ A workaround is to use #define USE_ESP32_SOFTWIRE which enables software I2C, bu
 
 NOTE: as of June 2024 this bug is apparently fixed, but not yet confirmed with madflight.
 
-## ESP32-S3 Pinout
+## Pinout ESP32-S3-DevKitC-1
 
-This is the default pinout for ESP32. It is optimized for the Espressif ESP32-S3-DevKitC-1 (44 pin) board. This pinout is defined in madflight_board_default_ESP32-S3.h, but can be modified with `#define HW_PIN_XXX` in your program.
+This is the default pinout for ESP32-S3. It is optimized for the Espressif ESP32-S3-DevKitC-1 (44 pin) board. This pinout is defined in madflight_board_default_ESP32-S3.h, but can be modified with `#define HW_PIN_XXX` in your program.
 
 Many clones of this board exist, which might have different ESP32-S3 modules and/or different on-board hardware (LED, RGB LED, SDCARD, etc.) Set Arduino IDE Board settings and HW_PIN_XXX defines accordingly.
 
@@ -106,7 +106,7 @@ Settings for programming via "USB" micro usb port (need to press boot/reset butt
   - press boot, press+release reset, release boot, then upload
   - press+release reset, then open serial monitor
 
-## Pinout ESP32
+## Pinout ESP32 DevKitC
 
 This is the default pinout for ESP32. It is optimized for the Espressiv ESP32 DevKitC (38 pin) board. This pinout is defined in madflight_board_default_ESP32.h, but can be modified with `#define HW_PIN_XXX` in your program.
 
