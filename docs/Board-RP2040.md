@@ -25,7 +25,7 @@ This is the default pinout for RP2350 and RP2040. It is optimized for Raspberry 
 |          GND | GND |               | GND      | GND
 |         PWM7 | 10  |               | 21       | I2C_SCL
 |         PWM8 | 11  |               | 20       | I2C_SDA
-|  SD_SPI_MOSI | 12  |               | 19       | SPI_MOSI
+|  SD_SPI_MISO | 12  |               | 19       | SPI_MOSI
 |    SD_SPI_CS | 13  |               | 18       | SPI_SCLK
 |          GND | GND |               | GND      | GND
 |  SD_SPI_SCLK | 14  |               | 17       | IMU_CS
