@@ -4,6 +4,8 @@
 #pip install mkdocs-pymdownx-material-extras
 #mkdocs build ; mkdocs serve
 
+site_name: madflight v1.3
+
 nav:
   - Getting Started: index.md
   - ESP32-S3 / ESP32: Board-ESP32.md
@@ -15,6 +17,7 @@ nav:
       - Plane: Example-Plane.md
       - PID-Tuning: Example-PID-Tuning.md
   - Reference:
+      - Black Box Logging: Black-Box.md
       - Controller Boards: Controller-Boards.md
       - Sensor Boards: Sensor-Boards.md
       - AHRS: AHRS.md
@@ -22,8 +25,6 @@ nav:
       - GPS Messages: GPS-Messages.md
       - Digital Low-pass Filter: Digital-Low-pass-Filter.md
 
-
-site_name: madflight
 site_url: https://madflight.com/
 site_description: madflight DIY Flight Controller
 site_author: qqqlab
