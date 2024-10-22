@@ -33,8 +33,8 @@ GPS_TX | 46 | | 0 | boot button
 I2C_SCL | 9 | | 45| -
 IMU_CS | 10 | | 48 | RGB_LED
 SPI_MOSI | 11 | | 47 | -
-MISO | 12 | | 21 | -
-SCLK | 13 | | 20 | USB_D+ (serial debug alternate)
+SPI_MISO | 12 | | 21 | -
+SPI_SCLK | 13 | | 20 | USB_D+ (serial debug alternate)
 IMU_EXTI | 14 | | 19 | USB_D- (serial debug alternate)
 5V in (*) | 5V | | G | GND
 GND | G | USB connector | G | GND
