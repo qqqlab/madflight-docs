@@ -113,9 +113,17 @@ Many clones of this board exist, which might have different ESP32 modules and/or
 | nc           | CMD 11 flash |          | flash 7 D0 | nc
 | 5V input (*) | 5V | USB connector     | flash 6 CLK | nc
 
+(*) 5V input via diode from BEC. Without a diode take care not connect USB and the battery at the same time!
+
 Note: During boot the input voltage levels (pull up/pull down) on strap pins have a configuration function, therefor these pins are used as output only.
 
-(*) 5V input via diode from BEC. Without a diode take care not connect USB and the battery at the same time!
+ESP32 has 6 strapping pins:
+- GPIO0: internal pull-up (boot button)
+- GPIO2: internal pull-down
+- GPIO4: internal pull-down
+- GPIO5: internal pull-up
+- GPIO12: internal pull-down
+- GPIO15: internal pull-up
 
 ![](img/ESP32-DEV-KIT-DevKitC-v4-pinout-mischianti.png)
 
