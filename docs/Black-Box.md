@@ -1,6 +1,10 @@
 # Black Box Data Logging
 
-The black box (BB) module logs flight data for later analysis. The log format is ArduPilot Binary Log. 
+The black box (BB) module logs flight data for later analysis. 
+
+## SDCARD - ArduPilot Binary Logs
+
+When logging to a SDCARD the log format is ArduPilot Binary Log. 
 
 Web Tools for Log Analysis:
 
@@ -17,8 +21,11 @@ PC Tools for Log Analysis:
 see also:
 https://ardupilot.org/dev/docs/common-logs.html
 
+## FLASH/RAM - Madflight Binary Logs
 
-## File Format of ArduPilot Binary Logs
+When logging to internal flash, external flash chip, RAM or PSRAM the log format is Madflight Binary Log.
+
+## ArduPilot Log File Format
 
 ArduPilot Binary Log format is a self-describing log format. Messages have fixed length per type.
 
@@ -131,7 +138,6 @@ ErrRP | C = uint16_t * 100 | 0x0001 = 0.01 | 01 00
 ErrYaw | C = uint16_t * 100 | 0x0001 = 0.01 | 01 00
 AEKF |B = uint8_t | 3 | 03
 
-### File Structure
+## Madflight Log File Format
 
-
-
+Madflight Binary Log format is a self-describing log format. Messages have variable length. Fields are encoded with variable length in order to reduce the size of the messages.
