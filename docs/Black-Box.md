@@ -25,6 +25,8 @@ https://ardupilot.org/dev/docs/common-logs.html
 
 When logging to internal flash, external flash chip, RAM or PSRAM the log format is Madflight Binary Log.
 
+The `bbdump` CLI command can be used to dump the log as delimited values to the terminal for further analysis.
+
 ## ArduPilot Log File Format
 
 ArduPilot Binary Log format is a self-describing log format. Messages have fixed length per type.
