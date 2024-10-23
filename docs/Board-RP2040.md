@@ -6,30 +6,30 @@ Start the Arduino IDE and select menu Tools->Board Manager to install this softw
 
 ## Pinout Raspberry Pi Pico2 / Raspberry Pi Pico 
 
-This is the default pinout for RP2350 and RP2040. It is optimized for Raspberry Pi Pico2 / Raspberry Pi Pico (40 pin) boards. This pinout is defined in madflight_board_default_RP2040.h, but can be modified with `#define HW_PIN_XXX` in your program.
+This is the default pinout for RP2350 and RP2040. It is optimized for Raspberry Pi Pico2 / Raspberry Pi Pico (40 pin) boards. This pinout is defined in madflight_board_default_RP2040.h, but can be modified with `#define HW_PIN_xxx` in your program.
 
-| Function | GPIO | Board | GPIO | Function |
+| Module <-> HW_PIN_xxx | GPIO | Board | GPIO | HW_PIN_xxx <-> Module |
 | --: | :-- | :--: | --: | :-- |
-|      RCIN_TX | 0   | USB connector | VBUS     | nc
-|      RCIN_RX | 1   |               | VSYS     | 5V input via diode (*)
+|    Radio RX <- RCIN_TX | 0   | USB connector | VBUS     | nc
+|    Radio TX -> RCIN_RX | 1   |               | VSYS     | 5V input via diode (*)
 |          GND | GND |               | GND      | GND
-|         PWM1 | 2   |               | EN       | nc
-|         PWM2 | 3   |               | 3.3V out | 3V3
-|         PWM3 | 4   |               | VREF     | nc
-|         PWM4 | 5   |               | 28_A2    | BAT_V
+|     ESC/Servo <- PWM1 | 2   |               | EN       | nc
+|        ESC/Servo <- PWM2 | 3   |               | 3.3V out | 3V3
+|        ESC/Servo <- PWM3 | 4   |               | VREF     | nc
+|        ESC/Servo <- PWM4 | 5   |               | 28_A2    | BAT_V <- Battery voltage divider
 |          GND | GND |               | GND      | GND
-|         PWM5 | 6   |               | 27_A1    | -
-|         PWM6 | 7   |               | 26_A0    | -
-|       GPS_TX | 8   |               | RUN      | reset button to GND
-|       GPS_RX | 9   |               | 22       | IMU_EXTI
+|        ESC/Servo <- PWM5 | 6   |               | 27_A1    | -
+|        ESC/Servo <- PWM6 | 7   |               | 26_A0    | -
+|     GPS Receiver RX <- GPS_TX | 8   |               | RUN      | reset button to GND
+|     GPS Receiver TX -> GPS_RX | 9   |               | 22       | IMU_EXTI <- IMU interrupt
 |          GND | GND |               | GND      | GND
-|         PWM7 | 10  |               | 21       | I2C_SCL
-|         PWM8 | 11  |               | 20       | I2C_SDA
-|  SD_SPI_MISO | 12  |               | 19       | SPI_MOSI
-|    SD_SPI_CS | 13  |               | 18       | SPI_SCLK
+|         ESC/Servo <- PWM7 | 10  |               | 21       | I2C_SCL -> Barometer, magnetometer, etc.
+|         ESC/Servo <- PWM8 | 11  |               | 20       | I2C_SDA <-> Barometer, magnetometer, etc.
+|  SDCARD -> SPI2_MISO | 12  |               | 19       | SPI_MOSI -> IMU
+|    SDCARD <- BB_CS | 13  |               | 18       | SPI_SCLK -> IMU
 |          GND | GND |               | GND      | GND
-|  SD_SPI_SCLK | 14  |               | 17       | IMU_CS
-|  SD_SPI_MOSI | 15  | JTAG pins     | 16       | SPI_MISO
+|  SDCARD <- SPI2_SCLK) | 14  |               | 17       | IMU_CS -> IMU
+|  SDCARD <- SPI2_MOSI | 15  | JTAG pins     | 16       | SPI_MISO <- IMU
 
 (*) 5V input via diode from BEC. Without a diode take care not connect USB and the battery at the same time!
 
