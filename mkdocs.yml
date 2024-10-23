@@ -4,7 +4,7 @@
 #pip install mkdocs-pymdownx-material-extras
 #mkdocs build ; mkdocs serve
 
-site_name: madflight v1.3
+site_name: madflight v1.2
 
 nav:
   - Getting Started: index.md
