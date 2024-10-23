@@ -28,7 +28,7 @@ This is the default pinout for RP2350 and RP2040. It is optimized for Raspberry 
 |  SDCARD -> SPI2_MISO | 12  |               | 19       | SPI_MOSI -> IMU
 |    SDCARD <- BB_CS | 13  |               | 18       | SPI_SCLK -> IMU
 |          GND | GND |               | GND      | GND
-|  SDCARD <- SPI2_SCLK) | 14  |               | 17       | IMU_CS -> IMU
+|  SDCARD <- SPI2_SCLK | 14  |               | 17       | IMU_CS -> IMU
 |  SDCARD <- SPI2_MOSI | 15  | JTAG pins     | 16       | SPI_MISO <- IMU
 
 (*) 5V input via diode from BEC. Without a diode take care not connect USB and the battery at the same time!
