@@ -17,6 +17,7 @@ Note: Pin numbers refer to the GPIO numbers, not to the physical pin number on a
 
 | Function | GPIO | Board | GPIO | Function |
 | --: | :-- | :--: |--: | :-- |
+3V3 out | 3V3 | Antenna | G | GND
 3V3 out | 3V3 | | 43 | TX serial debug UART port
 reset button | RST | | 44 | RX serial debug UART port
 PWM1 | 4 | | 1 | -
@@ -37,7 +38,7 @@ SPI_MISO | 12 | | 21 | -
 SPI_SCLK | 13 | | 20 | USB_D+ (serial debug alternate)
 IMU_EXTI | 14 | | 19 | USB_D- (serial debug alternate)
 5V in (*) | 5V | | G | GND
-GND | G | USB connector | G | GND
+GND | G | USB connectors | G | GND
 
 (*) 5V input via diode from BEC. Without a diode take care not connect USB and the battery at the same time!
 
