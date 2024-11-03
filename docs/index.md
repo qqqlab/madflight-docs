@@ -36,17 +36,19 @@ I enjoy hacking with electronics and I'm attempting to write some decent code fo
 ## Getting Started
 
 1. Connect the required hardware to your controller board: 
-    - See [RP2350/RP2040](Board-RP2040.md) -or- [ESP32-S3/ESP32](Board-ESP32.md) -or- [STM32](Board-STM32.md)
+    - See [RP2350/RP2040 pinout and instructions](Board-RP2040.md)
+    - -or- [ESP32-S3/ESP32 pinout and instructions](Board-ESP32.md)
+    - -or- [STM32 pinout and instructions](Board-STM32.md)
     - Connect your IMU (gyro/acceleration) sensor as shown [below](#connecting-the-imu-sensor).
  - Install the madflight library in Arduino IDE. (Menu Tools->Manage Libraries, then search for "madflight")
  - Open example Quadcopter.ino in the Arduino IDE.
- - Setup the USER-SPECIFIED DEFINES section
- - If you're not using a default pinout then setup your board pinout in the BOARD section.
+ - If you're not using a default pinout then setup your board pinout in the CUSTOM PINS section.
+ - Edit the HARDWARE section to enable the connected peripherals
  - Compile and upload Quadcopter.ino to your board. Connect the Serial Monitor at 115200 baud and check the messages. Type `help` to see the available CLI commands.
  - Use CLI print commands like `pimu`, `pgyro`, `proll` to Check that IMU sensor and AHRS are working correctly. 
  - IMPORTANT: Use CLI `calimu` and `calmag` to calibate the sensors.
  - Connect radio receiver to your development board according to the configured pins.
- - Edit the RC RECEIVER CONFIG section. Either match you RC equipment to the settings, or change the settings to match your RC equipment. 
+ - Edit the RC RECEIVER section. Either match you RC equipment to the settings, or change the settings to match your RC equipment. 
  - Check your radio setup: Use CLI `ppwm` and `pradio` to show pwm and scaled radio values.
  - Connect motors (no props) and battery and check that motor outputs are working correctly. For debugging, use CLI `pmot` to show motor output.
  - Mount props, go to an wide open space, and FLY!FLY!
