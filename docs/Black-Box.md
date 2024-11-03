@@ -1,10 +1,10 @@
 # Black Box Data Logging
 
-The black box (BB) module logs flight data for later analysis. 
+The black box (BB) module logs flight data for later analysis.
 
 ## SDCARD - ArduPilot Binary Logs
 
-When logging to a SDCARD the log format is ArduPilot Binary Log. 
+When logging to a SDCARD the log format is ArduPilot Binary Log. Only the most common ArduPilot log messages such as IMU, BARO, BAT and GPS are implemented plus some madflight specific messages. Additional messages can be added easily.
 
 Web Tools for Log Analysis:
 
@@ -18,8 +18,10 @@ PC Tools for Log Analysis:
  - [MissionPLanner](https://ardupilot.org/planner/)
  - [QGroundControl](http://qgroundcontrol.com/)
 
-see also:
-https://ardupilot.org/dev/docs/common-logs.html
+Further reading:
+
+ - [ArduPilot Log Message Reference](https://ardupilot.org/copter/docs/logmessages.html)
+ - [ArduPilot Log General Info](https://ardupilot.org/dev/docs/common-logs.html)
 
 ## FLASH/RAM - Madflight Binary Logs
 
