@@ -1,8 +1,10 @@
 # STM32 Boards
 
-madflight for STM32 requires [stm32duino Arduino Core for STM32 v2.x.x](https://github.com/stm32duino/Arduino_Core_STM32)
+madflight for STM32 requires:
 
-Start the Arduino IDE and select menu Tools->Board Manager to install this software.
+- [STM32duino Arduino Core for STM32 v2.x.x](https://github.com/stm32duino/Arduino_Core_STM32) Start the Arduino IDE and select menu Tools->Board Manager to install this software.
+
+- [STM32duino FreeRTOS](https://github.com/stm32duino/STM32FreeRTOS) Select menu Tools->Manage Libaries, then search for "STM32duino FreeRTOS".
 
 ## Pinout STM32 Of-the-shelf Flight Controllers
 
