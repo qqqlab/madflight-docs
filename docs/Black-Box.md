@@ -1,10 +1,10 @@
 # Black Box Data Logging
 
-The black box (BB) module logs flight data for later analysis.
+The black box (BB) module logs flight data for later analysis. The logformat is ArduPilot Binary Log
 
-## SDCARD - ArduPilot Binary Logs
+## ArduPilot Binary Logs
 
-When logging to a SDCARD the log format is ArduPilot Binary Log. Only the most common ArduPilot log messages such as IMU, BARO, BAT and GPS are implemented plus some madflight specific messages. Additional messages can be added easily.
+Only the most common ArduPilot log messages such as IMU, BARO, BAT and GPS are implemented plus some madflight specific messages.
 
 Web Tools for Log Analysis:
 
@@ -23,15 +23,25 @@ Further reading:
  - [ArduPilot Log Message Reference](https://ardupilot.org/copter/docs/logmessages.html)
  - [ArduPilot Log General Info](https://ardupilot.org/dev/docs/common-logs.html)
 
-## FLASH/RAM - Madflight Binary Logs
+## Adding New Log Messages
 
-When logging to internal flash, external flash chip, RAM or PSRAM the log format is Madflight Binary Log.
+Add a new function to your code, like this:
 
-The `bbdump` CLI command can be used to dump the log as delimited values to the terminal for further analysis.
+```C
+    void log_ralt(float relalt, int32_t v_mm_s) {
+      BinLog bl("RALT");                               // Start a new "RALT" Message (max 4 characters)
+      bl.TimeUS();                                     // Add field "TimeUS" with micros() time stamp
+      bl.flt("RelAlt", relalt, 1, "m");                // Add float field "RelAlt" with relative altitude in meters
+      bl.i32("VertSpeed", v_mm_s, 1e-3, "m/s");        // Add int32_t field "VertSpeed" with vertical speed in mm/s (1e-3 * m/s)
+    }
+```
+In your code start the BlackBox with `bb.start()`, then call `log_ralt()` from your code to log the RALT message, that's all. 
+
+The FreeRTOS task BB writes the messages to storage. The required FMT and FMTU messages are written on the first call to `log_ralt()`. Calling `log_ralt()` when the BlackBox is not started has no effect. 
 
 ## ArduPilot Log File Format
 
-ArduPilot Binary Log format is a self-describing log format. Messages have fixed length per type.
+ArduPilot Binary Log format is a self-describing log format. Messages have fixed length per message type.
 
 File Structure:
 
@@ -57,21 +67,21 @@ Each message has the following format:
 
 |Name|Bytes|Description|
 |:-:|:-:|-|
-Header|2|0xA3 0x95
-Type|1| As defined in the FMT message
-Payload|up to 252| Message data, fixed length per message as defined in FMT message, little endian
+Header  |         2 | 0xA3 0x95
+Type    |         1 | As defined in the FMT message
+Payload | up to 252 | Message data, fixed length per message as defined in FMT message, little endian
 
-The format of each message Type is defined in a FMT message:
+The format of each message Type is defined in a FMT message. 
 
 |Name|Bytes|Description|
 |:-:|:-:|-|
-Header|2|0xA3 0x95
-FMT Type|1|0x80 (FMT is the only message with a fixed identifier)
-Type   |  1 | unique-to-this-log identifier for message being defined
-Length  |  1 | the number of bytes taken up by this message (including all headers)
-Name    |  4 | name of the message being defined
-Format   | 16 | character string defining the C-storage-type of the fields in this message
-Columns  | 64 | a comma separated list of column labels of the message being defined
+Header   |  2 | 0xA3 0x95
+FMT Type |  1 | 0x80 (FMT is the only message with a fixed identifier)
+Type     |  1 | Unique-to-this-log identifier for message being defined
+Length   |  1 | The number of bytes taken up by this message (including all headers)
+Name     |  4 | Name of the message being defined
+Format   | 16 | Character string defining the C-storage-type of the fields in this message
+Columns  | 64 | A comma separated list of column labels of the message being defined
 
 Meaning of format characters in the FMT format string:
 
@@ -101,7 +111,7 @@ Meaning of format characters in the FMT format string:
 
 ### Example Binary Messages
 
-Example format (FMT) message for Attitude (ATT), the message is 89 bytes long:
+Example format (FMT) message for Attitude (ATT), the FMT message is 89 bytes long:
 
 ```
 A3 95 80 64 1C 41 54 54 00 51 63 63 63 63 43 43 43 43 42 00  
@@ -113,15 +123,15 @@ A3 95 80 64 1C 41 54 54 00 51 63 63 63 63 43 43 43 43 42 00
 
 |Name|Meaning|Hex Data|
 |:-:|-|-|
-Header | | A3 95 
+Header   | Two byte header | A3 95 
 FMT Type | This is a FMT (type 0x80) message | 80 
-Type: | 0x64 is the type for the ATT message | 64 
-Length | ATT messages are 28 bytes long | 1C 
-Name | "ATT" | 41 54 54 00
-Format | "QccccCCCCB" field column is 'Q' (8 bytes uint64_t), second field is 'c' (2 bytes int16_t * 100), etc. | 51 63 63 63 63 43 43 43 43 42 00 00 00 00 00 00
-Columns | "TimeUS,DesRoll,Roll,DesPitch,Pitch,DesYaw,Yaw,ErrRP,ErrYaw,AEKF" | 54 69 6D 65 55 53 2C 44 65 73 52 6F 6C 6C 2C 52 6F 6C 6C 2C 44 65 73 50 69 74 63 68 2C 50 69 74 63 68 2C 44 65 73 59 61 77 2C 59 61 77 2C 45 72 72 52 50 2C 45 72 72 59 61 77 2C 41 45 4B 46 00
+Type     | 0x64 is the type for the ATT message | 64 
+Length   | ATT messages are 28 bytes long | 1C 
+Name     | "ATT" | 41 54 54 00
+Format   | "QccccCCCCB" field column is 'Q' (8 bytes uint64_t), second field is 'c' (2 bytes int16_t * 100), etc. | 51 63 63 63 63 43 43 43 43 42 00 00 00 00 00 00
+Columns  | "TimeUS,DesRoll,Roll,DesPitch,Pitch,DesYaw,Yaw,ErrRP,ErrYaw,AEKF" | 54 69 6D 65 55 53 2C 44 65 73 52 6F 6C 6C 2C 52 6F 6C 6C 2C 44 65 73 50 69 74 63 68 2C 50 69 74 63 68 2C 44 65 73 59 61 77 2C 59 61 77 2C 45 72 72 52 50 2C 45 72 72 59 61 77 2C 41 45 4B 46 00
 
-Example Attitude message, the message is 28 bytes long:
+Example Attitude message, the ATT message is 28 bytes long:
 
 ```
 A3 95 64 CE 85 E1 0A 00 00 00 00 00 00 55 02 3C FF DF FF 00 00 5B 09 01 00 01 00 03
@@ -129,19 +139,15 @@ A3 95 64 CE 85 E1 0A 00 00 00 00 00 00 55 02 3C FF DF FF 00 00 5B 09 01 00 01 00
 
 |Name|Type|Meaning|Hex Data|
 |:-:|-|-|-|
-Header | | A3 95 
-Type | 0x64 Attitude | 64 
-TimeUS | Q = uint64_t | 0x000000000AE185CE = 182.552014 seconds since start | CE 85 E1 0A 00 00 00 00
-DesRoll | c = int16_t * 100 | 0x0000 = 0.00 | 00 00
-Roll | c = int16_t * 100 | 0x0255 = 5.97 | 55 02
-DesPitch | c = int16_t * 100 | 0xFF3C = -1.96 | 3C FF
-Pitch | c = int16_t * 100 | 0xFFDF = -0.33 | DF FF
-DesYaw | C = uint16_t * 100 | 0x0000 = 0.00 | 00 00
-Yaw | C = uint16_t * 100 | 0x095B = 23.95 | 5B 09
-ErrRP | C = uint16_t * 100 | 0x0001 = 0.01 | 01 00
-ErrYaw | C = uint16_t * 100 | 0x0001 = 0.01 | 01 00
-AEKF |B = uint8_t | 3 | 03
-
-## Madflight Log File Format
-
-Madflight Binary Log format is a self-describing log format. Messages have variable length. Fields are encoded with variable length in order to reduce the size of the messages.
+Header   | Two byte header    | A3 95 
+Type     | 0x64 Attitude      | 64 
+TimeUS   | 'Q' = uint64_t       | 0x000000000AE185CE = 182.552014 seconds since start | CE 85 E1 0A 00 00 00 00
+DesRoll  | 'c' = int16_t * 100  | 0x0000 = 0.00 | 00 00
+Roll     | 'c' = int16_t * 100  | 0x0255 = 5.97 | 55 02
+DesPitch | 'c' = int16_t * 100  | 0xFF3C = -1.96 | 3C FF
+Pitch    | 'c' = int16_t * 100  | 0xFFDF = -0.33 | DF FF
+DesYaw   | 'C' = uint16_t * 100 | 0x0000 = 0.00 | 00 00
+Yaw      | 'C' = uint16_t * 100 | 0x095B = 23.95 | 5B 09
+ErrRP    | 'C' = uint16_t * 100 | 0x0001 = 0.01 | 01 00
+ErrYaw   | 'C' = uint16_t * 100 | 0x0001 = 0.01 | 01 00
+AEKF     | 'B' = uint8_t        | 3 | 03
