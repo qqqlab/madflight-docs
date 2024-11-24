@@ -51,9 +51,9 @@ The roll/pitch stick inputs control the roll/pitch angle. Keeping the sticks cen
 - blink interval longer than 1 second - imu_loop() is taking too much time
 - fast blinking - something is wrong, connect USB serial for info
 
-## Flying
+## Building and Flying
 
-Bill of materials
+Bill of Materials
 
 Part|Price
 |-|-|
@@ -65,3 +65,5 @@ Mini DC-DC 12-20V To 5V 3A Buck Converter | $0.4
 uBlox M8 GPS with QMC5883L Compass Compass Module | $10
 ELRS receiver | $7.2
 DJI E300 Propulsion System (9.4x4.3 props, 2212 920KV motors, 15A ESCs)
+
+<img src="img/ex-qa1.jpg" width="25%" /> <img src="img/ex-qa2.jpg" width="25%" /> <img src="img/ex-qa3.jpg" width="25%" />

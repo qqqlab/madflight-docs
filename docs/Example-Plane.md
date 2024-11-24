@@ -59,3 +59,16 @@ control surfaces react quickly, but don't oscillate, on changes in attitude.
 - blinking long ON short OFF - ARMED
 - blink interval longer than 1 second - imu_loop() is taking too much time
 - fast blinking - something is wrong, connect USB serial for info
+
+## Building and Flying
+
+Bill of Materials
+
+Part|Price
+|-|-|
+ESP32-S3 Board |
+MPU9250 Gyro/Acc/Mag Module | $1.3
+ELRS receiver | $7.2
+Hobbyking Bixler 3 1550mm
+
+<img src="img/ex-p1.jpg" width="25%" /> <img src="img/ex-p2.jpg" width="25%" />

@@ -51,9 +51,9 @@ The roll/pitch stick inputs control the roll/pitch angle. Keeping the sticks cen
 - blink interval longer than 1 second - imu_loop() is taking too much time
 - fast blinking - something is wrong, connect USB serial for info
 
-## Flying
+## Building and Flying
 
-Bill of materials
+Bill of Materials
 
 Part|Price
 |-|-|
@@ -63,3 +63,5 @@ BME280 Barometer Module | $0.8
 QMC5883L Electronic Compass Compass Module | $1.8
 ELRS receiver | $7.2
 Dualsky Hornet 460 Quadcopter
+
+<img src="img/ex-q1.jpg" width="25%" /> <img src="img/ex-q2.jpg" width="25%" /> <img src="img/ex-q3.jpg" width="25%" />
