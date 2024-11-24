@@ -55,7 +55,7 @@ The roll/pitch stick inputs control the roll/pitch angle. Keeping the sticks cen
 
 Bill of Materials
 
-Part|Price
+|Part|Price|
 |-|-:|
 Raspberry Pi Pico | $4.0
 MPU6500 Gyro/Acc Module | $1.3

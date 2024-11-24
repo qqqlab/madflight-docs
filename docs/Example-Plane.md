@@ -64,8 +64,8 @@ control surfaces react quickly, but don't oscillate, on changes in attitude.
 
 Bill of Materials
 
-Part|Price
-|-|-|
+|Part|Price|
+|-|-:|
 ESP32-S3 Board |
 MPU9250 Gyro/Acc/Mag Module | $1.3
 ELRS receiver | $7.2

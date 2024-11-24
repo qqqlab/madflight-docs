@@ -55,8 +55,8 @@ The roll/pitch stick inputs control the roll/pitch angle. Keeping the sticks cen
 
 Bill of Materials
 
-Part|Price
-|-|-|
+|Part|Price|
+|-|-:|
 Lolin ESP32 Lite | $2.9
 MPU6500 Gyro/Acc Module | $1.3
 BME280 Barometer Module | $0.8
