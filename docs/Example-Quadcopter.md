@@ -50,3 +50,16 @@ The roll/pitch stick inputs control the roll/pitch angle. Keeping the sticks cen
 - blinking long ON short OFF - ARMED
 - blink interval longer than 1 second - imu_loop() is taking too much time
 - fast blinking - something is wrong, connect USB serial for info
+
+## Flying
+
+Bill of materials
+
+Part|Price
+|-|-|
+Lolin ESP32 Lite | $2.9
+MPU6500 Gyro/Acc Module | $1.3
+BME280 Barometer Module | $0.8
+QMC5883L Electronic Compass Compass Module | $1.8
+ELRS receiver | $7.2
+Dualsky Hornet 460 Quadcopter
