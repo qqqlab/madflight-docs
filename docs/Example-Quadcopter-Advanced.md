@@ -45,8 +45,23 @@ The roll/pitch stick inputs control the roll/pitch angle. Keeping the sticks cen
 ## LED Status
 
 - OFF - not powered
-- startup - a couple blinks then ON while running gyro calibration (don't move)
+- ON - startup, running gyro calibration (don't move)
 - blinking long OFF short ON - DISARMED
 - blinking long ON short OFF - ARMED
 - blink interval longer than 1 second - imu_loop() is taking too much time
 - fast blinking - something is wrong, connect USB serial for info
+
+## Flying
+
+Bill of materials
+
+Part|Price
+|-|-|
+Raspberry Pi Pico | $4.0
+MPU6500 Gyro/Acc Module | $1.3
+BME280 Barometer Module | $0.8
+INA226 Current Sensor | $1.0
+Mini DC-DC 12-20V To 5V 3A Buck Converter | $0.4
+uBlox M8 GPS with QMC5883L Compass Compass Module | $10
+ELRS receiver | $7.2
+DJI E300 Propulsion System (9.4x4.3 props, 2212 920KV motors, 15A ESCs)
