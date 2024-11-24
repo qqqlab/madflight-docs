@@ -64,4 +64,4 @@ QMC5883L Electronic Compass Compass Module | $1.8
 ELRS receiver | $7.2
 Dualsky Hornet 460 Quadcopter
 
-<img src="img/ex-q1.jpg" width="25%" /> <img src="img/ex-q2.jpg" width="25%" /> <img src="img/ex-q3.jpg" width="25%" />
+<img src="../img/ex-q1.jpg" width="25%" /> <img src="../img/ex-q2.jpg" width="25%" /> <img src="../img/ex-q3.jpg" width="25%" />

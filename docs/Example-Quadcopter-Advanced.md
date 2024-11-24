@@ -66,4 +66,4 @@ uBlox M8 GPS with QMC5883L Compass Compass Module | $10
 ELRS receiver | $7.2
 DJI E300 Propulsion System (9.4x4.3 props, 2212 920KV motors, 15A ESCs)
 
-<img src="img/ex-qa1.jpg" width="25%" /> <img src="img/ex-qa2.jpg" width="25%" /> <img src="img/ex-qa3.jpg" width="25%" />
+<img src="../img/ex-qa1.jpg" width="25%" /> <img src="../img/ex-qa2.jpg" width="25%" /> <img src="../img/ex-qa3.jpg" width="25%" />

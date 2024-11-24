@@ -71,4 +71,4 @@ MPU9250 Gyro/Acc/Mag Module | $1.3
 ELRS receiver | $7.2
 Hobbyking Bixler 3 1550mm
 
-<img src="img/ex-p1.jpg" width="25%" /> <img src="img/ex-p2.jpg" width="25%" />
+<img src="../img/ex-p1.jpg" width="25%" /> <img src="../img/ex-p2.jpg" width="25%" />
