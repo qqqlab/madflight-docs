@@ -56,14 +56,16 @@ The roll/pitch stick inputs control the roll/pitch angle. Keeping the sticks cen
 Bill of Materials
 
 Part|Price
-|-|-|
+|-|-:|
 Raspberry Pi Pico | $4.0
 MPU6500 Gyro/Acc Module | $1.3
 BME280 Barometer Module | $0.8
-INA226 Current Sensor | $1.0
-Mini DC-DC 12-20V To 5V 3A Buck Converter | $0.4
-uBlox M8 GPS with QMC5883L Compass Compass Module | $10
+INA226 Current Sensor Module | $1.0
+Micro SD Card Module | $0.6 
+Mini DC-DC 12-20V to 5V 3A Buck Converter | $0.4
+uBlox M8 GPS with QMC5883L Compass Compass | $10.0
 ELRS receiver | $7.2
 DJI E300 Propulsion System (9.4x4.3 props, 2212 920KV motors, 15A ESCs)
+Frame of a Ideafly IFLY-4 Quadcopter
 
-<img src="img/ex-qa1.jpg" width="25%" /> <img src="img/ex-qa2.jpg" width="25%" /> <img src="img/ex-qa3.jpg" width="25%" />
+<img src="img/ex-qa1.jpg" width="19%" /> <img src="img/ex-qa2.jpg" width="15%" /> <img src="img/ex-qa3.jpg" width="36%" />
