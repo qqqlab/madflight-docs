@@ -1,18 +1,15 @@
 ![](img/madflight_logo_2000x538.png){ .off-glb }
 
-**M**anless **A**erial **D**evice
+**madflight** is a toolbox to build high performance flight controllers with Aduino IDE or PlatformIO for ESP32-S3 / ESP32 / RP2350 / RP2040 / STM32. A functional DIY flight controller can be build for under $10 from readily available [development boards](Controller-Boards.md) and [sensor breakout boards](Sensor-Boards.md).
 
-This is an Arduino library to build flight controllers with ESP32-S3 / ESP32 / RP2350 / RP2040 / STM32 microcontrollers. A functional DIY flight controller can be build for under $10 from readily available [development boards](Controller-Boards.md) and [sensor boards](Sensor-Boards.md). Ideal if you want to try out new flight control concepts, without first having to setup a build environment and without having to read through thousands lines of code to find the spot where you want to change something.
-
-**Installation**: search for 'madflight' in the Arduino Library Manager, or [download madflight](https://github.com/qqqlab/madflight/releases/latest) from Github.
-
-`Quadcopter.ino` is a 1000 line demo program for a quadcopter. It has been flight tested on ESP32, ESP32-S3, RP2040, and STM32F405 microcontrollers with the Arduino IDE. The program can be easily adapted to control your plane or VTOL craft. The source code has extensive documentation explaning what the settings and functions do.
-
-<img src="img/madflight RP2040 flight controller.jpeg" title="madflight RP2040 flight controller" width="25%" /> <img src="img/madflight drone.jpeg" title="madflight drone" width="19.6%" /> <img src="img/madflight ESP32 flight controller.jpeg" title="madflight ESP32 flight controller" width="19.1%" />
+Flight tested example programs for quadcopter and airplane are included. The example programs are only a couple hundred lines long, but contain the full flight controller logic. The nitty-gritty low-level sensor and input/output management is done by the madflight library.
 
 # Feedback is Welcome
 
-I enjoy hacking with electronics and I'm attempting to write some decent code for this project. If you enjoy it as well, please leave some [feedback](https://github.com/qqqlab/madflight) in the form of Stars, Issues, Pull Requests, or Discussions. Thanks!
+If you like <b>madflight</b>, give it a [&star; star on GitHub](https://github.com/qqqlab/madflight), or fork it and contribute. Thanks!
+
+<img src="img/madflight RP2040 flight controller.jpeg" title="madflight RP2040 flight controller" width="25%" /> <img src="img/madflight drone.jpeg" title="madflight drone" width="19.6%" /> <img src="img/madflight ESP32 flight controller.jpeg" title="madflight ESP32 flight controller" width="19.1%" />
+
 
 ## Required Hardware
 
@@ -40,18 +37,17 @@ I enjoy hacking with electronics and I'm attempting to write some decent code fo
     - -or- [ESP32-S3/ESP32 pinout and instructions](Board-ESP32.md)
     - -or- [STM32 pinout and instructions](Board-STM32.md)
     - Connect your IMU (gyro/acceleration) sensor as shown [below](#connecting-the-imu-sensor).
- - Install the madflight library in Arduino IDE. (Menu Tools->Manage Libraries, then search for "madflight")
- - Open example Quadcopter.ino in the Arduino IDE.
- - If you're not using a default pinout then setup your board pinout in the CUSTOM PINS section.
- - Edit the HARDWARE section to enable the connected peripherals
- - Compile and upload Quadcopter.ino to your board. Connect the Serial Monitor at 115200 baud and check the messages. Type `help` to see the available CLI commands.
- - Use CLI print commands like `pimu`, `pgyro`, `proll` to Check that IMU sensor and AHRS are working correctly. 
- - IMPORTANT: Use CLI `calimu` and `calmag` to calibate the sensors.
- - Connect radio receiver to your development board according to the configured pins.
- - Edit the RC RECEIVER section. Either match you RC equipment to the settings, or change the settings to match your RC equipment. 
- - Check your radio setup: Use CLI `ppwm` and `pradio` to show pwm and scaled radio values.
- - Connect motors (no props) and battery and check that motor outputs are working correctly. For debugging, use CLI `pmot` to show motor output.
- - Mount props, go to an wide open space, and FLY!FLY!
+    - Connect your radio receiver according to the configured pins.
+2. Install the madflight library in Arduino IDE. (Menu *Tools->Manage Libraries*, then search for **madflight**)
+3. Open *Examples for custom libraries->madflight->Quadcopter.ino* in the Arduino IDE.
+4. Edit the HARDWARE section in madflight_config.h to enable the connected peripherals.
+5. If you're not using the default pinout then setup your board pinout in the CUSTOM PINS section.
+6. Compile Quadcopter.ino and upload it to your board. Connect the Serial Monitor at 115200 baud and check the messages. Type `help` to see the available CLI commands.
+7. Type `calradio` and follow the prompts to setup your RC radio receiver.
+8. IMPORTANT: Use CLI `calimu` and `calmag` to calibate the sensors.
+9. Use CLI commands `pimu`, `pahrs`, `pradio`, `pmot`, etc. and check that IMU sensor, AHRS and RC Receiver are working correctly. 
+10. Connect motors (no props) and battery and check that motors are spinning correctly.
+11. Mount props, go to an wide open space, and FLY!
 
 ## Safety First!!!
 
@@ -73,18 +69,19 @@ By default madflight has these safety features enabled:
 - The madflight flight controller runs standard `setup()` and `loop()`.
 - It mainly uses plain Arduino functionality: Serial, Wire, and SPI. One custom hardware dependent library is used for PWM. Therefor, it can fairly easily ported to other 32 bit microcontrollers that support the Arduino framework. Also porting to other build environments like PlatformIO or CMake should not be a huge effort.
 - The following modules are used:
-    - `imu` Inertial Measurement Unit, retrieves accelerometer, gyroscope, and magnetometer sensor data
     - `ahrs` Attitude Heading Reference System, estimates roll, yaw, pitch
-    - `rcin` RC INput, retrieves RC receiver data
-    - `control` PID controller and output mixer
-    - `out` Output to motors and servos
-    - `mag` Magnetometer (external)
-    - `baro` Barometer
-    - `gps` GPS receiver
+    - `baro` Barometer sensor
+    - `bat` Battery monitor
     - `bb` Black Box data logger
-    - `cli` Command Line Interface for debugging, configuration and calibration
     - `cfg` Read and save configuration to flash
+    - `cli` Command Line Interface for debugging, configuration and calibration
+    - `gps` GPS receiver
     - `hw` Hardware specific code for STM32, RP2040 and ESP32
+    - `imu` Inertial Measurement Unit, retrieves accelerometer, gyroscope, and magnetometer sensor data
+    - `led` LED driver
+    - `mag` Magnetometer sensor (external)
+    - `out` Output to motors and servos
+    - `rcin` RC INput, retrieves RC receiver data
 - Most modules are interfaced through a global object, for example the `imu` object has property `imu.gx` which is the current gyro x-axis rate in degrees per second for the selected IMU chip.
 - For a quick overview of the objects, see header `src/madflight/interfaces.h` which defines the module interfaces.
 - The module implementations are in subdirectories of the `src/madflight` directory. Here you find the module header file, e.g. `src/madflight/imu/imu.h`. In the `extras` directory your find test programs for the modules, e.g. `extras/TestMadflight/imu.ino`.
