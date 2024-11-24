@@ -4,7 +4,7 @@
 
 Flight tested example programs for quadcopter and airplane are included. The example programs are only a couple hundred lines long, but contain the full flight controller logic. The nitty-gritty low-level sensor and input/output management is done by the madflight library.
 
-# Feedback is Welcome
+## Your Feedback is Welcome
 
 If you like <b>madflight</b>, give it a [&star; star on GitHub](https://github.com/qqqlab/madflight), or fork it and contribute. Thanks!
 
