@@ -4,7 +4,7 @@
 #pip install mkdocs-pymdownx-material-extras
 #mkdocs build ; mkdocs serve
 
-site_name: madflight v1.2.2
+site_name: madflight v1.3.0
 
 nav:
   - Getting Started: index.md
@@ -15,7 +15,6 @@ nav:
       - Quadcopter: Example-Quadcopter.md
       - Quadcopter Advanced: Example-Quadcopter-Advanced.md
       - Plane: Example-Plane.md
-      - PID-Tuning: Example-PID-Tuning.md
   - Reference:
       - Black Box Logging: Black-Box.md
       - Controller Boards: Controller-Boards.md
