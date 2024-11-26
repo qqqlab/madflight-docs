@@ -81,7 +81,6 @@ GY-912 | $11 | 10DOF | ICM20948 BMP388
 
 | Part | Breakout Board? | Notes |
 |-|:-:|-|
-INA226 | $1.5 | 16 bit ADC, 0-36V, 1LSB = 1.25mV, with 5m&ohm; shunt: ±16A, 1LSB = 0.5mA
-INA219 | $1.5 | 12 bit ADC, 0-26V
-
-
+INA219 | $1 | 12-bit ADC, 0-26V
+INA226 | $1.5 | 16-bit ADC, 0-36V, 1LSB = 1.25mV; ±16A with 5m&ohm; shunt, 1LSB = 0.5mA
+INA228 | $5 | 20-bit ADC, 0-85V, 1LSB = 0.2mV; ±16A with 10m&ohm; shunt, 1LSB = 0.031mA
