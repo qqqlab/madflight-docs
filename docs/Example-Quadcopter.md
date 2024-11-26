@@ -58,10 +58,10 @@ Bill of Materials
 |Part|Price|
 |-|-:|
 Lolin ESP32 Lite | $2.9
-MPU6500 Gyro/Acc Module | $1.3
-BME280 Barometer Module | $0.8
-QMC5883L Electronic Compass Compass Module | $1.8
+MPU6500 SPI Gyro/Acc Module | $1.3
 ELRS receiver | $7.2
-Dualsky Hornet 460 Quadcopter
+Dualsky Hornet 460 Quadcopter minus original brain
+BME280 Barometer Module (not used in this example) | $0.8
+QMC5883L Magnetometer Module (not used in this example) | $1.8
 
 <img src="../img/ex-q1.jpg" width="19.9%" /> <img src="../img/ex-q2.jpg" width="25%" /> <img src="../img/ex-q3.jpg" width="25%" />
