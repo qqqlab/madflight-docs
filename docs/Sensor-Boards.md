@@ -76,3 +76,12 @@ GY-87 | $4 | 10DOF | MPU6050 HMC5883L BMP180
 GY-91 | $8 | 10DOF | MPU9250 BMP280
 GY-521 | $2 | 6DOF | MPU6050
 GY-912 | $11 | 10DOF | ICM20948 BMP388
+
+## Current Sensors
+
+| Part | Breakout Board? | Notes |
+|-|:-:|-|
+INA226 | $1.5 | 16 bit ADC, 0-36V, 1LSB = 1.25mV, with 5m&ohm; shunt: ±16A, 1LSB = 0.5mA
+INA219 | $1.5 | 12 bit ADC, 0-26V
+
+
