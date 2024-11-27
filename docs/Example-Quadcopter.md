@@ -10,7 +10,8 @@ Minimal quadcopter demo program
 
 ## Connecting Hardware
 
-- IMU: connect IMU_EXTI, IMU_CS, SPI_MISO, SPI_MOSI, SPI_CLK for SPI (or IMU_EXTI, I2C_SDA, I2C_SCL for I2C)
+- SPI IMU: connect IMU_EXTI, IMU_CS, SPI_MISO, SPI_MOSI, SPI_CLK
+- or for I2C IMU: connect IMU_EXTI, I2C_SDA, I2C_SCL
 - RC receiver: connect RCIN_RX to receiver TX pin
 - ESCs: PWM1-4 to the ESC inputs
 
@@ -53,8 +54,11 @@ The roll/pitch stick inputs control the roll/pitch angle. Keeping the sticks cen
 
 ## Building and Flying
 
-Bill of Materials
+This is one of the quads I use for testing. Note that it does not use the default board for ESP32. And a custom pinout is used, so that the MPU6500 board can be soldered directly with pins to the ESP32 board, and just requires the red wire for 3V. The I2C sensor boards are also soldered directly with pins, plus one black ground wire.
 
+<img src="../img/ex-q1.jpg" width="19.9%" /> <img src="../img/ex-q2.jpg" width="25%" /> <img src="../img/ex-q3.jpg" width="25%" />
+
+**Bill of Material**
 |Part|Price|
 |-|-:|
 Lolin ESP32 Lite | $2.9
@@ -63,5 +67,3 @@ ELRS receiver | $7.2
 Dualsky Hornet 460 Quadcopter minus original brain
 BME280 Barometer Module (not used in this example) | $0.8
 QMC5883L Magnetometer Module (not used in this example) | $1.8
-
-<img src="../img/ex-q1.jpg" width="19.9%" /> <img src="../img/ex-q2.jpg" width="25%" /> <img src="../img/ex-q3.jpg" width="25%" />
