@@ -1,8 +1,47 @@
 # RP2350 / RP2040 Boards
 
+## Arduino IDE Setup
+
 madflight for RP2350/RP2040 requires [arduino-pico v4.x.x](https://github.com/earlephilhower/arduino-pico)
 
 Start the Arduino IDE and select menu Tools->Board Manager to install this software.
+
+## PlatformIO Setup
+
+Clone or download the madflight repository from GitHub.
+
+Start PlatformIO, press the "Import Arduino Project" button, and import a madflight example.
+
+Adapt the platformio.ini file as follows:
+
+```ini
+; PlatformIO Project Configuration File for madflight
+
+[env]
+; Set this to the folder where madflight.h is located
+; Default locations when installed via the Arduino IDE:
+;    Windows: C:\Users\{username}\Documents\Arduino\libraries\madflight
+;    macOS:   /Users/{username}/Documents/Arduino/libraries/madflight
+;    Linux:   /home/{username}/Arduino/libraries/madflight
+
+lib_extra_dirs = /ENTER/MADFLIGHT/FOLDER/HERE
+
+; RP2040/RP2350 is not merged into mainline PlatformIO, see 
+; https://arduino-pico.readthedocs.io/en/latest/platformio.html
+; on Windows you need to enable long path names, see above link for instructions
+
+[env:madflight_pico]
+platform = https://github.com/maxgerhardt/platform-raspberrypi.git
+board = pico
+framework = arduino
+board_build.core = earlephilhower
+
+[env:madflight_pico2]
+platform = https://github.com/maxgerhardt/platform-raspberrypi.git
+board = rpipico2
+framework = arduino
+board_build.core = earlephilhower
+```
 
 ## Pinout Raspberry Pi Pico2 / Raspberry Pi Pico 
 

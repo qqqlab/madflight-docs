@@ -1,11 +1,39 @@
 
 # ESP32-S3 / ESP32 Boards
 
+## Arduino IDE Setup
+
 madflight for ESP32-S3/ESP32 requires [Arduino-ESP32 v3.x.x](https://github.com/espressif/arduino-esp32)
 
 madflight v1.1.2 and earlier requires Arduino-ESP32 v2.x.x
 
 Start the Arduino IDE and select menu Tools->Board Manager to install this software.
+
+## PlatformIO Setup
+
+Clone or download the madflight repository from GitHub.
+
+Start PlatformIO, press the "Import Arduino Project" button, and import a madflight example.
+
+Adapt the platformio.ini file as follows:
+
+```ini
+; PlatformIO Project Configuration File for madflight
+
+[env]
+; Set this to the folder where madflight.h is located
+; Default locations when installed via the Arduino IDE:
+;    Windows: C:\Users\{username}\Documents\Arduino\libraries\madflight
+;    macOS:   /Users/{username}/Documents/Arduino/libraries/madflight
+;    Linux:   /home/{username}/Arduino/libraries/madflight
+
+lib_extra_dirs = /ENTER/MADFLIGHT/FOLDER/HERE
+
+[env:madflight_esp32]
+platform = espressif32
+board = esp32dev
+framework = arduino
+```
 
 ## Pinout ESP32-S3-DevKitC-1
 
