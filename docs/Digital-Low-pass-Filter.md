@@ -10,7 +10,7 @@ $Output_i = Output_{i-1} + \beta (Sample_i - Output_{i-1})$
 
 $\beta = 1 - e^{-2 \pi \frac{F_0}{F_S}}$
 
-$F_0 = -2\pi F_S ln(1-\beta)$
+$F_0 = - \frac{F_S}{2\pi} ln(1-\beta)$
 
 
 $F_0$ : Cutoff frequency (Hz)  
@@ -25,7 +25,7 @@ $Output_i = \alpha Output_{i-1} + (1-\alpha) Sample_i$
 
 $\alpha = e^{-2 \pi \frac{F_0}{F_S}}$
 
-$F_0 = -2\pi F_S ln(\alpha)$
+$F_0 = - \frac{F_S}{2\pi} ln(\alpha)$
 
 $F_0$ : Cutoff frequency (Hz)  
 $F_S$ : Sample Frequency (Hz)  
