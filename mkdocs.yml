@@ -4,7 +4,17 @@
 #pip install mkdocs-pymdownx-material-extras
 #mkdocs build ; mkdocs serve
 
-site_name: madflight v1.3.0
+#==============================================================
+# NEW VERSION CHECKLIST
+#==============================================================
+# update version in madflight.h
+# update version in library.properties
+# create new madflight release
+# make new github release of existing madflight-docs version
+# update madflight-docs version in this file
+#==============================================================
+
+site_name: madflight v1.3.1
 
 nav:
   - Getting Started: index.md
@@ -16,6 +26,8 @@ nav:
       - Quadcopter Advanced: Example-Quadcopter-Advanced.md
       - Plane: Example-Plane.md
   - Reference:
+      - Developer Guide: Developer-Guide.md
+      - MAVLink: MAVLink.md
       - Black Box Logging: Black-Box.md
       - Controller Boards: Controller-Boards.md
       - Sensor Boards: Sensor-Boards.md
@@ -28,7 +40,7 @@ site_url: https://madflight.com/
 site_description: madflight DIY Flight Controller
 site_author: qqqlab
 
-copyright: Copyright &copy; 2024 qqqlab
+copyright: Copyright &copy; 2025 qqqlab
 
 use_directory_urls: true
 
