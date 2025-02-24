@@ -42,14 +42,15 @@ Earth's magnetic field strength at its surface ranges from 25 to 65 μT (0.25 to
 | Part    | Breakout Board? | Sampling Rate | Resolution| ADC | Full Scale | Notes |
 |-|:-:|-|-|-|-|-|
 QMC5883L  | $2 | 200 Hz | 0.008µT/LSB @ ±200µT | 16-bit | ±200 or ±800µT | chip marking "5883"
-HMC5883L  | $2 | 160 Hz|0.07µT/LSB @ ±100µT |12-bit | ±100 to ±800µT | chip marking "L883"
+HMC5883L  | $2 | 160 Hz| 0.07µT/LSB @ ±100µT |12-bit | ±100 to ±800µT | chip marking "L883"
 HMC5983   | $2 | 220 Hz| 0.07µT/LSB @ ±100µT | 12-bit | ±100 to ±800µT
 MMC5983MA |    | 1000 Hz| 0.006µT/LSB @ ±800µT | 18-bit | ±800µT
-AK8963    |    | 100 Hz|0.15µT/LSB| 16-bit | | integraded in MPU9250
+AK8963    |    | 100 Hz| 0.15µT/LSB| 16-bit | | integraded in MPU9250
 AK8975    |    | 100 Hz| 0.3µT/LSB| 13-bit | | integraded in MPU9150
 AK09916   |    | 100 Hz| 0.15µT/LSB|16-bit | | integraded in ICM-20948
 IST8310   |    | 200 Hz| 0.3µT/LSB | 14-bit
 LIS2MDL   |    | 100 Hz| 0.015µT/LSB | 16-bit
+RM3100    |$25 | 500 Hz| 0.013µT/LSB @ 150 Hz |
 
 ## Barometer
 
