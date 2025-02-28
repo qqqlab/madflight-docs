@@ -51,7 +51,7 @@ AK8975    |    | 100 Hz| 0.3µT/LSB| 13-bit | | integraded in MPU9150
 AK09916   |    | 100 Hz| 0.15µT/LSB|16-bit | | integraded in ICM-20948
 IST8310   |    | 200 Hz| 0.3µT/LSB | 14-bit
 LIS2MDL   |    | 100 Hz| 0.015µT/LSB | 16-bit
-RM3100    |$25 | 500 Hz| 0.013µT/LSB @ 150 Hz |
+RM3100    |$25 | 500 Hz| 0.013µT/LSB @ 150 Hz | - | ±800µT | Uses coils, not hall sensors
 
 ## Barometer
 
