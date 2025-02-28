@@ -43,15 +43,17 @@ Earth's magnetic field strength at its surface ranges from 25 to 65 μT (0.25 to
 | Part    | Breakout Board? | Sampling Rate | Resolution| ADC | Full Scale | Notes |
 |-|:-:|-|-|-|-|-|
 QMC5883L  | $2 | 200 Hz | 0.008µT/LSB @ ±200µT | 16-bit | ±200 or ±800µT | chip marking "5883"
-HMC5883L  | $2 | 160 Hz| 0.07µT/LSB @ ±100µT |12-bit | ±100 to ±800µT | chip marking "L883"
+HMC5883L  | $2 | 160 Hz| 0.07µT/LSB @ ±100µT | 12-bit | ±100 to ±800µT | chip marking "L883"
 HMC5983   | $2 | 220 Hz| 0.07µT/LSB @ ±100µT | 12-bit | ±100 to ±800µT
-MMC5983MA |    | 1000 Hz| 0.006µT/LSB @ ±800µT | 18-bit | ±800µT
-AK8963    |    | 100 Hz| 0.15µT/LSB| 16-bit | | integraded in MPU9250
-AK8975    |    | 100 Hz| 0.3µT/LSB| 13-bit | | integraded in MPU9150
-AK09916   |    | 100 Hz| 0.15µT/LSB|16-bit | | integraded in ICM-20948
+MMC5983MA |$15 | 1000 Hz| 0.006µT/LSB @ ±800µT | 18-bit | ±800µT
+AK8963    |    | 100 Hz| 0.15µT/LSB | 16-bit | | integraded in MPU9250
+AK8975    |    | 100 Hz| 0.3µT/LSB | 13-bit | | integraded in MPU9150
+AK09916   |    | 100 Hz| 0.15µT/LSB | 16-bit | | integraded in ICM-20948
 IST8310   |    | 200 Hz| 0.3µT/LSB | 14-bit
 LIS2MDL   |    | 100 Hz| 0.015µT/LSB | 16-bit
-RM3100    |$25 | 500 Hz| 0.013µT/LSB @ 150 Hz | - | ±800µT | Uses coils, not hall sensors
+BMM150    | $7 | 300 Hz| 0.3µT/LSB | | ±1300µT | NRND
+BMM350    |    | 400 Hz| 0.1µT/LSB | | ±2000µT |
+RM3100    |$25 | 500 Hz| 0.013µT/LSB @ 150 Hz | no ADC | ±800µT | Uses coils, not hall sensors
 
 ## Barometer
 
@@ -75,7 +77,7 @@ ILPS22QS  | $14 | 1.5Pa 12cm | 0.025Pa | 200Hz | 0.34Pa
 GY-85 | | 9DOF | ITG3205 ADXL345 HMC5883L
 GY-86 | | 10DOF | MPU6050 HMC5883L MS5611
 GY-87 | $4 | 10DOF | MPU6050 HMC5883L BMP180
-GY-91 | $8 | 10DOF | MPU9250 BMP280
+GY-91 | $8 | 10DOF | MPU9255 (not MPU9250) BMP280
 GY-521 | $2 | 6DOF | MPU6050
 GY-912 | $11 | 10DOF | ICM20948 BMP388
 
