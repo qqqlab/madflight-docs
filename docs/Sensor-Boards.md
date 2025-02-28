@@ -59,13 +59,13 @@ RM3100    |$25 | 500 Hz| 13nT @ 150 Hz | no ADC | ±800µT | Uses coils, not hal
 
 | Part    | Breakout Board? | Relative Precision | Resolution | Max Measurement Rate | RMS Noise | Notes |
 |-|:-:|-|-|-|-|-|
-DPS310    | $3 | 6Pa 50cm| 0.06Pa | 128Hz | 0.5Pa @128Hz | Used in current commercial FC
+DPS310    | $3 | 6Pa 50cm | 0.06Pa | 128Hz | 0.35Pa @35Hz | Used in current commercial FC
+SPL06-001 | $2 | 6Pa 50cm | 0.06Pa | 128Hz | 1.2Pa @35Hz | Registers identical to DSP310, but noisier
 BMP180    | $2
 BMP280    | $2 | 12Pa 100cm | 1.3Pa @125Hz | 157Hz | 2.5Pa 20cm @125Hz | Used in current commercial FC
 BMP388    | $2 | 8Pa 66cm | | 200Hz
 BMP390    | $3 | 3Pa 25cm | | 200Hz | 0.9Pa @25Hz, 5Pa 36cm @100Hz
 MS5611    | $4 |  | 1.2Pa @120Hz | 1000Hz
-SPL06-001 | $2 | 6Pa 50cm | 0.06Pa | 128Hz | 5Pa @128Hz | Similar to DSP310
 LPS22HB   | $6 | 10Pa 80cm | 0.025Pa | 75Hz | 0.75Pa
 LPS22DF   | $14 | 1Pa 8cm | 0.025Pa | 200Hz | 0.34Pa
 ILPS22QS  | $14 | 1.5Pa 12cm | 0.025Pa | 200Hz | 0.34Pa
