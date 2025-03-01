@@ -4,7 +4,7 @@ An overview of available sensor boards.
 
 * The "Breakout Board?" column lists price if board is cheap & easy to procure.
 * Prices in USD from online platforms incl shipping.
-* Table created Dec 2023
+* Table last updated: Mar 2025
 
 ## 6-axis IMU
 
@@ -88,3 +88,12 @@ GY-912 | $11 | 10DOF | ICM20948 BMP388
 INA219 | $1 | 12-bit ADC, 0-26V
 INA226 | $1.5 | 16-bit ADC, 0-36V, 1LSB = 1.25mV; ±16A with 5m&ohm; shunt, 1LSB = 0.5mA
 INA228 | $5 | 20-bit ADC, 0-85V, 1LSB = 0.2mV; ±16A with 10m&ohm; shunt, 1LSB = 0.031mA
+
+## Radar Modules
+
+| Part | Module Price | Manufacturer | Max Range | Resolution | Sample Rate | Notes |
+|-|:-:|-|-|-|-|-|
+LD2411S|$4|Hi-link|6m|1cm (accuracy 5%)|10Hz|24G Distance detection
+LD2413|$11|Hi-link|10m|1mm (accuracy 3mm)|20Hz|24G Liquid level
+LD2451|$7|Hi-link|100m|1m||24G Vehicle detection, tracks relative speed, angle and distance of multiple targets
+RD-03E|$3|Ai-tinker|6m|1cm (accuracy 5%)||24G Ranging Firmware (also exist with Gesture Firmware)
