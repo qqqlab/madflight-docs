@@ -44,6 +44,7 @@ Board price single piece | $4 | $5 | $4 | $5 | $3
 
 |Board|MCU|Specs|IO|Size|Weight|Power Consumption|Price|
 |-|-|-|-|-|-|-|-|
+WeAct RP2350B | RP2350B | 16MB flash, RESET+BOOT+KEY button, LED | 48 io | 41 * 41 mm | 6.8 gr | | $5
 Waveshare RP2040-Zero | RP2040 | 2MB flash, RESET+BOOT button, RGB LED | 20 io + 9 via solder points | 23 * 17 mm | 1.7 gr | | $3
 WeMos LOLIN32-Lite | ESP32 | 4MB flash, 0MB PSRAM, 2*240MHz, RESET button, lipo charger, LED | 23 io | 50 * 25 mm | 4.7 gr | | $3
 WeMos LOLIN S3 Mini | ESP32-S3 | 4MB flash, 2MB PSRAM, 2*240MHz, RESET+BOOT button, LED | 27 io | 34 * 25 mm | 3 gr | | $5
