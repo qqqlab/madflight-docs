@@ -52,7 +52,7 @@ AK09916   |    | 100 Hz| 150nT | 16-bit | | integraded in ICM-20948
 IST8310   |    | 200 Hz| 300nT | 14-bit
 LIS2MDL   |    | 100 Hz| 15nT | 16-bit
 BMM150    | $7 | 300 Hz| 300nT | | ±1300µT | NRND
-BMM350    |    | 400 Hz| 100nT | | ±2000µT |
+BMM350    | $7 | 400 Hz| 100nT | 16-bit | ±2000µT |
 RM3100    |$25 | 500 Hz| 13nT @ 150 Hz | no ADC | ±800µT | Uses coils, not hall sensors
 
 ## Barometer
