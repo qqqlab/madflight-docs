@@ -1,8 +1,8 @@
 # Developer Guide
 
-This page tries to give some insights in the internal workings of madflight.
+This page tries to give some insights in the internal workings of _madflight_.
 
-madflight targets ESP32, RP2 and STM32 platforms with the Arduino framework. madflight can be compiled with the Arduino IDE or with PlatformIO.
+_madflight_ targets ESP32, RP2 and STM32 platforms with the Arduino framework. _madflight_ can be compiled with the Arduino IDE or with PlatformIO.
 
 ## Design Goals
 
@@ -13,13 +13,13 @@ madflight targets ESP32, RP2 and STM32 platforms with the Arduino framework. mad
 _madflight_ is split up in modules. Each module lives in a separate subdirectory, for example `gps`. 
 
 For each module a global variable is defined, for example `gps`. Even if the underlying peripheral is not present, the global variable is defined as a placeholder object. This helps to declutter code: 
-```
+```C++
 #ifdef USE_GPS
   gps.update();
 #endif
 ```
 becomes
-```
+```C++
 gps.update();
 ```
 which is compiled away to a no-op when gps is not used.
@@ -30,7 +30,7 @@ The modules have as little as possible cross-connections to other modules, the a
 
 ## Threads / Tasks / Interrupts
 
-madflight uses the following threads / tasks / interrupts:
+_madflight_ uses the following threads / tasks / interrupts:
 
 |Priority|Description|
 |-|-|
