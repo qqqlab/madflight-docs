@@ -10,9 +10,19 @@ madflight targets ESP32, RP2 and STM32 platforms with the Arduino framework. mad
 2) High performance
 3) Portability
 
-madflight is split up in modules. Each module lives in a separate subdirectory, for example `gps`. 
+_madflight_ is split up in modules. Each module lives in a separate subdirectory, for example `gps`. 
 
-For each module a global variable is defined, for example `gps`. Even if the underlying peripheral is not present, the global variable is defined as a placeholder object. This helps to declutter code: `#ifdef USE_GPS  gps.update();  #endif` becomes `gps.update();`, which reduces to a no-op when gps is not used.
+For each module a global variable is defined, for example `gps`. Even if the underlying peripheral is not present, the global variable is defined as a placeholder object. This helps to declutter code: 
+```
+#ifdef USE_GPS
+  gps.update();
+#endif
+```
+becomes
+```
+gps.update();
+```
+which is compiled away to a no-op when gps is not used.
 
 The `gps_interface.h` header file defines the interface, the actual implementation is in `gps.h`.
 
@@ -35,14 +45,44 @@ The other modules are not thread-safe. Care must be taken to only access a modul
 
 ## C++ as Scripting Language?
 
-As it turns out, the Arduino implementations for the different platforms differ greatly. How to handle the fact that the class for the Serial peripheral is either a `SerialUART`, `HardwareSerial`, or a `MySpecialSerial`, which might or might not be derived from `HardwareSerial` ?
+As it turns out, the Arduino implementations for the different platforms differ greatly. How to handle the fact that the class for the Serial peripheral is either a `SerialUART`, `HardwareSerial`, or a `MyFancySerial`, which might or might not be derived from `HardwareSerial` ?
 
 One way to do this is to use templates to abstract these objects. I tried this, but it did not make me happy. After spending many hours trying to rewrite the modules to `template<class SerialType> MyGpsDriver` I gave up this route: too much rewriting needed, and I was spending too much time on cryptic compiler/linker errors messages.
 
-A second way would be to define an abstract class `SerialBase` and use this as basis for the modules. But this results in a lot of extra overhead to derive a `SerialBase` for each Serial peripheral class one wishes to use.
+A second solution is to place the full implementation of the module in the header file, and make it refer a peripheral global object `gps_Serial`. The type of `gps_Serial` can be anything, as long as it implements the serial methods used by the module. If things don't work, you get a clear error message pointing out that method `availableForWrite()` is missing for `gps_Serial`. This basically makes C++ a scripting language. Disadvantage is that only one module driver can be active, as the driver is accessing the global peripheral object directly.
 
-A third solution is to place the full implementation of the module in the header file, and make it refer a peripheral global object `gps_Serial`. The type of `gps_Serial` can be anything, as long as it implements the serial methods used by the module. If things don't work, you get a clear error message pointing out that method `availableForWrite()` is missing for `gps_Serial`. This basically makes C++ a scripting language. Disadvantage is that only one module driver can be active, as the driver is accessing a global peripheral object.
+The third option is to define the drivers as abstract, and inherit the driver to implement the peripheral interface. The peripheral implementation is done in the module header file, thus having the "scripting" advantage, but also allows for multiple driver instances.
 
-The fourth option is to define the drivers as abstract, and inherit the driver to implement the peripheral interface. The peripheral implementation is done in the module header file, thus having the "scripting" advantage, but also allows for multiple driver instances.
+A 4th way, and chosen way, is to define an abstract class `MF_Serial` and use this as basis for the modules. But this results in a lot of extra code to derive a `MF_Serial` for each Serial peripheral class one wishes to use. However, for Arduino we can use a template for this. The Arduino classes have different types, but all classes implement methods with the same name, for example `begin(baud)`. This results in the following implementation in _madflight_:
 
-Currently, madflight contains a mixture of the above 4 approaches ;-)
+```C++
+class MF_Serial {
+  public:
+    virtual void begin(int baud) = 0;
+    ...
+};
+
+template<class T>
+class MF_SerialPtrWrapper : public MF_Serial {
+  protected:
+    T _serial;
+  public:
+    MF_SerialPtrWrapper(T serial) {
+       _serial = serial;
+    }
+    void begin(int baud) override {
+      _serial->begin(baud);
+    }
+    ...
+};
+
+// now instantiate the serial port it with:
+
+auto *rcin_ser = &Serial1;
+// -or-
+auto *rcin_ser = new SerialUART(uart0, HW_PIN_RCIN_TX, HW_PIN_RCIN_RX);
+// -or-
+auto *rcin_ser = new MyFancySerial(HW_PIN_RCIN_RX, HW_PIN_RCIN_TX);
+
+MF_Serial *rcin_Serial = new MF_SerialPtrWrapper< decltype(rcin_ser) >(rcin_ser);
+```
