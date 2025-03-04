@@ -34,7 +34,7 @@ Default flight mode is RATE. The mode can be changed to ANGLE by changing the PI
 
 The roll/pitch stick inputs control the rate of change. Keeping the sticks centered will keep turning at the current rate.
 
-## ANGLE mode
+## ANGLE Mode
 
 The roll/pitch stick inputs control the roll/pitch angle. Keeping the sticks centered will keep the quadcopter horizontal.
 
@@ -58,7 +58,8 @@ This is one of the quads I use for testing. Note that it does not use the defaul
 
 <img src="../img/ex-q1.jpg" width="19.9%" /> <img src="../img/ex-q2.jpg" width="25%" /> <img src="../img/ex-q3.jpg" width="25%" />
 
-**Bill of Material**
+### Bill of Material
+
 |Part|Price|
 |-|-:|
 Lolin ESP32 Lite | $2.9
