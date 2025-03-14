@@ -66,9 +66,11 @@ BMP280    | $2 | 12Pa 100cm | 1.3Pa @125Hz | 157Hz | 2.5Pa 20cm @125Hz | Used in
 BMP388    | $2 | 8Pa 66cm | | 200Hz
 BMP390    | $3 | 3Pa 25cm | | 200Hz | 0.9Pa @25Hz, 5Pa 36cm @100Hz
 MS5611    | $4 |  | 1.2Pa @120Hz | 1000Hz
-LPS22HB   | $6 | 10Pa 80cm | 0.025Pa | 75Hz | 0.75Pa
-LPS22DF   | $14 | 1Pa 8cm | 0.025Pa | 200Hz | 0.34Pa
-ILPS22QS  | $14 | 1.5Pa 12cm | 0.025Pa | 200Hz | 0.34Pa
+MPL3115A2 | $5 |  | 0.25Pa | 166Hz | 19Pa @166Hz, 1.5Pa @2Hz
+LPS22HB   | $6 | 10Pa 80cm | 0.025Pa | 75Hz
+LPS22DF   | $14 | 1Pa 8cm | 0.025Pa | 200Hz
+ILPS22QS  | $14 | 1.5Pa 12cm | 0.025Pa | 200Hz
+
 
 ## Multi Sensor Modules
 
