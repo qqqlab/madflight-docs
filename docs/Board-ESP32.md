@@ -39,32 +39,32 @@ framework = arduino
 
 This is the default pinout for ESP32-S3. It is optimized for the Espressif ESP32-S3-DevKitC-1 (44 pin) board. This pinout is defined in madflight_board_default_ESP32-S3.h, but can be modified with `#define HW_PIN_XXX` in your program.
 
-NOTE: Many clones of this board exist, which use various ESP32-S3-VROOM modules and/or have different on-board hardware (LED, RGB LED, SDCARD, etc.) Set Arduino IDE Board settings and HW_PIN_XXX defines accordingly.
+Note: Many clones of this board exist, which use various ESP32-S3-WROOM modules and/or have different on-board hardware (LED, RGB LED, SDCARD, etc.) Set Arduino IDE Board settings and HW_PIN_XXX defines accordingly.
 
 Note: Pin numbers refer to the GPIO numbers, not to the physical pin number on a board.
 
 | Function | GPIO | Board | GPIO | Function |
 | --: | :-- | :--: |--: | :-- |
 3V3 out | 3V3 | Antenna | G | GND
-3V3 out | 3V3 | | 43 | TX serial debug UART port
-reset button | RST | | 44 | RX serial debug UART port
-PWM1 | 4 | | 1 | -
-PWM2 | 5 | | 2 | LED (not on all boards)
-PWM3 | 6 | | 42 | -
-PWM4 | 7 | | 41 | -
-PWM5 | 15 | | 40 | SD_MMC_DATA
-PWM6 | 16 | | 39 | SD_MMC_CLK
-RCIN_TX | 17 | | 38 | SD_MMC_CMD
-RCIN_RX | 18 | | 37 | PSRAM (on boards with Octal PSRAM)
-I2C_SDA | 8 | | 36 | PSRAM (on boards with Octal PSRAM)
-GPS_RX | 3 | | 35 | PSRAM (on boards with Octal PSRAM)
-GPS_TX | 46 | | 0 | boot button
-I2C_SCL | 9 | | 45| -
-IMU_CS | 10 | | 48 | RGB_LED
-SPI_MOSI | 11 | | 47 | -
-SPI_MISO | 12 | | 21 | -
-SPI_SCLK | 13 | | 20 | USB_D+ (serial debug alternate)
-IMU_EXTI | 14 | | 19 | USB_D- (serial debug alternate)
+3V3 out | 3V3 | | 43 | Serial USB UART port (used for programming / CLI)
+reset button | RST | | 44 | Serial USB UART port (used for programming / CLI)
+_pin_out0_ (connect to motor/servo1) | 4 | | 1 | free for future use
+_pin_out1_ (connect to motor/servo2) | 5 | | 2 | _pin_led_ (LED not present on all boards)
+_pin_out2_ (connect to motor/servo3) | 6 | | 42 | free for future use
+_pin_out3_ (connect to motor/servo4) | 7 | | 41 | free for future use
+_pin_out4_ (connect to motor/servo5) | 15 | | 40 | _pin_mmc_dat_ (mmc sdcard)
+_pin_out5_ (connect to motor/servo6) | 16 | | 39 | _pin_mmc_clk_ (mmc sdcard)
+_pin_rcl_tx_ (connect to radio rx) | 17 | | 38 | _pin_mmc_cmd_ (mmc sdcard)
+_pin_rcl_rx_ (connect to radio tx) | 18 | | 37 | do not use, used for Octal PSRAM
+_pin_i2c0_sda_ (connect to sda pins of sensors) | 8 | | 36 | do not use, used for Octal PSRAM
+_pin_ser2_rx_ (connect to gps tx) | 3 | | 35 | do not use, used for Octal PSRAM
+_pin_ser2_tx_ (connect to gps rx) | 46 | | 0 | boot button
+_pin_i2c0_scl_ (connect to scl pins of sensors) | 9 | | 45| free for future use
+_pin_imu_cs_ (connect to SPI gyro cs) | 10 | | 48 | RGB LED (not used)
+_pin_spi0_mosi_ (connect to SPI gyro mosi) -or- _pin_i2c1_scl_ (connect to I2C gyro scl) | 11 | | 47 | free for future use
+_pin_spi0_miso_ (connect to SPI gyro miso) | 12 | | 21 | free for future use
+_pin_spi0_sclk_ (connect to SPI gyro sclk) -or- _pin_i2c0_sda_ (connect to I2C gyro sda) | 13 | | 20 | USB_D+ (alternate for programming / CLI)
+_pin_imu_int_ (connect to SPI/I2C gyro interrupt out) | 14 | | 19 | USB_D- (alternate for programming / CLI)
 5V in (*) | 5V | | G | GND
 GND | G | USB connectors | G | GND
 
@@ -118,29 +118,29 @@ Settings for programming via "USB-OTG" usb port (For programming: press boot, pr
 
 This is the default pinout for ESP32. It is optimized for the Espressiv ESP32 DevKitC (38 pin) board. This pinout is defined in madflight_board_default_ESP32.h, but can be modified with `#define HW_PIN_XXX` in your program.
 
-Many clones of this board exist, which might have different ESP32 modules and/or different on-board hardware (LED, RGB LED, SDCARD, etc.) Set Arduino IDE Board settings and HW_PIN_XXX defines accordingly.
+Many clones of this board exist, which might have different ESP32 modules and/or different on-board hardware (LED, RGB LED, SDCARD, etc.) Set Arduino IDE Board settings and _madflight_ pin_xxx configurations accordingly.
 
 | Function | GPIO | Board | GPIO | Function |
 | --: | :-- | :--: | --: | :-- |
-| 3V3 out      | 3V3 | Antenna side            |  GND | GND
-| reset button | EN |                            | 23 | I2C_SDA
-| SPI_MISO     | VP 36 input only |              | 22 | I2C_SCL
-| IMU_EXTI     | VN 39 input only |            | 1 TX | USB Serial Debug TX
-| BAT_V        | 34 input only |               | 3 RX | USB Serial Debug RX
-| RCIN_RX      | 35 input only |                 | 21 | SPI_MOSI
-| RCIN_TX      | 32 |                           | GND | GND
-| PWM1         | 33 |                            | 19 | SPI_SCLK
-| PWM2         | 25 |                            | 18 | IMU_CS
-| PWM3         | 26 |                       | strap 5 | GPS_TX
-| PWM4         | 27 |                            | 17 | GPS_RX
-| PWM5         | 14 |                            | 16 | PWM11
-| PWM6         | 12 |                             | 4 | PWM10
-| GND          | GND |                       | boot 0 | PWM9
-| PWM7         | 13 |                       | strap 2 | LED     
-| nc           | D2 9 flash |              | strap 15 | PWM8
-| nc           | D3 10 flash |           | flash 8 D1 | nc
-| nc           | CMD 11 flash |          | flash 7 D0 | nc
-| 5V input (*) | 5V | USB connector     | flash 6 CLK | nc
+3V3 out      | 3V3 | Antenna side            |  GND | GND
+reset button | EN |                            | 23 | _pin_i2c0_sda_ (connect to sda pins of sensors)
+_pin_spi0_miso_ (connect to SPI gyro miso) | VP 36 input only |              | 22 | _pin_i2c0_scl_ (connect to scl pins of sensors)
+_pin_imu_int_ (connect to SPI/I2C gyro interrupt out) | VN 39 input only |    | 1 TX | Serial USB UART port (used for programming / CLI)
+_pin_bat_v_ (connect to voltage sensor) | 34 input only |               | 3 RX | Serial USB UART port (used for programming / CLI)
+_pin_rcl_rx_ (connect to radio tx) | 35 input only |                 | 21 | _pin_spi0_mosi_ (connect to SPI gyro mosi) -or- _pin_i2c1_scl_ (connect to I2C gyro scl) 
+_pin_rcl_tx_ (connect to radio rx) | 32 |                           | GND | GND
+_pin_out0_ (connect to motor/servo1) | 33 |                            | 19 | _pin_spi0_sclk_ (connect to SPI gyro sclk) -or- _pin_i2c0_sda_ (connect to I2C gyro sda) 
+_pin_out1_ (connect to motor/servo2) | 25 |                            | 18 | _pin_imu_cs_ (connect to SPI gyro cs)
+_pin_out2_ (connect to motor/servo3) | 26 |                       | strap 5 | _pin_ser2_tx_ (connect to gps rx) 
+_pin_out3_ (connect to motor/servo4) | 27 |                            | 17 | _pin_ser2_rx_ (connect to gps tx) 
+_pin_out4_ (connect to motor/servo5) | 14 |                            | 16 | free for future use
+_pin_out5_ (connect to motor/servo6) | 12 |                             | 4 | free for future use
+GND | GND |                       | boot 0 | free, not used
+free for future use | 13 |                       | strap 2 | _pin_led_ (LED not present on all boards)
+do not use | D2 9 flash |              | strap 15 | free for future use
+do not use | D3 10 flash |           | flash 8 D1 | do not use
+do not use | CMD 11 flash |          | flash 7 D0 | do not use
+5V input (*) | 5V | USB connector     | flash 6 CLK | do not use
 
 (*) 5V input via diode from BEC. Without a diode take care not connect USB and the battery at the same time!
 
@@ -169,13 +169,3 @@ madflight uses float and is therefor limited to single core operation. The IMU l
 #### FreeRTOS
 
 FreeRTOS is enabled by default.
-
-#### I2C
-
-Arduino-ESP32 v2.0.17 has an [I2C bug](https://github.com/espressif/esp-idf/issues/4999) which causes the bus to hang for 1 second after a failed read, which can happen a couple times per minute. This makes Wire I2C for IMU not a real option...
-
-A workaround is to use #define USE_ESP32_SOFTWIRE which enables software I2C, but this does not work well with all sensors.
-  
-(!) So, until a better I2C solution is available: use an SPI IMU sensor on ESP32.
-
-NOTE: as of June 2024 this bug is apparently fixed, but not yet confirmed with madflight.
