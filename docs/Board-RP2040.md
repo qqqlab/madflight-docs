@@ -60,12 +60,12 @@ GND | GND |               | GND      | GND
 _pin_out4_ (connect to motor/servo5) | 6   |               | 27_A1    | free for future use
 _pin_out5_ (connect to motor/servo6) | 7   |               | 26_A0    | free for future use
 _pin_ser1_tx_ (connect to gps rx)  | 8   |               | RUN      | reset button to GND
-_pin_ser1_tx_ (connect to gps rx) | 9   |               | 22       | _pin_imu_int_ (connect to SPI/I2C gyro interrupt out)
+_pin_ser1_rx_ (connect to gps tx) | 9   |               | 22       | _pin_imu_int_ (connect to SPI/I2C gyro interrupt out)
 GND | GND |               | GND      | GND
-_pin_out6_ (connect to motor/servo7) | 10  |               | 21       | _pin_i2c0_scl_ (connect to scl pins of barometer, magnetometer, etc. sensors)
-_pin_out7_ (connect to motor/servo8) | 11  |               | 20       | _pin_i2c0_sda_ (connect to sda pins of barometer, magnetometer, etc. sensors)
-_pin_spi1_miso_ (connect to sdcard miso) | 12  |               | 19       | _pin_spi0_mosi_ (connect to SPI gyro mosi) -or- _pin_i2c1_scl_ (connect to I2C gyro scl) 
-_pin_bbx_cs _ (connect to sdcard cs)| 13  |               | 18       |  _pin_spi0_sclk_ (connect to SPI gyro sclk) -or- _pin_i2c1_sda_ (connect to I2C gyro sda) 
+_pin_i2c1_sda_ (connect to I2C gyro sda) | 10  |               | 21       | _pin_i2c0_scl_ (connect to scl pins of barometer, magnetometer, etc.)
+_pin_i2c1_scl_ (connect to I2C gyro scl) | 11  |               | 20       | _pin_i2c0_sda_ (connect to sda pins of barometer, magnetometer, etc.)
+_pin_spi1_miso_ (connect to sdcard miso) | 12  |               | 19       | _pin_spi0_mosi_ (connect to SPI gyro mosi) 
+_pin_bbx_cs _ (connect to sdcard cs)| 13  |               | 18       |  _pin_spi0_sclk_ (connect to SPI gyro sclk)
 GND | GND |               | GND      | GND
 _pin_spi1_sclk_ (connect to sdcard sclk) | 14  |               | 17       | _pin_imu_cs_ (connect to SPI gyro cs)
 _pin_spi1_mosi_ (connect to sdcard mosi) | 15  | JTAG pins     | 16       | _pin_spi0_miso_ (connect to SPI gyro miso)
