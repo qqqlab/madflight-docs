@@ -54,11 +54,11 @@ _pin_out2_ (connect to motor/servo3) | 6 | | 42 | free for future use
 _pin_out3_ (connect to motor/servo4) | 7 | | 41 | free for future use
 _pin_out4_ (connect to motor/servo5) | 15 | | 40 | _pin_mmc_dat_ (mmc sdcard)
 _pin_out5_ (connect to motor/servo6) | 16 | | 39 | _pin_mmc_clk_ (mmc sdcard)
-_pin_ser1_tx_ (connect to radio rx) | 17 | | 38 | _pin_mmc_cmd_ (mmc sdcard)
-_pin_ser1_rx_ (connect to radio tx) | 18 | | 37 | do not use, used for Octal PSRAM
+_pin_ser0_tx_ (connect to radio rx) | 17 | | 38 | _pin_mmc_cmd_ (mmc sdcard)
+_pin_ser0_rx_ (connect to radio tx) | 18 | | 37 | do not use, used for Octal PSRAM
 _pin_i2c0_sda_ (connect to sda pins of barometer, magnetometer, etc. sensors) | 8 | | 36 | do not use, used for Octal PSRAM
-_pin_ser2_rx_ (connect to gps tx) | 3 | | 35 | do not use, used for Octal PSRAM
-_pin_ser2_tx_ (connect to gps rx) | 46 | | 0 | boot button
+_pin_ser1_rx_ (connect to gps tx) | 3 | | 35 | do not use, used for Octal PSRAM
+_pin_ser1_tx_ (connect to gps rx) | 46 | | 0 | boot button
 _pin_i2c0_scl_ (connect to scl pins of barometer, magnetometer, etc. sensors) | 9 | | 45| free for future use
 _pin_imu_cs_ (connect to SPI gyro cs) | 10 | | 48 | RGB LED (not used)
 _pin_spi0_mosi_ (connect to SPI gyro mosi) | 11 | | 47 | _pin_i2c1_scl_ (connect to I2C gyro scl)
@@ -123,19 +123,19 @@ Many clones of this board exist, which might have different ESP32 modules and/or
 | Function | GPIO | Board | GPIO | Function |
 | --: | :-- | :--: | --: | :-- |
 3V3 out      | 3V3 | Antenna side            |  GND | GND
-reset button | EN |                            | 23 | _pin_i2c0_sda_ (connect to sda pins of barometer, magnetometer, etc. sensors)
-_pin_spi0_miso_ (connect to SPI gyro miso) | VP 36 input only |              | 22 | _pin_i2c0_scl_ (connect to scl pins of barometer, magnetometer, etc. sensors)
+reset button | EN |                            | 23 | _pin_i2c0_sda_ (connect to sda pins of barometer, magnetometer, etc.)
+_pin_spi0_miso_ (connect to SPI gyro miso) | VP 36 input only |              | 22 | _pin_i2c0_scl_ (connect to scl pins of barometer, magnetometer, etc.)
 _pin_imu_int_ (connect to SPI/I2C gyro interrupt out) | VN 39 input only |    | 1 TX | Serial USB UART port (used for programming / CLI)
 _pin_bat_v_ (connect to battery voltage divider) | 34 input only |               | 3 RX | Serial USB UART port (used for programming / CLI)
-_pin_ser1_rx_ (connect to radio tx) | 35 input only |                 | 21 | _pin_spi0_mosi_ (connect to SPI gyro mosi)
-_pin_ser1_tx_ (connect to radio rx) | 32 |                           | GND | GND
+_pin_ser0_rx_ (connect to radio tx) | 35 input only |                 | 21 | _pin_spi0_mosi_ (connect to SPI gyro mosi)
+_pin_ser0_tx_ (connect to radio rx) | 32 |                           | GND | GND
 _pin_out0_ (connect to motor/servo1) | 33 |                            | 19 | _pin_spi0_sclk_ (connect to SPI gyro sclk) 
 _pin_out1_ (connect to motor/servo2) | 25 |                            | 18 | _pin_imu_cs_ (connect to SPI gyro cs)
-_pin_out2_ (connect to motor/servo3) | 26 |                       | strap 5 | _pin_ser2_tx_ (connect to gps rx)
-_pin_out3_ (connect to motor/servo4) | 27 |                            | 17 | _pin_ser2_rx_ (connect to gps tx)
+_pin_out2_ (connect to motor/servo3) | 26 |                       | strap 5 | _pin_ser1_tx_ (connect to gps rx)
+_pin_out3_ (connect to motor/servo4) | 27 |                            | 17 | _pin_ser1_rx_ (connect to gps tx)
 _pin_out4_ (connect to motor/servo5) | 14 |                            | 16 | _pin_i2c1_scl_ (connect to I2C gyro scl)
 _pin_out5_ (connect to motor/servo6) | 12 |                             | 4 | _pin_i2c1_sda_ (connect to I2C gyro sda)
-GND | GND |                       | boot 0 | free, not used
+GND | GND |                       | boot 0 | free for future use
 free for future use | 13 |                       | strap 2 | _pin_led_ (LED not present on all boards)
 do not use | D2 9 flash |              | strap 15 | free for future use
 do not use | D3 10 flash |           | flash 8 D1 | do not use
