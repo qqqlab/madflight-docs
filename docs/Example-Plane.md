@@ -27,7 +27,7 @@ In FBWA mode the rudder is under manual control.
 
 ## Setup Procedure
 
-First edit sections "PINS", "BOARD", "HARDWARE", "RC RECEIVER", "OUTPUTS". Use CLI to verify things work as expected.
+First edit the configuration sections. Then use CLI to verify things work as expected, and to make changes as needed.
 
 Calibrate gyro, accelerometer, and magnetometer --- important!!!
 

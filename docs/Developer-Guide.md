@@ -24,9 +24,15 @@ gps.update();
 ```
 which is compiled away to a no-op when gps is not used.
 
-The `gps_interface.h` header file defines the interface, the actual implementation is in `gps.h`.
+The `gps.h` header file defines the interface, the actual implementation is in `gps.cpp`. Some modules have a `cfg_cpp.h` instead of `cfg.cpp`, this is because these files contain compile time options which can be set with #define in the main .ino program.
 
 The modules have as little as possible cross-connections to other modules, the actual fusion of the modules takes place in the main .ino program.
+
+## What is a 'gizmo'
+
+>> Something, generally a device, for which one does not know the proper term.
+
+In _madflight_ gizmo is the underlying device of a module, for example a BMP390 barometer sensor for the `bar` module, or a MAVLink radio receiver for the `rcl` module, or a Mahony complentary filter for the `ahr` module.
 
 ## Threads / Tasks / Interrupts
 

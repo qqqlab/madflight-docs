@@ -10,20 +10,23 @@ Advanced quadcopter demo program. Adds flight modes selectable by radio controll
 
 ## Connecting Hardware
 
-- IMU: connect IMU_EXTI, IMU_CS, SPI_MISO, SPI_MOSI, SPI_CLK for SPI (or IMU_EXTI, I2C_SDA, I2C_SCL for I2C)
-- RC receiver: connect RCIN_RX to receiver TX pin, and RCIN_TX to receiver RX pin.
-- ESCs: PWM1-4 to the ESC inputs
+- SPI IMU: connect _pin_imu_int_, _pin_imu_cs_, _pin_spiX_miso_, _pin_spiX_mosi_, _pin_spiX_sclk_
+- or for I2C IMU: connect _pin_imu_int_, _pin_i2cX_scl_, _pin_i2cX_sda_
+- RC receiver: connect _pin_serX_rx_ to receiver TX pin, and _pin_serX_tx_ to receiver RX pin
+- ESCs: _pin_out0_ - _pin_out3_ to the ESC inputs of motor1 - motor4
+
+The _X_ in _pin_serX_tx_ etc. stands for the bus number. See pinout diagrams.
 
 Motor order diagram (Betaflight order)
 
 ```
       front
  CW -->   <-- CCW
-     4     2 
+    m4     m2 
       \ ^ /
        |X|
       / - \
-     3     1 
+    m3     m1 
 CCW -->   <-- CW
 ```
 

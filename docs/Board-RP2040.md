@@ -98,3 +98,9 @@ _madflight_ uses a custom high performance SerialIRQ library, because the defaul
 #### Dual Core Usage
 
 _madflight_ uses FreeRTOS and executes the 1000Hz IMU loop on the second core. The first core is used for the other sensors.
+
+## Available madflight Modules
+
+All _madflight_ modules are available, exept:
+
+- BBX: SDCARD with MMC interface (use SPI interface)

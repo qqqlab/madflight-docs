@@ -165,3 +165,10 @@ ESP32-S3 and ESP32 are very similar chips. The ESP32-S3 is more recent: it has m
 ESP32 and ESP32-S3 both have dual core CPU, but single core FPU. ESP-IDF implementation limits [float usage](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/freertos_idf.html#floating-point-usage) to a single core, and float can not be used in interrupts. FreeRTOS is always enabled and a watchdog limits interrupt execution time.
 
 madflight uses float and is therefor limited to single core operation. The IMU loop runs as a high priorty task, triggered by the IMU interrupt.
+
+## Available madflight Modules
+
+All _madflight_ modules are available, exept:
+
+- BBX: for ESP32 SDCARD with MMC interface (ESP32-S3 has MMC)
+- CLI: `ps` (because FreeRTOS TRACE not enabled in arduino-ESP32, and enabling it is not trivial)
