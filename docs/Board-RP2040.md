@@ -1,16 +1,16 @@
-# RP2350 / RP2040 Boards
+# RP2040 / RP2350 Boards
 
 ## Arduino IDE Setup
 
-madflight for RP2350/RP2040 requires [arduino-pico v4.x.x](https://github.com/earlephilhower/arduino-pico)
+_madflight_ for RP2040/RP2350 requires [arduino-pico v4.x.x](https://github.com/earlephilhower/arduino-pico)
 
 Start the Arduino IDE and select menu Tools->Board Manager to install this software.
 
 ## PlatformIO Setup
 
-Clone or download the madflight repository from GitHub.
+Clone or download the _madflight_ repository from GitHub.
 
-Start PlatformIO, press the "Import Arduino Project" button, and import a madflight example.
+Start PlatformIO, press the "Import Arduino Project" button, and import a _madflight_ example.
 
 Adapt the platformio.ini file as follows:
 
@@ -43,79 +43,49 @@ framework = arduino
 board_build.core = earlephilhower
 ```
 
-## Pinout Raspberry Pi Pico2 / Raspberry Pi Pico 
+## Pinout Raspberry Pi Pico / Pico2
 
-This is the default pinout for RP2350 and RP2040. It is optimized for Raspberry Pi Pico2 / Raspberry Pi Pico (40 pin) boards. This pinout is defined in madflight_board_default_RP2040.h, but can be modified with `#define HW_PIN_xxx` in your program.
+This is the default pinout for RP2040 and RP2350. It is optimized for Raspberry Pi Pico / Pico2 (40 pin) boards. This pinout is defined in madflight_board__RP2040.h, but can be modified with _madflight_ pin_xxx configuration settings.
 
 | Module <-> HW_PIN_xxx | GPIO | Board | GPIO | HW_PIN_xxx <-> Module |
 | --: | :-- | :--: | --: | :-- |
-|    Radio RX <- RCIN_TX | 0   | USB connector | VBUS     | nc
-|    Radio TX -> RCIN_RX | 1   |               | VSYS     | 5V input via diode (*)
-|          GND | GND |               | GND      | GND
-|     ESC/Servo <- PWM1 | 2   |               | EN       | nc
-|        ESC/Servo <- PWM2 | 3   |               | 3.3V out | 3V3
-|        ESC/Servo <- PWM3 | 4   |               | VREF     | nc
-|        ESC/Servo <- PWM4 | 5   |               | 28_A2    | BAT_V <- Battery voltage divider
-|          GND | GND |               | GND      | GND
-|        ESC/Servo <- PWM5 | 6   |               | 27_A1    | -
-|        ESC/Servo <- PWM6 | 7   |               | 26_A0    | -
-|     GPS Receiver RX <- GPS_TX | 8   |               | RUN      | reset button to GND
-|     GPS Receiver TX -> GPS_RX | 9   |               | 22       | IMU_EXTI <- IMU interrupt
-|          GND | GND |               | GND      | GND
-|         ESC/Servo <- PWM7 | 10  |               | 21       | I2C_SCL -> Barometer, magnetometer, etc.
-|         ESC/Servo <- PWM8 | 11  |               | 20       | I2C_SDA <-> Barometer, magnetometer, etc.
-|  SDCARD -> SPI2_MISO | 12  |               | 19       | SPI_MOSI -> IMU
-|    SDCARD <- BB_CS | 13  |               | 18       | SPI_SCLK -> IMU
-|          GND | GND |               | GND      | GND
-|  SDCARD <- SPI2_SCLK | 14  |               | 17       | IMU_CS -> IMU
-|  SDCARD <- SPI2_MOSI | 15  | JTAG pins     | 16       | SPI_MISO <- IMU
+_pin_ser0_tx_ (connect to radio rx) | 0   | USB connector | VBUS     | not connected
+_pin_ser0_rx_ (connect to radio tx) | 1   |               | VSYS     | 5V input via diode (*)
+GND | GND |               | GND      | GND
+_pin_out0_ (connect to motor/servo1) | 2   |               | EN       | not connected
+_pin_out1_ (connect to motor/servo2) | 3   |               | 3.3V out | 3V3
+_pin_out2_ (connect to motor/servo3) | 4   |               | VREF     | not connected
+_pin_out3_ (connect to motor/servo4) | 5   |               | 28_A2    | _pin_bat_v_ (connect to battery voltage divider)
+GND | GND |               | GND      | GND
+_pin_out4_ (connect to motor/servo5) | 6   |               | 27_A1    | free for future use
+_pin_out5_ (connect to motor/servo6) | 7   |               | 26_A0    | free for future use
+_pin_ser1_tx_ (connect to gps rx)  | 8   |               | RUN      | reset button to GND
+_pin_ser1_tx_ (connect to gps rx) | 9   |               | 22       | _pin_imu_int_ (connect to SPI/I2C gyro interrupt out)
+GND | GND |               | GND      | GND
+_pin_out6_ (connect to motor/servo7) | 10  |               | 21       | _pin_i2c0_scl_ (connect to scl pins of barometer, magnetometer, etc. sensors)
+_pin_out7_ (connect to motor/servo8) | 11  |               | 20       | _pin_i2c0_sda_ (connect to sda pins of barometer, magnetometer, etc. sensors)
+_pin_spi1_miso_ (connect to sdcard miso) | 12  |               | 19       | _pin_spi0_mosi_ (connect to SPI gyro mosi) -or- _pin_i2c1_scl_ (connect to I2C gyro scl) 
+_pin_bbx_cs _ (connect to sdcard cs)| 13  |               | 18       |  _pin_spi0_sclk_ (connect to SPI gyro sclk) -or- _pin_i2c1_sda_ (connect to I2C gyro sda) 
+GND | GND |               | GND      | GND
+_pin_spi1_sclk_ (connect to sdcard sclk) | 14  |               | 17       | _pin_imu_cs_ (connect to SPI gyro cs)
+_pin_spi1_mosi_ (connect to sdcard mosi) | 15  | JTAG pins     | 16       | _pin_spi0_miso_ (connect to SPI gyro miso)
 
 (*) 5V input via diode from BEC. Without a diode take care not connect USB and the battery at the same time!
 
 ![](img/Raspberry-Pi-Pico-rp2040-pinout-mischianti.png)
 ![](img/Raspberry-Pi-Pico-W-rp2040-WiFi-pinout-mischianti.png)
 
-## Pinout RP2040-Zero
-
-This pinout is optimized for the RP2040-Zero (21 pin) board. This pinout is defined in madflight_board_RP2040-Zero.h, but can be modified with `#define HW_PIN_XXX` in your program.
-
-| Function | GPIO | Board | GPIO | Function |
-| --: | :-- | :--: | --: | :-- |
-| 5V input (*) | 5V  | USB connector | 0 | RCIN_TX
-|          GND | GND |               | 1  | RCIN_RX
-|      3V3 out | 3V3 |               | 2  | PWM1
-|            - | 29  |               | 3  | PWM2
-|        BAT_V | 28  |               | 4  | PWM3
-|     I2C1_SCL | 27  |               | 5  | PWM4
-|     I2C1_SDA | 26  |               | 6  | PWM5
-|     IMU_EXTI | 15  |               | 7  | PWM6
-|              | 14  |               | 8  | GPS_TX
-|              |     |               |    | 
-|              |     |               | 9  | GPS_RX
-|              |     |               | 10 | SPI1_SCLK
-|              |     |               | 11 | SPI1_MISO
-|              |     |               | 12 | SPI1_MOSI
-|              |     |               | 13 | IMU_CS
-
-(*) 5V input via diode from BEC. Without a diode take care not connect USB and the battery at the same time!
-
-![](img/RP2040-Zero.jpg)
-
-## RP2350/RP2040 Hardware
+## RP2040/RP2350 Hardware
 
 RP2350 (Raspberry Pi Pico2) is newer and a lot more powerful than RP2040 (Raspberry Pi Pico).
 
 #### Dual Core / FPU
 
-RP2350 has dual core, dual single precision FPU.
+RP2350 has dual core processor, plus dual single precision FPUs.
 
-RP2040 has dual core, no FPU.
+RP2040 has dual core processor, but no FPUs.
 
-madflight uses float and is much happier with RP2350 than with RP2040 !
-
-#### FreeRTOS
-
-FreeRTOS is optional.
+_madflight_ uses float and is much happier with RP2350 than with RP2040 !
 
 #### PWM
 
@@ -123,10 +93,8 @@ Consecutive even/odd PWM pins (e.g. pins 2,3 or 10,11) share the same timer and 
 
 #### Serial
 
-madflight uses a custom high performance SerialIRQ library.
+_madflight_ uses a custom high performance SerialIRQ library, because the default Arduino Serial transmitter blocks after sending a couple bytes. Something we don't want.
 
-#### madflight for RP2040
+#### Dual Core Usage
 
-madflight for RP2040 uses FreeRTOS and executes the 1000Hz IMU loop on the second core, which is 80% loaded at default 133MHz CPU speed. You can overclock the CPU to get some more headroom.
-
-#### madflight for RP2350
+_madflight_ uses FreeRTOS and executes the 1000Hz IMU loop on the second core. The first core is used for the other sensors.
