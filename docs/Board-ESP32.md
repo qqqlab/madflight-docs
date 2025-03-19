@@ -56,10 +56,10 @@ _pin_out4_ (connect to motor/servo5) | 15 | | 40 | _pin_mmc_dat_ (mmc sdcard)
 _pin_out5_ (connect to motor/servo6) | 16 | | 39 | _pin_mmc_clk_ (mmc sdcard)
 _pin_ser1_tx_ (connect to radio rx) | 17 | | 38 | _pin_mmc_cmd_ (mmc sdcard)
 _pin_ser1_rx_ (connect to radio tx) | 18 | | 37 | do not use, used for Octal PSRAM
-_pin_i2c0_sda_ (connect to sda pins of sensors) | 8 | | 36 | do not use, used for Octal PSRAM
+_pin_i2c0_sda_ (connect to sda pins of barometer, magnetometer, etc. sensors) | 8 | | 36 | do not use, used for Octal PSRAM
 _pin_ser2_rx_ (connect to gps tx) | 3 | | 35 | do not use, used for Octal PSRAM
 _pin_ser2_tx_ (connect to gps rx) | 46 | | 0 | boot button
-_pin_i2c0_scl_ (connect to scl pins of sensors) | 9 | | 45| free for future use
+_pin_i2c0_scl_ (connect to scl pins of barometer, magnetometer, etc. sensors) | 9 | | 45| free for future use
 _pin_imu_cs_ (connect to SPI gyro cs) | 10 | | 48 | RGB LED (not used)
 _pin_spi0_mosi_ (connect to SPI gyro mosi) -or- _pin_i2c1_scl_ (connect to I2C gyro scl) | 11 | | 47 | free for future use
 _pin_spi0_miso_ (connect to SPI gyro miso) | 12 | | 21 | free for future use
