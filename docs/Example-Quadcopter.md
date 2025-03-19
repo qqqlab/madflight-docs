@@ -10,12 +10,10 @@ Minimal quadcopter demo program
 
 ## Connecting Hardware
 
-- SPI IMU: connect _pin_imu_int_, _pin_imu_cs_, _pin_spiX_miso_, _pin_spiX_mosi_, _pin_spiX_sclk_
-- or for I2C IMU: connect _pin_imu_int_, _pin_i2cX_scl_, _pin_i2cX_sda_
-- RC receiver: connect _pin_serX_rx_ to receiver TX pin
-- ESCs: _pin_out0_ - _pin_out3_ to the ESC inputs of motor1 - motor4
-
-The _X_ in _pin_serX_tx_ etc. stands for the bus number. See pinout diagrams.
+- SPI IMU: connect _pin_imu_int_, _pin_imu_cs_, _pin_spi0_miso_, _pin_spi0_mosi_, _pin_spi0_sclk_
+- or for I2C IMU: connect _pin_imu_int_, _pin_i2c1_scl_, _pin_i2c1_sda_
+- RC receiver: connect _pin_ser0_rx_ to receiver TX pin
+- ESCs: _pin_out0_ ... _pin_out3_ to the ESC inputs of motor1 ... motor4
 
 Motor order diagram (Betaflight order)
 
