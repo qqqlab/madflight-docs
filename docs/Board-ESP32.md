@@ -3,17 +3,17 @@
 
 ## Arduino IDE Setup
 
-madflight for ESP32-S3/ESP32 requires [Arduino-ESP32 v3.x.x](https://github.com/espressif/arduino-esp32)
+_madflight_ for ESP32-S3/ESP32 requires [Arduino-ESP32 v3.x.x](https://github.com/espressif/arduino-esp32)
 
-madflight v1.1.2 and earlier requires Arduino-ESP32 v2.x.x
+_madflight_ v1.1.2 and earlier requires Arduino-ESP32 v2.x.x
 
 Start the Arduino IDE and select menu Tools->Board Manager to install this software.
 
 ## PlatformIO Setup
 
-Clone or download the madflight repository from GitHub.
+Clone or download the _madflight_ repository from GitHub.
 
-Start PlatformIO, press the "Import Arduino Project" button, and import a madflight example.
+Start PlatformIO, press the "Import Arduino Project" button, and import a _madflight_ example.
 
 Adapt the platformio.ini file as follows:
 
@@ -37,9 +37,9 @@ framework = arduino
 
 ## Pinout ESP32-S3-DevKitC-1
 
-This is the default pinout for ESP32-S3. It is optimized for the Espressif ESP32-S3-DevKitC-1 (44 pin) board. This pinout is defined in madflight_board_default_ESP32-S3.h, but can be modified with `#define HW_PIN_XXX` in your program.
+This is the default pinout for ESP32-S3. It is optimized for the Espressif ESP32-S3-DevKitC-1 (44 pin) board. This pinout is defined in madflight_board__ESP32-S3.h, but can be modified with _madflight_ _pin_xxx_ configuration settings in your program.
 
-Note: Many clones of this board exist, which use various ESP32-S3-WROOM modules and/or have different on-board hardware (LED, RGB LED, SDCARD, etc.) Set Arduino IDE Board settings and HW_PIN_XXX defines accordingly.
+Note: Many clones of this board exist, which use various ESP32-S3-WROOM modules and/or have different on-board hardware (LED, RGB LED, SDCARD, etc.) Set Arduino IDE Board settings and _pin_xxx_ configuration accordingly.
 
 Note: Pin numbers refer to the GPIO numbers, not to the physical pin number on a board.
 
@@ -54,8 +54,8 @@ _pin_out2_ (connect to motor/servo3) | 6 | | 42 | free for future use
 _pin_out3_ (connect to motor/servo4) | 7 | | 41 | free for future use
 _pin_out4_ (connect to motor/servo5) | 15 | | 40 | _pin_mmc_dat_ (mmc sdcard)
 _pin_out5_ (connect to motor/servo6) | 16 | | 39 | _pin_mmc_clk_ (mmc sdcard)
-_pin_rcl_tx_ (connect to radio rx) | 17 | | 38 | _pin_mmc_cmd_ (mmc sdcard)
-_pin_rcl_rx_ (connect to radio tx) | 18 | | 37 | do not use, used for Octal PSRAM
+_pin_ser1_tx_ (connect to radio rx) | 17 | | 38 | _pin_mmc_cmd_ (mmc sdcard)
+_pin_ser1_rx_ (connect to radio tx) | 18 | | 37 | do not use, used for Octal PSRAM
 _pin_i2c0_sda_ (connect to sda pins of sensors) | 8 | | 36 | do not use, used for Octal PSRAM
 _pin_ser2_rx_ (connect to gps tx) | 3 | | 35 | do not use, used for Octal PSRAM
 _pin_ser2_tx_ (connect to gps rx) | 46 | | 0 | boot button
@@ -116,23 +116,23 @@ Settings for programming via "USB-OTG" usb port (For programming: press boot, pr
 
 ## Pinout ESP32 DevKitC
 
-This is the default pinout for ESP32. It is optimized for the Espressiv ESP32 DevKitC (38 pin) board. This pinout is defined in madflight_board_default_ESP32.h, but can be modified with `#define HW_PIN_XXX` in your program.
+This is the default pinout for ESP32. It is optimized for the Espressiv ESP32 DevKitC (38 pin) board. This pinout is defined in madflight_board__ESP32.h, but can be modified with `#define HW_PIN_XXX` in your program.
 
 Many clones of this board exist, which might have different ESP32 modules and/or different on-board hardware (LED, RGB LED, SDCARD, etc.) Set Arduino IDE Board settings and _madflight_ pin_xxx configurations accordingly.
 
 | Function | GPIO | Board | GPIO | Function |
 | --: | :-- | :--: | --: | :-- |
 3V3 out      | 3V3 | Antenna side            |  GND | GND
-reset button | EN |                            | 23 | _pin_i2c0_sda_ (connect to sda pins of sensors)
-_pin_spi0_miso_ (connect to SPI gyro miso) | VP 36 input only |              | 22 | _pin_i2c0_scl_ (connect to scl pins of sensors)
+reset button | EN |                            | 23 | _pin_i2c0_sda_ (connect to sda pins of barometer, magnetometer, etc. sensors)
+_pin_spi0_miso_ (connect to SPI gyro miso) | VP 36 input only |              | 22 | _pin_i2c0_scl_ (connect to scl pins of barometer, magnetometer, etc. sensors)
 _pin_imu_int_ (connect to SPI/I2C gyro interrupt out) | VN 39 input only |    | 1 TX | Serial USB UART port (used for programming / CLI)
-_pin_bat_v_ (connect to voltage sensor) | 34 input only |               | 3 RX | Serial USB UART port (used for programming / CLI)
-_pin_rcl_rx_ (connect to radio tx) | 35 input only |                 | 21 | _pin_spi0_mosi_ (connect to SPI gyro mosi) -or- _pin_i2c1_scl_ (connect to I2C gyro scl) 
-_pin_rcl_tx_ (connect to radio rx) | 32 |                           | GND | GND
-_pin_out0_ (connect to motor/servo1) | 33 |                            | 19 | _pin_spi0_sclk_ (connect to SPI gyro sclk) -or- _pin_i2c0_sda_ (connect to I2C gyro sda) 
+_pin_bat_v_ (connect to battery voltage divider) | 34 input only |               | 3 RX | Serial USB UART port (used for programming / CLI)
+_pin_ser1_rx_ (connect to radio tx) | 35 input only |                 | 21 | _pin_spi0_mosi_ (connect to SPI gyro mosi) -or- _pin_i2c1_scl_ (connect to I2C gyro scl) 
+_pin_ser1_tx_ (connect to radio rx) | 32 |                           | GND | GND
+_pin_out0_ (connect to motor/servo1) | 33 |                            | 19 | _pin_spi0_sclk_ (connect to SPI gyro sclk) -or- _pin_i2c1_sda_ (connect to I2C gyro sda) 
 _pin_out1_ (connect to motor/servo2) | 25 |                            | 18 | _pin_imu_cs_ (connect to SPI gyro cs)
-_pin_out2_ (connect to motor/servo3) | 26 |                       | strap 5 | _pin_ser2_tx_ (connect to gps rx) 
-_pin_out3_ (connect to motor/servo4) | 27 |                            | 17 | _pin_ser2_rx_ (connect to gps tx) 
+_pin_out2_ (connect to motor/servo3) | 26 |                       | strap 5 | _pin_ser2_tx_ (connect to gps rx)
+_pin_out3_ (connect to motor/servo4) | 27 |                            | 17 | _pin_ser2_rx_ (connect to gps tx)
 _pin_out4_ (connect to motor/servo5) | 14 |                            | 16 | free for future use
 _pin_out5_ (connect to motor/servo6) | 12 |                             | 4 | free for future use
 GND | GND |                       | boot 0 | free, not used
@@ -165,7 +165,3 @@ ESP32-S3 and ESP32 are very similar chips. The ESP32-S3 is more recent: it has m
 ESP32 and ESP32-S3 both have dual core CPU, but single core FPU. ESP-IDF implementation limits [float usage](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/freertos_idf.html#floating-point-usage) to a single core, and float can not be used in interrupts. FreeRTOS is always enabled and a watchdog limits interrupt execution time.
 
 madflight uses float and is therefor limited to single core operation. The IMU loop runs as a high priorty task, triggered by the IMU interrupt.
-
-#### FreeRTOS
-
-FreeRTOS is enabled by default.
