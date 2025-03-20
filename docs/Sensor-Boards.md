@@ -23,7 +23,8 @@ LSM6DSV    | no | 7.68k | 2.8 | 60 |
 ICM-20602  | $5 | | 4 | 100 | NRND
 ICM-20649  | no |  | 17.5 | 285 | NRND
 ICM-40609-D| no | 32k gyro+acc | 4.5 | 100 | Marketed for drones, replacement of ICM-20602 and MPU-6500
-ICM-42688-P| no | 32k gyro | 2.8 | 70 | Used in current high performance FC
+ICM-42670-P| $3 | 1.6k gyro+acc | 7 | 100 | Marketed for drones
+ICM-42688-P| $6 | 32k gyro | 2.8 | 70 | Used in current high performance FC
 ICM-45686  | no | 6.4k gyro+acc | 3.8 | 80 |
 
 ## 9-axis IMU
