@@ -10,24 +10,23 @@ If you like <b>madflight</b>, give it a [&star; star on GitHub](https://github.c
 
 <img src="img/madflight RP2040 flight controller.jpeg" title="madflight RP2040 flight controller" width="25%" /> <img src="img/madflight drone.jpeg" title="madflight drone" width="19.6%" /> <img src="img/madflight ESP32 flight controller.jpeg" title="madflight ESP32 flight controller" width="19.1%" />
 
-
 ## Required Hardware
 
 - [Development board](Controller-Boards.md): 
     - [RP2350/RP2040](Board-RP2040.md) (e.g. Raspberry Pi Pico2)
     - [ESP32-S3/ESP32](Board-ESP32.md) (e.g. Espressiv ESP32-S3 DevKitC)
     - [STM32](Board-STM32.md) (e.g. Black Pill or a commercial flight controller)
-- [SPI IMU sensor](Sensor-Boards.md) (BMI270, MPU9250, MPU6500, or MPU6000), if not available then use an I2C IMU sensor (MPU6050 or MPU9150) 
-- RC Receiver: ELRS, CRSF, SBUS, DMSX, or PPM
+- [SPI IMU sensor](Sensor-Boards.md) (BMI270, MPU9250, MPU6500, MPU6000, ICM45686), if not available then use an I2C IMU sensor (MPU6050, MPU9150) 
+- RC Receiver: MAVLink, ELRS, CRSF, SBUS, DMSX, or PPM
 - BEC or DC-DC converter to power your board from a battery
 - ESC (OneShot125 or 50-490Hz PWM) and/or servos (50-490Hz PWM)
 
 ## Optional Hardware
 
 - GPS Module (Serial)
-- Barometer (I2C BMP280, MS5611)
+- Barometer (I2C BMP280, BMP388, BMP390, MS5611)
 - Magnetometer (I2C QMC5883L)
-- Current/Voltage Sensor (ADC or I2C INA226)
+- Current/Voltage Sensor (ADC or I2C INA226, INA228)
 - [Optical Flow Sensor](https://github.com/qqqlab/ESP32-Optical-Flow) (I2C)
 
 ## Getting Started
@@ -45,7 +44,7 @@ If you like <b>madflight</b>, give it a [&star; star on GitHub](https://github.c
 6. Compile Quadcopter.ino and upload it to your board. Connect the Serial Monitor at 115200 baud and check the messages. Type `help` to see the available CLI commands.
 7. Type `calradio` and follow the prompts to setup your RC radio receiver.
 8. IMPORTANT: Use CLI `calimu` and `calmag` to calibate the sensors.
-9. Use CLI commands `pimu`, `pahrs`, `pradio`, `pmot`, etc. and check that IMU sensor, AHRS and RC Receiver are working correctly. 
+9. Use CLI commands `pimu`, `pahr`, `prcl`, `pmot`, etc. and check that IMU sensor, AHRS and RC Receiver are working correctly. 
 10. Connect motors (no props) and battery and check that motors are spinning correctly.
 11. Mount props, go to an wide open space, and FLY!
 
@@ -69,54 +68,62 @@ By default madflight has these safety features enabled:
 - The madflight flight controller runs standard `setup()` and `loop()`.
 - It mainly uses plain Arduino functionality: Serial, Wire, and SPI. One custom hardware dependent library is used for PWM. Therefor, it can fairly easily ported to other 32 bit microcontrollers that support the Arduino framework. Also porting to other build environments like PlatformIO or CMake should not be a huge effort.
 - The following modules are used:
-    - `ahrs` Attitude Heading Reference System, estimates roll, yaw, pitch
-    - `baro` Barometer sensor
+    - `ahr` Attitude Heading Reference System, estimates roll, yaw, pitch
+    - `bar` Barometer sensor
     - `bat` Battery monitor
-    - `bb` Black Box data logger
+    - `bbx` Black Box data logger
     - `cfg` Read and save configuration to flash
     - `cli` Command Line Interface for debugging, configuration and calibration
     - `gps` GPS receiver
-    - `hw` Hardware specific code for STM32, RP2040 and ESP32
+    - `hal` Hardware Abstraction Layer, specific code for STM32, RP2040 and ESP32
     - `imu` Inertial Measurement Unit, retrieves accelerometer, gyroscope, and magnetometer sensor data
     - `led` LED driver
     - `mag` Magnetometer sensor (external)
     - `out` Output to motors and servos
-    - `rcin` RC INput, retrieves RC receiver data
+    - `rcl` Remote Control Link, retrieves RC receiver data and sends telemetry data
 - Most modules are interfaced through a global object, for example the `imu` object has property `imu.gx` which is the current gyro x-axis rate in degrees per second for the selected IMU chip.
-- For a quick overview of the objects, see header `src/madflight/interfaces.h` which defines the module interfaces.
-- The module implementations are in subdirectories of the `src/madflight` directory. Here you find the module header file, e.g. `src/madflight/imu/imu.h`. In the `extras` directory your find test programs for the modules, e.g. `extras/TestMadflight/imu.ino`.
-- The module files are usually header only, that is, the header also includes the implemention.
+- The module implementations are in subdirectories of the `src/madflight` directory. Here you find the module header file, e.g. `src/madflight/imu/imu.h`.
+- The module files are usually subdivided in gizmos, which can be selected in _madflight_ config. For example: `imu_gizmo MPU6500`
 
-## Connecting the IMU Sensor
+## Connecting SPI IMU Sensor 
 
-madflight requires the interrupt pin (IMU_EXTI) connected.
+SPI is highly recommended over I2C
 
-SPI sensor: (highly recommended over I2C)
-```xxx
-  Sensor       Dev Board
-SCL/SCLK <---> SPI_SCLK
- SDA/SDI <---> SPI_MOSI
- ADD/SDO <---> SPI_MISO
-     NCS <---> IMU_CS
-     INT <---> IMU_EXTI
-     VCC <---> 3V3
-     GND <---> GND
-```
-I2C sensor:
-```xxx
-  Sensor       Dev Board
-     SCL <---> I2C_SCL 
-     SDA <---> I2C_SDA
-     INT <---> IMU_EXTI
-     VCC <---> 3V3
-     GND <---> GND
-```
+_madflight_ requires the interrupt pin _pin_imu_int_ connected.
+
+| Sensor   |  |  Dev Board |
+|-:|:-:|:-|
+SCL/SCLK |<---| _pin_spiX_sclk_
+SDA/SDI  |<---| _pin_spiX_mosi_
+ADD/SDO  |--->| _pin_spiX_miso_
+NCS      |<---| _pin_imu_cs_
+INT      |--->| _pin_imu_int_
+VCC      |----| 3V3 or 5V (depending on your sensor board)
+GND      |----| GND
+
+_X_ is the SPI bus number, set with _imu_spi_bus_
+
+## Connecting I2C IMU Sensor
+
+SPI is highly recommended over I2C
+
+_madflight_ requires the interrupt pin _pin_imu_int_ connected.
+
+| Sensor   |  |  Dev Board |
+|-:|:-:|:-|
+SCL |<-->| _pin_i2cY_scl_
+SDA |<-->| _pin_i2cY_scl_
+INT |--->| _pin_imu_int_
+VCC |<-->| 3V3 or 5V (depending on your sensor board)
+GND |<-->| GND
+
+_Y_ is the I2C bus number, set with _imu_i2c_bus_
 
 ## Changes from dRehmFlight
 
 - Add support for RP2350, RP2040, ESP32, ESP32-S3, and STM32
-- Dropped Teensy support, but could be re-added by creating a hw_TEENSY.h file. (I just don't have the hardware to test on)
-- Moved all hardware specific code to hw_XXX.h and added hardware specific libraries
+- Dropped Teensy support, but could be re-added by creating a hal files. (I just don't have the hardware to test on)
+- Moved all hardware specific code to the hal directory and added hardware specific libraries
 - Reduced the number of global variables
 - Oneshot is implemented as PWM up to 3.9kHz
 - New libs for IMU sensors
