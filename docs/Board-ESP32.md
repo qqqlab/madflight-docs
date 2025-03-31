@@ -82,15 +82,12 @@ In the Aduino IDE select board: "ESP32S3 Dev Module" and set the following optio
 
 |ESP32-S3 module|Flash Mode|PSRAM|Notes
 |-|-|-|-|
-ESP32-S3-WROOM-1-Nx     | QIO 80MHz | - |
-ESP32-S3-WROOM-1-Hx     | QIO 80MHz | - | High temperature version
-ESP32-S3-WROOM-1-NxR2   | QIO 80MHz | QSPI PSRAM |
-ESP32-S3-WROOM-1-NxR8   | QIO 80MHz | QSPI PSRAM | pins IO35, IO36, and IO37 are connected to the Octal SPI PSRAM and are not available
-for other uses.
-ESP32-S3-WROOM-1-NxR16V | QIO 80MHz | OPI PSRAM | 1.8V SPI, pins IO35, IO36, and IO37 are connected to the Octal SPI PSRAM and are not available
-for other uses.
-ESP32-S3-WROOM-2-NxR8V  | OPI 80MHz | OPI PSRAM | 120MHz SPI, 1.8V SPI, pins IO35, IO36, and IO37 are connected to the Octal SPI PSRAM and are not available
-for other uses.
+ESP32-S3-WROOM-1-Nx     | Quad 80MHz | - | x = 4/8/16
+ESP32-S3-WROOM-1-Hx     | Quad 80MHz | - | High temperature version
+ESP32-S3-WROOM-1-NxR2   | Quad 80MHz | Quad PSRAM |
+ESP32-S3-WROOM-1-NxR8   | Quad 80MHz | Octal PSRAM | pins IO35, IO36, and IO37 are connected to the Octal SPI PSRAM and are not available for other uses.
+ESP32-S3-WROOM-1-NxR16V | Quad 80MHz | Octal PSRAM | 1.8V SPI, pins IO35, IO36, and IO37 are connected to the Octal SPI PSRAM and are not available for other uses.
+ESP32-S3-WROOM-2-NxR8V  | Octal 80MHz | Octal PSRAM | 120MHz SPI, 1.8V SPI, pins IO35, IO36, and IO37 are connected to the Octal SPI PSRAM and are not available for other uses.
 
 #### Setup Serial Port
 
