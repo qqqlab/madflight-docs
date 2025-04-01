@@ -4,8 +4,6 @@
 
 _madflight_ for ESP32-S3/ESP32 requires [Arduino-ESP32 v3.x.x](https://github.com/espressif/arduino-esp32)
 
-_madflight_ v1.1.2 and earlier requires Arduino-ESP32 v2.x.x
-
 Start the Arduino IDE and select menu Tools->Board Manager to install this software.
 
 ## PlatformIO Setup
@@ -28,11 +26,27 @@ Adapt the platformio.ini file as follows:
 
 lib_extra_dirs = /ENTER/MADFLIGHT/FOLDER/HERE
 
-[env:madflight_esp32]
+
+[env:esp32]
 platform = espressif32
-board = esp32dev
 framework = arduino
+board = esp32dev
+
+
+[env:esp32s3]
+platform = espressif32
+framework = arduino
+board = lolin_s3_mini
+monitor_speed = 115200
+build_flags =
+-DCONFIG_IDF_TARGET_ESP32S3
+-DARDUINO_USB_MODE=1
+-DARDUINO_USB_CDC_ON_BOOT=1
+
 ```
+
+Note: Espressiv stopped Arduino framework support for PlatformIO. Arduino 2.x is the last supported framework version, but _madflight_ should still compile with this. Please post any updates on this topic [here](https://github.com/qqqlab/madflight/discussions), or create an ESP-IDF version of _madflight_!
+
 
 ## Pinout ESP32-S3-DevKitC-1
 
