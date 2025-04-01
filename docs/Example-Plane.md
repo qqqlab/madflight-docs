@@ -48,8 +48,15 @@ control surfaces react quickly, but don't oscillate, on changes in attitude.
 
 ## Arming / Disarming
 
-- Arming: Set throttle low, then flip arm switch from DISARMED to ARMED.
-- Disarming: Flip arm switch from ARMED to DISARMED, at any throttle position. "Kill switch".
+With a dedicated switch channel:
+
+- Arming: Set throttle low, then flip arm switch from DISARMED to ARMED
+- Disarming: Flip arm switch from ARMED to DISARMED, at any throttle position. "Kill switch"
+
+With stick commands (when parameter cfg.rcl_arm_ch == 0):
+
+- Arming: throttle pulled, yaw right, pitch pulled, roll left, and keep sticks for 2 seconds
+- Disarming: throttle pulled, yaw left, pitch pulled, roll right, and keep sticks for 2 seconds
 
 ## LED Status
 

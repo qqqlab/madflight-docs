@@ -1,6 +1,6 @@
 # Getting Started
 
-For additional help see [_madflight Discussions](https://github.com/qqqlab/madflight/discussions)
+For additional help see [madflight Discussions](https://github.com/qqqlab/madflight/discussions)
 
 1. Connect the required hardware (see below) to your controller board: 
     - See [RP2350/RP2040 pinout and instructions](Board-RP2040.md)
