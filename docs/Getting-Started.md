@@ -6,8 +6,8 @@ For additional help see [madflight Discussions](https://github.com/qqqlab/madfli
     - See [RP2350/RP2040 pinout and instructions](Board-RP2040.md)
     - -or- [ESP32-S3/ESP32 pinout and instructions](Board-ESP32.md)
     - -or- [STM32 pinout and instructions](Board-STM32.md)
-    - Connect your IMU (gyro/acceleration) sensor as shown [below](#connecting-the-imu-sensor).
-    - Connect your radio receiver according to the configured pins.
+    - Connect your IMU (gyro/acceleration) sensor as shown below
+    - Connect your radio receiver according to the configured pins
 2. Install the madflight library in Arduino IDE. (Menu *Tools->Manage Libraries*, then search for _madflight_)
 3. Open *Examples for custom libraries->madflight->Quadcopter.ino* in the Arduino IDE.
 4. Edit the HARDWARE CONFIG section in madflight_config.h to enable the connected peripherals.
@@ -39,7 +39,7 @@ For additional help see [madflight Discussions](https://github.com/qqqlab/madfli
 - Radar/Lidar/Ultrasonic distance sensor
 - [Optical Flow Sensor](https://github.com/qqqlab/ESP32-Optical-Flow) (I2C)
 
-## Connecting SPI IMU Sensor 
+## Connecting SPI IMU Sensor
 
 _madflight_ requires the interrupt pin _pin_imu_int_ connected.
 
