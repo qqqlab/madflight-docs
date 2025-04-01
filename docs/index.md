@@ -72,7 +72,7 @@ By default madflight has these safety features enabled:
     - `bar` Barometer sensor
     - `bat` Battery monitor
     - `bbx` Black Box data logger
-    - `cfg` Read and save configuration to flash
+    - `cfg` Read and save configuration to eeprom (flash)
     - `cli` Command Line Interface for debugging, configuration and calibration
     - `gps` GPS receiver
     - `hal` Hardware Abstraction Layer, specific code for STM32, RP2040 and ESP32
@@ -86,8 +86,6 @@ By default madflight has these safety features enabled:
 - The module files are usually subdivided in gizmos, which can be selected in _madflight_ config. For example: `imu_gizmo MPU6500`
 
 ## Connecting SPI IMU Sensor 
-
-SPI is highly recommended over I2C
 
 _madflight_ requires the interrupt pin _pin_imu_int_ connected.
 
@@ -105,7 +103,7 @@ _X_ is the SPI bus number, set with _imu_spi_bus_
 
 ## Connecting I2C IMU Sensor
 
-SPI is highly recommended over I2C
+Only use I2C if you really have to, better use SPI: no hanging busses - no crashes of your craft because of that.
 
 _madflight_ requires the interrupt pin _pin_imu_int_ connected.
 
@@ -129,8 +127,7 @@ _Y_ is the I2C bus number, set with _imu_i2c_bus_
 - New libs for IMU sensors
 - Changed arming logic
 - Loop rate set to 1kHz to match IMU sensor rate
-- Interrupt driven IMU operation by default, but setup/loop still possible
-
+- Interrupt driven IMU operation
 
 ## Flight Controllers on Github
 

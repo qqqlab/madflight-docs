@@ -1,4 +1,3 @@
-
 # ESP32-S3 / ESP32 Boards
 
 ## Arduino IDE Setup
@@ -89,55 +88,53 @@ ESP32-S3-WROOM-1-NxR8   | Quad 80MHz | Octal PSRAM | pins IO35, IO36, and IO37 a
 ESP32-S3-WROOM-1-NxR16V | Quad 80MHz | Octal PSRAM | 1.8V SPI, pins IO35, IO36, and IO37 are connected to the Octal SPI PSRAM and are not available for other uses.
 ESP32-S3-WROOM-2-NxR8V  | Octal 80MHz | Octal PSRAM | 120MHz SPI, 1.8V SPI, pins IO35, IO36, and IO37 are connected to the Octal SPI PSRAM and are not available for other uses.
 
-#### Setup Serial Port
+#### Setup Serial Port / Programming Interface
 
-Settings for 3 serial ports (Serial, Serial1 and Serial2), Serial connected to "USB-UART", Serial0 not connected (gives error 'Serial0' was not declared).
-
- - USB CDC On Boot: Disabled 
-
-Settings for 4 serial ports (Serial, Serial0, Serial1 and Serial2), Serial connected to "USB-OTG", Serial0 connected to "USB-UART"
-
- - USB CDC On Boot: Enabled
- - USB DFU On Boot: Disabled
- - USB Mode: USB-OTG (TinyUSB)
-
-#### Setup Programming Interface
-
-Settings for programming via "USB-UART" usb port (programming works without pressing boot/reset buttons)
-
+- USB CDC On Boot: Disabled 
 - Upload Mode: UART0 / Hardware CDC
 
-Settings for programming via "USB-OTG" usb port (For programming: press boot, press+release reset, release boot, then upload; For serial monitor: press+release reset, then open serial monitor)
+This creates 3 serial ports (Serial, Serial1 and Serial2), where Serial connected to "USB-UART", and Serial0 not connected (gives error 'Serial0' was not declared).
 
+Programming is via the "USB-UART" usb port, and programming works without pressing boot/reset buttons.
+
+#### Alternate Setup Serial Port / Programming Interface
+
+- USB CDC On Boot: Enabled
+- USB DFU On Boot: Disabled
+- USB Mode: USB-OTG (TinyUSB)
 - Upload Mode: USB-OTG CDC (TinyUSB)
+
+This creates 4 serial ports (Serial, Serial0, Serial1 and Serial2), Serial connected to "USB-OTG", Serial0 connected to "USB-UART"
+
+Programming is via the "USB-OTG" usb port, but you need to press the boot/reset buttons (For programming: press boot, press+release reset, release boot, then upload; For serial monitor: press+release reset, then open serial monitor)
 
 ## Pinout ESP32 DevKitC
 
-This is the default pinout for ESP32. It is optimized for the Espressiv ESP32 DevKitC (38 pin) board. This pinout is defined in madflight_board__ESP32.h, but can be modified with `#define HW_PIN_XXX` in your program.
+This is the default pinout for ESP32. It is optimized for the Espressiv ESP32 DevKitC (38 pin) board. This pinout is defined in madflight_board__ESP32.h, but can be modified with _madflight_ _pin_xxx_ configuration settings in your program.
 
 Many clones of this board exist, which might have different ESP32 modules and/or different on-board hardware (LED, RGB LED, SDCARD, etc.) Set Arduino IDE Board settings and _madflight_ pin_xxx configurations accordingly.
 
 | Function | GPIO | Board | GPIO | Function |
 | --: | :-- | :--: | --: | :-- |
-3V3 out      | 3V3 | Antenna side            |  GND | GND
-reset button | EN |                            | 23 | _pin_i2c0_sda_ (connect to sda pins of barometer, magnetometer, etc.)
-_pin_spi0_miso_ (connect to SPI gyro miso) | VP 36 input only |              | 22 | _pin_i2c0_scl_ (connect to scl pins of barometer, magnetometer, etc.)
-_pin_imu_int_ (connect to SPI/I2C gyro interrupt out) | VN 39 input only |    | 1 TX | Serial USB UART port (used for programming / CLI)
-_pin_bat_v_ (connect to battery voltage divider) | 34 input only |               | 3 RX | Serial USB UART port (used for programming / CLI)
-_pin_ser0_rx_ (connect to radio tx) | 35 input only |                 | 21 | _pin_spi0_mosi_ (connect to SPI gyro mosi)
-_pin_ser0_tx_ (connect to radio rx) | 32 |                           | GND | GND
-_pin_out0_ (connect to motor/servo1) | 33 |                            | 19 | _pin_spi0_sclk_ (connect to SPI gyro sclk) 
-_pin_out1_ (connect to motor/servo2) | 25 |                            | 18 | _pin_imu_cs_ (connect to SPI gyro cs)
-_pin_out2_ (connect to motor/servo3) | 26 |                       | strap 5 | _pin_ser1_tx_ (connect to gps rx)
-_pin_out3_ (connect to motor/servo4) | 27 |                            | 17 | _pin_ser1_rx_ (connect to gps tx)
-_pin_out4_ (connect to motor/servo5) | 14 |                            | 16 | _pin_i2c1_scl_ (connect to I2C gyro scl)
-_pin_out5_ (connect to motor/servo6) | 12 |                             | 4 | _pin_i2c1_sda_ (connect to I2C gyro sda)
-GND | GND |                       | boot 0 | free for future use
-free for future use | 13 |                       | strap 2 | _pin_led_ (LED not present on all boards)
-do not use | D2 9 flash |              | strap 15 | free for future use
-do not use | D3 10 flash |           | flash 8 D1 | do not use
-do not use | CMD 11 flash |          | flash 7 D0 | do not use
-5V input (*) | 5V | USB connector     | flash 6 CLK | do not use
+3V3 out                                    | 3V3 |         Antenna side         | GND | GND
+reset button                               | EN |                                | 23 | _pin_i2c0_sda_ (connect to sda pins of barometer, magnetometer, etc.)
+_pin_spi0_miso_ (connect to SPI gyro miso) | 36 (VP) input only |                | 22 | _pin_i2c0_scl_ (connect to scl pins of barometer, magnetometer, etc.)
+_pin_imu_int_ (connect to SPI/I2C gyro interrupt) | 39 (VN) input only | | (TX) 1 | Serial USB UART port (used for programming / CLI)
+_pin_bat_v_ (connect to battery voltage divider) | 34 input only |           | (RX) 3 | Serial USB UART port (used for programming / CLI)
+_pin_ser0_rx_ (connect to radio tx)        | 35 input only |                     | 21 | _pin_spi0_mosi_ (connect to SPI gyro mosi)
+_pin_ser0_tx_ (connect to radio rx)        | 32 |                               | GND | GND
+_pin_out0_ (connect to motor/servo1)       | 33 |                                | 19 | _pin_spi0_sclk_ (connect to SPI gyro sclk) 
+_pin_out1_ (connect to motor/servo2)       | 25 |                                | 18 | _pin_imu_cs_ (connect to SPI gyro cs)
+_pin_out2_ (connect to motor/servo3)       | 26 |                           | strap 5 | _pin_ser1_tx_ (connect to gps rx)
+_pin_out3_ (connect to motor/servo4)       | 27 |                                | 17 | _pin_ser1_rx_ (connect to gps tx)
+_pin_out4_ (connect to motor/servo5)       | 14 |                                | 16 | _pin_i2c1_scl_ (connect to I2C gyro scl)
+_pin_out5_ (connect to motor/servo6)       | 12 |                           | strap 4 | _pin_i2c1_sda_ (connect to I2C gyro sda)
+GND                                        | GND |                           | boot 0 | free for future use
+free for future use                        | 13 |                           | strap 2 | _pin_led_ (LED not present on all boards)
+do not use                                 | 9 (D2) flash |                | strap 15 | free for future use
+do not use                                 | 10 (D3) flash |           | flash (D1) 8 | do not use
+do not use                                 | 11 (CMD) flash |          | flash (D0) 7 | do not use
+5V input (*)                               | 5V |     USB connector   | flash (CLK) 6 | do not use
 
 (*) 5V input via diode from BEC. Without a diode take care not connect USB and the battery at the same time!
 
@@ -157,15 +154,14 @@ ESP32 has 6 strapping pins:
 
 ESP32-S3 and ESP32 are very similar chips. The ESP32-S3 is more recent: it has more pins, USB-OTG (3 UARTs plus 1 USB-OTG CDC UART), improved single block RAM structure. The ESP32 is better if you need a lot of PWM channels, it has 16 PWM (LEDC) outputs, versus 8 on ESP32-S3.
 
-#### Dual Core / FPU
-
-ESP32 and ESP32-S3 both have dual core CPU, but single core FPU. ESP-IDF implementation limits [float usage](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/freertos_idf.html#floating-point-usage) to a single core, and float can not be used in interrupts. FreeRTOS is always enabled and a watchdog limits interrupt execution time.
+ESP32 and ESP32-S3 both have dual core CPU, but single core FPU. ESP-IDF implementation limits [float usage](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/freertos_idf.html#floating-point-usage) to a single core, and float can not be used in interrupts. 
 
 madflight uses float and is therefor limited to single core operation. The IMU loop runs as a high priorty task, triggered by the IMU interrupt.
 
-## Available madflight Modules
+FreeRTOS is always enabled and a watchdog limits interrupt execution time.
 
-All _madflight_ modules are available, exept:
+## madflight Limitiations
 
-- BBX: for ESP32 SDCARD with MMC interface (ESP32-S3 has MMC)
-- CLI: `ps` (because FreeRTOS TRACE not enabled in arduino-ESP32, and enabling it is not trivial)
+- BBX: ESP32 SDCARD only with SPI interface (ESP32-S3 has MMC and SPI)
+- CLI: no `ps` (because FreeRTOS TRACE not enabled in arduino-ESP32, and enabling it is not trivial)
+- I2C: Issues with timeouts in the ESP-IDF I2C drivers, supposedly fixed but not confirmed

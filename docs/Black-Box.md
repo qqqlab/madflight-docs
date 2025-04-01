@@ -23,6 +23,12 @@ Further reading:
  - [ArduPilot Log Message Reference](https://ardupilot.org/copter/docs/logmessages.html)
  - [ArduPilot Log General Info](https://ardupilot.org/dev/docs/common-logs.html)
 
+## Hardware
+
+You'll need an SDCARD plus holder or you can solder a MicroSD to SD adapter as holder, see:
+
+[Connect a microSD card using a microSD to SD adapter](https://alexlubbock.com/micro-sd-adapter-esp8266-esp32)
+
 ## Adding New Log Messages
 
 Add a new function to your code, like this:
