@@ -96,7 +96,8 @@ INA228 | $5 | 20-bit ADC, 0-85V, 1LSB = 0.2mV; ±16A with 10m&ohm; shunt, 1LSB =
 
 | Part | Module Price | Manufacturer | Max Range | Resolution | Sample Rate | Notes |
 |-|:-:|-|-|-|-|-|
-LD2411S|$4|Hi-link|6m|1cm (accuracy 5%)|10Hz|24G Distance detection
-LD2413|$11|Hi-link|10m|1mm (accuracy 3mm)|20Hz|24G Liquid level
-LD2451|$7|Hi-link|100m|1m||24G Vehicle detection, tracks relative speed, angle and distance of multiple targets
-RD-03E|$3|Ai-tinker|6m|1cm (accuracy 5%)||24G Ranging Firmware (also exist with Gesture Firmware)
+LD2411S|$4|Hi-link|6m|1cm (accuracy 5%)|10Hz|24G Radar, Distance detection - Tested stationary indoor approx 1m above floor: gives very erratic values and appears not to react on change in height... Not useful for _madflight_...
+LD2413|$11|Hi-link|10m|1mm (accuracy 3mm)|20Hz|24G Radar, Liquid level - Tested stationary indoor approx 1m above floor: works but about 2 second delay reporting change in height... Not useful for _madflight_...
+LD2451|$7|Hi-link|100m|1m||24G Radar, Vehicle detection, tracks relative speed, angle and distance of multiple targets
+RD-03E|$3|Ai-tinker|6m|1cm (accuracy 5%)||24G Radar, Ranging Firmware (also exist with Gesture Firmware)
+SR04M-2|$3|no-name|6m||20Hz|Waterproof Ultrasonic, pwm output. - Tested stationary indoor approx 1m above floor: works but sensor axis needs to be perpendicular (approx. +/-15 degrees) to floor to give correct readings.
