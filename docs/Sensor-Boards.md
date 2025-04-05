@@ -58,6 +58,8 @@ RM3100    |$25 | 500 Hz| 13nT @ 150 Hz | no ADC | ±800µT | Uses coils, not hal
 
 ## Barometer
 
+When used as altimeter: approx 12 Pa (0.12 mbar) per meter at sea level.
+
 | Part    | Breakout Board? | Relative Precision | Resolution | Max Measurement Rate | RMS Noise | Notes |
 |-|:-:|-|-|-|-|-|
 DPS310    | $3 | 6Pa 50cm | 0.06Pa | 128Hz | 0.35Pa @35Hz | Used in current commercial FC
@@ -66,12 +68,13 @@ BMP180    | $2
 BMP280    | $2 | 12Pa 100cm | 1.3Pa @125Hz | 157Hz | 2.5Pa 20cm @125Hz | Used in current commercial FC
 BMP388    | $2 | 8Pa 66cm | | 200Hz
 BMP390    | $3 | 3Pa 25cm | | 200Hz | 0.9Pa @25Hz, 5Pa 36cm @100Hz
-MS5611    | $4 |  | 1.2Pa @120Hz | 1000Hz
+MS5611    | $4 | "high resolution 10cm" | 0.014Pa raw 24 bit ADC value | 120-2000Hz OSR=4096-256 | | 5x3x1 mm, 8 pin spacing 1.25mm
+MS5607    | | "high resolution 20cm" | 0.014Pa raw 24 bit ADC value | 120-2000Hz OSR=4096-256 | | 5x3x1 mm, 8 pin spacing 1.25mm
 MPL3115A2 | $5 |  | 0.25Pa | 166Hz | 19Pa @166Hz, 1.5Pa @2Hz
 LPS22HB   | $6 | 10Pa 80cm | 0.025Pa | 75Hz
 LPS22DF   | $14 | 1Pa 8cm | 0.025Pa | 200Hz
 ILPS22QS  | $14 | 1.5Pa 12cm | 0.025Pa | 200Hz
-
+HP203B    | | "Altitude Resolution down to 0.1 meter", "50Pa pressure relative accuracy" | 0.01Pa 20 bit value (24bit ADC) | 8-240Hz OSR=4096-128| | 3.8×3.6×1.2 mm, 8 pin spacing 0.9mm
 
 ## Multi Sensor Modules
 
