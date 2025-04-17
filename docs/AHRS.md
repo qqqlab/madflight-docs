@@ -9,21 +9,21 @@ The filter has two parameters: KP (proportional filter gain) and KI (integral fi
 
 The Mahony filter provides accurate and stable estimates even under vibration and magnetic disturbances. No wonder that it is used in many flight controller firmwares.
 
-`#define AHRS_USE AHRS_USE_MAHONY` or `#define AHRS_USE AHRS_USE_MAHONY_BF`
+`ahr_gizmo MAHONY` or `ahr_gizmo MAHONY_BF`
 
-madflight offers the standard filter implementation AHRS_USE_MAHONY plus a Betaflight (AHRS_USE_MAHONY_BF) flavored filter version, which only uses accelerometer data in rest.
+madflight offers the standard filter implementation MAHONY plus a Betaflight (MAHONY_BF) flavored filter version, which only uses accelerometer data in rest.
 
 ### Madgwick
 
 This filter is controlled by a single parameter: beta, the algorithm gain.
 
-`#define AHRS_USE AHRS_USE_MADGWICK`
+`ahr_gizmo MADGWICK`
 
 ### VQF
 
 The new kid on the block, see [here](https://vqf.readthedocs.io). This is a more complex filter, with more parameters and longer computation times, but should give more accurate estimations.
 
-`#define AHRS_USE AHRS_USE_VQF`
+`ahr_gizmo VQF`
 
 Implementation in madflight is experimental. 
 

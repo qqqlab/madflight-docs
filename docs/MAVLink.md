@@ -6,7 +6,7 @@ madflight includes the MAVLink protocol.
 
 - Flash ELRS version 3.5.3 or later to your transmitter and receiver
 - Use the ExpressLRS lua script or webinterface to set the link to MAVLink.
-- In madflight set `#define RCIN_USE RCIN_USE_MAVLINK`
+- In madflight set `rcl_gizmo MAVLINK`
 
 Optional: Telemetry Script
 

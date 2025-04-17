@@ -14,14 +14,15 @@
 # update madflight-docs version in this file
 #==============================================================
 
-site_name: madflight v2.0.0
+site_name: madflight v2.0.1
 
 nav:
   - Intro: index.md
-  - Getting Started: Getting-Started.md
-  - ESP32-S3 / ESP32: Board-ESP32.md
-  - RP2350 / RP2040: Board-RP2040.md
-  - STM32: Board-STM32.md
+  - Getting Started:
+      - Getting Started: Getting-Started.md
+      - ESP32-S3 / ESP32: Board-ESP32.md
+      - RP2350 / RP2040: Board-RP2040.md
+      - STM32: Board-STM32.md
   - Examples:
       - Quadcopter: Example-Quadcopter.md
       - Quadcopter Advanced: Example-Quadcopter-Advanced.md

@@ -11,13 +11,12 @@ For additional help see [madflight Discussions](https://github.com/qqqlab/madfli
 2. Install the madflight library in Arduino IDE. (Menu *Tools->Manage Libraries*, then search for _madflight_)
 3. Open *Examples for custom libraries->madflight->Quadcopter.ino* in the Arduino IDE.
 4. Edit the HARDWARE CONFIG section in madflight_config.h to enable the connected peripherals.
-5. If you're not using the default pinout then setup your board pinout in the CUSTOM PINS CONFIG section.
-6. Compile Quadcopter.ino and upload it to your board. Connect the Serial Monitor at 115200 baud and check the messages. Type `help` to see the available CLI commands.
-7. Type `calradio` and follow the prompts to setup your RC radio receiver.
-8. IMPORTANT: Use CLI `calimu` and `calmag` to calibate the sensors.
-9. Use CLI commands `pimu`, `pahr`, `prcl`, `pmot`, etc. and check that IMU sensor, AHRS and RC Receiver are working correctly. 
-10. Connect motors (no props) and battery and check that motors are spinning correctly.
-11. Mount props, go to an wide open space, and FLY!
+5. Compile Quadcopter.ino and upload it to your board. Connect the Serial Monitor at 115200 baud and check the messages. Type `help` to see the available CLI commands.
+6. Type `calradio` and follow the prompts to setup your RC radio receiver.
+7. IMPORTANT: Use CLI `calimu` and `calmag` to calibate the sensors.
+8. Use CLI commands `pimu`, `pahr`, `prcl`, `pmot`, etc. and check that IMU sensor, AHRS and RC Receiver are working correctly. 
+9. Connect motors (no props) and battery and check that motors are spinning correctly.
+10. Mount props, go to an wide open space, and FLY!
 
 ## Required Hardware
 
@@ -25,7 +24,7 @@ For additional help see [madflight Discussions](https://github.com/qqqlab/madfli
     - RP2350/RP2040 (e.g. Raspberry Pi Pico2)
     - ESP32-S3/ESP32 (e.g. Espressiv ESP32-S3 DevKitC)
     - STM32 (e.g. Black Pill or a commercial flight controller)
-- [SPI IMU sensor](Sensor-Boards.md) (BMI270, MPU9250, MPU6500, MPU6000, ICM45686), if not available then use an I2C IMU sensor (MPU6050, MPU9150) 
+- [SPI IMU sensor](Sensor-Boards.md) (BMI270, MPU9250, MPU6500, MPU6000, ICM-45686, ICM-42688-P), if not available then use an I2C IMU sensor (MPU6050, MPU9150) 
 - RC Receiver: MAVLink, ELRS, CRSF, SBUS, DMSX, or PPM
 - BEC or DC-DC converter to power your board from a battery
 - ESC (OneShot125 or 50-490Hz PWM) and/or servos (50-490Hz PWM)
