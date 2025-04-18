@@ -2,8 +2,9 @@
 
 For additional help see [madflight Discussions](https://github.com/qqqlab/madflight/discussions)
 
-1. Connect the required hardware (see below) to your controller board: 
-    - See [RP2350/RP2040 pinout and instructions](Board-RP2040.md)
+1. Connect the required hardware (see below) to your controller board, see: 
+    - [madflight FC1 instructions](Board-FC1.md)
+    - -or- [RP2350/RP2040 pinout and instructions](Board-RP2040.md)
     - -or- [ESP32-S3/ESP32 pinout and instructions](Board-ESP32.md)
     - -or- [STM32 pinout and instructions](Board-STM32.md)
     - Connect your IMU (gyro/acceleration) sensor as shown below
