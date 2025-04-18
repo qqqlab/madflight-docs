@@ -1,6 +1,6 @@
 # madflight FC1 - RP2350B Flight Controller
 
-![](img/madflight-FC1_1.jpg)
+![](img/madflight-FC1-1.jpg)![](img/madflight-FC1-2.jpg)
 
 [Schematic madflight FC1](/img/madflight-FC1.pdf)
 
@@ -71,7 +71,7 @@ This is the default FC1 configuration, the external pins can be reconfigured.
 Use `#include <madflight_FC1.h>` instead of `#include <madflight_board.h>` to include this pinout. 
 
 | GPIO | External Pin Function | Internal Function |
-|:-:|:-:|:-:|
+|:-:|:-|:-|
  0 | SER0_TX (connect to radio receiver RX) | 
  1 | SER0_RX (connect to radio receiver TX) | 
  2 | I2C1_SDA (connect to GPS SDA) | 
