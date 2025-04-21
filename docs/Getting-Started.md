@@ -111,7 +111,7 @@ GND |<-->| GND
 
 `imu_align` sets the sensor orientation. The label is yaw / roll (in that order) needed to rotate the sensor from it's normal position to it's mounted position.
 
-IMPORTANT: Use CLI `pahr` to check that roll-right gives positive ahr.roll, pitch-up gives positive ahr.pitch, and yaw-right gives positive ahr.yaw. If not, adjust the `imu_align` parameter and re-upload and try again.
+IMPORTANT: Check that `imu_align` is correct, your craft will immediately crash otherwise. Use CLI `pahr` to check that rolling right side down gives positive ahr.roll, pitching nose up gives positive ahr.pitch, and yawing right (turning clockwise from as seen from above) gives positive ahr.yaw. Using `pacc` you should get [ax,ay,az] = [1,0,0] when nose down, [0,1,0] when right side down, and [0,0,1] when level. If not, adjust the `imu_align` parameter, re-upload and try again.
 
 ## Connect Radio Receiver
 
