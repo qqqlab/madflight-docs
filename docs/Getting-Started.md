@@ -137,3 +137,42 @@ rcl_num_ch     8      // number of channels
 rcl_deadband   10     // center stick deadband in [us], probably around 10 will work fine
 pin_rcl_ppm    <gpio> // select the pin here
 ```
+
+### Configure Radio Channels
+
+Either use CLI `calradio`, or modify the following parameters, or set your radio transmitter to match the default parameters:
+
+```
+rcl_thr_ch        1 // 1-based channel number for throttle
+rcl_thr_pull   1100 // pwm for stick pulled toward you, i.e. idle throttle
+rcl_thr_mid    1500
+rcl_thr_push   1900 // pwm for stick pushed away, i.e. full throttle
+
+rcl_rol_ch        2 // roll channel
+rcl_rol_left   1100
+rcl_rol_mid    1500
+rcl_rol_right  1900
+
+rcl_pit_ch        3 // pitch channel
+rcl_pit_pull   1100 // pwm for stick pulled toward you, i.e. pitch-up
+rcl_pit_mid    1500
+rcl_pit_push   1900 // pwm for stick pushed away, i.e. pitch-down
+
+rcl_yaw_ch        4 // yaw channel
+rcl_yaw_left   1100
+rcl_yaw_mid    1500
+rcl_yaw_right  1900
+
+rcl_arm_ch        5 // arm switch channel, set to 0 to use stick commands for arming
+rcl_arm_min    1600 // armed pwm range min
+rcl_arm_max    2500 // armed pwm range max
+
+// flightmode 6 position switch - Ardupilot switch pwm: 1165,1295,1425,1555,1685,1815 (spacing 130)
+// EdgeTx 3-pos SA + 2-pos SB setup:
+//   Source:SA Weight:52 Offset:0 + Source:SB Weight:13 Offset:-1 Multiplex: add
+//   -OR- Source:SA Weight:26 Offset:-40 Switch:SBdown + Source:SA Weight:26 Offset:36 Switch:SBup Multiplex:Replace
+
+rcl_flt_ch        6
+rcl_flt_min    1165 // 6-pos switch lowest pwm (flight mode 0)
+rcl_flt_max    1815 // 6-pos switch lowest pwm (flight mode 5)
+```
