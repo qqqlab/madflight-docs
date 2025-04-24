@@ -82,7 +82,7 @@ Only use I2C if you really have to, better use SPI: no hanging busses - no crash
 
 Set the following in madflight_config:
 ```
-imu_gizmo      ICM42688 // select your sensor type here
+imu_gizmo      MPU6050 // select your sensor type here
 imu_bus_type   I2C
 imu_align      CW0 // options: CW0, CW90, CW180, CW270, CW0FLIP, CW90FLIP, CW180FLIP, CW270FLIP
 
@@ -134,7 +134,7 @@ Set the following in madflight_config:
 ```
 rcl_gizmo      PPM 
 rcl_num_ch     8      // number of channels
-rcl_deadband   10     // center stick deadband in [us], probably around 10 will work fine
+rcl_deadband   10     // center stick deadband in [us], a value around 10 will probably work fine
 pin_rcl_ppm    <gpio> // select the pin here
 ```
 
