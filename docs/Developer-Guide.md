@@ -6,9 +6,9 @@ _madflight_ targets ESP32, RP2 and STM32 platforms with the Arduino framework. _
 
 ## Design Goals
 
-1) Keep the code readable
-2) High performance
-3) Portability
+1. Keep the code readable
+2. High performance
+3. Portability
 
 _madflight_ is split up in modules. Each module lives in a separate subdirectory, for example `gps`. 
 
@@ -36,13 +36,13 @@ In _madflight_ gizmo is the underlying device of a module, for example a BMP390 
 
 ## Threads / Tasks / Interrupts
 
-_madflight_ uses the following threads / tasks / interrupts:
+_madflight_ uses FreeRTOS, and uses the following threads / tasks / interrupts:
 
 |Priority|Description|
 |-|-|
 highest | IMU interrupt, which wakes up imu_loop() task
 high| imu_loop() task
-low| loop() and blackbox tasks
+low| loop() task and blackbox task
 lowest| idle task
 
 The [BB] blackbox SDCARD logging module is thread-safe, and runs as a separate task so that slow SDCARD operations do not block other tasks.
