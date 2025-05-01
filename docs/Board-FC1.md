@@ -8,22 +8,22 @@
 
 #### madflight FC1
 
-MCU: RP2350B with 48 GPIO, 32 GPIO accessible via pinheader
-Gyro/Acc: ICM-42688-P
-Magnetometer: QMC6309
-Barometer: HP203B
-Batery Monitor: INA226
-Black Box: MicroSD (1-bit SPI or 4-bit SDIO)
-PSRAM: Optional (empty SO-8 socket on back of board)
-Dimensions: 57.6 x 42 mm
-Weight: 7.5 gr (without pins and DC-DC)
+- MCU: RP2350B with 48 GPIO, 32 GPIO accessible via pinheader
+- Gyro/Acc: ICM-42688-P
+- Magnetometer: QMC6309
+- Barometer: HP203B
+- Batery Monitor: INA226
+- Black Box: MicroSD (1-bit SPI or 4-bit SDIO)
+- PSRAM: Optional (empty SO-8 socket on back of board)
+- Dimensions: 57.6 x 42 mm
+- Weight: 7.5 gr (without pins, DC-DC)
 
 #### Optional DC-DC Converter
 
-Output: 5V 2A continous / 3A peak
-input: 6.5~20V
-Dimensions: 20 x 10 x 5 mm
-Weight: 1.8 gr
+- Output: 5V 2A continous / 3A peak
+- input: 6.5~20V
+- Dimensions: 20 x 10 x 5 mm
+- Weight: 1.8 gr
 
 ## Arduino IDE Setup
 
