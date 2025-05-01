@@ -1,6 +1,6 @@
 # madflight FC1 - RP2350B Flight Controller
 
-![](img/madflight-FC1-1.jpg){: style="width:52.8%"} ![](img/madflight-FC1-2.jpg){: style="width:42.1%"}
+![](img/madflight-FC1-1.png){: style="width:52.8%"} ![](img/madflight-FC1-2.png){: style="width:42.1%"}
 
 [Schematic](/img/madflight-FC1.pdf)
 
