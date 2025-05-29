@@ -3,10 +3,10 @@
 For additional help see [madflight Discussions](https://github.com/qqqlab/madflight/discussions)
 
 1. Get the required hardware (see below), and have a look at the hardware specific instructions: 
-    - [madflight FC1 instructions](Board-FC1.md)
+    - [ESP32-S3/ESP32 pinout and instructions](Board-ESP32.md)
     - -or- [RP2350/RP2040 pinout and instructions](Board-RP2040.md)
-    - -or- [ESP32-S3/ESP32 pinout and instructions](Board-ESP32.md)
     - -or- [STM32 pinout and instructions](Board-STM32.md)
+    - -or- [madflight FC1 instructions](Board-FC1.md)
 2. Install the madflight library in Arduino IDE. (Menu *Tools->Manage Libraries*, then search for _madflight_)
 3. Open *Examples for custom libraries->madflight->Quadcopter.ino* in the Arduino IDE.
 4. Edit the HARDWARE CONFIG section in madflight_config.h to enable the peripherals:
