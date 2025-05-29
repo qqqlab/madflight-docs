@@ -6,7 +6,9 @@ Flight tested example programs for quadcopter and airplane are included. The exa
 
 If you like _madflight_, please give it a [&star; star on GitHub](https://github.com/qqqlab/madflight)
 
-[Getting Started](Getting-Started.md)
+## Getting Started
+
+Click [here](Getting-Started.md)
 
 <img src="img/madflight RP2040 flight controller.jpeg" title="madflight RP2040 flight controller" width="25%" /> <img src="img/madflight drone.jpeg" title="madflight drone" width="19.6%" /> <img src="img/madflight ESP32 flight controller.jpeg" title="madflight ESP32 flight controller" width="19.1%" />
 
