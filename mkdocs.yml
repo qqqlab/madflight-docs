@@ -20,10 +20,10 @@ nav:
   - Intro: index.md
   - Getting Started:
       - Getting Started: Getting-Started.md
-      - madflight FC1: Board-FC1.md
       - ESP32-S3 / ESP32: Board-ESP32.md
       - RP2350 / RP2040: Board-RP2040.md
-      - STM32: Board-STM32.md
+      - STM32: Board-STM32.md     
+      - madflight FC1: Board-FC1.md
   - Examples:
       - Quadcopter: Example-Quadcopter.md
       - Quadcopter Advanced: Example-Quadcopter-Advanced.md
