@@ -14,7 +14,7 @@
 # update madflight-docs version in this file
 #==============================================================
 
-site_name: madflight v2.0.1
+site_name: madflight v2.0.2
 
 nav:
   - Intro: index.md
@@ -35,6 +35,7 @@ nav:
       - Controller Boards: Controller-Boards.md
       - Sensor Boards: Sensor-Boards.md
       - AHRS: AHRS.md
+      - Lua: Lua.md
       - GPS Configuration: GPS-Configuration.md
       - GPS Messages: GPS-Messages.md
       - Digital Low-pass Filter: Digital-Low-pass-Filter.md
