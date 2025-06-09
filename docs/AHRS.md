@@ -1,7 +1,21 @@
 # AHRS
 (Attitude and Heading Reference System)
 
-The following gyro/accelerometer/magnetometer sensor fusion filters are implemented in madflight:
+The AHRS computes the orientation of the drone. The orientation is internally represented by a [quaternion](https://en.wikipedia.org/wiki/Quaternion), and usually as [Euler angles](https://en.wikipedia.org/wiki/Euler_angles) (roll, pitch, yaw) to humans. The local reference frame used by _madflight_ is North-East-Down (NED), with as origin the [center of gravity](https://en.wikipedia.org/wiki/Center_of_gravity_of_an_aircraft) of the drone:
+
+ - X-axis points forward (North)
+ - Y-axis points right (East)
+ - Z-axis points down (Down)
+
+NED is a [right-handed](https://en.wikipedia.org/wiki/Right-hand_rule) frame, and also the rotations are right-handed:
+
+ - right wing down gives positive roll (x-axis rotation)
+ - nose up gives positive pitch (y-axis rotation)
+ - rotating right around the vertical axis gives positive yaw (z-axis rotation)
+
+## Implementation
+
+The following gyro/accelerometer/magnetometer sensor fusion filters are implemented in _madflight_:
 
 ### Mahony
 
