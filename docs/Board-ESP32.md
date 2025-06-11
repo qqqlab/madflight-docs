@@ -8,30 +8,24 @@ Start the Arduino IDE and select menu Tools->Board Manager to install this softw
 
 ## PlatformIO Setup
 
-Clone or download the _madflight_ repository from GitHub.
+1. Start PlatformIO, go to PIO Home, and press the "New Project" button.
 
-Start PlatformIO, press the "Import Arduino Project" button, and import a _madflight_ example.
+2. Select your ESP32-S3/ESP32 board, and use the Arduino framework, click "Finish".
 
-Adapt the platformio.ini file as follows:
+3. Overwrite the main.cpp file with one of the _madflight_ examples, and copy the madflight_config.h file to the src directory.
+
+4. Adapt the platformio.ini file as follows:
 
 ```ini
 ; PlatformIO Project Configuration File for madflight
 
 [env]
-; Set this to the folder where madflight.h is located
-; Default locations when installed via the Arduino IDE:
-;    Windows: C:\Users\{username}\Documents\Arduino\libraries\madflight
-;    macOS:   /Users/{username}/Documents/Arduino/libraries/madflight
-;    Linux:   /home/{username}/Arduino/libraries/madflight
-
-lib_extra_dirs = /ENTER/MADFLIGHT/FOLDER/HERE
-
+lib_deps = qqqlab/madflight
 
 [env:esp32]
 platform = espressif32
 framework = arduino
 board = esp32dev
-
 
 [env:esp32s3]
 platform = espressif32
@@ -43,6 +37,13 @@ build_flags =
 -DARDUINO_USB_MODE=1
 -DARDUINO_USB_CDC_ON_BOOT=1
 
+; NOTES:
+;
+; For the latest madflight development version use
+; lib_deps = https://github.com/qqqlab/madflight.git
+;
+; For a particular madflight branch/tag use
+; lib_deps = https://github.com/qqqlab/madflight.git#v2.0.1
 ```
 
 Note: Espressiv stopped Arduino framework support for PlatformIO. Arduino 2.x is the last supported framework version, but _madflight_ should still compile with this. Please post any updates on this topic [here](https://github.com/qqqlab/madflight/discussions), or create an ESP-IDF version of _madflight_!
