@@ -28,14 +28,16 @@ By default madflight has these safety features enabled:
 - Keep it simple!!!
 - Based on [dRehmFlight](https://github.com/nickrehm/dRehmFlight)
 - Coded primarily for readability, then for speed and code size.
-- No external dependencies, all modules are included in the `src/madflight` directory.
+- No external dependencies, all modules are included as subdirectories of the `src` directory.
 - The madflight flight controller runs standard `setup()` and `loop()`.
 - It mainly uses plain Arduino functionality: Serial, Wire, and SPI. One custom hardware dependent library is used for PWM. Therefor, it can fairly easily ported to other 32 bit microcontrollers that support the Arduino framework. Also porting to other build environments like PlatformIO or CMake should not be a huge effort.
 - The following modules are used:
     - `ahr` Attitude Heading Reference System, estimates roll, yaw, pitch
+    - `alt` Altitude estimators
     - `bar` Barometer sensor
     - `bat` Battery monitor
     - `bbx` Black Box data logger
+    - `brd` Board definition headers
     - `cfg` Read and save configuration to eeprom (flash)
     - `cli` Command Line Interface for debugging, configuration and calibration
     - `gps` GPS receiver
@@ -43,10 +45,14 @@ By default madflight has these safety features enabled:
     - `imu` Inertial Measurement Unit, retrieves accelerometer, gyroscope, and magnetometer sensor data
     - `led` LED driver
     - `mag` Magnetometer sensor (external)
+    - `nav` Waypoint navigation
     - `out` Output to motors and servos
+    - `pid` PID controller
     - `rcl` Remote Control Link, retrieves RC receiver data and sends telemetry data
+    - `tbx` Toolbox, common tools
+    - `veh` Vehicle info
 - Most modules are interfaced through a global object, for example the `imu` object has property `imu.gx` which is the current gyro x-axis rate in degrees per second for the selected IMU chip.
-- The module implementations are in subdirectories of the `src/madflight` directory. Here you find the module header file, e.g. `src/madflight/imu/imu.h`.
+- The module implementations are in subdirectories of the `src` directory. Here you'll find the module header file, e.g. `src/imu/imu.h`.
 - The module files are usually subdivided in gizmos, which can be selected in _madflight_ config. For example: `imu_gizmo MPU6500`
 
 ## Changes from dRehmFlight
