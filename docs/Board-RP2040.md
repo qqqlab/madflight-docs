@@ -8,39 +8,43 @@ Start the Arduino IDE and select menu Tools->Board Manager to install this softw
 
 ## PlatformIO Setup
 
-Clone or download the _madflight_ repository from GitHub.
+1. Start PlatformIO, go to PIO Home, and press the "New Project" button.
 
-Start PlatformIO, press the "Import Arduino Project" button, and import a _madflight_ example.
+2. Select your RP2040/RP2350 board, and use the Arduino framework, click "Finish".
 
-Adapt the platformio.ini file as follows:
+3. Overwrite the main.cpp file with one of the _madflight_ examples, and copy the madflight_config.h file to the src directory.
+
+4. Adapt the platformio.ini file as follows:
 
 ```ini
 ; PlatformIO Project Configuration File for madflight
 
 [env]
-; Set this to the folder where madflight.h is located
-; Default locations when installed via the Arduino IDE:
-;    Windows: C:\Users\{username}\Documents\Arduino\libraries\madflight
-;    macOS:   /Users/{username}/Documents/Arduino/libraries/madflight
-;    Linux:   /home/{username}/Arduino/libraries/madflight
+lib_deps = qqqlab/madflight
 
-lib_extra_dirs = /ENTER/MADFLIGHT/FOLDER/HERE
-
-; RP2040/RP2350 is not merged into mainline PlatformIO, see 
-; https://arduino-pico.readthedocs.io/en/latest/platformio.html
-; on Windows you need to enable long path names, see above link for instructions
-
-[env:madflight_pico]
+[env:pico]
 platform = https://github.com/maxgerhardt/platform-raspberrypi.git
 board = pico
 framework = arduino
 board_build.core = earlephilhower
 
-[env:madflight_pico2]
+[env:pico2]
 platform = https://github.com/maxgerhardt/platform-raspberrypi.git
 board = rpipico2
 framework = arduino
 board_build.core = earlephilhower
+
+; NOTES:
+;
+; RP2040/RP2350 is not merged into mainline PlatformIO, see 
+; https://arduino-pico.readthedocs.io/en/latest/platformio.html
+; on Windows you need to enable long path names, see above link for instructions
+;
+; For the latest madflight development version use
+; lib_deps = https://github.com/qqqlab/madflight.git
+;
+; For a particular madflight branch/tag use
+; lib_deps = https://github.com/qqqlab/madflight.git#v2.0.1
 ```
 
 ## Pinout Raspberry Pi Pico / Pico2
