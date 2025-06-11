@@ -26,7 +26,7 @@ By default madflight has these safety features enabled:
 ## Software Design
 
 - Keep it simple!!!
-- Based on [dRehmFlight](https://github.com/nickrehm/dRehmFlight)
+- Inspired by [dRehmFlight](https://github.com/nickrehm/dRehmFlight)
 - Coded primarily for readability, then for speed and code size.
 - No external dependencies, all modules are included as subdirectories of the `src` directory.
 - The madflight flight controller runs standard `setup()` and `loop()`.
