@@ -8,34 +8,12 @@ _madflight_ for STM32 requires:
 
 - [STM32duino FreeRTOS](https://github.com/stm32duino/STM32FreeRTOS) Select menu Tools->Manage Libaries, then search for "STM32duino FreeRTOS".
 
-
 ## PlatformIO Setup
 
-1. Start PlatformIO, go to PIO Home, and press the "New Project" button.
+1. Clone or download a madflight release to your harddisk
 
-2. Select your ESP32-S3/ESP32 board, and use the Arduino framework, click "Finish".
+2. Start PlatformIO and open folder `madflight/extras/PlatformIO_madflight`
 
-3. Overwrite the main.cpp file with one of the _madflight_ examples, and copy the madflight_config.h file to the src directory.
-
-4. Adapt the platformio.ini file as follows:
-
-```ini
-; PlatformIO Project Configuration File for madflight
-
-[env]
-lib_deps = qqqlab/madflight
-
-[env:YOUR_STM32_BOARD]
-...
-
-; NOTES:
-;
-; For the latest madflight development version use
-; lib_deps = https://github.com/qqqlab/madflight.git
-;
-; For a particular madflight branch/tag use
-; lib_deps = https://github.com/qqqlab/madflight.git#v2.0.1
-```
 ## Pinout STM32 Commercial Flight Controllers
 
 In the `src` directory you'll find 400+ Betaflight configuration files for commercial flight controllers. Include the madflight_board_XXX.h header file of your board, and in your program override settings as needed to match your board. 

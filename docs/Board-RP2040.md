@@ -8,44 +8,11 @@ Start the Arduino IDE and select menu Tools->Board Manager to install this softw
 
 ## PlatformIO Setup
 
-1. Start PlatformIO, go to PIO Home, and press the "New Project" button.
+1. Clone or download a madflight release to your harddisk
 
-2. Select your RP2040/RP2350 board, and use the Arduino framework, click "Finish".
+2. Start PlatformIO and open folder `madflight/extras/PlatformIO_madflight`
 
-3. Overwrite the main.cpp file with one of the _madflight_ examples, and copy the madflight_config.h file to the src directory.
-
-4. Adapt the platformio.ini file as follows:
-
-```ini
-; PlatformIO Project Configuration File for madflight
-
-[env]
-lib_deps = qqqlab/madflight
-
-[env:pico]
-platform = https://github.com/maxgerhardt/platform-raspberrypi.git
-board = pico
-framework = arduino
-board_build.core = earlephilhower
-
-[env:pico2]
-platform = https://github.com/maxgerhardt/platform-raspberrypi.git
-board = rpipico2
-framework = arduino
-board_build.core = earlephilhower
-
-; NOTES:
-;
-; RP2040/RP2350 is not merged into mainline PlatformIO, see 
-; https://arduino-pico.readthedocs.io/en/latest/platformio.html
-; on Windows you need to enable long path names, see above link for instructions
-;
-; For the latest madflight development version use
-; lib_deps = https://github.com/qqqlab/madflight.git
-;
-; For a particular madflight branch/tag use
-; lib_deps = https://github.com/qqqlab/madflight.git#v2.0.1
-```
+Note: RP2040/RP2350 is not merged into mainline PlatformIO, see [here](https://arduino-pico.readthedocs.io/en/latest/platformio.html). On Windows you need to enable long path names, see previous link for instructions.
 
 ## Pinout Raspberry Pi Pico / Pico2
 

@@ -10,11 +10,12 @@
 # update version in madflight.h
 # update version in library.properties
 # create new madflight release
+# Open PlatformIO Core CLI: pio pkg publish C:\path\to\Arduino\libraries\madflight
 # make new github release of existing madflight-docs version
 # update madflight-docs version in this file
 #==============================================================
 
-site_name: madflight v2.0.2
+site_name: madflight v2.1.0
 
 nav:
   - Intro: index.md

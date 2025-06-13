@@ -26,11 +26,11 @@ By default madflight has these safety features enabled:
 ## Software Design
 
 - Keep it simple!!!
-- Inspired by [dRehmFlight](https://github.com/nickrehm/dRehmFlight)
+- Inspired by dRehmFlight
 - Coded primarily for readability, then for speed and code size.
 - No external dependencies, all modules are included as subdirectories of the `src` directory.
 - The madflight flight controller runs standard `setup()` and `loop()`.
-- It mainly uses plain Arduino functionality: Serial, Wire, and SPI. One custom hardware dependent library is used for PWM. Therefor, it can fairly easily ported to other 32 bit microcontrollers that support the Arduino framework. Also porting to other build environments like PlatformIO or CMake should not be a huge effort.
+- It mainly uses plain Arduino functionality: Serial, Wire, and SPI. One custom hardware dependent library is used for PWM. Therefor, it can fairly easily ported to other 32 bit microcontrollers that support the Arduino framework. Also porting to other build environments like CMake should not be a huge effort.
 - The following modules are used:
     - `ahr` Attitude Heading Reference System, estimates roll, yaw, pitch
     - `alt` Altitude estimators
@@ -54,39 +54,6 @@ By default madflight has these safety features enabled:
 - Most modules are interfaced through a global object, for example the `imu` object has property `imu.gx` which is the current gyro x-axis rate in degrees per second for the selected IMU chip.
 - The module implementations are in subdirectories of the `src` directory. Here you'll find the module header file, e.g. `src/imu/imu.h`.
 - The module files are usually subdivided in gizmos, which can be selected in _madflight_ config. For example: `imu_gizmo MPU6500`
-
-## Changes from dRehmFlight
-
-- Add support for RP2350, RP2040, ESP32, ESP32-S3, and STM32
-- Dropped Teensy support, but could be re-added by creating a hal files. (I just don't have the hardware to test on)
-- Moved all hardware specific code to the hal directory and added hardware specific libraries
-- Reduced the number of global variables
-- Oneshot is implemented as PWM up to 3.9kHz
-- New libs for IMU sensors
-- Changed arming logic
-- Loop rate set to 1kHz to match IMU sensor rate
-- Interrupt driven IMU operation
-
-## Flight Controllers on Github
-
-In (approximate) increasing order of complexity.
-
-| Flight Controller | Features | Development Environment | Microcontroller |
-|:-|:-|:-|:-|
-[drone-flight-controller](https://github.com/lobodol/drone-flight-controller) | Single 700 line ino file, no libs | Arduino | ATmega328P
-[dRehmFlight](https://github.com/nickrehm/dRehmFlight) | Quad, Plane, VTOL | Arduino | Arduino Teensy 4
-[madflight](https://github.com/qqqlab/madflight) | Quad, Plane, VTOL, based on dRehmFlight | Arduino | ESP32, RP2040, and STM32
-[esp-fc](https://github.com/rtlopez/esp-fc) | FPV Quad | PlatformIO | ESP32
-[Crazyflie](https://github.com/bitcraze/crazyflie-firmware) | FPV Quad | | STM32F405
-[esp-drone](https://github.com/espressif/esp-drone) | FPV Quad, based on Crazyflie | | ESP32 
-[Betaflight](https://github.com/betaflight/betaflight) | FPV Quad, based on cleanflight | | STM32 F4/F7/H7
-[EmuFlight](https://github.com/emuflight/EmuFlight) | Multi-rotor, based on cleanflight | | STM32 F4/F7
-[inav](https://github.com/iNavFlight/inav) | Plane, based on cleanflight | | STM32 F4/F7/H7
-[Ardupilot](https://github.com/ArduPilot/ardupilot) | Quad, Plane, VTOL | Linux waf | STM32 F4/F7/H7 or Linux based
-[PX4-Autopilot](https://github.com/PX4/PX4-Autopilot) | Quad, Plane, VTOL | | STM32 F4/F7/H7 |
-
-
-<img src="https://api.star-history.com/svg?repos=qqqlab/madflight,rtlopez/esp-fc,lobodol/drone-flight-controller,emuflight/EmuFlight,espressif/esp-drone,nickrehm/dRehmFlight&type=Date" width="48%" /> <img src="https://api.star-history.com/svg?repos=bitcraze/crazyflie-firmware,iNavFlight/inav,PX4/PX4-Autopilot,betaflight/betaflight,ArduPilot/ardupilot&type=Date" width="48%" />
 
 ## Disclaimer
 

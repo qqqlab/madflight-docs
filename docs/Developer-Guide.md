@@ -41,9 +41,9 @@ _madflight_ uses FreeRTOS, and uses the following threads / tasks / interrupts:
 |Priority|Description|
 |-|-|
 highest | IMU interrupt, which wakes up imu_loop() task
-high| imu_loop() task
-low| loop() task and blackbox task
-lowest| idle task
+high    | imu_loop() task
+low     | loop(), blackbox, and lua tasks
+lowest  | idle task
 
 The [BB] blackbox SDCARD logging module is thread-safe, and runs as a separate task so that slow SDCARD operations do not block other tasks.
 

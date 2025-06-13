@@ -8,46 +8,11 @@ Start the Arduino IDE and select menu Tools->Board Manager to install this softw
 
 ## PlatformIO Setup
 
-1. Start PlatformIO, go to PIO Home, and press the "New Project" button.
+1. Clone or download a madflight release to your harddisk
 
-2. Select your ESP32-S3/ESP32 board, and use the Arduino framework, click "Finish".
-
-3. Overwrite the main.cpp file with one of the _madflight_ examples, and copy the madflight_config.h file to the src directory.
-
-4. Adapt the platformio.ini file as follows:
-
-```ini
-; PlatformIO Project Configuration File for madflight
-
-[env]
-lib_deps = qqqlab/madflight
-
-[env:esp32]
-platform = espressif32
-framework = arduino
-board = esp32dev
-
-[env:esp32s3]
-platform = espressif32
-framework = arduino
-board = lolin_s3_mini
-monitor_speed = 115200
-build_flags =
--DCONFIG_IDF_TARGET_ESP32S3
--DARDUINO_USB_MODE=1
--DARDUINO_USB_CDC_ON_BOOT=1
-
-; NOTES:
-;
-; For the latest madflight development version use
-; lib_deps = https://github.com/qqqlab/madflight.git
-;
-; For a particular madflight branch/tag use
-; lib_deps = https://github.com/qqqlab/madflight.git#v2.0.1
-```
+2. Start PlatformIO and open folder `madflight/extras/PlatformIO_madflight`
 
 Note: Espressiv stopped Arduino framework support for PlatformIO. Arduino 2.x is the last supported framework version, but _madflight_ should still compile with this. Please post any updates on this topic [here](https://github.com/qqqlab/madflight/discussions), or create an ESP-IDF version of _madflight_!
-
 
 ## Pinout ESP32-S3-DevKitC-1
 
