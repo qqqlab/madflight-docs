@@ -12,7 +12,11 @@ Start the Arduino IDE and select menu Tools->Board Manager to install this softw
 
 2. Start PlatformIO and open folder `madflight/extras/PlatformIO_madflight`
 
-Note: Espressiv stopped Arduino framework support for PlatformIO. Arduino 2.x is the last supported framework version, but _madflight_ should still compile with this. Please post any updates on this topic [here](https://github.com/qqqlab/madflight/discussions), or create an ESP-IDF version of _madflight_!
+Note:
+
+Espressiv stopped Arduino framework support for PlatformIO. Arduino 2 is the lastest Espressiv supported framework version, _madflight_ should still compile with Arduino 2.
+
+If you need Arduino 3, you could try [pioarduino](https://github.com/pioarduino/platform-espressif32)
 
 ## Pinout ESP32-S3-DevKitC-1
 
