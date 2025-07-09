@@ -22,7 +22,7 @@ becomes
 ```C++
 gps.update();
 ```
-which is compiled away to a no-op when gps is not used.
+which is a no-op when gps is not used.
 
 The `gps.h` header file defines the interface, the actual implementation is in `gps.cpp`. Some modules have a `cfg_cpp.h` instead of `cfg.cpp`, this is because these files contain compile time options which can be set with #define in the main .ino program.
 
@@ -92,3 +92,44 @@ auto *rcin_ser = new MyFancySerial(HW_PIN_RCIN_RX, HW_PIN_RCIN_TX);
 
 MF_Serial *rcin_Serial = new MF_SerialPtrWrapper< decltype(rcin_ser) >(rcin_ser);
 ```
+
+## Creating a new Gizmo for a Module
+
+Let's assume we want to add the SEEALL radar gizmo to the `rdr` module.
+
+### Anatomy of a Module/Gizmo
+
+The module header `rdr/rdr.h` defines the module and gizmo interfaces:
+
+- `struct RdrState` is the state info, in this case the measured distance by the radar gizmo
+- `struct RdrConfig` is the config for the module, the config always contains which gizmo to use (Cfg::rdr_gizmo_enum gizmo)
+- `class RdrGizmo` is the abstract base class for the rdr gizmos
+- `class Rdr : public RdrState` is the module class, which usually has setup() and update() methods. It inherits RdrState, so that we can access the state variables directly like: rdr.dist
+- `extern Rdr rdr` declares the global instance for the module
+
+### Steps to Create Gizmo SEEALL
+
+#### cfg/cfg.h
+
+Edit file `cfg/cfg.h` and append mf_SEEALL to the option list of the rdr_gizmo parameter.
+
+#### rdr/RdrGizmoSEEALL.h
+
+Create file `rdr/RdrGizmoSEEALL.h` for `class RdrGizmoSEEALL : public RdrGizmo` and implement:
+
+- `static RdrGizmoSEEALL* create(RdrConfig *c, RdrState *s)` which returns a pointer to the created gizmo on success, or nullptr on failure.
+- `bool update() override` which updates RdrState *s (i.e. distance)
+
+Have a look at the other gizmos for inspiration, or use one as template for your new gizmo.
+
+#### external libraries
+
+Optional: if your gizmo uses an external library, copy the external library to folder `rdr/SEEALL`. Copy only the required source files and create a single readme.txt file with a link to the external lib and the lib's license info. Do not copy examples and other  optional files. I know, this copying feels wrong, but it guarantees that _madflight_ will always compile, even if the external lib changes or disappears.
+
+#### rdr/rdr.cpp
+
+Edit file `rdr/rdr.cpp` and add the SEEALL gizmo to switch(config.gizmo) in Rdr::setup()
+
+#### publish your work
+
+That's it. Now test,test,test by setting `rdr_gizmo SEEALL` in your madflight config. When you're confident that it works, create a Pull Request on Github.
