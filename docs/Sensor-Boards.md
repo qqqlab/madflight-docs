@@ -4,6 +4,7 @@ An overview of available sensor boards.
 
 * Table last updated: July 2025
 * Parts marked with &#x2705; are supported by _madflight_
+* Parts with &#x1F6A7; are work in progress, see Pull Requests on Github
 * The "Breakout Board?" column lists price if board is cheap & easy to procure
 * Prices in USD from online platforms incl shipping
 
@@ -35,7 +36,7 @@ ICM-45686 &#x2705;| no | 6.4k gyro+acc | 3.8 | 80 |
 MPU-9150 &#x2705;| $7 | I2C | 8k gyro, MPU6050 + AK8975, EOL
 MPU-9250 &#x2705;| $7 | SPI 20MHz, I2C | 8k gyro, 4k acc, 100Hz mag, MPU6500 + AK8963, Released 2014 (EOL) Note: many fake or relabelled MPU-6500 chips sold as MPU-9250 on the market...
 MPU-9255 &#x2705;| $9 | SPI 20MHz, I2C | 8k gyro, MPU-6000 + AK8963, EOL
-ICM-20948 | $9 | SPI 7MHz, I2C | noise: 15 mdps/&radic;Hz 230 µg/&radic;Hz, replacement of MPU-9250/9255, ICM-20649 + AK09916, Released 2018
+ICM-20948 &#x1F6A7;| $9 | SPI 7MHz, I2C | noise: 15 mdps/&radic;Hz 230 µg/&radic;Hz, replacement of MPU-9250/9255, ICM-20649 + AK09916, Released 2018
 LSM9DSO  | no
 
 ## Magnetometer
@@ -62,7 +63,7 @@ QMC6309 &#x2705;| | 1500 Hz| 25nT | 16-bit | ±800µT or ±3200µT
 
 When used as altimeter: approx 12 Pa (0.12 mbar) per meter at sea level.
 
-| Part    | Breakout Board? | Relative Precision | ADC Resolution | Max Measurement Rate | RMS Noise | Notes |
+| Part    | Breakout Board? | Relative Precision "Marketing Bla Bla" | ADC Resolution | Max Measurement Rate | RMS Noise | Notes |
 |-|:-:|-|-|-|-|-|
 DPS310    | $3 | "relative accuracy 6Pa 50cm" | 0.06Pa | 128Hz | 0.35Pa @35Hz | 2.5x2x1 mm, 8 pin, pitch 0.65mm 
 SPL06-001 | $2 | 6Pa 50cm | 0.06Pa | 128Hz | 1.2Pa @35Hz | Registers identical to DSP310, but noisier
@@ -87,15 +88,15 @@ GY-86 | | 10DOF | MPU6050, HMC5883L, MS5611 &#x2705;
 GY-87 | $4 | 10DOF | MPU6050 &#x2705;, HMC5883L, BMP180
 GY-91 | $8 | 10DOF | MPU9255 &#x2705; (not MPU9250), BMP280 &#x2705;
 GY-521 | $2 | 6DOF | MPU6050 &#x2705;
-GY-912 | $11 | 10DOF | ICM20948, BMP388 &#x2705;
+GY-912 | $11 | 10DOF | ICM20948 &#x1F6A7;, BMP388 &#x2705;
 
 ## Current Sensors
 
 | Part | Breakout Board? | Notes |
 |-|:-:|-|
 INA219 | $1 | 12-bit ADC, 0-26V
-INA226 &#x2705;| $1.5 | 16-bit ADC, 0-36V, 1LSB = 1.25mV; ±16A with 5m&ohm; shunt, 1LSB = 0.5mA
-INA228 &#x2705;| $5 | 20-bit ADC, 0-85V, 1LSB = 0.2mV; ±16A with 10m&ohm; shunt, 1LSB = 0.031mA
+INA226 &#x2705;| $1.5 | 16-bit ADC, 0-36V, 1LSB = 1.25mV; ±32A with 2.5m&ohm; 3W shunt, 1LSB = 1mA
+INA228 &#x2705;| $5 | 20-bit ADC, 0-85V, 1LSB = 0.2mV; ±80A with 0.5m&ohm; 3W shunt, 1LSB = 0.16mA
 
 ## Radar Modules
 
