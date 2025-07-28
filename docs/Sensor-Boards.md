@@ -16,7 +16,8 @@ MPU-6000 &#x2705;| yes | 8k gyro, 1k acc ||| Released 2011, EOL
 MPU-6050 &#x2705;| yes | 8k gyro, 1k acc ||| I2C only, Released 2011, EOL
 MPU-6500 &#x2705;| $2 | 8k gyro, 4k acc | 10 | 300 | upgraded MPU-6000, Released 2014, NRND
 BMI160     | $2 | 3.2k gyro, 1.6k acc | 8 | 180 |
-BMI270  &#x2705;| no | 6k gyro | 7 | 160 | Used in current commercial FC as replacement for MPU-6000/6500
+BMI270 &#x2705;| no | 6k gyro | 7 | 160 | Used in current commercial FC as replacement for MPU-6000/6500
+BMI330 | | 6.4k gyro+acc | 7 | 180 |
 LSM6DS3    | $2 | | 7 | 180 |
 LSM6DSO    | $10 | 6.7k | 3.8 | 110 |
 LSM6DSL    | no | 6.7k | 4 | 80 |
@@ -28,6 +29,7 @@ ICM-40609-D| no | 32k gyro+acc | 4.5 | 100 | Marketed for drones, replacement of
 ICM-42670-P| $3 | 1.6k gyro+acc | 7 | 100 | Marketed for drones
 ICM-42688-P &#x2705;| $6 | 32k gyro | 2.8 | 70 | Used in current high performance FC
 ICM-45686 &#x2705;| no | 6.4k gyro+acc | 3.8 | 80 |
+IMM-42653 | | 32k gyro+acc | 5 | 70 |
 
 ## 9-axis IMU
 
