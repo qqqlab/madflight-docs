@@ -23,9 +23,9 @@ ICM-42688-P &#x2705;| $6 | 32k gyro | 2.8 | 70 | Used in current high performanc
 ICM-45686 &#x2705;| no | 6.4k gyro+acc | 3.8 | 80 |
 IMM-42653 | | 32k gyro+acc | 5 | 70 |
 LSM6DS3    | $2 | | 7 | 180 |
-LSM6DSO    | $10 | 6.7k | 3.8 | 110 |
 LSM6DSL    | no | 6.7k | 4 | 80 |
 LSM6DSM    | no | 6.7k | 3.8 | 130 |
+LSM6DSO    | $10 | 6.7k | 3.8 | 110 |
 LSM6DSV    | no | 7.68k | 2.8 | 60 |
 MPU-6000 &#x2705;| yes | 8k gyro, 1k acc ||| Released 2011, EOL
 MPU-6050 &#x2705;| yes | 8k gyro, 1k acc ||| I2C only, Released 2011, EOL
@@ -49,7 +49,7 @@ Earth's magnetic field strength at its surface ranges from 25 to 65 μT (0.25 to
 |-|:-:|-|-|-|-|-|
 AK8963 &#x2705;|    | 100 Hz| 150nT | 16-bit | | integraded in MPU9250
 AK8975 &#x2705;|    | 100 Hz| 300nT | 13-bit | | integraded in MPU9150
-AK09916   |    | 100 Hz| 150nT | 16-bit | | integraded in ICM-20948
+AK09916 &#x1F6A7;|    | 100 Hz| 150nT | 16-bit | | integraded in ICM-20948
 BMM150    | $7 | 300 Hz| 300nT | | ±1300µT | NRND
 BMM350    | $7 | 400 Hz| 100nT | 16-bit | ±2000µT |
 HMC5883L  | $2 | 160 Hz| 70nT @ ±100µT | 12-bit | ±100 to ±800µT | chip marking "L883"
@@ -78,8 +78,8 @@ ILPS22QS  | $14 | 1.5Pa 12cm | 0.025Pa | 200Hz
 LPS22HB   | $6 | 10Pa 80cm | 0.025Pa | 75Hz
 LPS22DF   | $14 | 1Pa 8cm | 0.025Pa | 200Hz
 MPL3115A2 | $5 |  | 0.25Pa | 166Hz | 19Pa @166Hz, 1.5Pa @2Hz
-MS5611 &#x2705;| $4 | "high resolution 10cm" | 0.014Pa raw 24 bit ADC value | 120-2000Hz OSR=4096-256 | | 5x3x1 mm, 8 pin, pitch 1.25mm
 MS5607    | | "high resolution 20cm" | 0.014Pa raw 24 bit ADC value | 120-2000Hz OSR=4096-256 | | 5x3x1 mm, 8 pin, pitch 1.25mm
+MS5611 &#x2705;| $4 | "high resolution 10cm" | 0.014Pa raw 24 bit ADC value | 120-2000Hz OSR=4096-256 | | 5x3x1 mm, 8 pin, pitch 1.25mm
 SPL06-001 | $2 | 6Pa 50cm | 0.06Pa | 128Hz | 1.2Pa @35Hz | Registers identical to DSP310, but noisier
 
 
