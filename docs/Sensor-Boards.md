@@ -50,6 +50,7 @@ Earth's magnetic field strength at its surface ranges from 25 to 65 μT (0.25 to
 AK8963 &#x2705;|    | 100 Hz| 150nT | 16-bit | | integraded in MPU9250
 AK8975 &#x2705;|    | 100 Hz| 300nT | 13-bit | | integraded in MPU9150
 AK09916 &#x1F6A7;|    | 100 Hz| 150nT | 16-bit | | integraded in ICM-20948
+AK09918 | | 120 Hz | 150nT | 16-bit | ±5000µT
 BMM150    | $7 | 300 Hz| 300nT | | ±1300µT | NRND
 BMM350    | $7 | 400 Hz| 100nT | 16-bit | ±2000µT |
 HMC5883L  | $2 | 160 Hz| 70nT @ ±100µT | 12-bit | ±100 to ±800µT | chip marking "L883"
