@@ -24,8 +24,8 @@ nav:
       - ESP32-S3 / ESP32: Board-ESP32.md
       - RP2350 / RP2040: Board-RP2040.md
       - STM32: Board-STM32.md
-      - madflight ESP-FC2 (ESP32-S3): Board-FC2.md
-      - madflight FC1 (RP2350): Board-FC1.md
+      - madflight ESP-FC2 - ESP32-S3: Board-ESP-FC2.md
+      - madflight FC1 - RP2350: Board-FC1.md
   - Examples:
       - Quadcopter: Example-Quadcopter.md
       - Quadcopter Advanced: Example-Quadcopter-Advanced.md
