@@ -1,6 +1,6 @@
 # madflight ESP-FC2 - ESP32-S3 Flight Controller
 
-![](img/madflight-ESP-FC2-1.png){: style="width:33%"} ![](img/madflight-ESP-FC2-2.png){: style="width:33%"} ![](img/madflight-ESP-FC2-3.png){: style="width:33%"}
+![](img/madflight-ESP-FC2-1.png){: style="width:30%"} ![](img/madflight-ESP-FC2-2.png){: style="width:30%"} ![](img/madflight-ESP-FC2-3.png){: style="width:30%"}
 
 [Schematic](/img/madflight-ESP-FC2.pdf)
 
