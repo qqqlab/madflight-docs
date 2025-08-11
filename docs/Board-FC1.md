@@ -39,7 +39,7 @@ For programming, select "Solder Party RP2350 Stamp XL"
 
 1. Clone or download a madflight release to your harddisk
 
-2. Start PlatformIO and open folder `madflight/extras/PlatformIO_madflight`
+2. Start PlatformIO and open folder `madflight/examples`
 
 3. Compile env:rp2350b
 

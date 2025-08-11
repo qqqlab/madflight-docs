@@ -10,7 +10,7 @@ Start the Arduino IDE and select menu Tools->Board Manager to install this softw
 
 1. Clone or download a madflight release to your harddisk
 
-2. Start PlatformIO and open folder `madflight/extras/PlatformIO_madflight`
+2. Start PlatformIO and open folder `madflight/examples`
 
 Note: RP2040/RP2350 is not merged into mainline PlatformIO, see [here](https://arduino-pico.readthedocs.io/en/latest/platformio.html). On Windows you need to enable long path names, see previous link for instructions.
 

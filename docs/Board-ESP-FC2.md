@@ -8,13 +8,11 @@
 
 This is a flight controller based on the ESP32-S3 dual core microcontroller.
 
-Made with DIY in mind: easy accessible 2.54mm pin headers, standard mounting points to fit on quadcopter frames but can also be used for non-drone projects.
+Made with DIY in mind: easy accessible 2.54mm pin headers, standard mounting points to fit quadcopter frames, but can also be used for non-drone projects.
 
-For additional flexibility: the included DC-DC board can be mounted at the top or bottom (see pictures), or can be omitted when you use an external BEC or if want to build an ultralight a 1S battery setup.
+For additional flexibility: the included DC-DC board can be mounted at the top or bottom (see pictures). Or can be omitted when you use an external BEC or if want to build an ultralight a 1S battery setup.
 
 The ESP32-S3 has 3 hardware UARTs that can be connected to any of the GPIOs.
-
-See [madflight.com](http://madflight.com/Board-ESP-FC2/) for schematic and instructions.
 
 ## Specifications
 
@@ -76,7 +74,7 @@ Start the Arduino IDE and select menu Tools->Board Manager to install this softw
 
 1. Clone or download a madflight release to your harddisk
 
-2. Start PlatformIO and open folder `madflight/extras/PlatformIO_madflight`
+2. Start PlatformIO and open folder `madflight/examples`
 
 Note:
 
@@ -85,20 +83,20 @@ Espressiv stopped Arduino framework support for PlatformIO. Arduino 2 is the las
 If you need Arduino 3, you could try [pioarduino](https://github.com/pioarduino/platform-espressif32)
 
 
-## Pinout FC1
+## Pinout ESP-FC2
 
-This is the default ESP-FC2 configuration, the external pins can be reconfigured. 
+This is the default ESP-FC2 configuration, the external pins can be reconfigured.
 
-Use `#define MF_BOARD "brd/madflight_ESP-FC2.h"` instead of `#define MF_BOARD "brd/default.h"` to include this pinout. 
+Use `#define MF_BOARD "brd/madflight_ESP-FC2.h"` instead of `#define MF_BOARD "brd/default.h"` to include this pinout.
 
 
 | GPIO | External Pin Function | Internal Function |
 |:-:|:-|:-|
  0 | | BT (Boot) button
- 1 | S1 ESC output | 
- 2 | S2 ESC output | 
- 3 | S3 ESC output | 
- 4 | S4 ESC output | 
+ 1 | S1 ESC output / M1 brushed motor | 
+ 2 | S2 ESC output / M2 brushed motor | 
+ 3 | S3 ESC output / M3 brushed motor | 
+ 4 | S4 ESC output / M4 brushed motor | 
  5 | free | 
  6 | free | 
  7 | free | 

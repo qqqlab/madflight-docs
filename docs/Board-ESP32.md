@@ -10,7 +10,7 @@ Start the Arduino IDE and select menu Tools->Board Manager to install this softw
 
 1. Clone or download a madflight release to your harddisk
 
-2. Start PlatformIO and open folder `madflight/extras/PlatformIO_madflight`
+2. Start PlatformIO and open folder `madflight/examples`
 
 Note:
 

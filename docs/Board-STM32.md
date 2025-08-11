@@ -12,7 +12,7 @@ _madflight_ for STM32 requires:
 
 1. Clone or download a madflight release to your harddisk
 
-2. Start PlatformIO and open folder `madflight/extras/PlatformIO_madflight`
+2. Start PlatformIO and open folder `madflight/examples`
 
 ## Pinout STM32 Commercial Flight Controllers
 
