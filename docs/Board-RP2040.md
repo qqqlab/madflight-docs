@@ -64,5 +64,4 @@ _madflight_ uses FreeRTOS and executes the 1000Hz IMU loop on the second core. T
 
 ## madflight Limitiations
 
-- BBX: SDCARD only with SPI interface (not with MMC interface)
 - OUT: Consecutive even/odd PWM pins (e.g. pins 2,3 or 10,11) share the same timer and have the same frequency.
