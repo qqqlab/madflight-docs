@@ -73,7 +73,7 @@ BMP180    | $2
 BMP280 &#x2705;| $2 | "relative accuracy 12Pa 100cm" | 0.25Pa raw 20 bit ADC value | 26-167Hz OSR=16-1 | 2.5Pa 20cm @125Hz | 2.5x2x1mm, 8 pin, pitch 0.65mm
 BMP388 &#x2705;| $2 | 8Pa 66cm | | 200Hz
 BMP390 &#x2705;| $3 | "relative accuracy 3Pa 25cm" | 2.6Pa 16bit OSR=1 to 0.8Pa 21bit OSR=32 | 25-200Hz OSR=32-1| 0.9Pa @25Hz OSR=32, 5Pa  @100Hz | 2x2x0.75mm, 10 pi, pitch 0.5mm
-BMP580 | | "Relative pressure accuracy: 6 Pa per 10kPa step" | 0.016Pa (1/64Pa) 24bit | 622 Hz | 0.15Pa @46Hz, 0.78Pa @498Hz | 2x2x0.8mm, 10 pin, pitch 0.5mm
+BMP580 / BMP581 / BMP585 &#x2705;| | "Relative pressure accuracy: 6 Pa per 10kPa step" | 0.016Pa (1/64Pa) 24bit | 622 Hz | 0.15Pa @46Hz, 0.78Pa @498Hz | 2x2x0.8mm, 10 pin, pitch 0.5mm
 DPS310    | $3 | "relative accuracy 6Pa 50cm" | 0.06Pa | 128Hz | 0.35Pa @35Hz | 2.5x2x1 mm, 8 pin, pitch 0.65mm 
 HP203B &#x2705;| | "Altitude Resolution down to 0.1 meter" | 0.01Pa 20 bit value (24bit ADC) | 8-240Hz OSR=4096-128| | 3.8×3.6×1.2 mm, 8 pin, pitch 0.9mm
 ILPS22QS  | $14 | 1.5Pa 12cm | 0.025Pa | 200Hz
@@ -84,6 +84,35 @@ MS5607    | | "high resolution 20cm" | 0.014Pa raw 24 bit ADC value | 120-2000Hz
 MS5611 &#x2705;| $4 | "high resolution 10cm" | 0.014Pa raw 24 bit ADC value | 120-2000Hz OSR=4096-256 | | 5x3x1 mm, 8 pin, pitch 1.25mm
 SPL06-001 | $2 | 6Pa 50cm | 0.06Pa | 128Hz | 1.2Pa @35Hz | Registers identical to DSP310, but noisier
 
+The following test were performed to get some experimental data at approximately 100Hz sample rate using the best possible pressure oversampling. Clear winner is the BMP580 with a standard deviation of less than 2 cm. 
+```
+TEST RESULTS with madflight 2.1.2
+with cli calinfo stationary sampling for 3 seconds
+
+BMP580 PRES_16X_TEMP_1X
+=== Barometer - Sample rate: 85 Hz===
+Altitude[m]     mean:+536.401306    stdev:0.016890	min:+536.355164    max:+536.452942    n:257
+Pressure[Pa]    mean:+95045.796875  stdev:0.192236	min:+95045.218750  max:+95046.328125  n:257
+Temperature[C]  mean:+24.054352     stdev:0.010603	min:+24.028427     max:+24.079422     n:257
+
+BMP390 PRES_2X_TEMP_1X
+=== Barometer - Sample rate: 100 Hz===
+Altitude[m]     mean:+536.515625    stdev:0.219643	min:+535.979980    max:+537.145203    n:301
+Pressure[Pa]    mean:+95044.492188  stdev:2.504872	min:+95037.312500  max:+95050.609375  n:301
+Temperature[C]  mean:+24.873934	    stdev:0.004969	min:+24.859617     max:+24.887152     n:301
+
+BMP280 PRES_4X_TEMP_1X
+=== Barometer - Sample rate: 105 Hz===
+Altitude[m]   	mean:+526.812683    stdev:0.186374	min:+526.335693    max:+527.411072    n:315
+Pressure[Pa]  	mean:+95155.210938	stdev:2.126955	min:+95148.382812  max:+95160.664062  n:315
+Temperature[C]	mean:+25.984348     stdev:0.008128	min:+25.959999     max:+26.000000     n:315
+
+HP203B OSR=256
+=== Barometer - Sample rate: 100 Hz===
+Altitude[m]     mean:+539.022583    stdev:1.616964  min:+533.578125    max:+543.663696    n:300
+Pressure[Pa]    mean:+95015.906250	stdev:18.437220 min:+94963.000000  max:+95078.000000  n:300
+Temperature[C]  mean:+27.717833     stdev:0.010926  min:+27.700001     max:+27.740000     n:300
+```
 
 ## Multi Sensor Modules
 
