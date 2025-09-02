@@ -41,6 +41,7 @@ nav:
       - GPS Configuration: GPS-Configuration.md
       - GPS Messages: GPS-Messages.md
       - Digital Low-pass Filter: Digital-Low-pass-Filter.md
+      - madflight FC1 - RP2350B: Board-FC1.md
 
 site_url: https://madflight.com/
 site_description: madflight DIY Flight Controller
