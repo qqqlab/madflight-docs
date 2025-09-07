@@ -46,12 +46,12 @@ The ESP32-S3 has 3 hardware UARTs that can be connected to any of the GPIOs.
 
 ### Pinout for a Quadcopter
 
-| | Pin1 | Pin2 | Pin3 | Pin4 | Pin5 | Pin6 | Pin7 | Pin8 | Pin9 |
+| Row | Pin1 | Pin2 | Pin3 | Pin4 | Pin5 | Pin6 | Pin7 | Pin8 | Pin9 |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-|RowD| | | | | | |48|47|46|
-|RowC|GND|+5V|5|8|26|38|41|GND|+5V|
-|RowB|GND|+5V|6 RX1 <- GPS TX|9 TX1 -> GPS RX|33 SDA|39 SCL|42 free|GND|+5V|
-|RowA (board edge)|GND|+5V|7 RX0 <- Receiver TX|21 TX0 -> Receiver TX|34|40|45 LED Strip|GND|+5V|
+|**RowD**| | | | | | |48|47|46|
+|**RowC**|GND|+5V|5|8|26|38|41|GND|+5V|
+|**RowB**|GND|+5V|6 RX1 <- GPS TX|9 TX1 -> GPS RX|33 SDA|39 SCL|42 free|GND|+5V|
+|**RowA** (board edge)|GND|+5V|7 RX0 <- Receiver TX|21 TX0 -> Receiver TX|34|40|45 LED Strip|GND|+5V|
 
 Connect 4 ESCs to S1-S4 (round), + (round) and - (square) pads at the corners
 
@@ -59,12 +59,12 @@ Or connect brushed motors to M1-M4 (square) and the + (round) pads at the corner
 
 ### Pinout for a Airplane
 
-| | Pin1 | Pin2 | Pin3 | Pin4 | Pin5 | Pin6 | Pin7 | Pin8 | Pin9 |
+| Row | Pin1 | Pin2 | Pin3 | Pin4 | Pin5 | Pin6 | Pin7 | Pin8 | Pin9 |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-|RowD| | | | | | |48|47|46|
-|RowC|GND|+5V|5 Rudder Servo|8|26|38|41 Elevator Servo|+5V|GND|
-|RowB|GND|+5V|6 RX1 <- GPS TX|9 TX1 -> GPS RX|33 SDA|39 SCL|42 Aileron Servo|+5V|GND|
-|RowA (board edge)|GND|+5V|7 RX0 <- Receiver TX|21 TX0 -> Receiver TX|34|40|45 Motor ESC|+5V|GND|
+|**RowD**| | | | | | |48|47|46|
+|**RowC**|GND|+5V|5 Rudder Servo|8|26|38|41 Elevator Servo|+5V|GND|
+|**RowB**|GND|+5V|6 RX1 <- GPS TX|9 TX1 -> GPS RX|33 SDA|39 SCL|42 Aileron Servo|+5V|GND|
+|**RowA** (board edge)|GND|+5V|7 RX0 <- Receiver TX|21 TX0 -> Receiver TX|34|40|45 Motor ESC|+5V|GND|
 
 ## Arduino IDE Setup
 
@@ -84,8 +84,7 @@ Espressiv stopped Arduino framework support for PlatformIO. Arduino 2 is the las
 
 If you need Arduino 3, you could try [pioarduino](https://github.com/pioarduino/platform-espressif32)
 
-
-## Pinout ESP-FC2
+## Pinout FC2
 
 This is the default ESP-FC2 configuration, the external pins can be reconfigured.
 
