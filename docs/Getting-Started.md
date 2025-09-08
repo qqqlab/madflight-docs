@@ -34,14 +34,14 @@ Or a commercial flight controller which includes some or all items on a single b
 
 ## 2. Development Envirionment
 
-Setup your favorite development environment (PlatformIO or Arduino IDE):
+Setup your favorite development environment (PlatformIO or Arduino IDE) for your board:
 
-    - [ESP32-S3/ESP32](Board-ESP32.md)
-    - [RP2350/RP2040](Board-RP2040.md)
-    - [STM32](Board-STM32.md)
-    - [madflight FC1 RP2350B](Board-FC1.md)
-    - [madflight FC2 ESP32-S3](Board-ESP-FC2.md)
-    - [madflight FC3 RP2350B](Board-FC3.md)
+ - [ESP32-S3/ESP32](Board-ESP32.md)
+ - [RP2350/RP2040](Board-RP2040.md)
+ - [STM32](Board-STM32.md)
+ - [madflight FC1 RP2350B](Board-FC1.md)
+ - [madflight FC2 ESP32-S3](Board-ESP-FC2.md)
+ - [madflight FC3 RP2350B](Board-FC3.md)
 
 ## 3. Open Quadcopter example
 
@@ -194,7 +194,7 @@ Connect the 4 ESCs of the motors to `pin_out0` - `pin_out3`
 
 The motors are connected in BetaFlight order:
 
-|BetaFlight Motor|madflight OUT|Position|Rotation Direction (as seen from above)
+|BetaFlight Motor|madflight OUT|Position|Rotation Direction (as seen from above)|
 |:-:|:-:|:-:|
 Motor 1|pin_out0| Right Back | Clockwise
 Motor 2|pin_out1| Right Front | Counter-Clockwise
@@ -232,11 +232,11 @@ The `imu_align` parameter sets the sensor orientation. The label is yaw / roll (
 
 Use CLI `pacc` to display the IMU accelerometer outputs.
 
-Keep the quad horizontal, the output should look like `ax:-0.02	ay:-0.00	az:+1.00`, i.e. az close to 1, others close to 0
+Keep the quad horizontal, the output should look like `ax:-0.02  ay:-0.00  az:+1.00`, i.e. az close to 1, others close to 0
 
-Keep the quad nose down, the output should look like `ax:+0.96	ay:-0.04	az:-0.07`, i.e. ax close to 1, others close to 0
+Keep the quad nose down, the output should look like `ax:+0.96  ay:-0.04  az:-0.07`, i.e. ax close to 1, others close to 0
 
-Keep the right side down, the output should look like `ax:+0.05	ay:+1.00	az:+0.06`, i.e. ay close to 1, others close to 0
+Keep the right side down, the output should look like `ax:+0.05  ay:+1.00  az:+0.06`, i.e. ay close to 1, others close to 0
 
 If not, adjust the parameter `imu_align` and re-upload until this matches. 
 
@@ -267,13 +267,13 @@ Use CLI commands `pout` to display the motor outputs.
 
 Check the arming mechanism: upon arming `out.armed` changes from 0 to 1.
 
-With arm switch (when parameter rcl_arm_ch > 0)
-- ARMING: Set throttle idle, then flip arm switch to armed
-- DISARMING: Flip arm switch to disarmed
+With arm switch (when parameter `rcl_arm_ch > 0`)
+ - ARMING: Set throttle idle, then flip arm switch to armed
+ - DISARMING: Flip arm switch to disarmed
 
-Without arm switch (when parameter rcl_arm_ch == 0)
-- ARMING: Pull both sticks toward you, yaw full right, and roll full left and keep sticks there for 2 sec
-- DISARMING: Pull both sticks toward you, yaw full left, and roll full right and keep sticks there for 2 sec
+Without arm switch (when parameter `rcl_arm_ch == 0`)
+ - ARMING: Pull both sticks toward you, yaw full right, and roll full left and keep sticks there for 2 sec
+ - DISARMING: Pull both sticks toward you, yaw full left, and roll full right and keep sticks there for 2 sec
 
 
 ### Motor Mixer (OUT)
@@ -284,17 +284,17 @@ Use CLI commands `pout` to display the motor outputs.
 
 Keep the quad horizontal and stationary.
 
-Now set throttle to mid position, the outputs should go to around 50%: `out.armed:1	M0%:45	M1%:49	M2%:52	M3%:53`
+Now set throttle to mid position, the outputs should go to around 50%: `out.armed:1  M0%:45  M1%:49  M2%:52  M3%:53`
 
 The values will change slowly as the PID integrators build up. This is normal, reduce the throttle to idle and then back to mid position to reset the integrators.
 
-Move pitch stick forward and out0,2 should go up, out1,3 down: `out.armed:1	M0%:71	M1%:43	M2%:72	M3%:44`
+Move pitch stick forward and out0,2 should go up, out1,3 down: `out.armed:1  M0%:71  M1%:43  M2%:72  M3%:44`
 
-Move roll stick right and out2,3 should go up, out0,1 down: `out.armed:1	M0%:41	M1%:47	M2%:69	M3%:75`
+Move roll stick right and out2,3 should go up, out0,1 down: `out.armed:1  M0%:41  M1%:47  M2%:69  M3%:75`
 
-Move yaw stick right and out1,2 should go up, out0,3 down: `out.armed:1	M0%:3	M1%:103	M2%:104	M3%:7`
+Move yaw stick right and out1,2 should go up, out0,3 down: `out.armed:1  M0%:3  M1%:103  M2%:104  M3%:7`
 
-If any of the checks fail -> re-check your IMU, RCL and OUT settings.
+If any of the checks fail -> re-check your IMU, RCL and OUT configuration settings.
 
 
 ### Motor Direction and Order (OUT)
@@ -309,7 +309,7 @@ If a motor spins in the wrong direction: exchange any 2 of the 3 wires of a brus
 
 ## 8. FLY
 
-Again, only continue if all checks were passed!!!
+Again, only continue if all checks and calibrations passed!!!
 
 Have a look at [Quadcopter Example](Example-Quadcopter.md) for details on the quadcopter program.
 
