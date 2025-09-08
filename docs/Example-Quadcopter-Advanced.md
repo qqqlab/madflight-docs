@@ -6,27 +6,13 @@ Advanced quadcopter demo program. Adds flight modes selectable by radio controll
 
 - IMU sensor (SPI or I2C)
 - RC receiver with 6 channels (CRSF/ELRS preferred)
-- 4 brushless motors with ESCs
+- 4 brushless motors with ESCs -OR- 4 brushed motors with MOSFETs
 
 ## Connecting Hardware
 
-- SPI IMU: connect _pin_imu_int_, _pin_imu_cs_, _pin_spi0_miso_, _pin_spi0_mosi_, _pin_spi0_sclk_
-- or for I2C IMU: connect _pin_imu_int_, _pin_i2c1_scl_, _pin_i2c1_sda_
-- RC receiver: connect _pin_ser0_rx_ to receiver TX pin, and _pin_ser0_tx_ to receiver RX pin
-- ESCs: _pin_out0_ ... _pin_out3_ to the ESC inputs of motor1 ... motor4
+See [Getting Started](Getting-Started.md)
 
-Motor order diagram (Betaflight order)
-
-```
-      front
- CW -->   <-- CCW
-    m4     m2 
-      \ ^ /
-       |X|
-      / - \
-    m3     m1 
-CCW -->   <-- CW
-```
+## Flight Modes
 
 Default flight mode is RATE. The mode can be changed to ANGLE with the flight mode channel of the radio controller. Important: calibrate the accelometer before using ANGLE.
 

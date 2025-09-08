@@ -1,25 +1,16 @@
 # Getting Started
 
+1. Get the required hardware
+2. Setup PlatformIO or Arduino IDE development environment
+3. Open Quadcopter example
+4. Configure hardware
+5. Compile Quadcopter
+6. Check and calibrate
+7. FLY!
+
 For additional help see [madflight Discussions](https://github.com/qqqlab/madflight/discussions)
 
-1. Get the required hardware (see below), and have a look at the hardware specific instructions: 
-    - [ESP32-S3/ESP32 pinout and instructions](Board-ESP32.md)
-    - -or- [RP2350/RP2040 pinout and instructions](Board-RP2040.md)
-    - -or- [STM32 pinout and instructions](Board-STM32.md)
-    - -or- [madflight FC1 instructions](Board-FC1.md)
-2. Install the madflight library in Arduino IDE. (Menu *Tools->Manage Libraries*, then search for _madflight_)
-3. Open *Examples for custom libraries->madflight->Quadcopter.ino* in the Arduino IDE.
-4. Edit the HARDWARE CONFIG section in madflight_config.h to enable the peripherals:
-    - Connect IMU (gyro/acceleration) sensor (see below)
-    - Connect radio receiver (see below)
-6. Compile Quadcopter.ino and upload it to your board. Connect the Serial Monitor at 115200 baud and check the startup messages. Type `help` to see the available CLI commands.
-7. IMPORTANT: Use CLI `calimu` and `calmag` to calibate the sensors.
-8. Type `calradio` and follow the prompts to setup your RC radio receiver.
-9. Use CLI commands `pacc`, `pgyr`, `pahr`, `prcl`, `pmot`, etc. and check that IMU sensor, AHRS and RC Receiver are working correctly. 
-10. Connect battery and motor ESCs (no props) to `pin_out0-3`, arm the quad and check that motors are spinning correctly.
-11. Mount props, go to an wide open space, and FLY!
-
-## Required Hardware
+## 1. Required Hardware
 
 - [Development board](Controller-Boards.md): 
     - RP2350/RP2040 (e.g. Raspberry Pi Pico2)
@@ -32,7 +23,7 @@ For additional help see [madflight Discussions](https://github.com/qqqlab/madfli
 
 Or a commercial flight controller which includes some or all items on a single board.
 
-## Optional Hardware
+### Optional Hardware
 
 - GPS Module (Serial)
 - Barometer (I2C BMP280, BMP388, BMP390, MS5611)
@@ -41,15 +32,43 @@ Or a commercial flight controller which includes some or all items on a single b
 - Radar/Lidar/Ultrasonic distance sensor
 - [Optical Flow Sensor](https://github.com/qqqlab/ESP32-Optical-Flow) (I2C)
 
-## Connect IMU Sensor
+## 2. Development Envirionment
 
-### Connect a SPI IMU Sensor
+Setup your favorite development environment (PlatformIO or Arduino IDE):
+
+    - [ESP32-S3/ESP32](Board-ESP32.md)
+    - [RP2350/RP2040](Board-RP2040.md)
+    - [STM32](Board-STM32.md)
+    - [madflight FC1 RP2350B](Board-FC1.md)
+    - [madflight FC2 ESP32-S3](Board-ESP-FC2.md)
+    - [madflight FC3 RP2350B](Board-FC3.md)
+
+## 3. Open Quadcopter example
+
+### Arduino IDE
+
+Install the madflight library: use menu *Tools->Manage Libraries*, then search for _madflight_
+
+Open the Quadcopter example: use menu *File->Examples->Examples for custom libraries->madflight->01.Quadcopter.ino*
+
+### PlatformIO
+
+Download the latest _madflight_ release from [github](https://github.com/qqqlab/madflight/releases)
+
+Start PlatformIO and the madflight/examples folder with menu *File->Open Folder...*
+
+Open `platformio.ini` and set `src_dir = 01.Quadcopter` 
+
+## 4. Configure Hardware
+
+Edit the `madflight_config` multiline string in `madflight_config.h` to enable the hardware peripherals.
+
+### Configure a SPI IMU Sensor (IMU)
 
 Set the following in madflight_config:
 ```
 imu_gizmo      ICM42688 // select your sensor type here
 imu_bus_type   SPI
-imu_align      CW0 // options: CW0, CW90, CW180, CW270, CW0FLIP, CW90FLIP, CW180FLIP, CW270FLIP
 
 //only uncomment the following if you do not want to use the default settings
 //pin_imu_int        <gpio>
@@ -76,7 +95,7 @@ GND      |----| GND
 
 `<bus>` is the SPI bus number, set with `imu_spi_bus <bus>`
 
-### Connect an I2C IMU Sensor
+### Configure an I2C IMU Sensor (IMU)
 
 Only use I2C if you really have to, better use SPI: no hanging busses - no crashes of your craft because of that.
 
@@ -84,7 +103,6 @@ Set the following in madflight_config:
 ```
 imu_gizmo      MPU6050 // select your sensor type here
 imu_bus_type   I2C
-imu_align      CW0 // options: CW0, CW90, CW180, CW270, CW0FLIP, CW90FLIP, CW180FLIP, CW270FLIP
 
 //only uncomment the following if you do not want to use the default settings
 //pin_imu_int        <gpio>
@@ -107,19 +125,11 @@ GND |<-->| GND
 
 `<bus>` is the I2C bus number, set with `imu_i2c_bus <bus>`
 
-### Configure the IMU Sensor Orientation
-
-`imu_align` sets the sensor orientation. The label is yaw / roll (in that order) needed to rotate the sensor from it's normal position to it's mounted position.
-
-IMPORTANT: Check that `imu_align` is correct, your craft will immediately crash otherwise. Use CLI `pahr` to check that rolling right side down gives positive ahr.roll, pitching nose up gives positive ahr.pitch, and yawing right (turning clockwise from as seen from above) gives positive ahr.yaw. Using `pacc` you should get [ax,ay,az] = [1,0,0] when nose down, [0,1,0] when right side down, and [0,0,1] when level. If not, adjust the `imu_align` parameter, re-upload and try again.
-
-## Connect Radio Receiver
-
-### Connect a Serial Receiver
+### Configure a Serial Receiver (RCL)
 
 Set the following in madflight_config:
 ```
-rcl_gizmo      CRSF // select your radio receiver type here: MAVLINK, CRSF, SBUS, DSM
+rcl_gizmo      CRSF // select your radio receiver type here: MAVLINK, CRSF, SBUS, DSM, IBUS
 rcl_num_ch     8     // number of channels
 rcl_deadband   0     // center stick deadband, set to 0 for serial receivers
 
@@ -128,19 +138,20 @@ rcl_deadband   0     // center stick deadband, set to 0 for serial receivers
 //pin_ser<bus>_tx    <gpio>
 //pin_ser<bus>_rx    <gpio>
 ```
-### Connect a PPM Receiver
+### Configure a PPM Receiver (RCL)
 
 Set the following in madflight_config:
 ```
 rcl_gizmo      PPM 
 rcl_num_ch     8      // number of channels
 rcl_deadband   10     // center stick deadband in [us], a value around 10 will probably work fine
-pin_rcl_ppm    <gpio> // select the pin here
+pin_rcl_ppm    <gpio> // select the PPM pin here
 ```
+### Configure Radio Channels (RCL)
 
-### Configure Radio Channels
+Set your radio transmitter to match the default parameters listed below. Or modify the parameters to match your radio setup.
 
-Either use CLI `calradio`, or modify the following parameters, or set your radio transmitter to match the default parameters:
+Or skip these settings and see below to setup the parameters interactively. 
 
 ```
 rcl_thr_ch        1 // 1-based channel number for throttle
@@ -176,3 +187,130 @@ rcl_flt_ch        6
 rcl_flt_min    1165 // 6-pos switch lowest pwm (flight mode 0)
 rcl_flt_max    1815 // 6-pos switch lowest pwm (flight mode 5)
 ```
+
+### Configure Motors (OUT)
+
+Connect the 4 ESCs of the motors to `pin_out0` - `pin_out3`
+
+The motors are connected in BetaFlight order:
+
+|BetaFlight Motor|madflight OUT|Position|Rotation Direction (as seen from above)
+|:-:|:-:|:-:|
+Motor 1|pin_out0| Right Back | Clockwise
+Motor 2|pin_out1| Right Front | Counter-Clockwise
+Motor 3|pin_out2| Left Back | Counter-Clockwise
+Motor 4|pin_out3| Left Front | Clockwise
+
+```
+      front
+ CW -->   <-- CCW
+    m4     m2 
+      \ ^ /
+       |X|
+      / - \
+    m3     m1 
+CCW -->   <-- CW
+```
+
+
+## 6. Compile Quadcopter.ino
+
+Compile Quadcopter.ino and upload it to your board.
+
+Connect the Serial Monitor at 115200 baud, type `help` to see the available CLI (Command Line Interface) commands.
+
+
+## 7. Check and Calibrate
+
+COMPLETE THIS SECTION OR YOUR CRAFT WILL CRASH (you have been warned :-)
+
+First check the startup messages for errors/warnings, and fix those before continuing, it will save you time and headaches.
+
+### Gyro/Accelerometer (IMU)
+
+The `imu_align` parameter sets the sensor orientation. The label is yaw / roll (in that order) needed to rotate the sensor from its normal position to its mounted position. The normal position is NED (North East Down), i.e. x-axis points forward (N), y-axis points right (E), z-axis points down (D). 
+
+Use CLI `pacc` to display the IMU accelerometer outputs.
+
+Keep the quad horizontal, the output should look like `ax:-0.02	ay:-0.00	az:+1.00`, i.e. az close to 1, others close to 0
+
+Keep the quad nose down, the output should look like `ax:+0.96	ay:-0.04	az:-0.07`, i.e. ax close to 1, others close to 0
+
+Keep the right side down, the output should look like `ax:+0.05	ay:+1.00	az:+0.06`, i.e. ay close to 1, others close to 0
+
+If not, adjust the parameter `imu_align` and re-upload until this matches. 
+
+Now calibrate the IMU: place it horizontal and stationary, then type `calimu`, and `save` to store the settings. (The quad will reboot)
+
+After calibration, use `pahr` to check that the calculated roll and pitch angles are correct.
+
+### Radio Link (RCL)
+
+If you did not setup the radio parameters in the previous steps, then type `calradio` and follow the prompts to setup your RC radio receiver.
+
+Check the Radio Link with `ppwm` and `prcl`. 
+
+`ppwm` gives the received pwm values per channel, each value should be between 800 and 2200. 
+
+`prcl` gives the adjusted madflight values:
+- Throttle should be between 0 (idle) and 1 (full throttle). 
+- Roll and yaw should be 0 for center, -1 for left and +1 for right.
+- Pitch should be 0 for center, -1 for pitch down, +1 for pitch up.
+- Armed should be 0 when the switch is in disarmed position and 1 in armed position
+- Flightmode should be 0,1,2,3,4,5 representing the 6-position flight mode switch. (Flight mode is not used in the Quadcopter example, so can be ignored for now.)
+
+If something does not look right, check/modify your RCL config and upload again. 
+
+### Arming (RCL,OUT)
+
+Use CLI commands `pout` to display the motor outputs.
+
+Check the arming mechanism: upon arming `out.armed` changes from 0 to 1.
+
+With arm switch (when parameter rcl_arm_ch > 0)
+- ARMING: Set throttle idle, then flip arm switch to armed
+- DISARMING: Flip arm switch to disarmed
+
+Without arm switch (when parameter rcl_arm_ch == 0)
+- ARMING: Pull both sticks toward you, yaw full right, and roll full left and keep sticks there for 2 sec
+- DISARMING: Pull both sticks toward you, yaw full left, and roll full right and keep sticks there for 2 sec
+
+
+### Motor Mixer (OUT)
+
+LEAVE BATTERY DISCONNECTED
+
+Use CLI commands `pout` to display the motor outputs.
+
+Keep the quad horizontal and stationary.
+
+Now set throttle to mid position, the outputs should go to around 50%: `out.armed:1	M0%:45	M1%:49	M2%:52	M3%:53`
+
+The values will change slowly as the PID integrators build up. This is normal, reduce the throttle to idle and then back to mid position to reset the integrators.
+
+Move pitch stick forward and out0,2 should go up, out1,3 down: `out.armed:1	M0%:71	M1%:43	M2%:72	M3%:44`
+
+Move roll stick right and out2,3 should go up, out0,1 down: `out.armed:1	M0%:41	M1%:47	M2%:69	M3%:75`
+
+Move yaw stick right and out1,2 should go up, out0,3 down: `out.armed:1	M0%:3	M1%:103	M2%:104	M3%:7`
+
+If any of the checks fail -> re-check your IMU, RCL and OUT settings.
+
+
+### Motor Direction and Order (OUT)
+
+Connect the battery but REMOVE PROPELLERS
+
+Type `spinmotors` and then `go`. This will spin each motor in order. Check that the correct motor spins, and that the motor spins in the correct direction.
+
+If the incorrect motor spins, change the pin_out<x> parameters to correct this.
+
+If a motor spins in the wrong direction: exchange any 2 of the 3 wires of a brushless motor, or exchange the 2 wires of a brushed motor. Then check again!
+
+## 8. FLY
+
+Again, only continue if all checks were passed!!!
+
+Have a look at [Quadcopter Example](Example-Quadcopter.md) for details on the quadcopter program.
+
+Mount props, go to a wide open space, and FLY!

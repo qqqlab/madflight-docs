@@ -4,6 +4,10 @@ This program is an airplane controller, it has 3 flight modes: MANUAL, ROLL and 
 
 NOTE: This program is experimental - it was only flight-tested in a couple of flights.
 
+## Connecting Hardware
+
+See [Getting Started](Getting-Started.md)
+
 ## MANUAL Mode
 
 Regular RC control, no stabilization. All RC inputs are passed through to the servo outputs.
