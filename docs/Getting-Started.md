@@ -194,8 +194,8 @@ Connect the 4 ESCs of the motors to `pin_out0` - `pin_out3`
 
 The motors are connected in BetaFlight order:
 
-|BetaFlight Motor|madflight OUT|Position|Rotation Direction (as seen from above)|
-|:-:|:-:|:-:|
+| BetaFlight Motor | madflight OUT | Position | Rotation Direction (as seen from above) |
+|:-:|:-:|:-:|:-:|
 Motor 1|pin_out0| Right Back | Clockwise
 Motor 2|pin_out1| Right Front | Counter-Clockwise
 Motor 3|pin_out2| Left Back | Counter-Clockwise
