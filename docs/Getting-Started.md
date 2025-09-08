@@ -226,19 +226,21 @@ COMPLETE THIS SECTION OR YOUR CRAFT WILL CRASH (you have been warned :-)
 
 First check the startup messages for errors/warnings, and fix those before continuing, it will save you time and headaches.
 
-### Gyro/Accelerometer (IMU)
+### Gyro/Accelerometer Orientation (IMU)
 
-The `imu_align` parameter sets the sensor orientation. The label is yaw / roll (in that order) needed to rotate the sensor from its normal position to its mounted position. The normal position is NED (North East Down), i.e. x-axis points forward (N), y-axis points right (E), z-axis points down (D). 
+The `imu_align` parameter sets the sensor orientation. The label is yaw / roll (in that order) needed to rotate the sensor from its normal position to its mounted position. The normal sensor position is NED (North East Down), i.e. x-axis points forward (N), y-axis points right (E), z-axis points down (D). 
 
 Use CLI `pacc` to display the IMU accelerometer outputs.
 
-Keep the quad horizontal, the output should look like `ax:-0.02  ay:-0.00  az:+1.00`, i.e. az close to 1, others close to 0
+Holding the quad horizontal should give ax:0 ay:0 az:1, for example: `ax:-0.02  ay:-0.00  az:+1.00` 
 
-Keep the quad nose down, the output should look like `ax:+0.96  ay:-0.04  az:-0.07`, i.e. ax close to 1, others close to 0
+Holding the quad nose down should give ax:1 ay:0 az:0, for example: `ax:+0.96  ay:-0.04  az:-0.07` 
 
-Keep the right side down, the output should look like `ax:+0.05  ay:+1.00  az:+0.06`, i.e. ay close to 1, others close to 0
+Holding right side down should give ax:0 ay:1 az:0, for example: `ax:+0.05  ay:+1.00  az:+0.06`
 
 If not, adjust the parameter `imu_align` and re-upload until this matches. 
+
+### Gyro/Accelerometer Calibration (IMU)
 
 Now calibrate the IMU: place it horizontal and stationary, then type `calimu`, and `save` to store the settings. (The quad will reboot)
 
@@ -267,11 +269,11 @@ Use CLI commands `pout` to display the motor outputs.
 
 Check the arming mechanism: upon arming `out.armed` changes from 0 to 1.
 
-With arm switch (when parameter `rcl_arm_ch > 0`)
+With arm switch configured (parameter `rcl_arm_ch > 0`)
  - ARMING: Set throttle idle, then flip arm switch to armed
  - DISARMING: Flip arm switch to disarmed
 
-Without arm switch (when parameter `rcl_arm_ch == 0`)
+Without arm switch configured (parameter `rcl_arm_ch == 0`)
  - ARMING: Pull both sticks toward you, yaw full right, and roll full left and keep sticks there for 2 sec
  - DISARMING: Pull both sticks toward you, yaw full left, and roll full right and keep sticks there for 2 sec
 
