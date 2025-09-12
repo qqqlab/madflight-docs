@@ -6,6 +6,7 @@ This page tries to give some insights in the internal workings of _madflight_.
 
 _madflight_ targets ESP32, RP2 and STM32 platforms with the Arduino framework. _madflight_ can be compiled with the Arduino IDE or with PlatformIO.
 
+
 ## Design Goals
 
 1. Keep the code readable
@@ -13,6 +14,7 @@ _madflight_ targets ESP32, RP2 and STM32 platforms with the Arduino framework. _
 3. Portability
 
 _madflight_ is a collection of code modules from which you can pick and choose to build flight controllers. The examples are there to show some possibilities. The madflight.h header is the glue between the main program (examples) and the modules.
+
 
 ## Modules
 
@@ -34,11 +36,13 @@ The modules have as little as possible cross-connections to other modules, the a
 
 Most modules have an update() method which needs to be called periodically from your program. This keeps the implementation flexible: you decide when (polling, interrupt, timer) and from which thread the updates take place.
 
+
 ## What is a 'gizmo'
 
 >> Something, generally a device, for which one does not know the proper term.
 
 In _madflight_ gizmo is the underlying device of a module, for example a BMP390 barometer sensor for the `bar` module, or a MAVLink radio receiver for the `rcl` module, or a Mahony complentary filter for the `ahr` module.
+
 
 ## Threads / Tasks / Interrupts
 
@@ -54,6 +58,7 @@ lowest  | idle task
 The [BBX] blackbox SDCARD logging module is thread-safe, and runs as a separate task so that slow SDCARD operations do not block other tasks.
 
 The other modules are not thread-safe. Care must be taken to only access a module from a single thread. But even if this rule is broken, the effects should be limited as long as the variables involved are at most 32 bits. For example: when reading the location from the gps module from a different thread as where `gps.update()` is called, one might get the longitude from the previous sample and the latitude from the current sample, but each value itself is correct. At least I hope so, maybe memory alignment plays a role here? Anyway, you have been warned, add a mutex as required.
+
 
 ## Hardware Abstraction Layer (HAL)
 
@@ -112,7 +117,6 @@ Apart from the differences in the Arduino class structure, there are also differ
 **SPI:** Reading and writing is blocking, not thread-safe.
 
 
-
 ## Creating a new Gizmo for a Module
 
 Let's assume we want to add the SEEALL radar gizmo to the `rdr` module.
@@ -140,13 +144,13 @@ Create file `rdr/RdrGizmoSEEALL.h` for `class RdrGizmoSEEALL : public RdrGizmo` 
 - `static RdrGizmoSEEALL* create(RdrConfig *c, RdrState *s)` which returns a pointer to the created gizmo on success, or nullptr on failure.
 - `bool update() override` which updates RdrState *s (i.e. distance).
 
-The update() method should be non-blocking. So instead of: "trigger measurement, wait for completion, report result", do "exit if busy, report result if measurement received, trigger next measurement".
+The update() method should be non-blocking. So instead of: _"trigger measurement, wait for completion, report result"_, do _"exit if busy, report result if measurement completed, trigger next measurement"_.
 
 Have a look at the other gizmos for inspiration, or use one as template for your new gizmo.
 
 #### External libraries
 
-Optional: if your gizmo uses an external library, copy the external library to folder `rdr/SEEALL`. Copy only the required source files and create a single readme.txt file with a link to the external lib and the lib's license info. Do not copy examples and other  optional files. I know, this copying feels wrong, but it guarantees that _madflight_ will always compile, even if the external lib changes or disappears.
+If your gizmo uses an external library, copy the external library to folder `rdr/SEEALL`. Copy only the required source files and create a single readme.txt file with a link to the external lib and the lib's license info. Do not copy examples and other optional files. I know, this copying feels wrong, but it guarantees that _madflight_ will always compile, even if the external lib changes or disappears.
 
 #### rdr/rdr.cpp
 
@@ -154,4 +158,6 @@ Edit file `rdr/rdr.cpp` and add the SEEALL gizmo to switch(config.gizmo) in Rdr:
 
 #### Publish your work
 
-That's it. Now test,test,test by setting `rdr_gizmo SEEALL` in your madflight config. When you're confident that it works, create a Pull Request on Github and let others profit from your work.
+That's it. Now test, test, test by setting `rdr_gizmo SEEALL` in your madflight_config. 
+
+When you're confident that it works, create a Pull Request on Github to get your code included in _madflight_ and let others profit from your work.
