@@ -1,4 +1,4 @@
-<img src="img/desk.jpg" width="100%" />
+<img src="/img/desk.jpg" width="100%" />
 
 # Developer Guide
 
