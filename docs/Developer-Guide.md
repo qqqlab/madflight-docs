@@ -55,9 +55,9 @@ The [BBX] blackbox SDCARD logging module is thread-safe, and runs as a separate 
 
 The other modules are not thread-safe. Care must be taken to only access a module from a single thread. But even if this rule is broken, the effects should be limited as long as the variables involved are at most 32 bits. For example: when reading the location from the gps module from a different thread as where `gps.update()` is called, one might get the longitude from the previous sample and the latitude from the current sample, but each value itself is correct. At least I hope so, maybe memory alignment plays a role here? Anyway, you have been warned, add a mutex as required.
 
-## C++ as Scripting Language?
+## Hardware Abstraction Layer (HAL)
 
-As it turns out, the Arduino implementations for the different platforms differ greatly. How to handle the fact that the class for the Serial peripheral is either a `SerialUART`, `HardwareSerial`, or a `MyFancySerial`, which might or might not be derived from `HardwareSerial` ?
+You would hope that Arduino for ESP32 is the same as Arduino for STM32. Wrong!!! As it turns out, the Arduino implementations for the different platforms differ greatly. How to handle the fact that the class for the Serial peripheral is either a `SerialUART`, `HardwareSerial`, or a `MyFancySerial`, which might or might not be derived from `HardwareSerial` ?
 
 One way to do this is to use templates to abstract these objects. I tried this, but it did not make me happy. After spending many hours trying to rewrite the modules to `template<class SerialType> MyGpsDriver` I gave up this route: too much rewriting needed, and I was spending too much time on cryptic compiler/linker errors messages.
 
@@ -88,16 +88,30 @@ class MF_SerialPtrWrapper : public MF_Serial {
     ...
 };
 
-// now instantiate the serial port it with:
+...
 
-auto *rcin_ser = &Serial1;
-// -or-
-auto *rcin_ser = new SerialUART(uart0, HW_PIN_RCIN_TX, HW_PIN_RCIN_RX);
-// -or-
-auto *rcin_ser = new MyFancySerial(HW_PIN_RCIN_RX, HW_PIN_RCIN_TX);
+// Now instantiate a MF_Serial serial port in two steps:
 
-MF_Serial *rcin_Serial = new MF_SerialPtrWrapper< decltype(rcin_ser) >(rcin_ser);
+// First create an instance of the Arduino-like serial class
+auto *serial = &Serial1;
+// -or-
+auto *serial = new SerialUART(uart0, PIN_TX, PIN_RX);
+// -or-
+auto *serial = new MyFancySerial(PIN_RX, PIN_TX);
+
+// Then use the wrapper to create the madflight serial instance, use decltype to get the type of the auto variable
+MF_Serial *mf_serial = new MF_SerialPtrWrapper< decltype(serial) >(serial);
 ```
+
+Apart from the differences in the Arduino class structure, there are also differences in the actual implementation of the interface classes. What happens when I call Serial.write("1234567890") ? Does it block while 10 chars are written directly to the UART, does it write to a buffer and use interrupts, does it use DMA??? For _madflight_ the following assumptions are made for the interfaces:
+
+**Serial:** Reading and writing is non-blocking, not thread-safe. At least 255 byte input and output buffers. Attempting to write more than fits in the free buffer space fails gracefully (no bytes are written to the buffer).
+
+**I2C (Wire):** Reading and writing is blocking, not thread-safe.
+
+**SPI:** Reading and writing is blocking, not thread-safe.
+
+
 
 ## Creating a new Gizmo for a Module
 
@@ -124,11 +138,13 @@ Edit file `cfg/cfg.h` and append mf_SEEALL to the option list of the rdr_gizmo p
 Create file `rdr/RdrGizmoSEEALL.h` for `class RdrGizmoSEEALL : public RdrGizmo` and implement:
 
 - `static RdrGizmoSEEALL* create(RdrConfig *c, RdrState *s)` which returns a pointer to the created gizmo on success, or nullptr on failure.
-- `bool update() override` which updates RdrState *s (i.e. distance)
+- `bool update() override` which updates RdrState *s (i.e. distance).
+
+The update() method should be non-blocking. So instead of: "trigger measurement, wait for completion, report result", do "exit if busy, report result if measurement received, trigger next measurement".
 
 Have a look at the other gizmos for inspiration, or use one as template for your new gizmo.
 
-#### external libraries
+#### External libraries
 
 Optional: if your gizmo uses an external library, copy the external library to folder `rdr/SEEALL`. Copy only the required source files and create a single readme.txt file with a link to the external lib and the lib's license info. Do not copy examples and other  optional files. I know, this copying feels wrong, but it guarantees that _madflight_ will always compile, even if the external lib changes or disappears.
 
@@ -136,6 +152,6 @@ Optional: if your gizmo uses an external library, copy the external library to f
 
 Edit file `rdr/rdr.cpp` and add the SEEALL gizmo to switch(config.gizmo) in Rdr::setup()
 
-#### publish your work
+#### Publish your work
 
-That's it. Now test,test,test by setting `rdr_gizmo SEEALL` in your madflight config. When you're confident that it works, create a Pull Request on Github.
+That's it. Now test,test,test by setting `rdr_gizmo SEEALL` in your madflight config. When you're confident that it works, create a Pull Request on Github and let others profit from your work.
