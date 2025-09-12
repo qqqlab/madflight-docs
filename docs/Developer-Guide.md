@@ -1,6 +1,6 @@
-# Developer Guide
+<img src="img/desk.jpg" width="100%" />
 
-<img src="img/desk.jpeg" width="100%" />
+# Developer Guide
 
 This page tries to give some insights in the internal workings of _madflight_.
 
