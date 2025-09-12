@@ -12,9 +12,11 @@ _madflight_ targets ESP32, RP2 and STM32 platforms with the Arduino framework. _
 2. High performance
 3. Portability
 
-_madflight_ is split up in modules. Each module lives in a separate subdirectory, for example `gps`. 
+_madflight_ is a collection of code modules from which you can pick and choose to build flight controllers. The examples are there to show some possibilities. The madflight.h header is the glue between the main program (examples) and the modules.
 
-For each module a global variable is defined, for example `gps`. Even if the underlying peripheral is not present, the global variable is defined as a placeholder object. This helps to declutter code: 
+## Modules
+
+Each module lives in a separate subdirectory, for example `gps`. For each module a global variable is defined, for example `gps`. Even if the underlying peripheral is not present, the global variable is defined as a placeholder object. This helps to declutter code: 
 ```C++
 #ifdef USE_GPS
   gps.update();
@@ -26,9 +28,11 @@ gps.update();
 ```
 which is a no-op when gps is not used.
 
-The `gps.h` header file defines the interface, the actual implementation is in `gps.cpp`. Some modules have a `cfg_cpp.h` instead of `cfg.cpp`, this is because these files contain compile time options which can be set with #define in the main .ino program.
+The `gps.h` header file defines the interface, the actual implementation is in `gps.cpp`. Some modules have a `cfg_cpp.h` instead of `cfg.cpp`, this is because these files contain compile time options which can be set with #define in the main.cpp program.
 
-The modules have as little as possible cross-connections to other modules, the actual fusion of the modules takes place in the main .ino program.
+The modules have as little as possible cross-connections to other modules, the actual fusion of the modules takes place in the main.cpp program.
+
+Most modules have an update() method which needs to be called periodically from your program. This keeps the implementation flexible: you decide when (polling, interrupt, timer) and from which thread the updates take place.
 
 ## What is a 'gizmo'
 
