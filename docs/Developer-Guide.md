@@ -1,5 +1,7 @@
 # Developer Guide
 
+<img src="img/desk.jpeg" width="100%" />
+
 This page tries to give some insights in the internal workings of _madflight_.
 
 _madflight_ targets ESP32, RP2 and STM32 platforms with the Arduino framework. _madflight_ can be compiled with the Arduino IDE or with PlatformIO.

@@ -52,11 +52,11 @@ Even when using all interal functions, the external pins can be used for:
 
 ## Arduino IDE Setup
 
-_madflight_ for FC1 requires [arduino-pico v4.x.x or later](https://github.com/earlephilhower/arduino-pico) (Note: for fast SDIO SDCARD arduino-pico v5.x.x is required.)
+_madflight_ for RP2350/RP2040 requires [arduino-pico v4.x.x or later](https://github.com/earlephilhower/arduino-pico) (Note: for fast SDIO SDCARD arduino-pico v5.x.x is required.)
 
-Start the Arduino IDE and select menu Tools->Board Manager to install this software.
+Start the Arduino IDE and select menu **Tools->Board Manager** to install arduino-pico.
 
-Set menu Tools->Operating System to "FreeRTOS SMP"
+Set menu **Tools->Operating System** to "FreeRTOS SMP"
 
 For programming, select board "Solder Party RP2350 Stamp XL"
 
