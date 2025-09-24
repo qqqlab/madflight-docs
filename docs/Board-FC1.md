@@ -43,15 +43,13 @@ For programming, select "Solder Party RP2350 Stamp XL"
 
 2. Start PlatformIO and open folder `madflight/examples`
 
-3. Compile env:rp2350b
+3. Compile env:RP2350B
 
 Note: RP2040/RP2350 is not merged into mainline PlatformIO, see [here](https://arduino-pico.readthedocs.io/en/latest/platformio.html). On Windows you need to enable long path names, see previous link for instructions.
 
 ## Pinout FC1
 
-This is the default FC1 configuration, the external pins can be reconfigured. 
-
-Use `#include <madflight_FC1.h>` instead of `#include <madflight_board.h>` to include this pinout. 
+Set `#define MF_BOARD "brd/madflight_FC1.h"` to use this configuration, it can be modified with `madflight_config` configuration settings in your program.
 
 | GPIO | External Pin Function | Internal Function |
 |:-:|:-|:-|

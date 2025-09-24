@@ -110,11 +110,11 @@ MF_Serial *mf_serial = new MF_SerialPtrWrapper< decltype(serial) >(serial);
 
 Apart from the differences in the Arduino class structure, there are also differences in the actual implementation of the interface classes. What happens when I call Serial.write("1234567890") ? Does it block while 10 chars are written directly to the UART, does it write to a buffer and use interrupts, does it use DMA??? For _madflight_ the following assumptions are made for the interfaces:
 
-**Serial:** Reading and writing is non-blocking, not thread-safe. At least 255 byte input and output buffers. Attempting to write more than fits in the free buffer space fails gracefully (no bytes are written to the buffer).
+**Serial (MF_Serial):** Reading and writing is non-blocking, not thread-safe. At least 255 byte input and output buffers. Attempting to write more than fits in the free buffer space fails gracefully (no bytes are written to the buffer).
 
-**I2C (Wire):** Reading and writing is blocking, not thread-safe.
+**I2C (MF_I2C):** Reading and writing is blocking, not thread-safe.
 
-**SPI:** Reading and writing is blocking, not thread-safe.
+**SPI (SPIClass):** Reading and writing is blocking, not thread-safe.
 
 
 ## Creating a new Gizmo for a Module

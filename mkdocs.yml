@@ -15,7 +15,7 @@
 # update madflight-docs version in this file
 #==============================================================
 
-site_name: madflight v2.1.2
+site_name: madflight v2.1.3
 
 nav:
   - Intro: index.md

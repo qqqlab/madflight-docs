@@ -86,7 +86,7 @@ If you need Arduino 3, you could try [pioarduino](https://github.com/pioarduino/
 
 ## Pinout FC2
 
-This is the default ESP-FC2 configuration, the external pins can be reconfigured.
+Set `#define MF_BOARD "brd/madflight_FC2.h"` to use this configuration, it can be modified with `madflight_config` configuration settings in your program.
 
 | GPIO | External Pin Function | Internal Function |
 |:-:|:-|:-|

@@ -20,7 +20,7 @@ If you need Arduino 3, you could try [pioarduino](https://github.com/pioarduino/
 
 ## Pinout ESP32-S3-DevKitC-1
 
-This is the default pinout for ESP32-S3. It is optimized for the Espressif ESP32-S3-DevKitC-1 (44 pin) board. This pinout is defined in madflight_board__ESP32-S3.h, but can be modified with _madflight_ _pin_xxx_ configuration settings in your program.
+This is the default pinout for ESP32-S3. It is optimized for the Espressif ESP32-S3-DevKitC-1 (44 pin) board. This pinout is defined in`brd/default_ESP32-S3.h`, but can be modified with `madflight_config` configuration settings in your program.
 
 Note: Many clones of this board exist, which use various ESP32-S3-WROOM modules and/or have different on-board hardware (LED, RGB LED, SDCARD, etc.) Set Arduino IDE Board settings and _pin_xxx_ configuration accordingly.
 
@@ -90,11 +90,11 @@ Programming is via the "USB-UART" usb port, and programming works without pressi
 
 This creates 4 serial ports (Serial, Serial0, Serial1 and Serial2), Serial connected to "USB-OTG", Serial0 connected to "USB-UART"
 
-Programming is via the "USB-OTG" usb port, but you need to press the boot/reset buttons (For programming: press boot, press+release reset, release boot, then upload; For serial monitor: press+release reset, then open serial monitor)
+Programming is via the "USB-OTG" usb port. You might need to press the boot/reset buttons for programming (press boot, press+release reset, release boot, then upload; For serial monitor: press+release reset, then open serial monitor)
 
 ## Pinout ESP32 DevKitC
 
-This is the default pinout for ESP32. It is optimized for the Espressiv ESP32 DevKitC (38 pin) board. This pinout is defined in madflight_board__ESP32.h, but can be modified with _madflight_ _pin_xxx_ configuration settings in your program.
+This is the default pinout for ESP32. It is optimized for the Espressiv ESP32 DevKitC (38 pin) board. This pinout is defined in `brd/default_ESP32.h`, but can be modified with `madflight_config` configuration settings in your program.
 
 Many clones of this board exist, which might have different ESP32 modules and/or different on-board hardware (LED, RGB LED, SDCARD, etc.) Set Arduino IDE Board settings and _madflight_ pin_xxx configurations accordingly.
 

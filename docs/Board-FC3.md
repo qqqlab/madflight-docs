@@ -66,15 +66,15 @@ For programming, select board "Solder Party RP2350 Stamp XL"
 
 2. Start PlatformIO and open folder `madflight/examples`
 
-3. Compile env:rp2350b
+3. Compile env:RP2350B
 
 Note: RP2040/RP2350 is not merged into mainline PlatformIO, see [here](https://arduino-pico.readthedocs.io/en/latest/platformio.html). On Windows you need to enable long path names, see previous link for instructions.
 
+To enable uploading on Windows you need to use [Zadig](https://zadig.akeo.ie/) - Connect a RP2 device whist holding the boot button, then in Zadig select "RP2 Boot (Interface 1) and install the WinUSB driver. See [here](https://community.platformio.org/t/cannot-upload-to-raspberry-pi-pico/45936/2)
+
 ## Pinout FC3
 
-This is the default FC3 configuration, but the external pins can be freely reconfigured. 
-
-Use `#include <madflight_FC3.h>` instead of `#include <madflight_board.h>` to include this pinout. 
+Set `#define MF_BOARD "brd/madflight_FC3.h"` to use this configuration, it can be modified with `madflight_config` configuration settings in your program.
 
 | GPIO |Default External Pin Function | Internal Function |
 |:-:|:-|:-|

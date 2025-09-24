@@ -16,9 +16,12 @@ Set menu **Tools->Operating System** to "FreeRTOS SMP"
 
 Note: RP2040/RP2350 is not merged into mainline PlatformIO, see [here](https://arduino-pico.readthedocs.io/en/latest/platformio.html). On Windows you need to enable long path names, see previous link for instructions.
 
+To enable uploading on Windows you need to use [Zadig](https://zadig.akeo.ie/) - Connect a RP2 device whist holding the boot button, then in Zadig select "RP2 Boot (Interface 1) and install the WinUSB driver. See [here](https://community.platformio.org/t/cannot-upload-to-raspberry-pi-pico/45936/2)
+
+
 ## Pinout Raspberry Pi Pico / Pico2
 
-This is the default pinout for RP2040 and RP2350. It is optimized for Raspberry Pi Pico / Pico2 (40 pin) boards. This pinout is defined in madflight_board__RP2040.h, but can be modified with _madflight_ pin_xxx configuration settings.
+This is the default pinout for RP2040 and RP2350. It is optimized for Raspberry Pi Pico / Pico2 (40 pin) boards. This pinout is defined`brd/default_RP2040.h`, but can be modified with `madflight_config` configuration settings in your program.
 
 | Module <-> HW_PIN_xxx | GPIO | Board | GPIO | HW_PIN_xxx <-> Module |
 | --: | :-- | :--: | --: | :-- |
