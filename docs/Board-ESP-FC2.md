@@ -55,16 +55,16 @@ The ESP32-S3 has 3 hardware UARTs that can be connected to any of the GPIOs.
 
 Connect 4 ESCs to the round SMD pads marked S1-S4 at the corners (GPIO1-4), and the battery+ (round) and battery- (square) pads.
 
-Or connect brushed motors to the square SMD pads marked M1-M4 at the corners (GPIO1-4), and the battery+ (round) and battery- (square) pads.
+Or connect brushed motors to the square SMD pads marked M1-M4 at the corners (GPIO1-4), and the round battery+ pads.
 
 ### Pinout for a Airplane
 
 | Row | Pin1 | Pin2 | Pin3 | Pin4 | Pin5 | Pin6 | Pin7 | Pin8 | Pin9 |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |**RowD**| | | | | | |G48|G47|G46|
-|**RowC**|GND|+5V|G5 OUT7 Rudder Servo|G8|G26|G38|G41 OUT6 Elevator Servo|+5V|GND|
-|**RowB**|GND|+5V|G6 RX1 <- GPS TX|G9 TX1 -> GPS RX|G33 SDA|G39 SCL|G42 OUT5 Aileron Servo|+5V|GND|
-|**RowA** (board edge)|GND|+5V|G7 RX0 <- Receiver TX|G21 TX0 -> Receiver TX|G34|G40|G45 OUT4 Motor ESC|+5V|GND|
+|**RowC**|GND|+5V|G5 Rudder Servo|G8|G26|G38|G4 Elevator Servo|+5V|GND|
+|**RowB**|GND|+5V|G6 RX1 <- GPS TX|G9 TX1 -> GPS RX|G33 SDA|G39 SCL|G42 Aileron Servo|+5V|GND|
+|**RowA** (board edge)|GND|+5V|G7 RX0 <- Receiver TX|G21 TX0 -> Receiver TX|G34|G40|G45 Motor ESC|+5V|GND|
 
 ## Arduino IDE Setup
 
