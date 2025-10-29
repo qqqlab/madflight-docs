@@ -58,8 +58,9 @@ HMC5883L  | $2 | 160 Hz| 70nT @ ±100µT | 12-bit | ±100 to ±800µT | chip mar
 HMC5983   | $2 | 220 Hz | 70nT @ ±100µT | 12-bit | ±100 to ±800µT
 IST8310   |    | 200 Hz| 300nT | 14-bit
 LIS2MDL   |    | 100 Hz| 15nT | 16-bit
+MMC5603NJ |    | 1000 Hz| 6nT | 20-bit | ±3000µT | linearity: 0.5%FS
 MMC5983MA |$15 | 1000 Hz| 6nT @ ±800µT | 18-bit | ±800µT
-QMC6309 &#x2705;| | 1500 Hz| 25nT | 16-bit | ±800µT or ±3200µT |  linearity: 0.6%FS
+QMC6309 &#x2705;| | 1500 Hz| 25nT | 16-bit | ±800µT or ±3200µT | linearity: 0.6%FS
 QMC5883L &#x2705;| $2 | 200 Hz | 8nT @ ±200µT | 16-bit | ±200 or ±800µT | linearity: 0.1%FS, chip marking "5883"
 QMC5883P &#x2705;|    | 1500 Hz | 8nT @ ±200µT | 16-bit | ±200 to ±3200µT | linearity: 0.5%FS
 RM3100 &#x2705;|$25 | 500 Hz| 13nT @ 150 Hz | no ADC | ±800µT | Uses coils, not hall sensors
