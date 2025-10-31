@@ -58,24 +58,24 @@ MPU-9255 &#x2705;| $9 | SPI 20MHz, I2C | 8k gyro, MPU-6000 + AK8963, EOL
 
 Earth's magnetic field strength at its surface ranges from 25 to 65 μT (0.25 to 0.65 G).
 
-| Part    | Module Price | Sampling Rate | LSB Resolution | ADC | Full Scale | Notes |
-|-|:-:|-|-|-|-|-|
-AK8963 &#x2705;|    | 100 Hz| 150nT | 16-bit | | integraded in MPU9250
-AK8975 &#x2705;|    | 100 Hz| 300nT | 13-bit | | integraded in MPU9150
-AK09916 &#x1F6A7;|    | 100 Hz| 150nT | 16-bit | | integraded in ICM-20948
-AK09918 | | 120 Hz | 150nT | 16-bit | ±5000µT
-BMM150    | $7 | 300 Hz| 300nT | | ±1300µT | NRND
-BMM350    | $7 | 400 Hz| 100nT | 16-bit | ±2000µT |
-HMC5883L  | $2 | 160 Hz| 70nT @ ±100µT | 12-bit | ±100 to ±800µT | chip marking "L883"
-HMC5983   | $2 | 220 Hz | 70nT @ ±100µT | 12-bit | ±100 to ±800µT
-IST8310   |    | 200 Hz| 300nT | 14-bit
-LIS2MDL   |    | 100 Hz| 15nT | 16-bit
-MMC5603NJ |    | 1000 Hz| 6nT | 20-bit | ±3000µT | linearity: 0.5%FS
-MMC5983MA |$15 | 1000 Hz| 6nT @ ±800µT | 18-bit | ±800µT
-QMC6309 &#x2705;| | 1500 Hz| 25nT | 16-bit | ±800µT or ±3200µT | linearity: 0.6%FS
-QMC5883L &#x2705;| $2 | 200 Hz | 8nT @ ±200µT | 16-bit | ±200 or ±800µT | linearity: 0.1%FS, chip marking "5883"
-QMC5883P &#x2705;|    | 1500 Hz | 8nT @ ±200µT | 16-bit | ±200 to ±3200µT | linearity: 0.5%FS
-RM3100 &#x2705;|$25 | 500 Hz| 13nT @ 150 Hz | no ADC | ±800µT | Uses coils, not hall sensors
+| Part    | Flight Controller | Module Price | Sampling Rate | LSB Resolution | ADC | Full Scale | Notes |
+|-|:-:|:-:|-|-|-|-|-|
+AK09916 &#x1F6A7;| `A---P` |    | 100 Hz| 150nT | 16-bit | | integraded in ICM-20948
+AK09918 | `-----` | | 120 Hz | 150nT | 16-bit | ±5000µT
+AK8963 &#x2705;| `ABIMP` |    | 100 Hz| 150nT | 16-bit | | integraded in MPU9250
+AK8975 &#x2705;| `-BIM-` |    | 100 Hz| 300nT | 13-bit | | integraded in MPU9150
+BMM150    | `A---P` | $7 | 300 Hz| 300nT | | ±1300µT | NRND
+BMM350    | `A---P` | $7 | 400 Hz| 100nT | 16-bit | ±2000µT |
+HMC5883L  | `-BI-P` | $2 | 160 Hz| 70nT @ ±100µT | 12-bit | ±100 to ±800µT | chip marking "L883"
+HMC5983   | `-----` | $2 | 220 Hz | 70nT @ ±100µT | 12-bit | ±100 to ±800µT
+IST8310   | `ABI-P` |    | 200 Hz| 300nT | 14-bit
+LIS2MDL   | `-B--P` |    | 100 Hz| 15nT | 16-bit
+MMC5603NJ | `-----` |    | 1000 Hz| 6nT | 20-bit | ±3000µT | linearity: 0.5%FS
+MMC5983MA | `A---P` |$15 | 1000 Hz| 6nT @ ±800µT | 18-bit | ±800µT
+QMC6309 &#x2705;| `---M-` | | 1500 Hz| 25nT | 16-bit | ±800µT or ±3200µT | linearity: 0.6%FS
+QMC5883L &#x2705;| `ABIMP` | $2 | 200 Hz | 8nT @ ±200µT | 16-bit | ±200 or ±800µT | linearity: 0.1%FS, chip marking "5883"
+QMC5883P &#x2705;| `A-IMP` |    | 1500 Hz | 8nT @ ±200µT | 16-bit | ±200 to ±3200µT | linearity: 0.5%FS
+RM3100 &#x2705;| `A--MP` |$25 | 500 Hz| 13nT @ 150 Hz | no ADC | ±800µT | Uses coils, not hall sensors
 
 ## Barometer
 
