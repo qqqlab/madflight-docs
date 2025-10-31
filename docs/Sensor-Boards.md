@@ -81,22 +81,22 @@ RM3100 &#x2705;| `A--MP` |$25 | 500 Hz| 13nT @ 150 Hz | no ADC | ±800µT | Uses
 
 When used as altimeter: approx 12 Pa (0.12 mbar) per meter at sea level.
 
-| Part    | Module Price | Relative Precision "Marketing Bla Bla" | ADC Resolution | Max Measurement Rate | RMS Noise | Notes |
-|-|:-:|-|-|-|-|-|
-BMP180    | $2
-BMP280 &#x2705;| $2 | "relative accuracy 12Pa 100cm" | 0.25Pa raw 20 bit ADC value | 26-167Hz OSR=16-1 | 2.5Pa 20cm @125Hz | 2.5x2x1mm, 8 pin, pitch 0.65mm
-BMP388 &#x2705;| $2 | 8Pa 66cm | | 200Hz
-BMP390 &#x2705;| $3 | "relative accuracy 3Pa 25cm" | 2.6Pa 16bit OSR=1 to 0.8Pa 21bit OSR=32 | 25-200Hz OSR=32-1| 0.9Pa @25Hz OSR=32, 5Pa  @100Hz | 2x2x0.75mm, 10 pi, pitch 0.5mm
-BMP580 / BMP581 / BMP585 &#x2705;| | "Relative pressure accuracy: 6 Pa per 10kPa step" | 0.016Pa (1/64Pa) 24bit | 622 Hz | 0.15Pa @46Hz, 0.78Pa @498Hz | 2x2x0.8mm, 10 pin, pitch 0.5mm
-DPS310 &#x2705;| $3 | "relative accuracy 6Pa 50cm" | 0.06Pa | 128Hz | 0.35Pa @35Hz | 2.5x2x1 mm, 8 pin, pitch 0.65mm, EOL
-HP203B &#x2705;| | "Altitude Resolution down to 0.1 meter" | 0.01Pa 20 bit value (24bit ADC) | 8-240Hz OSR=4096-128| | 3.8×3.6×1.2 mm, 8 pin, pitch 0.9mm
-ILPS22QS  | $14 | 1.5Pa 12cm | 0.025Pa | 200Hz
-LPS22HB   | $6 | 10Pa 80cm | 0.025Pa | 75Hz
-LPS22DF   | $14 | 1Pa 8cm | 0.025Pa | 200Hz
-MPL3115A2 | $5 |  | 0.25Pa | 166Hz | 19Pa @166Hz, 1.5Pa @2Hz
-MS5607    | | "high resolution 20cm" | 0.014Pa raw 24 bit ADC value | 120-2000Hz OSR=4096-256 | | 5x3x1 mm, 8 pin, pitch 1.25mm
-MS5611 &#x2705;| $4 | "high resolution 10cm" | 0.014Pa raw 24 bit ADC value | 120-2000Hz OSR=4096-256 | | 5x3x1 mm, 8 pin, pitch 1.25mm
-SPL06-001 | $2 | 6Pa 50cm | 0.06Pa | 128Hz | 1.2Pa @35Hz | Registers identical to DSP310, but noisier
+| Part    | Flight Controller | Module Price | Relative Precision "Marketing Bla Bla" | ADC Resolution | Max Measurement Rate | RMS Noise | Notes |
+|-|:-:|:-:|-|-|-|-|-|
+BMP180   | `-----` | $2
+BMP280 &#x2705;| `ABIMP` | $2 | "relative accuracy 12Pa 100cm" | 0.25Pa raw 20 bit ADC value | 26-167Hz OSR=16-1 | 2.5Pa 20cm @125Hz | 2.5x2x1mm, 8 pin, pitch 0.65mm
+BMP388 &#x2705;| `ABIMP` | $2 | 8Pa 66cm | | 200Hz
+BMP390 &#x2705;| `---M-` | $3 | "relative accuracy 3Pa 25cm" | 2.6Pa 16bit OSR=1 to 0.8Pa 21bit OSR=32 | 25-200Hz OSR=32-1| 0.9Pa @25Hz OSR=32, 5Pa  @100Hz | 2x2x0.75mm, 10 pi, pitch 0.5mm
+BMP580 / BMP581 / BMP585 &#x2705;| `A--MP` | | "Relative pressure accuracy: 6 Pa per 10kPa step" | 0.016Pa (1/64Pa) 24bit | 622 Hz | 0.15Pa @46Hz, 0.78Pa @498Hz | 2x2x0.8mm, 10 pin, pitch 0.5mm
+DPS310 &#x2705;| `ABIMP` | $3 | "relative accuracy 6Pa 50cm" | 0.06Pa | 128Hz | 0.35Pa @35Hz | 2.5x2x1 mm, 8 pin, pitch 0.65mm, EOL
+HP203B &#x2705;| `---M-` | | "Altitude Resolution down to 0.1 meter" | 0.01Pa 20 bit value (24bit ADC) | 8-240Hz OSR=4096-128| | 3.8×3.6×1.2 mm, 8 pin, pitch 0.9mm
+ILPS22QS  | `-----` | $14 | 1.5Pa 12cm | 0.025Pa | 200Hz
+LPS22HB   | `----P` | $6 | 10Pa 80cm | 0.025Pa | 75Hz
+LPS22DF   | `-B---` | $14 | 1Pa 8cm | 0.025Pa | 200Hz
+MPL3115A2 | `-----` | $5 |  | 0.25Pa | 166Hz | 19Pa @166Hz, 1.5Pa @2Hz
+MS5607    | `--I--` | | "high resolution 20cm" | 0.014Pa raw 24 bit ADC value | 120-2000Hz OSR=4096-256 | | 5x3x1 mm, 8 pin, pitch 1.25mm
+MS5611 &#x2705; | `ABIMP` | $4 | "high resolution 10cm" | 0.014Pa raw 24 bit ADC value | 120-2000Hz OSR=4096-256 | | 5x3x1 mm, 8 pin, pitch 1.25mm
+SPL06-001 | `ABIMP` | $2 | 6Pa 50cm | 0.06Pa | 128Hz | 1.2Pa @35Hz | Registers identical to DSP310, but noisier
 
 The following tests were performed to get some experimental data at approximately 100Hz sample rate using the best possible pressure oversampling. Clear winner is the BMP580 with a standard deviation of less than 2 cm. 
 ```
