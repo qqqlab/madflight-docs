@@ -21,13 +21,13 @@ BMI330 | `-----` | | 6.4k gyro+acc | 7 | 180 |
 ICM-20602  | `A---P` | $5 | | 4 | 100 | NRND
 ICM-20649  | `AB--P` |  |  | 17.5 | 285 | NRND
 ICM-40609-D| `AB--P` |  | 32k gyro+acc | 4.5 | 100 | Marketed for drones, replacement of ICM-20602 and MPU-6500
-ICM-42605| `ABI-P` | | 8k gyro+acc | 3.8 | 70 |
+ICM-42605 &#x2705;| `ABIMP` | | 8k gyro+acc | 3.8 | 70 | Similar to ICM-42688-P
 ICM-42670-P| `A---P` | $3 | 1.6k gyro+acc | 7 | 100 | Marketed for drones
 ICM-42688-P &#x2705;| `ABIMP` | $6 | 32k gyro | 2.8 | 70 | Used in current high performance FC
 ICM-45605 | `ABI--` | 
 ICM-45686 &#x2705;| `ABIMP` | no | 6.4k gyro+acc | 3.8 | 80 |
 IMM-42652 | `AB--P` |
-IMM-42653 | `-B--P` | | 32k gyro+acc | 5 | 70 |
+IMM-42653 &#x2705; | `-B-MP` | | 32k gyro+acc | 5 | 70 |
 LSM6DS3    | `--I--` | $2 | | 7 | 180 |
 LSM6DSL    | `--I--` |  | 6.7k | 4 | 80 |
 LSM6DSM    | `-----` |  | 6.7k | 3.8 | 130 |
