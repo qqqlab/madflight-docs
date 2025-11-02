@@ -155,3 +155,15 @@ _madflight_ uses FreeRTOS and executes the 1000Hz IMU loop on the second core. T
 ## Previous Version
 
 [madflight FC1](Board-FC1.md)
+
+## Betaflight
+
+The FC3 and FC1 flight controllers also work with Betaflight. 
+
+Latest pre-compiled Betaflight firmware for FC3 is here: 
+
+https://github.com/qqqlab/bf-config/raw/refs/heads/uf2/betaflight_2025.12.0-beta_RP2350B_MADFLIGHT_FC3.uf2
+
+Note: only DSHOT600 works, not PWM, see https://github.com/betaflight/betaflight/issues/14743
+
+Latest config.h for Betaflight is here: https://github.com/betaflight/config/pull/940
