@@ -140,9 +140,7 @@ SMD Pads
 
 RP2350B is the 80 pin / 48 GPIO variant of the Raspberry Pi RP2350 processor.
 
-RP2350 has dual core processors, plus dual single precision FPUs.
-
-_madflight_ uses float and is much happier with RP2350 than with RP2040 !
+RP2350 has dual core processors with dual single precision FPUs.
 
 _madflight_ uses a custom Serial library, because the default Arduino Serial transmitter blocks after sending a couple bytes. Something we don't want.
 
@@ -152,18 +150,28 @@ _madflight_ uses FreeRTOS and executes the 1000Hz IMU loop on the second core. T
 
 - OUT: Consecutive even/odd PWM pins (e.g. pins 2,3 or 10,11) share the same timer and have the same frequency.
 
-## Previous Version
+## Previous Versions of this Board
 
 [madflight FC1](Board-FC1.md)
 
 ## Betaflight
 
-The FC3 and FC1 flight controllers also work with Betaflight. 
+Betaflight firmware runs on the FC3 and FC1 flight controllers. 
 
 Latest pre-compiled Betaflight firmware for FC3 is here: 
 
 https://github.com/qqqlab/bf-config/raw/refs/heads/uf2/betaflight_2025.12.0-beta_RP2350B_MADFLIGHT_FC3.uf2
 
-Note: only DSHOT600 works, not PWM, see https://github.com/betaflight/betaflight/issues/14743
+Not all Betaflight features are supported yet for RP2350 as it is a new target for Betaflight, but:
+
+- IMU works
+- DSHOT600 works (but not PWM, see https://github.com/betaflight/betaflight/issues/14743 )
+- SDCARD works
+- External BMP280/DPS310 barometer works
+- 4 UARTs work
+- CRSF/ELRS receiver works
+- RGB LED works
+
+Open https://app.betaflight.com with a Chrome browser to configure your FC3.
 
 Latest config.h for Betaflight is here: https://github.com/betaflight/config/pull/940
