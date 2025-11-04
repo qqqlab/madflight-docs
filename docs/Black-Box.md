@@ -6,17 +6,12 @@ The black box (BB) module logs flight data for later analysis. The logformat is 
 
 Only the most common ArduPilot log messages such as IMU, BARO, BAT and GPS are implemented plus some madflight specific messages.
 
-Web Tools for Log Analysis:
+Tools for Log Analysis:
 
- - [UAV Log Viewer](https://plot.ardupilot.org/#/)
- - [Dronee Plotter](https://plot.dronee.aero/)
- - [ArduPilot WebTools](https://firmware.ardupilot.org/Tools/WebTools/)
-
-PC Tools for Log Analysis:
-
- - [MAVExplorer](https://ardupilot.org/dev/docs/using-mavexplorer-for-log-analysis.html)
- - [MissionPLanner](https://ardupilot.org/planner/)
- - [QGroundControl](http://qgroundcontrol.com/)
+ - [MissionPLanner](https://ardupilot.org/planner/) - PC Tool, go to tab 'DataFlash Logs', then button 'Review a Log']
+ - [UAV Log Viewer](https://plot.ardupilot.org/#/) - Nice online tool, but does not work with custom logs
+ - [MAVExplorer](https://ardupilot.org/dev/docs/using-mavexplorer-for-log-analysis.html) - Pc Tool
+ 
 
 Further reading:
 
