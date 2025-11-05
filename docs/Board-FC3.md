@@ -34,8 +34,8 @@ Even when using all interal functions, the external pins can be used for:
 - 5 additional GPIOs accessible via SMD pads
 - Gyro/Acc: ICM-42688-P Precision Gyro/Accelerometer
 - QMC5883P Magnetometer
-- BMP580 Precision Barometer
-- INA226 16-bit Batery Monitor
+- BMP580 Precision Barometer (2cm noise @ 85Hz sample rate)
+- INA226 16-bit Battery Monitor (36V, 40A with 1.25mV, 1.25mA resolution)
 - WS2812B RGB LED
 - SDCARD with click mechanism and fast 4-bit SDIO interface
 - Optional PSRAM or second Flash (empty SO-8 socket on back of board)
