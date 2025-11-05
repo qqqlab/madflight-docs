@@ -72,6 +72,28 @@ Note: RP2040/RP2350 is not merged into mainline PlatformIO, see [here](https://a
 
 To enable uploading on Windows you need to use [Zadig](https://zadig.akeo.ie/) - Connect a RP2 device whist holding the boot button, then in Zadig select "RP2 Boot (Interface 1) and install the WinUSB driver. See [here](https://community.platformio.org/t/cannot-upload-to-raspberry-pi-pico/45936/2)
 
+## Betaflight Setup
+
+Betaflight firmware runs on the FC3 and FC1 flight controllers. 
+
+Latest pre-compiled Betaflight firmware for FC3 is here: 
+
+https://github.com/qqqlab/bf-config/raw/refs/heads/uf2/betaflight_2025.12.0-beta_RP2350B_MADFLIGHT_FC3.uf2
+
+Not all Betaflight features are supported yet for RP2350 as it is a new target for Betaflight, but:
+
+- IMU works
+- DSHOT600 works (but not PWM, see https://github.com/betaflight/betaflight/issues/14743 )
+- SDCARD works
+- External BMP280/DPS310 barometer works
+- 4 UARTs work
+- CRSF/ELRS receiver works
+- RGB LED works
+
+Open https://app.betaflight.com with a Chrome browser to configure your FC3. (The PC Configurator is history.)
+
+Latest config.h for Betaflight is here: https://github.com/betaflight/config/pull/940
+
 ## Pinout FC3
 
 Set `#define MF_BOARD "brd/madflight_FC3.h"` to use this configuration, it can be modified with `madflight_config` configuration settings in your program.
@@ -144,7 +166,7 @@ RP2350 has dual core processors with dual single precision FPUs.
 
 _madflight_ uses a custom Serial library, because the default Arduino Serial transmitter blocks after sending a couple bytes. Something we don't want.
 
-_madflight_ uses FreeRTOS and executes the 1000Hz IMU loop on the second core. The first core is used for the other sensors.
+_madflight_ uses FreeRTOS and executes the IMU loop on the second core. The first core is used for the other sensors.
 
 ## madflight Limitiations
 
@@ -153,25 +175,3 @@ _madflight_ uses FreeRTOS and executes the 1000Hz IMU loop on the second core. T
 ## Previous Versions of this Board
 
 [madflight FC1](Board-FC1.md)
-
-## Betaflight
-
-Betaflight firmware runs on the FC3 and FC1 flight controllers. 
-
-Latest pre-compiled Betaflight firmware for FC3 is here: 
-
-https://github.com/qqqlab/bf-config/raw/refs/heads/uf2/betaflight_2025.12.0-beta_RP2350B_MADFLIGHT_FC3.uf2
-
-Not all Betaflight features are supported yet for RP2350 as it is a new target for Betaflight, but:
-
-- IMU works
-- DSHOT600 works (but not PWM, see https://github.com/betaflight/betaflight/issues/14743 )
-- SDCARD works
-- External BMP280/DPS310 barometer works
-- 4 UARTs work
-- CRSF/ELRS receiver works
-- RGB LED works
-
-Open https://app.betaflight.com with a Chrome browser to configure your FC3.
-
-Latest config.h for Betaflight is here: https://github.com/betaflight/config/pull/940
