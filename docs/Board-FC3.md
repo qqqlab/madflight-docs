@@ -31,9 +31,8 @@ Even when using all interal functions, the external pins can be used for:
 - 16MB Flash
 - 30 pins accessible via 2.54mm pinheader
 - 9 power and 9 ground pins
-- 5 additional GPIOs accessible via SMD pads
-- Gyro/Acc: ICM-42688-P Precision Gyro/Accelerometer
-- QMC5883P Magnetometer
+- Gyro/Acc: ICM-45686 Precision Gyro/Accelerometer
+- MMC5603 Magnetometer
 - BMP580 Precision Barometer (2cm noise @ 85Hz sample rate)
 - INA226 16-bit Battery Monitor (36V, 40A with 1.25mV, 1.25mA resolution)
 - WS2812B RGB LED
@@ -94,9 +93,9 @@ Open https://app.betaflight.com with a Chrome browser to configure your FC3. (Th
 
 Latest config.h for Betaflight is here: https://github.com/betaflight/config/pull/940
 
-## Pinout FC3
+## Pinout FC3v2
 
-Set `#define MF_BOARD "brd/madflight_FC3.h"` to use this configuration, it can be modified with `madflight_config` configuration settings in your program.
+Set `#define MF_BOARD "brd/madflight_FC3v2.h"` to use this configuration, it can be modified with `madflight_config` configuration settings in your program.
 
 | GPIO |Default External Pin Function | Internal Function |
 |:-:|:-|:-|
@@ -143,8 +142,8 @@ Set `#define MF_BOARD "brd/madflight_FC3.h"` to use this configuration, it can b
 41 | free (ADC1) | 
 42 | free (ADC2) | 
 43 | free (ADC3) | 
-44 | free (SMD pad ADC4) | 
-45 | free (SMD pad ADC5) | 
+44 |  | Blue LED
+45 |  | 100k/10k Vbat voltage divider
 46 |  | RBGLED
 47 |  | QMI_CS1 (for optional PSRAM)
 
@@ -152,8 +151,6 @@ SMD Pads
 
 - GPIO 33 (internal SDA)
 - GPIO 32 (internal SCL)
-- GPIO 44 (free)
-- GPIO 45 (free)
 - GPIO 46 (internal RGB LED)
 - BAT_INT Battery sensor interrupt pin
 - BAR_INT Barometer interrupt pin
@@ -174,4 +171,5 @@ _madflight_ uses FreeRTOS and executes the IMU loop on the second core. The firs
 
 ## Previous Versions of this Board
 
+[madflight FC3v1](Board-FC3v1.md)
 [madflight FC1](Board-FC1.md)
