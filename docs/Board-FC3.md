@@ -142,9 +142,9 @@ Set `#define MF_BOARD "brd/madflight_FC3v2.h"` to use this configuration, it can
 41 | free (ADC1) | 
 42 | free (ADC2) | 
 43 | free (ADC3) | 
-44 |  | Blue LED
-45 |  | 100k/10k Vbat voltage divider
-46 |  | RBGLED
+44 |  | 100k/10k Vbat voltage divider
+45 |  | Blue LED
+46 |  | RBG LED
 47 |  | QMI_CS1 (for optional PSRAM)
 
 SMD Pads
@@ -153,7 +153,6 @@ SMD Pads
 - GPIO 32 (internal SCL)
 - GPIO 46 (internal RGB LED)
 - BAT_INT Battery sensor interrupt pin
-- BAR_INT Barometer interrupt pin
 
 ## RP2350B Hardware
 
