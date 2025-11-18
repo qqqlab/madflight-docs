@@ -25,7 +25,7 @@ nav:
       - RP2350 / RP2040: Board-RP2040.md
       - STM32: Board-STM32.md
       - madflight FC2 - ESP32-S3: Board-ESP-FC2.md
-      - madflight FC3 - RP2350B: Board-FC3.md
+      - madflight FC3v2 - RP2350B: Board-FC3.md
   - Examples:
       - Quadcopter: Example-Quadcopter.md
       - Quadcopter Advanced: Example-Quadcopter-Advanced.md
@@ -41,6 +41,7 @@ nav:
       - GPS Configuration: GPS-Configuration.md
       - GPS Messages: GPS-Messages.md
       - Digital Low-pass Filter: Digital-Low-pass-Filter.md
+      - madflight FC3v1 - RP2350B: Board-FC3v1.md
       - madflight FC1 - RP2350B: Board-FC1.md
 
 site_url: https://madflight.com/
