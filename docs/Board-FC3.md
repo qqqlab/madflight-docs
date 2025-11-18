@@ -2,7 +2,7 @@
 
 ![](img/madflight-FC3-1.png){: style="width:27.97%"} ![](img/madflight-FC3-2.png){: style="width:21.54%"}  ![](img/madflight-FC3-3.png){: style="width:20.53%"}  ![](img/madflight-FC3-4.png){: style="width:21.95%"}
 
-[Schematic](/img/madflight-FC3.pdf)
+[Schematic](/img/madflight-FC3v2.pdf)
 
 [Buy](https://www.tindie.com/products/madflight/flight-controller-raspberry-pi-rp2350b/)
 
