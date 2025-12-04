@@ -8,6 +8,8 @@ Start the Arduino IDE and select menu **Tools->Board Manager** to install arduin
 
 Set menu **Tools->Operating System** to "FreeRTOS SMP"
 
+Set menu **Tools->USB Stack** to "Adafruit TinyUSB"
+
 ## PlatformIO Setup
 
 1. Clone or download a madflight release to your harddisk
