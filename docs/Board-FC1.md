@@ -27,25 +27,9 @@
 - Dimensions: 20 x 10 x 5 mm
 - Weight: 1.8 gr
 
-## Arduino IDE Setup
+## Arduino IDE and PlatformIO Setup
 
-_madflight_ for RP2350/RP2040 requires [arduino-pico v4.x.x or later](https://github.com/earlephilhower/arduino-pico) (Note: for fast SDIO SDCARD arduino-pico v5.x.x is required.)
-
-Start the Arduino IDE and select menu **Tools->Board Manager** to install arduino-pico.
-
-Set menu **Tools->Operating System** to "FreeRTOS SMP"
-
-For programming, select "Solder Party RP2350 Stamp XL"
-
-## PlatformIO Setup
-
-1. Clone or download a madflight release to your harddisk
-
-2. Start PlatformIO and open folder `madflight/examples`
-
-3. Compile env:RP2350B
-
-Note: RP2040/RP2350 is not merged into mainline PlatformIO, see [here](https://arduino-pico.readthedocs.io/en/latest/platformio.html). On Windows you need to enable long path names, see previous link for instructions.
+See [here](Board-RP2040.md)
 
 ## Pinout FC1
 
