@@ -10,11 +10,16 @@ Set menu **Tools->Operating System** to "FreeRTOS SMP"
 
 Set menu **Tools->USB Stack** to "Adafruit TinyUSB"
 
+
 ## PlatformIO Setup
 
 1. Clone or download a madflight release to your harddisk
 
-2. Start PlatformIO and open folder `madflight/examples`
+2. Start PlatformIO and open the madflight root folder
+
+3. Optionally open file platformio.ini and adapt the settings
+
+4. Compile env:RP2040, env:RP2350A, or env:RP2350B
 
 Note: RP2040/RP2350 is not merged into mainline PlatformIO, see [here](https://arduino-pico.readthedocs.io/en/latest/platformio.html). On Windows you need to enable long path names, see previous link for instructions.
 
