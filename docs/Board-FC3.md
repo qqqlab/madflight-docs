@@ -49,27 +49,9 @@ Even when using all interal functions, the external pins can be used for:
 - Dimensions: 20 x 10 x 5 mm
 - Weight: 1.8 gr
 
-## Arduino IDE Setup
+## Arduino IDE and PlatformIO Setup
 
-_madflight_ for RP2350/RP2040 requires [arduino-pico v4.x.x or later](https://github.com/earlephilhower/arduino-pico) (Note: for fast SDIO SDCARD arduino-pico v5.x.x is required.)
-
-Start the Arduino IDE and select menu **Tools->Board Manager** to install arduino-pico.
-
-Set menu **Tools->Operating System** to "FreeRTOS SMP"
-
-For programming, select board "Solder Party RP2350 Stamp XL"
-
-## PlatformIO Setup
-
-1. Clone or download a madflight release to your harddisk
-
-2. Start PlatformIO and open folder `madflight/examples`
-
-3. Compile env:RP2350B
-
-Note: RP2040/RP2350 is not merged into mainline PlatformIO, see [here](https://arduino-pico.readthedocs.io/en/latest/platformio.html). On Windows you need to enable long path names, see previous link for instructions.
-
-To enable uploading on Windows you need to use [Zadig](https://zadig.akeo.ie/) - Connect a RP2 device whist holding the boot button, then in Zadig select "RP2 Boot (Interface 1) and install the WinUSB driver. See [here](https://community.platformio.org/t/cannot-upload-to-raspberry-pi-pico/45936/2)
+See [here](Board-RP2040.md)
 
 ## Betaflight Setup
 
