@@ -1,4 +1,4 @@
-# madflight FC3 - RP2350B Flight Controller
+# madflight FC3v2 - RP2350B Flight Controller
 
 ![](img/madflight-FC3-1.png){: style="width:27.97%"} ![](img/madflight-FC3-2.png){: style="width:21.54%"}  ![](img/madflight-FC3-3.png){: style="width:20.53%"}  ![](img/madflight-FC3-4.png){: style="width:21.95%"}
 
@@ -31,7 +31,7 @@ Even when using all interal functions, the external pins can be used for:
 - 16MB Flash
 - 30 pins accessible via 2.54mm pinheader
 - 9 power and 9 ground pins
-- Gyro/Acc: ICM-45686 Precision Gyro/Accelerometer
+- ICM-45686 Precision Gyro/Accelerometer
 - MMC5603 Magnetometer
 - BMP580 Precision Barometer (2cm noise @ 85Hz sample rate)
 - INA226 16-bit Battery Monitor (36V, 40A with 1.25mV, 1.25mA resolution)
@@ -39,8 +39,8 @@ Even when using all interal functions, the external pins can be used for:
 - SDCARD with click mechanism and fast 4-bit SDIO interface
 - Optional PSRAM or second Flash (empty SO-8 socket on back of board)
 - Standard 30.5 x 30.5 mm mounting with 4x Φ4mm holes, with grommets Φ3mm
-- Dimensions: 50.7 x 41.6 mm (4.2 mm max height)
-- Weight: 5.6 gr (without DC-DC)
+- Dimensions: 50.7 x 41.6 mm (4.4 mm max height)
+- Weight: 6.3 gr (without DC-DC)
 
 #### DC-DC Converter (included)
 
