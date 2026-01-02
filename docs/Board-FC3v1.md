@@ -56,25 +56,7 @@ See [here](Board-RP2040.md)
 
 ## Betaflight Setup
 
-Betaflight firmware runs on the FC3 and FC1 flight controllers. 
-
-Latest pre-compiled Betaflight firmware for FC3 is here: 
-
-https://github.com/qqqlab/bf-config/raw/refs/heads/uf2/betaflight_2025.12.0-beta_RP2350B_MADFLIGHT_FC3.uf2
-
-Not all Betaflight features are supported yet for RP2350 as it is a new target for Betaflight, but:
-
-- IMU works
-- DSHOT600 works (but not PWM, see https://github.com/betaflight/betaflight/issues/14743 )
-- SDCARD works
-- External BMP280/DPS310 barometer works
-- 4 UARTs work
-- CRSF/ELRS receiver works
-- RGB LED works
-
-Open https://app.betaflight.com with a Chrome browser to configure your FC3. (The PC Configurator is history.)
-
-Latest config.h for Betaflight is here: https://github.com/betaflight/config/pull/940
+See [here](Board-FC3.md)
 
 ## Pinout FC3
 

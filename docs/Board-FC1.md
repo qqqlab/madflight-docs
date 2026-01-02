@@ -31,6 +31,10 @@
 
 See [here](Board-RP2040.md)
 
+## Betaflight Setup
+
+See [here](Board-FC3.md)
+
 ## Pinout FC1
 
 Set `#define MF_BOARD "brd/madflight_FC1.h"` to use this configuration, it can be modified with `madflight_config` configuration settings in your program.

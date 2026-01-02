@@ -1,6 +1,6 @@
 # madflight FC3v2 - RP2350B Flight Controller
 
-![](img/madflight-FC3-1.png){: style="width:27.97%"} ![](img/madflight-FC3-2.png){: style="width:21.54%"}  ![](img/madflight-FC3-3.png){: style="width:20.53%"}  ![](img/madflight-FC3-4.png){: style="width:21.95%"}
+![](img/madflight-FC3v2-1.png){: style="width:33%"}![](img/madflight-FC3v2-2.png){: style="width:33%"}![](img/madflight-FC3v2-3.png){: style="width:33%"}
 
 [Schematic](/img/madflight-FC3v2.pdf)
 
@@ -8,13 +8,13 @@
 
 This is a Raspberry Pi Pico2 on steroids. Use it as a flight controller, or for a project that requires precise orientation sensing with the on-board 10DOF best-in-class sensors. 
 
-The layout of the pins is similar to the Raspberry Pi Pico2, but with added 5V power pins to make it easy to connect external components like RC receivers, GPS with compass, 4-in-1 ESC, Servos, Radars, etc. 
+The layout of the pins is similar to the Raspberry Pi Pico2, but with added power pins to make it easy to connect external components like RC receivers, GPS with compass, 4-in-1 ESC, Servos, Radars, etc. 
 
 Easy mounting: Use the standard 30.5mm x 30.5mm mounting holes to fit your drone frame. Or use double sided tape to mount the board, the board has no components on the back.
 
-Power the board directly from 3 ~ 6V (eg. USB or 1S LiPo), or use the included DC-DC converter to connect larger batteries. For added flexibility the DC-DC converter board can be top or bottom mounted.
+Power the board directly from 3 ~ 5.5V (eg. USB or 1S LiPo), or use the included DC-DC converter to connect larger batteries. For added flexibility the DC-DC converter board can be top or bottom mounted.
 
-Even when using all interal functions, the external pins can be used for:
+Even when using all internal functions, the external pins can be used for:
 
 - 22 PWM pins
 - 8 DSHOT pins
@@ -29,12 +29,12 @@ Even when using all interal functions, the external pins can be used for:
 
 - RP2350B with 48 GPIO
 - 16MB Flash
-- 30 pins accessible via 2.54mm pinheader
+- 30 GPIO pins accessible via 2.54mm pinheader
 - 9 power and 9 ground pins
-- ICM-45686 Precision Gyro/Accelerometer
-- MMC5603 Magnetometer
+- ICM-45686 ultra high-performance 6-axis IMU (4000 dps gyro with 20-bit resolution, and 32G accelerometer with 19-bit resolution)
+- MMC5603NJ high performance magnetometer (20-bit, 0.0625mG per LSB, 2 mG total RMS noise, Enables heading accuracy of 1º)
 - BMP580 Precision Barometer (2cm noise @ 85Hz sample rate)
-- INA226 16-bit Battery Monitor (36V, 40A with 1.25mV, 1.25mA resolution)
+- INA226 16-bit Battery Monitor (40A with 1.25mA resolution, 36V with with 1.25mV resolution)
 - WS2812B RGB LED
 - SDCARD with click mechanism and fast 4-bit SDIO interface
 - Optional PSRAM or second Flash (empty SO-8 socket on back of board)
@@ -55,13 +55,9 @@ See [here](Board-RP2040.md)
 
 ## Betaflight Setup
 
-Betaflight firmware runs on the FC3 and FC1 flight controllers. 
+Betaflight has experimental support for the RP2350 based madflight FC3 flight controller, see [Betaflight announcement](https://www.betaflight.com/blog/2025/10/10/RP2350%20Lands%20in%20Betaflight)
 
-Latest pre-compiled Betaflight firmware for FC3 is here: 
-
-https://github.com/qqqlab/bf-config/raw/refs/heads/uf2/betaflight_2025.12.0-beta_RP2350B_MADFLIGHT_FC3.uf2
-
-Not all Betaflight features are supported yet for RP2350 as it is a new target for Betaflight, but:
+Not all Betaflight features are supported yet for RP2350, but:
 
 - IMU works
 - DSHOT600 works (but not PWM, see https://github.com/betaflight/betaflight/issues/14743 )
@@ -71,9 +67,21 @@ Not all Betaflight features are supported yet for RP2350 as it is a new target f
 - CRSF/ELRS receiver works
 - RGB LED works
 
-Open https://app.betaflight.com with a Chrome browser to configure your FC3. (The PC Configurator is history.)
+Open https://app.betaflight.com with a Chrome browser to configure your FC3. Note: the Betaflight PC Configurator is history.
 
-Latest config.h for Betaflight is here: https://github.com/betaflight/config/pull/940
+Betaflight firmware upload instructions:
+
+- Open https://app.betaflight.com with a Chrome browser
+- Click "Update Firmware"
+- Enable switches "Enable Expert Mode" and "Show release candiates"
+- Select "Development"
+- Select board "MADFLIGHT_FC3"
+- Remove "LED Strip" from Other Options
+- Press "Load Firmware[Online]"
+- Place the FC3 in boot mode (press BOOT button, press+release RST button, release BOOT button)
+- Press "Flash Firmware", and in the save-as popup select the RP2350 drive
+- Press "Connect" and configure your FC3 board
+
 
 ## Pinout FC3v2
 
