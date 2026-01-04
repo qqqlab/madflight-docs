@@ -73,7 +73,7 @@ Betaflight firmware upload instructions:
 
 - Open https://app.betaflight.com with a Chrome browser
 - Click "Update Firmware"
-- Enable switches "Enable Expert Mode" and "Show release candiates"
+- Enable switches "Enable Expert Mode" and "Show release candidates"
 - Select "Development"
 - Select board "MADFLIGHT_FC3"
 - Remove "LED Strip" from Other Options
@@ -81,6 +81,8 @@ Betaflight firmware upload instructions:
 - Place the FC3 in boot mode (press BOOT button, press+release RST button, release BOOT button)
 - Press "Flash Firmware", and in the save-as popup select the RP2350 drive
 - Press "Connect" and configure your FC3 board
+
+Note: if your motors run erratic when disarmed, put #14864 (pull request number) in the Select commit field in the Firmware Flasher tab (you need to Enable expert mode, Show release candidates and Development).
 
 
 ## Pinout FC3v2
