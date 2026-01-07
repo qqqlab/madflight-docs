@@ -55,7 +55,7 @@ See [here](Board-RP2040.md)
 
 ## Betaflight Setup
 
-Betaflight has experimental support for the RP2350 based madflight FC3 flight controller, see [Betaflight announcement](https://www.betaflight.com/blog/2025/10/10/RP2350%20Lands%20in%20Betaflight)
+Betaflight supports the RP2350 based madflight FC3 flight controller, see [Betaflight announcement](https://www.betaflight.com/blog/2025/10/10/RP2350%20Lands%20in%20Betaflight)
 
 Not all Betaflight features are supported yet for RP2350, but:
 
@@ -67,16 +67,15 @@ Not all Betaflight features are supported yet for RP2350, but:
 - CRSF/ELRS receiver works
 - RGB LED works
 
-Open https://app.betaflight.com with a Chrome browser to configure your FC3. Note: the Betaflight PC Configurator is history.
+Open [app.betaflight.com](https://app.betaflight.com) with a Chrome browser to configure your FC3. Note: the Betaflight PC Configurator is history.
 
 Betaflight firmware upload instructions:
 
-- Open https://app.betaflight.com with a Chrome browser
+- Open [app.betaflight.com](https://app.betaflight.com) with a Chrome browser
 - Click "Update Firmware"
 - Enable switches "Enable Expert Mode" and "Show release candidates"
 - Select "Development"
 - Select board "MADFLIGHT_FC3"
-- Remove "LED Strip" from Other Options
 - Press "Load Firmware[Online]"
 - Place the FC3 in boot mode (press BOOT button, press+release RST button, release BOOT button)
 - Press "Flash Firmware", and in the save-as popup select the RP2350 drive
