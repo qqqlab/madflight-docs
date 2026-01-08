@@ -88,6 +88,8 @@ Note: if your motors run erratic when disarmed, put #14864 (pull request number)
 
 Set `#define MF_BOARD "brd/madflight_FC3v2.h"` to use this configuration, it can be modified with `madflight_config` configuration settings in your program.
 
+![](img/madflight-FC3-diagram.png)
+
 | GPIO |Default External Pin Function | Internal Function |
 |:-:|:-|:-|
  0 | SER0_TX (connect to radio receiver RX) | 
