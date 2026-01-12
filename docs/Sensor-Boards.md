@@ -2,7 +2,7 @@
 
 An overview of available sensor boards.
 
-* Table last updated: November 2025
+* Table last updated: January 2026
 * Parts marked with &#x2705; are supported by _madflight_
 * Parts with &#x1F6A7; are work in progress, see Pull Requests on Github
 * The "Module Price" column lists price of a breakout board (if it is cheap & easy to procure)
@@ -13,29 +13,31 @@ An overview of available sensor boards.
 
 | Part    | Flight Controller | Module Price | Rate (Hz) | Gyro Noise (mdps/&radic;Hz) | Acc Noise (µg/&radic;Hz) | Notes |
 |-|:-:|:-:|:-:|:-:|:-:|-|
-BMI055 | `A----` | 
-BMI088 | `A-I--` | 
-BMI160 | `ABI--` | $2 | 3.2k gyro, 1.6k acc | 8 | 180 |
-BMI270 &#x2705;| `ABIM-` |  | 6k gyro | 7 | 160 | Used in current commercial FC as replacement for MPU-6000/6500
-BMI330 | `-----` | | 6.4k gyro+acc | 7 | 180 |
-ICM-20602  | `A---P` | $5 | | 4 | 100 | NRND
-ICM-20649  | `AB--P` |  |  | 17.5 | 285 | NRND
-ICM-40609-D| `AB--P` |  | 32k gyro+acc | 4.5 | 100 | Marketed for drones, replacement of ICM-20602 and MPU-6500
-ICM-42605 &#x2705;| `ABIMP` | | 8k gyro+acc | 3.8 | 70 | Similar to ICM-42688-P
-ICM-42670-P| `A---P` | $3 | 1.6k gyro+acc | 7 | 100 | Marketed for drones
-ICM-42688-P &#x2705;| `ABIMP` | $6 | 32k gyro | 2.8 | 70 | Used in current high performance FC
-ICM-45605 | `ABI--` | 
-ICM-45686 &#x2705;| `ABIMP` | no | 6.4k gyro+acc | 3.8 | 80 |
-IMM-42652 | `AB--P` |
-IMM-42653 &#x2705; | `-B-MP` | | 32k gyro+acc | 5 | 70 |
-LSM6DS3    | `--I--` | $2 | | 7 | 180 |
-LSM6DSL    | `--I--` |  | 6.7k | 4 | 80 |
-LSM6DSM    | `-----` |  | 6.7k | 3.8 | 130 |
-LSM6DSO    | `-BI--` | $10 | 6.7k | 3.8 | 110 |
-LSM6DSV    | `-B---` |  | 7.68k | 2.8 | 60 |
-MPU-6000 &#x2705;| `ABIMP` | $2 | 8k gyro, 1k acc ||| Released 2011, EOL
-MPU-6050 &#x2705;| `ABIMP` | $2 | 8k gyro, 1k acc ||| I2C only, Released 2011, EOL
-MPU-6500 &#x2705;| `ABIMP` | $2 | 8k gyro, 4k acc | 10 | 300 | Upgraded MPU-6000, Released 2014, NRND
+BMI055 | `A----3` | 
+BMI088 | `A-I--3` | 
+BMI160 | `ABI--4` | $2 | 3.2k gyro, 1.6k acc | 8 | 180 |
+BMI270 &#x2705;| `ABIM-3` |  | 6k gyro | 7 | 160 | Used in current commercial FC as replacement for MPU-6000/6500
+BMI330 | `------` | | 6.4k gyro+acc | 7 | 180 |
+ICM-20602  | `A---P-` | $5 | | 4 | 100 | NRND
+ICM-20649  | `AB--P-` |  |  | 17.5 | 285 | NRND
+ICM-20948  | `-----3`
+ICM-40609-D| `AB--P-` |  | 32k gyro+acc | 4.5 | 100 | Marketed for drones, replacement of ICM-20602 and MPU-6500
+ICM-42605 &#x2705;| `ABIMP-` | | 8k gyro+acc | 3.8 | 70 | Similar to ICM-42688-P
+ICM-42670-P| `A---P-` | $3 | 1.6k gyro+acc | 7 | 100 | Marketed for drones
+ICM-42688-P &#x2705;| `ABIMP3` | $6 | 32k gyro | 2.8 | 70 | Used in current high performance FC
+ICM-45605 | `ABI---` | 
+ICM-45686 &#x2705;| `ABIMP1` | no | 6.4k gyro+acc | 3.8 | 80 |
+IMM-42652 | `AB--P-` |
+IMM-42653 &#x2705; | `-B-MP-` | | 32k gyro+acc | 5 | 70 |
+LSM6DS3    | `--I---` | $2 | | 7 | 180 |
+LSM6DSL    | `--I---` |  | 6.7k | 4 | 80 |
+LSM6DSM    | `------` |  | 6.7k | 3.8 | 130 |
+LSM6DSO    | `-BI--2` | $10 | 6.7k | 3.8 | 110 |
+LSM6DSR    | `-----1` |  | 6.7k | 5 | 60 |
+LSM6DSV    | `-B---1` |  | 7.68k | 2.8 | 60 |
+MPU-6000 &#x2705;| `ABIMP4` | $2 | 8k gyro, 1k acc ||| Released 2011, EOL
+MPU-6050 &#x2705;| `ABIMP4` | $2 | 8k gyro, 1k acc ||| I2C only, Released 2011, EOL
+MPU-6500 &#x2705;| `ABIMP4` | $2 | 8k gyro, 4k acc | 10 | 300 | Upgraded MPU-6000, Released 2014, NRND
 
 *Flight Controller*  
 A: ArduPilot  
@@ -43,6 +45,7 @@ B: BetaFlight
 I: INAV  
 M: Madflight  
 P: PX4  
+1-4: [SlimeVR IMU ranking](https://docs.slimevr.dev/diy/imu-comparison.html) 1=best 4=worst  
 
 ## 9-axis IMU
 
