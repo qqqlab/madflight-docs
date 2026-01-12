@@ -9,7 +9,7 @@ An overview of available sensor boards.
 * Prices in USD from online platforms incl shipping
 * EOL = End Of Life, NRND = Not Recommended for New Designs
 
-## 6-axis IMU
+## IMU
 
 | Part    | Flight Controller | Module Price | Rate (Hz) | Gyro Noise (mdps/&radic;Hz) | Acc Noise (µg/&radic;Hz) | Notes |
 |-|:-:|:-:|:-:|:-:|:-:|-|
@@ -17,18 +17,18 @@ BMI055 | `A----3` |
 BMI088 | `A-I--3` | 
 BMI160 | `ABI--4` | $2 | 3.2k gyro, 1.6k acc | 8 | 180 |
 BMI270 &#x2705;| `ABIM-3` |  | 6k gyro | 7 | 160 | Used in current commercial FC as replacement for MPU-6000/6500
-BMI330 | `------` | | 6.4k gyro+acc | 7 | 180 |
+BMI330 | `------` | | 6.4k | 7 | 180 |
 ICM-20602  | `A---P-` | $5 | | 4 | 100 | NRND
 ICM-20649  | `AB--P-` |  |  | 17.5 | 285 | NRND
-ICM-20948  | `-----3`
+ICM-20948 &#x1F6A7; | `-----3` | $9 |  | 15 | 230 | 9DOF, replacement of MPU-9250/9255, ICM-20649 + AK09916, Released 2018
 ICM-40609-D| `AB--P-` |  | 32k gyro+acc | 4.5 | 100 | Marketed for drones, replacement of ICM-20602 and MPU-6500
-ICM-42605 &#x2705;| `ABIMP-` | | 8k gyro+acc | 3.8 | 70 | Similar to ICM-42688-P
-ICM-42670-P| `A---P-` | $3 | 1.6k gyro+acc | 7 | 100 | Marketed for drones
+ICM-42605 &#x2705;| `ABIMP-` | | 8k | 3.8 | 70 | Similar to ICM-42688-P
+ICM-42670-P| `A---P-` | $3 | 1.6k | 7 | 100 | Marketed for drones
 ICM-42688-P &#x2705;| `ABIMP3` | $6 | 32k gyro | 2.8 | 70 | Used in current high performance FC
 ICM-45605 | `ABI---` | 
-ICM-45686 &#x2705;| `ABIMP1` | no | 6.4k gyro+acc | 3.8 | 80 |
+ICM-45686 &#x2705;| `ABIMP1` | no | 6.4k | 3.8 | 80 |
 IMM-42652 | `AB--P-` |
-IMM-42653 &#x2705; | `-B-MP-` | | 32k gyro+acc | 5 | 70 |
+IMM-42653 &#x2705; | `-B-MP-` | | 32k | 5 | 70 |
 LSM6DS3    | `--I---` | $2 | | 7 | 180 |
 LSM6DSL    | `--I---` |  | 6.7k | 4 | 80 |
 LSM6DSM    | `------` |  | 6.7k | 3.8 | 130 |
@@ -38,6 +38,8 @@ LSM6DSV    | `-B---1` |  | 7.68k | 2.8 | 60 |
 MPU-6000 &#x2705;| `ABIMP4` | $2 | 8k gyro, 1k acc ||| Released 2011, EOL
 MPU-6050 &#x2705;| `ABIMP4` | $2 | 8k gyro, 1k acc ||| I2C only, Released 2011, EOL
 MPU-6500 &#x2705;| `ABIMP4` | $2 | 8k gyro, 4k acc | 10 | 300 | Upgraded MPU-6000, Released 2014, NRND
+MPU-9150 &#x2705;| | $7 | 8k gyro| | | 9DOF, I2C only, MPU6050 + AK8975, EOL
+MPU-9250/9255&#x2705;| | $7 | 8k gyro, 4k acc, 100Hz mag ||| 9DOF, MPU6500 + AK8963, Released 2014, EOL. Note: many fake or relabelled MPU-6500 chips sold as MPU-9250 on the market...
 
 *Flight Controller*  
 A: ArduPilot  
@@ -47,38 +49,29 @@ M: Madflight
 P: PX4  
 1-4: [SlimeVR IMU ranking](https://docs.slimevr.dev/diy/imu-comparison.html) 1=best 4=worst  
 
-## 9-axis IMU
-
-| Part    | Module Price | Interface | Notes |
-|-|:-:|-|-|
-ICM-20948 &#x1F6A7;| $9 | SPI 7MHz, I2C | noise: 15 mdps/&radic;Hz 230 µg/&radic;Hz, replacement of MPU-9250/9255, ICM-20649 + AK09916, Released 2018
-LSM9DSO  | 
-MPU-9150 &#x2705;| $7 | I2C | 8k gyro, MPU6050 + AK8975, EOL
-MPU-9250 &#x2705;| $7 | SPI 20MHz, I2C | 8k gyro, 4k acc, 100Hz mag, MPU6500 + AK8963, Released 2014, EOL. Note: many fake or relabelled MPU-6500 chips sold as MPU-9250 on the market...
-MPU-9255 &#x2705;| $9 | SPI 20MHz, I2C | 8k gyro, MPU-6000 + AK8963, EOL
 
 ## Magnetometer
 
 Earth's magnetic field strength at its surface ranges from 25 to 65 μT (0.25 to 0.65 G).
 
-| Part    | Flight Controller | Module Price | Max Sampling Rate | LSB Resolution | ADC | Full Scale | Notes |
-|-|:-:|:-:|-|-|-|-|-|
-AK09916 &#x1F6A7; | `A---P` |    | 100 Hz| 1.5mG | 16-bit | | integraded in ICM-20948
-AK09918 | `-----` | | 120 Hz | 1.5mG | 16-bit | ±50G
-AK8963 &#x2705; | `ABIMP` |    | 100 Hz| 1.5mG | 16-bit | | integraded in MPU9250
-AK8975 &#x2705; | `-BIM-` |    | 100 Hz| 3mG | 13-bit | | integraded in MPU9150
-BMM150    | `A---P` | $7 | 300 Hz| 3mG | | ±13G | NRND
-BMM350    | `A---P` | $7 | 400 Hz| 1mG | 16-bit | ±20G |
-HMC5883L  | `-BI-P` | $2 | 160 Hz| 0.7mG | 12-bit | ±1G to ±8G | chip marking "L883"
-HMC5983   | `-----` | $2 | 220 Hz | 0.7mG | 12-bit | ±1G to ±8G
-IST8310   | `ABI-P` |    | 200 Hz| 3mG | 14-bit
-LIS2MDL   | `-B--P` |    | 100 Hz| 0.15mG | 16-bit
-MMC5603NJ &#x2705; | `---M-` |    | 1000 Hz| 0.06mG | 20-bit | ±30G | linearity: 0.5%FS, noise: 0.2mG/&radic;Hz 1.5mG @ 75Hz
-MMC5983MA | `A---P` | $15 | 1000 Hz| 0.06mG | 18-bit | ±8G | linearity: 0.1%FS, noise: 0.06mG/&radic;Hz 0.6mG @ 100Hz
-QMC6309 &#x2705; | `---M-` | | 1500 Hz| 0.25mG | 16-bit | ±8G or ±32G | linearity: 0.6%FS, noise: 0.5mG/&radic;Hz 7mG @ 200Hz
-QMC5883L &#x2705; | `ABIMP` | $2 | 200 Hz | 0.08mG | 16-bit | ±2G or ±8G | linearity: 0.1%FS, chip marking "5883"
-QMC5883P &#x2705; | `A-IMP` |    | 1500 Hz | 0.08mG | 16-bit | ±2G to ±32G | linearity: 0.5%FS
-RM3100 &#x2705; | `A--MP` | $25 | 500 Hz| 0.13mG @ 150 Hz | no ADC | ±8G | linearity: 0.5% @2G, noise: 0.02mG/&radic;Hz 0.2mG @ 147Hz, Uses coils, not hall sensors
+| Part    | Flight Controller | Module Price | Max Sampling Rate | Noise (mG/&radic;Hz) | LSB Resolution | ADC | Full Scale | Notes |
+|-|:-:|:-:|-|-|-|-|-|-|
+AK09916 &#x1F6A7; | `A---P` |    | 100 Hz| | 1.5mG | 16-bit | | integraded in ICM-20948
+AK09918 | `-----` | | 120 Hz | | 1.5mG | 16-bit | ±50G
+AK8963 &#x2705; | `ABIMP` |    | 100 Hz| | 1.5mG | 16-bit | | integraded in MPU9250
+AK8975 &#x2705; | `-BIM-` |    | 100 Hz| | 3mG | 13-bit | | integraded in MPU9150
+BMM150    | `A---P` | $7 | 300 Hz| | 3mG | | ±13G | NRND
+BMM350    | `A---P` | $7 | 400 Hz| | 1mG | 16-bit | ±20G |
+HMC5883L  | `-BI-P` | $2 | 160 Hz| | 0.7mG | 12-bit | ±1G to ±8G | chip marking "L883"
+HMC5983   | `-----` | $2 | 220 Hz | |0.7mG | 12-bit | ±1G to ±8G
+IST8310   | `ABI-P` |    | 200 Hz| | 3mG | 14-bit
+LIS2MDL   | `-B--P` |    | 100 Hz| | 0.15mG | 16-bit
+MMC5603NJ &#x2705; | `---M-` |    | 1000 Hz| 1.5 | 0.06mG | 20-bit | ±30G | linearity: 0.5%FS, noise: 1.5mG @ 75Hz
+MMC5983MA | `A---P` | $15 | 1000 Hz| 0.6 | 0.06mG | 18-bit | ±8G | linearity: 0.1%FS, noise: 0.6mG @ 100Hz
+QMC6309 &#x2705; | `---M-` | | 1500 Hz| 0.5 | 0.25mG | 16-bit | ±8G or ±32G | linearity: 0.6%FS, noise: 7mG @ 200Hz
+QMC5883L &#x2705; | `ABIMP` | $2 | 200 Hz || 0.08mG | 16-bit | ±2G or ±8G | linearity: 0.1%FS, chip marking "5883"
+QMC5883P &#x2705; | `A-IMP` |    | 1500 Hz || 0.08mG | 16-bit | ±2G to ±32G | linearity: 0.5%FS
+RM3100 &#x2705; | `A--MP` | $25 | 500 Hz| 0.02 | 0.13mG @ 150 Hz | no ADC | ±8G | linearity: 0.5% @2G, noise: 0.2mG @ 147Hz, Uses coils, not hall sensors
 
 ## Barometer
 
