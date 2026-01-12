@@ -73,33 +73,33 @@ HMC5883L  | `-BI-P` | $2 | 160 Hz| 0.7mG | 12-bit | ±1G to ±8G | chip marking 
 HMC5983   | `-----` | $2 | 220 Hz | 0.7mG | 12-bit | ±1G to ±8G
 IST8310   | `ABI-P` |    | 200 Hz| 3mG | 14-bit
 LIS2MDL   | `-B--P` |    | 100 Hz| 0.15mG | 16-bit
-MMC5603NJ | `-----` |    | 1000 Hz| 0.06mG | 20-bit | ±30G | linearity: 0.5%FS, noise: 1.5mG @ 75Hz
-MMC5983MA | `A---P` | $15 | 1000 Hz| 0.06mG | 18-bit | ±8G | linearity: 0.1%FS, noise: 0.6mG @ 100Hz
-QMC6309 &#x2705; | `---M-` | | 1500 Hz| 0.25mG | 16-bit | ±8G or ±32G | linearity: 0.6%FS, noise: 7mG @ 200Hz
-QMC5883L &#x2705; | `ABIMP` | $2 | 200 Hz | 0.08mG | 16-bit | ±2G or ±8G | linearity: 0.1%FS, noise: 2mG, chip marking "5883"
+MMC5603NJ &#x2705; | `---M-` |    | 1000 Hz| 0.06mG | 20-bit | ±30G | linearity: 0.5%FS, noise: 0.2mG/&radic;Hz 1.5mG @ 75Hz
+MMC5983MA | `A---P` | $15 | 1000 Hz| 0.06mG | 18-bit | ±8G | linearity: 0.1%FS, noise: 0.06mG/&radic;Hz 0.6mG @ 100Hz
+QMC6309 &#x2705; | `---M-` | | 1500 Hz| 0.25mG | 16-bit | ±8G or ±32G | linearity: 0.6%FS, noise: 0.5mG/&radic;Hz 7mG @ 200Hz
+QMC5883L &#x2705; | `ABIMP` | $2 | 200 Hz | 0.08mG | 16-bit | ±2G or ±8G | linearity: 0.1%FS, chip marking "5883"
 QMC5883P &#x2705; | `A-IMP` |    | 1500 Hz | 0.08mG | 16-bit | ±2G to ±32G | linearity: 0.5%FS
-RM3100 &#x2705; | `A--MP` | $25 | 500 Hz| 0.13mG @ 150 Hz | no ADC | ±8G | Uses coils, not hall sensors
+RM3100 &#x2705; | `A--MP` | $25 | 500 Hz| 0.13mG @ 150 Hz | no ADC | ±8G | linearity: 0.5% @2G, noise: 0.02mG/&radic;Hz 0.2mG @ 147Hz, Uses coils, not hall sensors
 
 ## Barometer
 
 When used as altimeter: approx 12 Pa (0.12 mbar) per meter at sea level.
 
-| Part    | Flight Controller | Module Price | Relative Precision "Marketing Bla Bla" | ADC Resolution | Max Measurement Rate | RMS Noise | Notes |
+| Part    | Flight Controller | Module Price | Relative Precision "Marketing Bla Bla" | ADC Resolution | Max Measurement Rate | RMS Noise (Pa/&radic;Hz) | Notes |
 |-|:-:|:-:|-|-|-|-|-|
 BMP180   | `-----` | $2
-BMP280 &#x2705;| `ABIMP` | $2 | "relative accuracy 12Pa 100cm" | 0.25Pa raw 20 bit ADC value | 26-167Hz OSR=16-1 | 2.1Pa @ 87Hz | 2.5x2x1mm, 8 pin, pitch 0.65mm
+BMP280 &#x2705;| `ABIMP` | $2 | "relative accuracy 12Pa 100cm" | 0.25Pa raw 20 bit ADC value | 26-167Hz OSR=16-1 | 0.23 (2.1Pa @ 87Hz) | 2.5x2x1mm, 8 pin, pitch 0.65mm
 BMP388 &#x2705;| `ABIMP` | $2 | 8Pa 66cm | | 200Hz | 3.2Pa @ 92Hz
-BMP390 &#x2705;| `---M-` | $3 | "relative accuracy 3Pa 25cm" | 2.6Pa 16bit OSR=1 to 0.8Pa 21bit OSR=32 | 25-200Hz OSR=32-1| 2.0Pa @ 92Hz | 2x2x0.75mm, 10 pi, pitch 0.5mm
-BMP580 / BMP581 / BMP585 &#x2705;| `A--MP` | | "Relative pressure accuracy: 6 Pa per 10kPa step" | 0.016Pa (1/64Pa) 24bit | 622 Hz | 0.21Pa @ 87Hz | 2x2x0.8mm, 10 pin, pitch 0.5mm
-DPS310 &#x2705;| `ABIMP` | $3 | "relative accuracy 6Pa 50cm" | 0.06Pa | 128Hz | 0.35Pa @35Hz | 2.5x2x1 mm, 8 pin, pitch 0.65mm, EOL
+BMP390 &#x2705;| `---M-` | $3 | "relative accuracy 3Pa 25cm" | 2.6Pa 16bit OSR=1 to 0.8Pa 21bit OSR=32 | 25-200Hz OSR=32-1| 0.21 (2.0Pa @ 92Hz) | 2x2x0.75mm, 10 pi, pitch 0.5mm
+BMP580 / BMP581 / BMP585 &#x2705;| `A--MP` | | "Relative pressure accuracy: 6 Pa per 10kPa step" | 0.016Pa (1/64Pa) 24bit | 622 Hz | 0.022 (0.21Pa @ 87Hz) | 2x2x0.8mm, 10 pin, pitch 0.5mm
+DPS310 &#x2705;| `ABIMP` | $3 | "relative accuracy 6Pa 50cm" | 0.06Pa | 128Hz | 0.06 (0.35Pa @35Hz) | 2.5x2x1 mm, 8 pin, pitch 0.65mm, EOL
 HP203B &#x2705;| `---M-` | | "Altitude Resolution down to 0.1 meter" | 0.01Pa 20 bit value (24bit ADC) | 8-240Hz OSR=4096-128| | 3.8×3.6×1.2 mm, 8 pin, pitch 0.9mm
 ILPS22QS  | `-----` | $14 | 1.5Pa 12cm | 0.025Pa | 200Hz
 LPS22HB   | `----P` | $6 | 10Pa 80cm | 0.025Pa | 75Hz
 LPS22DF   | `-B---` | $14 | 1Pa 8cm | 0.025Pa | 200Hz
-MPL3115A2 | `-----` | $5 |  | 0.25Pa | 166Hz | 19Pa @166Hz, 1.5Pa @2Hz
+MPL3115A2 | `-----` | $5 |  | 0.25Pa | 166Hz | 1.5 (19Pa @166Hz)
 MS5607    | `--I--` | | "high resolution 20cm" | 0.014Pa raw 24 bit ADC value | 120-2000Hz OSR=4096-256 | | 5x3x1 mm, 8 pin, pitch 1.25mm
 MS5611 &#x2705; | `ABIMP` | $4 | "high resolution 10cm" | 0.014Pa raw 24 bit ADC value | 120-2000Hz OSR=4096-256 | | 5x3x1 mm, 8 pin, pitch 1.25mm
-SPL06-001 | `ABIMP` | $2 | 6Pa 50cm | 0.06Pa | 128Hz | 1.2Pa @35Hz | Registers identical to DSP310, but noisier
+SPL06-001 | `ABIMP` | $2 | 6Pa 50cm | 0.06Pa | 128Hz | 0.20 (1.2Pa @35Hz) | Registers identical to DSP310, but noisier
 
 The following tests were performed to get some experimental data at approximately 100Hz sample rate using the best possible pressure oversampling. Clear winner is the BMP580 with a standard deviation of less than 2 cm. 
 ```
