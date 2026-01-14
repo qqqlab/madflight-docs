@@ -64,8 +64,8 @@ BMM150    | `A---P` | $7 | 300 Hz| 0.6 | 3mG | 13-bit | ±13G | NRND
 BMM350    | `A---P` | $7 | 400 Hz| | 1mG | 16-bit | ±20G |
 HMC5883L  | `-BI-P` | $2 | 160 Hz| | 0.7mG | 12-bit | ±1G to ±8G | chip marking "L883"
 HMC5983   | `-----` | $2 | 220 Hz | |0.7mG | 12-bit | ±1G to ±8G
-IST8310   | `ABI-P` |    | 200 Hz| | 3mG | 14-bit
-LIS2MDL   | `-B--P` |    | 100 Hz| | 0.15mG | 16-bit
+IST8310   | `ABI-P` |    | 200 Hz| | 3mG | 14-bit | ±16G |
+LIS2MDL   | `-B--P` |    | 100 Hz| 0.7 | 1.5mG | 16-bit | ±49G |
 MMC5603NJ &#x2705; | `---M-` |    | 1000 Hz| 0.17 | 0.06mG | 20-bit | ±30G | linearity: 0.5%FS, noise: 1.5mG @ 75Hz
 MMC5983MA | `A---P` | $15 | 1000 Hz| 0.06 | 0.06mG | 18-bit | ±8G | linearity: 0.1%FS, noise: 0.6mG @ 100Hz
 QMC6309 &#x2705; | `---M-` | | 1500 Hz| 0.5 | 0.25mG | 16-bit | ±8G or ±32G | linearity: 0.6%FS, noise: 7mG @ 200Hz
