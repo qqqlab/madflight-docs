@@ -25,8 +25,8 @@ ICM-40609-D| `AB--P-` |  | 32k gyro+acc | 4.5 | 100 | Marketed for drones, repla
 ICM-42605 &#x2705;| `ABIMP-` | | 8k | 3.8 | 70 | Similar to ICM-42688-P
 ICM-42670-P| `A---P-` | $3 | 1.6k | 7 | 100 | Marketed for drones
 ICM-42688-P &#x2705;| `ABIMP3` | $6 | 32k gyro | 2.8 | 70 | Used in current high performance FC
-ICM-45605 | `ABI---` | 
-ICM-45686 &#x2705;| `ABIMP1` | no | 6.4k | 3.8 | 80 |
+ICM-45605 | `ABI---` |  | 6.4k | 3.8 | 80 | similar to ICM-45686 but with FS max 2000dps / 16G
+ICM-45686 &#x2705;| `ABIMP1` |  | 6.4k | 3.8 | 80 | FS max 4000dps / 32G
 IMM-42652 | `AB--P-` |
 IMM-42653 &#x2705; | `-B-MP-` | | 32k | 5 | 70 |
 LSM6DS3    | `--I---` | $2 | | 7 | 180 |
