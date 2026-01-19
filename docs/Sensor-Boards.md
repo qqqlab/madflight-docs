@@ -27,8 +27,8 @@ ICM-42670-P| `A---P-` | $3 | 1.6k | 7 | 100 | Marketed for drones
 ICM-42688-P &#x2705;| `ABIMP3` | $6 | 32k gyro | 2.8 | 70 | Used in current high performance FC
 ICM-45605 | `ABI---` |  | 6.4k | 3.8 | 80 | similar to ICM-45686 but with FS max 2000dps / 16G
 ICM-45686 &#x2705;| `ABIMP1` |  | 6.4k | 3.8 | 80 | FS max 4000dps / 32G
-IIM-42652 | `AB--P-` |
-IIM-42653 &#x2705; | `-B-MP-` | | 32k | 5 | 70 |
+IIM-42652 | `AB--P-` | | 32k | 3.8 | 70
+IIM-42653 &#x2705; | `-B-MP-` | | 32k | 5 | 70 | FS max 4000dps / 32G
 LSM6DS3    | `--I---` | $2 | | 7 | 180 |
 LSM6DSL    | `--I---` |  | 6.7k | 4 | 80 |
 LSM6DSM    | `------` |  | 6.7k | 3.8 | 130 |
