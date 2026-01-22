@@ -60,7 +60,7 @@ AK09916 &#x1F6A7; | `A---P` |    | 100 Hz| | 1.5mG | 16-bit | | integraded in IC
 AK09918 | `-----` | | 120 Hz | | 1.5mG | 16-bit | ±50G
 AK8963 &#x2705; | `ABIMP` |    | 100 Hz| | 1.5mG | 16-bit | | integraded in MPU9250
 AK8975 &#x2705; | `-BIM-` |    | 100 Hz| | 3mG | 13-bit | | integraded in MPU9150
-BMM150    | `A---P` | $7 | 300 Hz| 0.6 | 3mG | 13-bit | ±13G | NRND
+BMM150 &#x2705; | `A---P` | $7 | 300 Hz| 0.6 | 3mG | 13-bit | ±13G | NRND
 BMM350    | `A---P` | $7 | 400 Hz| | 1mG | 16-bit | ±20G |
 HMC5883L  | `-BI-P` | $2 | 160 Hz| | 0.7mG | 12-bit | ±1G to ±8G | chip marking "L883"
 HMC5983   | `-----` | $2 | 220 Hz | |0.7mG | 12-bit | ±1G to ±8G
@@ -147,12 +147,13 @@ INA228 &#x2705;| $5 | 20-bit ADC, 0-85V, 1LSB = 0.2mV; ±80A with 0.5m&ohm; 3W s
 
 | Part | Module Price | Manufacturer | Max Range | Resolution | Sample Rate | Notes |
 |-|:-:|-|-|-|-|-|
+DTS6012M &#x2705;|$15|Senkylaser|20m (12m in full sun)|1mm (accuracy: 6cm, 1%)|250Hz (default 100Hz)|Lidar with UART and I2C interface, 1.35 gram, 330 mW. - Tested stationary indoor approx 1m above floor: works very well, also at an angle.
 LD2411S &#x2705;|$4|Hi-link|6m|1cm (accuracy 5%)|10Hz|24G Radar, Distance detection - Tested stationary indoor approx 1m above floor: gives very erratic values and appears not to react on change in height. Not useful for _madflight_...
 LD2413 &#x2705;|$11|Hi-link|10m|1mm (accuracy 3mm)|20Hz|24G Radar, Liquid level - Tested stationary indoor approx 1m above floor: works but about 2 second delay reporting change in height. Not useful for _madflight_...
 LD2451 |$7|Hi-link|100m|1m||24G Radar, Vehicle detection, tracks relative speed, angle and distance of multiple targets. Not useful for _madflight_...
 RD-03E |$3|Ai-tinker|6m|1cm (accuracy 5%)||24G Radar, Ranging Firmware (also exist with Gesture Firmware)
 SR04M-2 &#x2705;|$3|no-name|6m||20Hz|Waterproof Ultrasonic, pwm output. - Tested stationary indoor approx 1m above floor: works but sensor axis needs to be perpendicular (approx. +/-15 degrees) to floor to give correct readings.
-DTS6012M &#x2705;|$15|Senkylaser|20m (12m in full sun)|1mm (accuracy: 6cm, 1%)|250Hz (default 100Hz)|Lidar with UART and I2C interface, 1.35 gram, 330 mW. - Tested stationary indoor approx 1m above floor: works very well, also at an angle.
+VL53L3CX  &#x2705;||STMicroelectronics|5m indoor, 1m outdoor|1mm|120Hz|Time-of-flight sensor. Can track up to 4 objects.
 
 ## Optical Flow Sensors
 
