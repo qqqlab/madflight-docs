@@ -10,6 +10,20 @@
 
 For additional help see [madflight Discussions](https://github.com/qqqlab/madflight/discussions)
 
+## Betaflight Configurator
+
+Connect your board by USB and open [app.betaflight.com](https://app.betaflight.com) with a Crome browser. The use the Setup and Receiver Tabs to check your settings. Also the CLI can be used.
+
+## Mission Planner
+
+Start Mission Planner and go to the Config->Planner tab, and check both "Reset on USB Connect (toggle DTR)" and "Disable RTS reset on ESP SerialUSB". Then connect your board by USB and press the CONNECT button. You can also use a MavLink receiver to connect.
+
+You can use MP to check attitude and GPS position, change parameters, and to analyze madflight log files.
+
+## CLI Command Line Interface
+
+Connect your favorite terminal by USB. The CLI is the most powerful tool to view the drone's state, calibrate it, and to modify settings.
+
 ## 1. Required Hardware
 
 - [Development board](Controller-Boards.md): 
