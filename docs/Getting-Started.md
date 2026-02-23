@@ -10,19 +10,23 @@
 
 For additional help see [madflight Discussions](https://github.com/qqqlab/madflight/discussions)
 
-## Betaflight Configurator
+## Configuration Tools
 
-You can use the Betaflight Configurator to check your settings, but you can not use it to configure madflight. Connect your board by USB and open [app.betaflight.com](https://app.betaflight.com) with a Chrome browser or install the [PC Configurator v10.10.0](https://github.com/betaflight/betaflight-configurator/releases/tag/10.10.0). The use the Setup, Receiver, Motors, or Sensors Tabs to check your settings. Also the CLI Tab can be used but direct terminal CLI connection is more responsive.
+You can use the following tools for configuring _madflight_.
 
-## Mission Planner
+### CLI Command Line Interface
+
+Connect your favorite terminal by USB. The CLI is the most powerful tool to view the drone's state, calibrate it, and to modify settings. Type 'help' to see the available commands, 'diff' to see the current settings.
+
+### Betaflight Configurator
+
+You can use the Betaflight Configurator to check your settings, but you can not use it to configure madflight. Connect your board by USB and open [app.betaflight.com](https://app.betaflight.com) with a Chrome browser or install the [PC Configurator v10.10.0](https://github.com/betaflight/betaflight-configurator/releases/tag/10.10.0). Then use the Setup, Receiver, Motors, or Sensors Tabs to check your settings. Also the CLI Tab can be used but direct terminal CLI connection is more responsive.
+
+### Mission Planner
 
 Start Mission Planner and go to the Config->Planner tab, and check both "Reset on USB Connect (toggle DTR)" and "Disable RTS reset on ESP SerialUSB". Then connect your board by USB and press the CONNECT button. You can also use a MavLink receiver to connect.
 
 You can use MP to check attitude and GPS position, change parameters, and to analyze madflight log files.
-
-## CLI Command Line Interface
-
-Connect your favorite terminal by USB. The CLI is the most powerful tool to view the drone's state, calibrate it, and to modify settings. Type 'help' to see the available commands, 'diff' to see the current settings.
 
 ## 1. Required Hardware
 
