@@ -4,15 +4,23 @@
 
 _madflight_ for STM32 requires:
 
-- [STM32duino Arduino Core for STM32 v2.x.x](https://github.com/stm32duino/Arduino_Core_STM32) Start the Arduino IDE and select menu Tools->Board Manager to install this software.
+- [STM32duino Arduino Core for STM32 v2.x.x](https://github.com/stm32duino/Arduino_Core_STM32) Start the Arduino IDE and select menu **Tools->Board Manager** to install this software.
 
-- [STM32duino FreeRTOS](https://github.com/stm32duino/STM32FreeRTOS) Select menu Tools->Manage Libaries, then search for "STM32duino FreeRTOS".
+- [STM32duino FreeRTOS](https://github.com/stm32duino/STM32FreeRTOS) Select menu *Tools->Manage Libraries*, then search for "STM32duino FreeRTOS".
+
+Install the _madflight_ library: use menu **Tools->Manage Libraries**, then search for _madflight_
+
+Open a _madflight_ example: use menu **File->Examples->Examples for custom libraries->madflight->00.HelloWorld.ino**
 
 ## PlatformIO Setup
 
 1. Clone or download a madflight release to your harddisk
 
-2. Start PlatformIO and open folder `madflight/examples`
+2. Start PlatformIO and open the madflight root folder
+
+3. Open file platformio.ini and adapt the settings
+
+4. Compile env:STM32F411
 
 ## Pinout STM32 Commercial Flight Controllers
 

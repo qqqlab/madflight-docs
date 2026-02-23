@@ -4,11 +4,16 @@
 
 _madflight_ for RP2350/RP2040 requires [arduino-pico v4.x.x or later](https://github.com/earlephilhower/arduino-pico) (Note: for fast SDIO SDCARD arduino-pico v5.x.x is required.)
 
-Start the Arduino IDE and select menu **Tools->Board Manager** to install arduino-pico.
+Start the Arduino IDE and select menu **Tools->Board Manager** to install this software.
 
-Set menu **Tools->Operating System** to "FreeRTOS SMP"
+Install the _madflight_ library: use menu **Tools->Manage Libraries**, then search for _madflight_
 
-Set menu **Tools->USB Stack** to "Adafruit TinyUSB"
+Open a _madflight_ example: use menu **File->Examples->Examples for custom libraries->madflight->00.HelloWorld.ino**
+
+To compile an example use the following settings:
+
+  - Set menu **Tools->Operating System** to "FreeRTOS SMP"
+  - Set menu **Tools->USB Stack** to "Pico SDK"
 
 
 ## PlatformIO Setup
@@ -17,13 +22,13 @@ Set menu **Tools->USB Stack** to "Adafruit TinyUSB"
 
 2. Start PlatformIO and open the madflight root folder
 
-3. Optionally open file platformio.ini and adapt the settings
+3. Open file platformio.ini and adapt the settings
 
 4. Compile env:RP2040, env:RP2350A, or env:RP2350B
 
 Note: RP2040/RP2350 is not merged into mainline PlatformIO, see [here](https://arduino-pico.readthedocs.io/en/latest/platformio.html). On Windows you need to enable long path names, see previous link for instructions.
 
-To enable uploading on Windows you need to use [Zadig](https://zadig.akeo.ie/) - Connect a RP2 device whist holding the boot button, then in Zadig select "RP2 Boot (Interface 1) and install the WinUSB driver. See [here](https://community.platformio.org/t/cannot-upload-to-raspberry-pi-pico/45936/2)
+To enable uploading on Windows you need to use [Zadig](https://zadig.akeo.ie/) - Connect a RP2 device whilst holding the boot button, then in Zadig select "RP2 Boot (Interface 1) and install the WinUSB driver. See [here](https://community.platformio.org/t/cannot-upload-to-raspberry-pi-pico/45936/2)
 
 
 ## Pinout Raspberry Pi Pico / Pico2

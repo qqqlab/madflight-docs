@@ -34,7 +34,7 @@ The `gps.h` header file defines the interface, the actual implementation is in `
 
 The modules have as little as possible cross-connections to other modules, the actual fusion of the modules takes place in the main.cpp program.
 
-Most modules have an update() method which needs to be called periodically from your program. This keeps the implementation flexible: you decide when (polling, interrupt, timer) and from which thread the updates take place.
+Most modules have an update() method which needs to be called periodically from your program. This keeps the implementation flexible: you decide when (polling, interrupt, timer) and from which thread the updates take place. In the standard implementation defined in madflight_setup() the .update() calls are handled by background FreeRTOS tasks and should not be called from user code.
 
 
 ## What is a 'gizmo'
@@ -50,14 +50,16 @@ _madflight_ uses FreeRTOS, and uses the following threads / tasks / interrupts:
 
 |Priority|Description|
 |-|-|
-highest | IMU interrupt, which wakes up imu_loop() task
-high    | imu_loop() task
-low     | loop(), blackbox, and lua tasks
+highest | IMU interrupt, which wakes up IMU task
+high    | IMU tasks which calls imu_loop()
+low     | loop(), blackbox, sensors, rcl, cli and lua tasks
 lowest  | idle task
 
 The [BBX] blackbox SDCARD logging module is thread-safe, and runs as a separate task so that slow SDCARD operations do not block other tasks.
 
-The other modules are not thread-safe. Care must be taken to only access a module from a single thread. But even if this rule is broken, the effects should be limited as long as the variables involved are at most 32 bits. For example: when reading the location from the gps module from a different thread as where `gps.update()` is called, one might get the longitude from the previous sample and the latitude from the current sample, but each value itself is correct. At least I hope so, maybe memory alignment plays a role here? Anyway, you have been warned, add a mutex as required.
+The other modules are not thread-safe. Care must be taken to only access a module from a single thread. But even if this rule is broken, the effects should be limited as long as the variables involved are at most 32 bits. For example: when reading the location from the gps module from a different thread as where `gps.update()` is called, one might get the longitude from the previous sample and the latitude from the current sample, but each value itself is correct. At least I hope so, maybe memory alignment plays a role here? Anyway, you have been warned...
+
+Version 2.3 adds a publish/subscribe message broker. The modules publish updates to their topic here, and other code can subscribe to these topics to receive consistent samples. For example the GPS module posts to to the gps.topic when a new gps.update() is received. Other code (which can be a different task, core or even an interrupt) can subscribe to a the gps.topic and pull the messages posted here. These pulled messages are consistent, i.e. the longitude and latitude always belong to the same sample.
 
 
 ## Hardware Abstraction Layer (HAL)

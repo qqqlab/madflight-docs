@@ -42,6 +42,10 @@ The ESP32-S3 has 3 hardware UARTs that can be connected to any of the GPIOs.
 - Dimensions: 20 x 10 x 5 mm
 - Weight: 1.8 gr
 
+## Arduino IDE and PlatformIO Setup
+
+See [here](Board-ESP32.md)
+
 ## Suggested Pinouts
 
 ### Pinout for a Quadcopter

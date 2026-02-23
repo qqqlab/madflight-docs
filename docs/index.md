@@ -31,7 +31,7 @@ By default madflight has these safety features enabled:
 - No external dependencies, all modules are included as subdirectories of the `src` directory.
 - The madflight flight controller runs standard `setup()` and `loop()`.
 - It mainly uses plain Arduino functionality: Serial, Wire, and SPI. One custom hardware dependent library is used for PWM. Therefor, it can fairly easily ported to other 32 bit microcontrollers that support the Arduino framework. Also porting to other build environments like CMake should not be a huge effort.
-- The following modules are used:
+- The following modules are available:
     - `ahr` Attitude Heading Reference System, estimates roll, yaw, pitch
     - `alt` Altitude estimators
     - `bar` Barometer sensor

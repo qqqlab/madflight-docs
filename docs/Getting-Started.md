@@ -12,7 +12,7 @@ For additional help see [madflight Discussions](https://github.com/qqqlab/madfli
 
 ## Betaflight Configurator
 
-Connect your board by USB and open [app.betaflight.com](https://app.betaflight.com) with a Crome browser. The use the Setup and Receiver Tabs to check your settings. Also the CLI can be used.
+You can use the Betaflight Configurator to check your settings, but you can not use it to configure madflight. Connect your board by USB and open [app.betaflight.com](https://app.betaflight.com) with a Chrome browser or install the [PC Configurator v10.10.0](https://github.com/betaflight/betaflight-configurator/releases/tag/10.10.0). The use the Setup, Receiver, Motors, or Sensors Tabs to check your settings. Also the CLI Tab can be used but direct terminal CLI connection is more responsive.
 
 ## Mission Planner
 
@@ -22,7 +22,7 @@ You can use MP to check attitude and GPS position, change parameters, and to ana
 
 ## CLI Command Line Interface
 
-Connect your favorite terminal by USB. The CLI is the most powerful tool to view the drone's state, calibrate it, and to modify settings.
+Connect your favorite terminal by USB. The CLI is the most powerful tool to view the drone's state, calibrate it, and to modify settings. Type 'help' to see the available commands, 'diff' to see the current settings.
 
 ## 1. Required Hardware
 
@@ -61,17 +61,11 @@ Setup your favorite development environment (PlatformIO or Arduino IDE) for your
 
 ### Arduino IDE
 
-Install the madflight library: use menu *Tools->Manage Libraries*, then search for _madflight_
-
-Open the Quadcopter example: use menu *File->Examples->Examples for custom libraries->madflight->01.Quadcopter.ino*
+Open the Quadcopter example: use menu **File->Examples->Examples for custom libraries->madflight->01.Quadcopter.ino**
 
 ### PlatformIO
 
-Download the latest _madflight_ release from [github](https://github.com/qqqlab/madflight/releases)
-
-Start PlatformIO and the madflight/examples folder with menu *File->Open Folder...*
-
-Open `platformio.ini` and set `src_dir = 01.Quadcopter` 
+Open `platformio.ini` and read the instructions in the file to compile the Quadcopter example
 
 ## 4. Configure Hardware
 
@@ -137,7 +131,7 @@ INT |--->| `pin_imu_int`
 VCC |<-->| 3V3 or 5V (depending on your sensor board)
 GND |<-->| GND
 
-`<bus>` is the I2C bus number, set with `imu_i2c_bus <bus>`
+`<bus>` is the I2C bus number (0 or 1), set with `imu_i2c_bus <bus>`
 
 ### Configure a Serial Receiver (RCL)
 
@@ -163,30 +157,30 @@ pin_rcl_ppm    <gpio> // select the PPM pin here
 ```
 ### Configure Radio Channels (RCL)
 
-Set your radio transmitter to match the default parameters listed below. Or modify the parameters to match your radio setup.
+Set your radio transmitter to match the default parameters (AERT) listed below. Or modify the parameters to match your radio setup.
 
 Or skip these settings and see below to setup the parameters interactively. 
 
 ```
-rcl_thr_ch        1 // 1-based channel number for throttle
-rcl_thr_pull   1100 // pwm for stick pulled toward you, i.e. idle throttle
-rcl_thr_mid    1500
-rcl_thr_push   1900 // pwm for stick pushed away, i.e. full throttle
-
-rcl_rol_ch        2 // roll channel
+rcl_rol_ch        1 // roll (aileron) channel number
 rcl_rol_left   1100
 rcl_rol_mid    1500
 rcl_rol_right  1900
 
-rcl_pit_ch        3 // pitch channel
+rcl_pit_ch        2 // pitch (elevator) channel
 rcl_pit_pull   1100 // pwm for stick pulled toward you, i.e. pitch-up
 rcl_pit_mid    1500
 rcl_pit_push   1900 // pwm for stick pushed away, i.e. pitch-down
 
-rcl_yaw_ch        4 // yaw channel
+rcl_yaw_ch        3 // yaw (rudder) channel
 rcl_yaw_left   1100
 rcl_yaw_mid    1500
 rcl_yaw_right  1900
+
+rcl_thr_ch        4 // throttle channel
+rcl_thr_pull   1100 // pwm for stick pulled toward you, i.e. idle throttle
+rcl_thr_mid    1500
+rcl_thr_push   1900 // pwm for stick pushed away, i.e. full throttle
 
 rcl_arm_ch        5 // arm switch channel, set to 0 to use stick commands for arming
 rcl_arm_min    1600 // armed pwm range min
@@ -233,18 +227,19 @@ Compile Quadcopter.ino and upload it to your board.
 
 Connect the Serial Monitor at 115200 baud, type `help` to see the available CLI (Command Line Interface) commands.
 
-
 ## 7. Check and Calibrate
 
 COMPLETE THIS SECTION OR YOUR CRAFT WILL CRASH (you have been warned :-)
 
 First check the startup messages for errors/warnings, and fix those before continuing, it will save you time and headaches.
 
-### Gyro/Accelerometer Orientation (IMU)
+### Check Gyro/Accelerometer Orientation (IMU)
 
 The `imu_align` parameter sets the sensor orientation. The label is yaw / roll (in that order) needed to rotate the sensor from its normal position to its mounted position. The normal sensor position is NED (North East Down), i.e. x-axis points forward (N), y-axis points right (E), z-axis points down (D). 
 
-Use CLI `pacc` to display the IMU accelerometer outputs.
+Use the Setup Tab in the BF Configurator and check that the displayed drone orientation follows your roll/pitch/yaw movements.
+
+Or, use CLI `pacc` to display the IMU accelerometer outputs.
 
 Holding the quad horizontal should give ax:0 ay:0 az:1, for example: `ax:-0.02  ay:-0.00  az:+1.00` 
 
@@ -254,13 +249,13 @@ Holding right side down should give ax:0 ay:1 az:0, for example: `ax:+0.05  ay:+
 
 If not, adjust the parameter `imu_align` and re-upload until this matches. 
 
-### Gyro/Accelerometer Calibration (IMU)
+### Calibrate Gyro/Accelerometer (IMU)
 
-Now calibrate the IMU: place it horizontal and stationary, then type `calimu`, and `save` to store the settings. (The quad will reboot)
+Now calibrate the IMU: place it horizontal and stationary, then type `calimu`, and `save` to store the settings. (The quad will reboot after `save`)
 
 After calibration, use `pahr` to check that the calculated roll and pitch angles are correct.
 
-### Radio Link (RCL)
+### Test Radio Link (RCL)
 
 If you did not setup the radio parameters in the previous steps, then type `calradio` and follow the prompts to setup your RC radio receiver.
 
@@ -277,7 +272,7 @@ Check the Radio Link with `ppwm` and `prcl`.
 
 If something does not look right, check/modify your RCL config and upload again. 
 
-### Arming (RCL,OUT)
+### Test Arming (RCL,OUT)
 
 Use CLI commands `pout` to display the motor outputs.
 
@@ -291,8 +286,7 @@ Without arm switch configured (parameter `rcl_arm_ch == 0`)
  - ARMING: Pull both sticks toward you, yaw full right, and roll full left and keep sticks there for 2 sec
  - DISARMING: Pull both sticks toward you, yaw full left, and roll full right and keep sticks there for 2 sec
 
-
-### Motor Mixer (OUT)
+### Test Motor Mixer (OUT)
 
 LEAVE BATTERY DISCONNECTED
 
@@ -312,12 +306,13 @@ Move yaw stick right and out1,2 should go up, out0,3 down: `out.armed:1  M0%:3  
 
 If any of the checks fail -> re-check your IMU, RCL and OUT configuration settings.
 
-
-### Motor Direction and Order (OUT)
+### Test Motor Direction and Order (OUT)
 
 Connect the battery but REMOVE PROPELLERS
 
-Type `spinmotors` and then `go`. This will spin each motor in order. Check that the correct motor spins, and that the motor spins in the correct direction.
+Use the Motors Tab in the BF Configurator.
+
+Or, in the CLI type `spinmotors` and then `go`. This will spin each motor in order. Check that the correct motor spins, and that the motor spins in the correct direction.
 
 If the incorrect motor spins, change the pin_out<x> parameters to correct this.
 
