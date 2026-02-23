@@ -20,7 +20,7 @@ Connect your favorite terminal by USB. The CLI is the most powerful tool to view
 
 ### Betaflight Configurator
 
-You can use the Betaflight Configurator to check your settings, but you can not use it to configure madflight. Connect your board by USB and open [app.betaflight.com](https://app.betaflight.com) with a Chrome browser or install the [PC Configurator v10.10.0](https://github.com/betaflight/betaflight-configurator/releases/tag/10.10.0). Then use the Setup, Receiver, Motors, or Sensors Tabs to check your settings. Also the CLI Tab can be used but direct terminal CLI connection is more responsive.
+You can use the Betaflight Configurator to check your settings, but you can not use it to configure madflight. Connect your board by USB and open [app.betaflight.com](https://app.betaflight.com) with a Chrome browser or install the [PC Configurator v10.10.0](https://github.com/betaflight/betaflight-configurator/releases/tag/10.10.0). Then use the Setup, Receiver, Motors, or Sensors Tabs to check your settings. The CLI Tab can also be used, but direct terminal CLI connection is more responsive.
 
 ### Mission Planner
 
