@@ -2,7 +2,8 @@
 
 ![](img/madflight-FC3v2-1.png){: style="width:33%"}![](img/madflight-FC3v2-2.png){: style="width:33%"}![](img/madflight-FC3v2-3.png){: style="width:33%"}
 
-[Schematic](/img/madflight-FC3v2.pdf)
+[Schematic Rev-B](/img/madflight-FC3v2B.pdf)
+[Schematic Rev-A](/img/madflight-FC3v2.pdf)
 
 [Buy](https://www.tindie.com/products/madflight/flight-controller-raspberry-pi-rp2350b/)
 
@@ -31,7 +32,7 @@ Even when using all internal functions, the external pins can be used for:
 - 16MB Flash
 - 30 GPIO pins accessible via 2.54mm pinheader
 - 9 power and 9 ground pins
-- ICM-45686 ultra high-performance 6-axis IMU (4000 dps gyro with 20-bit resolution, and 32G accelerometer with 19-bit resolution)
+- LSM6DSV16B (Rev-B) or ICM-45686 (Rev-A) high-performance 6-axis IMU
 - MMC5603NJ high performance magnetometer (20-bit, 0.0625mG per LSB, 2 mG total RMS noise, Enables heading accuracy of 1º)
 - BMP580 Precision Barometer (2cm noise @ 85Hz sample rate)
 - INA226 16-bit Battery Monitor (40A with 1.25mA resolution, 36V with with 1.25mV resolution)
@@ -55,7 +56,7 @@ See [here](Board-RP2040.md)
 
 ## Betaflight Setup
 
-Betaflight supports the RP2350 based madflight FC3 flight controller, see [Betaflight announcement](https://www.betaflight.com/blog/2025/10/10/RP2350%20Lands%20in%20Betaflight)
+Betaflight supports the RP2350 based madflight FC3 Rev-A flight controller, see [Betaflight announcement](https://www.betaflight.com/blog/2025/10/10/RP2350%20Lands%20in%20Betaflight)
 
 Not all Betaflight features are supported yet for RP2350, but:
 
@@ -113,10 +114,10 @@ Set `#define MF_BOARD "brd/madflight_FC3v2.h"` to use this configuration, it can
 19 | free | 
 20 | free | 
 21 | free | 
-22 | free | 
-23 | free | 
-24 | free | 
-25 | free | 
+22 | free | Rev-B jumper Vusb Sense
+23 | free | Rev-B jumper BAR_INT
+24 | free | Rev-B jumper BAT_INT
+25 | free | Rev-B jumper SD Card Detect
 26 |  | IMU_CLKIN
 27 |  | IMU_INT
 28 |  | IMU_SPI1_MISO
@@ -145,7 +146,6 @@ SMD Pads
 - GPIO 33 (internal SDA)
 - GPIO 32 (internal SCL)
 - GPIO 46 (internal RGB LED)
-- BAT_INT Battery sensor interrupt pin
 
 ## RP2350B Hardware
 
