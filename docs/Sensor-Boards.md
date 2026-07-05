@@ -2,7 +2,7 @@
 
 An overview of available sensor boards.
 
-* Table last updated: January 2026
+* Table last updated: July 2026
 * Parts marked with &#x2705; are supported by _madflight_
 * Parts with &#x1F6A7; are work in progress, see Pull Requests on Github
 * The "Module Price" column lists price of a breakout board (if it is cheap & easy to procure)
@@ -93,6 +93,7 @@ MPL3115A2 | `-----` | $5 |  | 0.25Pa | 166Hz | 1.5 (19Pa @166Hz)
 MS5607    | `--I--` | | "high resolution 20cm" | 0.014Pa raw 24 bit ADC value | 120-2000Hz OSR=4096-256 | | 5x3x1 mm, 8 pin, pitch 1.25mm
 MS5611 &#x2705; | `ABIMP` | $4 | "high resolution 10cm" | 0.014Pa raw 24 bit ADC value | 120-2000Hz OSR=4096-256 | | 5x3x1 mm, 8 pin, pitch 1.25mm
 SPL06-001 | `ABIMP` | $2 | 6Pa 50cm | 0.06Pa | 128Hz | 0.20 (1.2Pa @35Hz) | Registers identical to DSP310, but noisier
+SPL07-003 | `-----` | | "Relative accuracy: typ.±0.03hPa, equiv. to ±0.25 m" | 24 bit ADC | 200 Hz | 0.08 (0.5 @ 35Hz) | 2.0x2.0x0.76 mm, 10 pin, pitch 0.5mm
 
 The following tests were performed to get some experimental data at approximately 100Hz sample rate using the best possible pressure oversampling. Clear winner is the BMP580 with a standard deviation of less than 2 cm. 
 ```
