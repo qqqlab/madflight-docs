@@ -2,7 +2,7 @@
 
 ![](img/madflight-FC3v2-1.png){: style="width:33%"}![](img/madflight-FC3v2-2.png){: style="width:33%"}![](img/madflight-FC3v2-3.png){: style="width:33%"}
 
-[Schematic Rev-B](/img/madflight-FC3v2B.pdf)  
+[Schematic Rev-B/C](/img/madflight-FC3v2B.pdf)  
 [Schematic Rev-A](/img/madflight-FC3v2.pdf)  
 
 [Buy](https://www.tindie.com/products/madflight/flight-controller-raspberry-pi-rp2350b/)
@@ -29,13 +29,13 @@ Even when using all internal functions, the external pins can be used for:
 #### madflight FC3
 
 - RP2350B with 48 GPIO
-- 16MB Flash
+- 2MB [Rev-C], or 16MB [A/B] Flash
 - 30 GPIO pins accessible via 2.54mm pinheader
 - 9 power and 9 ground pins
-- LSM6DSV16B (Rev-B) or ICM-45686 (Rev-A) high-performance 6-axis IMU
+- LSM6DSV [Rev-C], LSM6DSV16B [B], or ICM-45686 [A] high-performance 6-axis IMU
 - MMC5603NJ high performance magnetometer (20-bit, 0.0625mG per LSB, 2 mG total RMS noise, Enables heading accuracy of 1º)
 - BMP580 Precision Barometer (2cm noise @ 85Hz sample rate)
-- INA226 16-bit Battery Monitor (40A with 1.25mA resolution, 36V with with 1.25mV resolution)
+- INA226 16-bit Battery Monitor (-40A to +40A with 1.25mA resolution, 0-36V with with 1.25mV resolution)
 - WS2812B RGB LED
 - SDCARD with click mechanism and fast 4-bit SDIO interface
 - Optional PSRAM or second Flash (empty SO-8 socket on back of board)
@@ -43,12 +43,14 @@ Even when using all internal functions, the external pins can be used for:
 - Dimensions: 50.7 x 41.6 mm (4.4 mm max height)
 - Weight: 6.3 gr (without DC-DC)
 
-#### DC-DC Converter (included)
+#### DC-DC Converter (option)
 
 - Output: 5V 2A continous / 3A peak
 - Input: 6.5 ~ 20V
 - Dimensions: 20 x 10 x 5 mm
 - Weight: 1.8 gr
+
+**IMPORTANT:** Cut the **ADJ** trace and solder the **5V** jumper before assembly!
 
 ## Arduino IDE and PlatformIO Setup
 
@@ -114,10 +116,10 @@ Set `#define MF_BOARD "brd/madflight_FC3v2.h"` to use this configuration, it can
 19 | free | 
 20 | free | 
 21 | free | 
-22 | free | Rev-B jumper Vusb Sense
-23 | free | Rev-B jumper BAR_INT
-24 | free | Rev-B jumper BAT_INT
-25 | free | Rev-B jumper SD Card Detect
+22 | free | Rev-B+ jumper Vusb Sense
+23 | free | Rev-B+ jumper BAR_INT
+24 | free | Rev-B+ jumper BAT_INT
+25 | free | Rev-B+ jumper SD Card Detect
 26 |  | IMU_CLKIN
 27 |  | IMU_INT
 28 |  | IMU_SPI1_MISO
@@ -159,7 +161,7 @@ _madflight_ uses FreeRTOS and executes the IMU loop on the second core. The firs
 
 ## madflight Limitiations
 
-- OUT: Consecutive even/odd PWM pins (e.g. pins 2,3 or 10,11) share the same timer and have the same frequency.
+- OUT: Consecutive even/odd PWM pins (e.g. pins 2,3 or 10,11) on the RP2350 share the same timer and have the same frequency.
 
 ## Previous Versions of this Board
 
