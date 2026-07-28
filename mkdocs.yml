@@ -31,6 +31,7 @@ nav:
       - Quadcopter Advanced: Example-Quadcopter-Advanced.md
       - Plane: Example-Plane.md
   - Reference:
+      - Config Parameters: Parameters.md
       - Developer Guide: Developer-Guide.md
       - MAVLink: MAVLink.md
       - Black Box Logging: Black-Box.md
