@@ -1,3 +1,26 @@
 .wy-nav-content {
   max-width: initial;
 }
+
+/* === limit table to page width === */
+
+/* Container forces horizontal scrolling only if content absolutely cannot fit */
+.wy-table-responsive {
+    overflow-x: auto;
+    width: 100% !important;
+    margin-bottom: 24px;
+}
+
+/* Force the table to precisely match the main page content width */
+.wy-table-responsive table {
+    width: 100% !important;
+    table-layout: fixed !important; /* Forces columns to stay inside page bounds */
+}
+
+/* Force words to wrap and break inside the constrained cells */
+.wy-table-responsive table td, 
+.wy-table-responsive table th {
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+}
