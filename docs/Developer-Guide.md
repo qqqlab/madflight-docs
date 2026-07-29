@@ -18,6 +18,8 @@ _madflight_ is a collection of code modules from which you can pick and choose t
 
 ## Modules
 
+![madflight modules](/img/Madflight_Modules.png)
+
 Each module lives in a separate subdirectory, for example `gps`. For each module a global variable is defined, for example `gps`. Even if the underlying peripheral is not present, the global variable is defined as a placeholder object. This helps to declutter code: 
 ```C++
 #ifdef USE_GPS
