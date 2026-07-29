@@ -20,7 +20,7 @@
 /* Force words to wrap and break inside the constrained cells */
 .wy-table-responsive table td, 
 .wy-table-responsive table th {
-    white-space: normal !important;
-    word-break: break-word !important;
-    overflow-wrap: break-word !important;
+    white-space: normal !important;       /* Allows natural line wrapping */
+    word-break: normal !important;        /* PREVENTS single words from breaking apart */
+    overflow-wrap: break-word !important; /* Only breaks word if a single word is wider than the column */
 }
