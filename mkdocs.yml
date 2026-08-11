@@ -28,7 +28,7 @@ nav:
       - madflight FC3v2 - RP2350B: Board-FC3.md
   - Examples:
       - Quadcopter: Example-Quadcopter.md
-      - Quadcopter Advanced: Example-Quadcopter-Advanced.md
+      - M5Stack StampFly: Example-StampFly.md
       - Plane: Example-Plane.md
   - Reference:
       - Config Parameters: Parameters.md
