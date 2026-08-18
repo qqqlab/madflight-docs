@@ -263,11 +263,12 @@ Type `calradio` and follow the prompts to setup your RC radio receiver.
 
 Type `prcl` to check the configuration:
 
-- Throttle should be between 0 (idle) and 1 (full throttle). 
+- Throttle should be 0 for idle and 1 for full throttle. 
 - Roll and yaw should be 0 for center, -1 for left and +1 for right.
 - Pitch should be 0 for center, -1 for pitch down, +1 for pitch up.
-- Armed should be 0 when the switch is in disarmed position and 1 in armed position
-- Flightmode should be 0,1,2,3,4,5 representing the 2/3/6-position flight mode switch.
+- Yaw should be 0 for center, -1 for left and +1 for right.
+- Armed should be 0 when disarmed and 1 when armed (see OUT below).
+- Flightmode (fm_sw) should be 0,1,2,3,4,5 representing the 2/3/6-position flight mode switch.
 
 If something does not look right, fix it before continuing.
 
@@ -277,7 +278,7 @@ Type `save` to store the settings. (The flight controller will reboot after `sav
 
 Type `pout` to display the motor outputs.
 
-Check the arming mechanism: upon arming `out.armed` changes from 0 to 1.
+Check the arming mechanism: upon arming `armed` changes from 0 to 1.
 
 With arm switch configured (parameter `rcl_arm_ch > 0`)
  - ARMING: Set throttle idle, then flip arm switch to armed
