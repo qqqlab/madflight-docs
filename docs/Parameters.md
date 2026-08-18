@@ -180,7 +180,7 @@ Note: If a `pid_xxx` parameter is -1 then the default value for the selected `pi
 
 This controller is a very basic PID rate controller. When in Angle Mode the angle error is converted to a desired rate which the controller tries to keep.
 
-Betaflight friends will notice that the default BASIC PID parameters are identical. Yes, this is the case, so your BF setup should work with MF2. But this controller lacks all the fancy stuff BF offers.
+Betaflight friends will notice that the default MF parameters are identical to the BF defaults. Yes, this is by design, so your BF PID setup should work with this controller. But this controller lacks all the fancy stuff BF offers.
 
 Supported FlightModes: RATE, ANGLE
 
@@ -222,10 +222,12 @@ As the name implies, this is a work in progress experimental PID controller for 
 
 Limited flight testing has been done, so be prepared for surprises and hands-on trial-and-error work to improve this controller.
 
-This controller is an extended version of the BASIC controller, it adds:
+Supported FlightModes: RATE, ANGLE, COPTER_ALTHOLD
 
- - No drift yaw control in Angle Mode
- - Copter AltHold Mode
+This controller is an extended version of the BASIC controller:
+
+ - ANGLE: Added no drift yaw control when mag is present
+ - COPTER_ALTHOLD: Copter Altitutde Hold Mode (start this mode from hover in ANGLE mode, not on ground)
 
  See file pid/GizmoPidEXPERIMENTAL.cpp for the config parameters of this controller.
 
