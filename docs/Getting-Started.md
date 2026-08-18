@@ -16,17 +16,21 @@ You can use the following tools for configuring _madflight_.
 
 ### CLI Command Line Interface
 
-Connect your favorite terminal by USB. The CLI is the most powerful tool to view the drone's state, calibrate it, and to modify settings. Type 'help' to see the available commands, 'diff' to see the current settings.
+The CLI is the preferred and most powerful configuration tool. The CLI can be used for calibration, modify settings, and to view the drone's state.
+
+Connect your favorite terminal via USB to the flight controller. Type `help` to see the available commands, `diff` and `dump` to see the current settings.
 
 ### Betaflight Configurator
 
-You can use the Betaflight Configurator to check your settings, but you can not use it to configure madflight. Connect your board by USB and open [app.betaflight.com](https://app.betaflight.com) with a Chrome browser or install the [PC Configurator v10.10.0](https://github.com/betaflight/betaflight-configurator/releases/tag/10.10.0). Then use the Setup, Receiver, Motors, or Sensors Tabs to check your settings. The CLI Tab can also be used, but direct terminal CLI connection is more responsive.
+You can use the Betaflight Configurator to check your settings, but you can not use it to configure madflight.
+
+Connect your board by USB and open [app.betaflight.com](https://app.betaflight.com) with a Chrome browser or install the [PC Configurator v10.10.0](https://github.com/betaflight/betaflight-configurator/releases/tag/10.10.0). Then use the Setup, Receiver, Motors, or Sensors Tabs to check your settings. The CLI Tab can also be used, but using the CLI with an USB terminal program is more responsive.
 
 ### Mission Planner
 
-Start Mission Planner and go to the Config->Planner tab, and check both "Reset on USB Connect (toggle DTR)" and "Disable RTS reset on ESP SerialUSB". Then connect your board by USB and press the CONNECT button. You can also use a MavLink receiver to connect.
-
 You can use MP to check attitude and GPS position, change parameters, and to analyze madflight log files.
+
+Start Mission Planner and go to the Config->Planner tab, and check both "Reset on USB Connect (toggle DTR)" and "Disable RTS reset on ESP SerialUSB". Then connect your board by USB and press the CONNECT button. You can also use a MavLink receiver to connect.
 
 ## 1. Required Hardware
 
@@ -34,7 +38,7 @@ You can use MP to check attitude and GPS position, change parameters, and to ana
     - RP2350/RP2040 (e.g. Raspberry Pi Pico2)
     - ESP32-S3/ESP32 (e.g. Espressiv ESP32-S3 DevKitC)
     - STM32 (e.g. Black Pill)
-- [SPI IMU sensor](Sensor-Boards.md) (BMI270, MPU9250, MPU6500, MPU6000, ICM-45686, ICM-42688-P), if not available then use an I2C IMU sensor (MPU6050, MPU9150) 
+- [SPI IMU sensor](Sensor-Boards.md) (e.g. BMI270, MPU9250, MPU6500, MPU6000, ICM-45686, ICM-42688-P, LSM6DSV), if not available then use an I2C IMU sensor (MPU6050, MPU9150) 
 - RC Receiver: MAVLink, ELRS, CRSF, SBUS, DMSX, or PPM
 - BEC or DC-DC converter to power your board from a battery
 - ESC (OneShot125 or 50-490Hz PWM) and/or servos (50-490Hz PWM)
@@ -44,9 +48,9 @@ Or a commercial flight controller which includes some or all items on a single b
 ### Optional Hardware
 
 - GPS Module (Serial)
-- Barometer (I2C BMP280, BMP388, BMP390, MS5611)
-- Magnetometer (I2C QMC5883L)
-- Current/Voltage Sensor (ADC or I2C INA226, INA228)
+- Barometer (I2C, e.g. BMP280, BMP388, BMP390, MS5611)
+- Magnetometer (I2C e.g. QMC5883L, QMC8309, MMC5603)
+- Current/Voltage Sensor (ADC/I2C, e.g. INA226, INA228)
 - Radar/Lidar/Ultrasonic distance sensor
 - [Optical Flow Sensor](https://github.com/qqqlab/ESP32-Optical-Flow) (I2C)
 
@@ -65,7 +69,7 @@ Setup your favorite development environment (PlatformIO or Arduino IDE) for your
 
 ### Arduino IDE
 
-Open the Quadcopter example: use menu **File->Examples->Examples for custom libraries->madflight->01.Quadcopter.ino**
+Open the Quadcopter example: use menu **File->Examples->Examples for custom libraries->madflight->Quadcopter.ino**
 
 ### PlatformIO
 
@@ -79,33 +83,33 @@ Edit the `madflight_config` multiline string in `madflight_config.h` to enable t
 
 Set the following in madflight_config:
 ```
-imu_gizmo      ICM42688 // select your sensor type here
+imu_gizmo      ICM42688 // change to match your sensor type
 imu_bus_type   SPI
+pin_imu_int    14       // enter gpio number for interrupt pin here
+pin_imu_cs     15       // enter gpio number for chip-select pin here
+imu_spi_bus    0        // select bus SPI0
 
-//only uncomment the following if you do not want to use the default settings
-//pin_imu_int        <gpio>
-//pin_imu_cs         <gpio>
-//imu_spi_bus        <bus>
-//pin_spi<bus>_sclk  <gpio>
-//pin_spi<bus>_mosi  <gpio>
-//pin_spi<bus>_miso  <gpio>
+//setup SPI0 bus (bus setup is done in the board file, but you can override it here as required)
+pin_spi0_sclk  11       // enter gpio number for SPI0 SCLK pin here
+pin_spi0_mosi  12       // enter gpio number for SPI0 MOSI pin here
+pin_spi0_miso  13       // enter gpio number for SPI0 MISO pin here
 ```
-
-_madflight_ requires the interrupt pin _pin_imu_int_ connected.
 
 Connect the IMU sensor:
 
-| Sensor   |  |  Dev Board |
+| SPI Sensor   |  | Flight Controller |
 |-:|:-:|:-|
-SCL/SCLK |<---| `pin_spi<bus>_sclk`
-SDA/SDI  |<---| `pin_spi<bus>_mosi`
-ADD/SDO  |--->| `pin_spi<bus>_miso`
+SCL/SCLK |<---| `pin_spi0_sclk`
+SDA/SDI  |<---| `pin_spi0_mosi`
+ADD/SDO  |--->| `pin_spi0_miso`
 NCS      |<---| `pin_imu_cs`
 INT      |--->| `pin_imu_int`
 VCC      |----| 3V3 or 5V (depending on your sensor board)
 GND      |----| GND
 
-`<bus>` is the SPI bus number, set with `imu_spi_bus <bus>`
+If you want to use a different SPI bus than SPI0, change imu_spi_bus and pin_spiX_YYY accordingly.
+
+_madflight_ requires the interrupt pin _pin_imu_int_ connected.
 
 ### Configure an I2C IMU Sensor (IMU)
 
@@ -115,41 +119,43 @@ Set the following in madflight_config:
 ```
 imu_gizmo      MPU6050 // select your sensor type here
 imu_bus_type   I2C
+pin_imu_int    24      // enter gpio number for interrupt pin here
+imu_i2c_bus    0       // select bus I2C0
 
-//only uncomment the following if you do not want to use the default settings
-//pin_imu_int        <gpio>
-//imu_i2c_bus        <bus>
-//pin_i2c<bus>_sda   <gpio>
-//pin_i2c<bus>_scl   <gpio>
+//setup I2C0 bus (bus setup is done in the board file, but you can override it here as required)
+pin_i2c0_sda  21       // enter gpio number for I2C0 SDA pin here
+pin_i2c1_scl  22       // enter gpio number for I2C0 SCL pin here
 ```
-
-_madflight_ requires the interrupt pin _pin_imu_int_ connected.
 
 Connect the IMU sensor:
 
-| Sensor   |  |  Dev Board |
+| I2C Sensor   |  | Flight Controller |
 |-:|:-:|:-|
-SCL |<-->| `pin_i2c<bus>_scl`
-SDA |<-->| `pin_i2c<bus>_sda`
+SCL |<-->| `pin_i2c0_scl`
+SDA |<-->| `pin_i2c0_sda`
 INT |--->| `pin_imu_int`
 VCC |<-->| 3V3 or 5V (depending on your sensor board)
 GND |<-->| GND
 
-`<bus>` is the I2C bus number (0 or 1), set with `imu_i2c_bus <bus>`
+If you want to use a different I2C bus than I2C0, change imu_i2c_bus and pin_i2cX_YYY accordingly.
+
+_madflight_ requires the interrupt pin _pin_imu_int_ connected.
 
 ### Configure a Serial Receiver (RCL)
 
 Set the following in madflight_config:
 ```
-rcl_gizmo      CRSF // select your radio receiver type here: MAVLINK, CRSF, SBUS, DSM, IBUS
+rcl_gizmo      CRSF  // select your radio receiver type here: MAVLINK, CRSF, SBUS, DSM, IBUS
 rcl_num_ch     8     // number of channels
-rcl_deadband   0     // center stick deadband, set to 0 for serial receivers
+rcl_ser_bus    0     // select bus SER0
 
-//only uncomment the following if you do not want to use the default settings
-//imu_ser_bus        <bus>
-//pin_ser<bus>_tx    <gpio>
-//pin_ser<bus>_rx    <gpio>
+//setup SER0 bus (bus setup is done in the board file, but you can override it here as required)
+pin_ser0_tx    31       // enter gpio number for SER0 TX pin here
+pin_ser0_rx    32       // enter gpio number for SER0 RX pin here
 ```
+
+If you want to use a different Serial bus than SER0, change rcl_ser_bus and pin_serX_YYY accordingly.
+
 ### Configure a PPM Receiver (RCL)
 
 Set the following in madflight_config:
@@ -157,47 +163,7 @@ Set the following in madflight_config:
 rcl_gizmo      PPM 
 rcl_num_ch     8      // number of channels
 rcl_deadband   10     // center stick deadband in [us], a value around 10 will probably work fine
-pin_rcl_ppm    <gpio> // select the PPM pin here
-```
-### Configure Radio Channels (RCL)
-
-Set your radio transmitter to match the default parameters (AERT) listed below. Or modify the parameters to match your radio setup.
-
-Or skip these settings and see below to setup the parameters interactively. 
-
-```
-rcl_rol_ch        1 // roll (aileron) channel number
-rcl_rol_left   1100
-rcl_rol_mid    1500
-rcl_rol_right  1900
-
-rcl_pit_ch        2 // pitch (elevator) channel
-rcl_pit_pull   1100 // pwm for stick pulled toward you, i.e. pitch-up
-rcl_pit_mid    1500
-rcl_pit_push   1900 // pwm for stick pushed away, i.e. pitch-down
-
-rcl_yaw_ch        3 // yaw (rudder) channel
-rcl_yaw_left   1100
-rcl_yaw_mid    1500
-rcl_yaw_right  1900
-
-rcl_thr_ch        4 // throttle channel
-rcl_thr_pull   1100 // pwm for stick pulled toward you, i.e. idle throttle
-rcl_thr_mid    1500
-rcl_thr_push   1900 // pwm for stick pushed away, i.e. full throttle
-
-rcl_arm_ch        5 // arm switch channel, set to 0 to use stick commands for arming
-rcl_arm_min    1600 // armed pwm range min
-rcl_arm_max    2500 // armed pwm range max
-
-// flightmode 6 position switch - Ardupilot switch pwm: 1165,1295,1425,1555,1685,1815 (spacing 130)
-// EdgeTx 3-pos SA + 2-pos SB setup:
-//   Source:SA Weight:52 Offset:0 + Source:SB Weight:13 Offset:-1 Multiplex: add
-//   -OR- Source:SA Weight:26 Offset:-40 Switch:SBdown + Source:SA Weight:26 Offset:36 Switch:SBup Multiplex:Replace
-
-rcl_flt_ch        6
-rcl_flt_min    1165 // 6-pos switch lowest pwm (flight mode 0)
-rcl_flt_max    1815 // 6-pos switch lowest pwm (flight mode 5)
+pin_rcl_ppm    31     // select the PPM pin here
 ```
 
 ### Configure Motors (OUT)
@@ -224,7 +190,6 @@ Motor 4|pin_out3| Left Front | Clockwise
 CCW -->   <-- CW
 ```
 
-
 ## 6. Compile Quadcopter.ino
 
 Compile Quadcopter.ino and upload it to your board.
@@ -237,48 +202,80 @@ COMPLETE THIS SECTION OR YOUR CRAFT WILL CRASH (you have been warned :-)
 
 First check the startup messages for errors/warnings, and fix those before continuing, it will save you time and headaches.
 
-### Check Gyro/Accelerometer Orientation (IMU)
-
-The `imu_align` parameter sets the sensor orientation. The label is yaw / roll (in that order) needed to rotate the sensor from its normal position to its mounted position. The normal sensor position is NED (North East Down), i.e. x-axis points forward (N), y-axis points right (E), z-axis points down (D). 
-
-Use the Setup Tab in the BF Configurator and check that the displayed drone orientation follows your roll/pitch/yaw movements.
-
-Or, use CLI `pacc` to display the IMU accelerometer outputs.
-
-Holding the quad horizontal should give ax:0 ay:0 az:1, for example: `ax:-0.02  ay:-0.00  az:+1.00` 
-
-Holding the quad nose down should give ax:1 ay:0 az:0, for example: `ax:+0.96  ay:-0.04  az:-0.07` 
-
-Holding right side down should give ax:0 ay:1 az:0, for example: `ax:+0.05  ay:+1.00  az:+0.06`
-
-If not, adjust the parameter `imu_align` and re-upload until this matches. 
-
 ### Calibrate Gyro/Accelerometer (IMU)
 
-Now calibrate the IMU: place it horizontal and stationary, then type `calimu`, and `save` to store the settings. (The quad will reboot after `save`)
+Place vehicle horizontal and stationary, then type `calimu` and wait for calibration to complete.
 
-After calibration, use `pahr` to check that the calculated roll and pitch angles are correct.
+### Calibrate Magnetometer (MAG)
 
-### Test Radio Link (RCL)
+Type `calmag`, and keep moving the vehicle in all directions until completed. 
 
-If you did not setup the radio parameters in the previous steps, then type `calradio` and follow the prompts to setup your RC radio receiver.
+The calibration routine tries to capture the maximum and minimum magnetic flux on each axis. One way to achieve this is:
 
-Check the Radio Link with `ppwm` and `prcl`. 
+ - Point the vehicle horizontally toward the magnetic North
+ - Pitch up until inverted, then back to horizontal
+ - Pitch down until inverted, then back to horizontal
+ - Yaw vehicle 90 degrees, i.e. point left or right side towards magnetic North
+ - Roll right until inverted, then back to horizontal
+ - Roll left until inverted, then back to horizontal
 
-`ppwm` gives the received pwm values per channel, each value should be between 800 and 2200. 
+### Set Gyro/Accelerometer Orientation (IMU)
 
-`prcl` gives the adjusted madflight values:
+The `imu_align` parameter sets the sensor orientation. The label is yaw / roll (in that order) needed to rotate the sensor from its normal position to its mounted position. The normal sensor position is NED (North East Down), i.e. x-axis points forward (N), y-axis points right (E), z-axis points down (D).
+
+Type `pacc` to display the IMU accelerometer outputs.
+
+Horizontal gives az = 1, for example: `ax:-0.02  ay:-0.00  az:+1.00`
+
+Nose pointing to ground gives ay = 1, for example: `ax:+0.96  ay:-0.04  az:-0.07`
+
+Right pointing to ground gives ax = 1, for example: `ax:+0.05  ay:+1.00  az:+0.06`
+
+If not: use `dump imu_align` to show current setting, and `set imu_align <new_value>` to change, and then `pacc` to until this matches.
+
+Note: you can also use the Setup Tab in the BF Configurator and check that the displayed drone orientation follows your roll/pitch/yaw movements.
+
+### Set Magnetometer Orientation (MAG)
+
+The procedure is similar to the IMU procedure: type `pmag` to check, adjust the `mag_align` parameter until you get compass = 0 when pointing North and compass = +90 when pointing East
+
+### Check AHRS
+
+Type `pahr` to check that the calculated AHRS roll and pitch angles are correct. From horizontal do:
+
+ - Pitch up (nose up) and the AHRS pitch should be positive and according to the pitch angle.
+
+ - Roll right (right side down) and the AHRS roll should be positive and according to the roll angle.
+
+ - Yaw right (rotate clockwise) and the AHRS yaw should increase according to yaw angle.
+
+ - If you have a magnetometer, also check that the AHRS yaw compass direction correct. You should get yaw = 0 when pointing North and yaw = +90 when pointing East.
+
+IMPORTANT: Take your time to check this. If anything does not match up, repeat the calibration/orientation steps. If AHRS does not work 100% you won't be able to fly.
+
+Type `save` to store the settings. (The flight controller will reboot after `save`)
+
+### Setup Radio Link (RCL)
+
+Connect your receiver and power up your transmitter. Type `ppwm` to check that you have connection. `ppwm` gives the received pwm values per channel, each value should be between 800 and 2200. 
+
+Type `calradio` and follow the prompts to setup your RC radio receiver.
+
+Type `prcl` to check the configuration:
+
 - Throttle should be between 0 (idle) and 1 (full throttle). 
 - Roll and yaw should be 0 for center, -1 for left and +1 for right.
 - Pitch should be 0 for center, -1 for pitch down, +1 for pitch up.
 - Armed should be 0 when the switch is in disarmed position and 1 in armed position
-- Flightmode should be 0,1,2,3,4,5 representing the 6-position flight mode switch. (Flight mode is not used in the Quadcopter example, so can be ignored for now.)
+- Flightmode should be 0,1,2,3,4,5 representing the 2/3/6-position flight mode switch.
 
-If something does not look right, check/modify your RCL config and upload again. 
+If something does not look right, fix it before continuing.
+
+Type `save` to store the settings. (The flight controller will reboot after `save`)
 
 ### Test Arming (RCL,OUT)
 
-Use CLI commands `pout` to display the motor outputs.
+Type `pout` to display the motor outputs.
 
 Check the arming mechanism: upon arming `out.armed` changes from 0 to 1.
 
@@ -290,7 +287,7 @@ Without arm switch configured (parameter `rcl_arm_ch == 0`)
  - ARMING: Pull both sticks toward you, yaw full right, and roll full left and keep sticks there for 2 sec
  - DISARMING: Pull both sticks toward you, yaw full left, and roll full right and keep sticks there for 2 sec
 
-### Test Motor Mixer (OUT)
+### Test Quadcopter Motor Mixer (OUT)
 
 LEAVE BATTERY DISCONNECTED
 
@@ -310,7 +307,7 @@ Move yaw stick right and out1,2 should go up, out0,3 down: `out.armed:1  M0%:3  
 
 If any of the checks fail -> re-check your IMU, RCL and OUT configuration settings.
 
-### Test Motor Direction and Order (OUT)
+### Test Quadcopter Motor Direction and Order (OUT)
 
 Connect the battery but REMOVE PROPELLERS
 
@@ -322,9 +319,21 @@ If the incorrect motor spins, change the pin_out<x> parameters to correct this.
 
 If a motor spins in the wrong direction: exchange any 2 of the 3 wires of a brushless motor, or exchange the 2 wires of a brushed motor. Then check again!
 
+### Check Flight Modes and PID
+
+READ the [notes](Parameters.md#pid) for the selected PID controller. 
+
+Type `diff pid` to check your PID settings match.
+
+Type `dump rcl_flt` to ensure that your selected flight modes are correct.
+
+For first attempts start with RATE flight mode. If RATE works, then try ANGLE. If ANGLE works, try other modes.
+
+It helps to set your radio to show the flight mode telemetry value.
+
 ## 8. FLY
 
-Again, only continue if all checks and calibrations passed!!!
+Again, only continue if all calibrations and checks passed!!!
 
 Have a look at [Quadcopter Example](Example-Quadcopter.md) for details on the quadcopter program.
 
