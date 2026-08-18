@@ -322,7 +322,7 @@ If a motor spins in the wrong direction: exchange any 2 of the 3 wires of a brus
 
 ### Check Flight Modes and PID
 
-READ the [notes](Parameters.md#pid) for the selected PID controller. 
+[READ THE NOTES](Parameters.md#pid) for the selected PID controller. 
 
 Type `diff pid` to check your PID settings match.
 
