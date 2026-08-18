@@ -223,13 +223,13 @@ The calibration routine tries to capture the maximum and minimum magnetic flux o
 
 The `imu_align` parameter sets the sensor orientation. The label is yaw / roll (in that order) needed to rotate the sensor from its normal position to its mounted position. The normal sensor position is NED (North East Down), i.e. x-axis points forward (N), y-axis points right (E), z-axis points down (D).
 
-Type `pacc` to display the IMU accelerometer outputs.
+Type `pacc` to display the IMU accelerometer outputs, and check that:
 
-Horizontal gives az = 1, for example: `ax:-0.02  ay:-0.00  az:+1.00`
+ - Horizontal gives az = 1, for example: `ax:-0.02  ay:-0.01  az:+1.03`
 
-Nose pointing to ground gives ay = 1, for example: `ax:+0.96  ay:-0.04  az:-0.07`
+ - Nose pointing to ground gives ay = 1
 
-Right pointing to ground gives ax = 1, for example: `ax:+0.05  ay:+1.00  az:+0.06`
+ - Right side pointing to ground gives ax = 1
 
 If not: use `dump imu_align` to show current setting, and `set imu_align <new_value>` to change, and then `pacc` to until this matches.
 
@@ -237,7 +237,7 @@ Note: you can also use the Setup Tab in the BF Configurator and check that the d
 
 ### Set Magnetometer Orientation (MAG)
 
-The procedure is similar to the IMU procedure: type `pmag` to check, adjust the `mag_align` parameter until you get compass = 0 when pointing North and compass = +90 when pointing East
+The procedure is similar to the IMU procedure: type `pmag` to check, adjust the `mag_align` parameter until you get compass = 0 when pointing North and compass = +90 when pointing East.
 
 ### Check AHRS
 
