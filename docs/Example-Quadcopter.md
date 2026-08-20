@@ -49,7 +49,9 @@ With stick commands (when parameter `rcl_arm_ch == 0`):
 
 These are some of the quads I used for testing...
 
-### RP2350 DJI Phantom 1 P330
+## RP2350 DJI Phantom 1 P330
+
+<img src="../img/dji_phantom1_p330_h1024.jpg"/>
 
 Swapped existing NAZA flight controller with a madflight FC3 RP2350. The existing ESCs are recycled and driven in PWM 400Hz mode.
 
@@ -60,12 +62,11 @@ Specs
  - ELRS Nano Receiver
  - Short USB-C cable for programming
 
-<img src="../img/dji_phantom1_p330_h1024.jpg"/>
+## ESP32-S3 5" Sub-250 Gram
 
+<img src="../img/esp32_drone_h1024.jpg"/>
 
-### ESP32-S3 5" sub 250 gram
-
-Lightweight 6mm bambu + printed PETG motor mounts
+Lightweight frame made from 6mm bambu rods + 3D printed PETG motor mounts
 
 Specs
 
@@ -76,10 +77,9 @@ Specs
  - Folding 5" 120mm props
  - Weight: 201 gr (including 2S 18650 battery)
 
-<img src="../img/esp32_drone_h1024.jpg"/>
+## RP2350 Quad with 9" Props
 
-
-### RP2350 Quad with 9" Props
+<img src="../img/ex-qa1.jpg" width="19%" /> <img src="../img/ex-qa2.jpg" width="15%" /> <img src="../img/ex-qa3.jpg" width="36%" />
 
 Specs
 
@@ -94,10 +94,9 @@ Specs
  - DJI E300 Propulsion System (9.4x4.3 props, 2212 920KV motors, 15A ESCs)
  - Frame of a Ideafly IFLY-4 Quadcopter
 
-<img src="../img/ex-qa1.jpg" width="19%" /> <img src="../img/ex-qa2.jpg" width="15%" /> <img src="../img/ex-qa3.jpg" width="36%" />
+## ESP32 Dualsky Hornet 460
 
-
-### ESP32 Dualsky Hornet 460
+<img src="../img/ex-q1.jpg" width="19.9%" /> <img src="../img/ex-q2.jpg" width="25%" /> <img src="../img/ex-q3.jpg" width="25%" />
 
 This build does not use the default board for ESP32. And a custom pinout is used, so that the MPU6500 board can be soldered directly with pins to the ESP32 board, and just requires the red wire for 3V. The I2C sensor boards are also soldered directly with pins, plus one black ground wire.
 
@@ -109,5 +108,3 @@ Specs
  - Dualsky Hornet 460 Quadcopter minus original brain
  - BME280 Barometer Module
  - QMC5883L Magnetometer Module
-
-<img src="../img/ex-q1.jpg" width="19.9%" /> <img src="../img/ex-q2.jpg" width="25%" /> <img src="../img/ex-q3.jpg" width="25%" />
